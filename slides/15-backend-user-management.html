@@ -1,0 +1,532 @@
+<!-- Backend Systems Slide 4: User Management System -->
+<style>
+/* Standalone CSS for Backend User Management Slide */
+#backend-user-container .slide-content {
+    /* CSS Variables for Academic Theme */
+    --primary-bg: #ffffff;
+    --secondary-bg: #f8f9fa;
+    --tertiary-bg: #e9ecef;
+    --accent-red: #c41e3a;
+    --accent-blue: #1f4e79;
+    --accent-purple: #5a4fcf;
+    --accent-green: #2d7d32;
+    --accent-orange: #f57c00;
+    --accent-teal: #00695c;
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --text-muted: #6c757d;
+    --border-light: #dee2e6;
+    --border-primary: #ced4da;
+    --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-heavy: 0 8px 24px rgba(0, 0, 0, 0.16);
+    
+    /* Typography Scale */
+    --font-size-h1: clamp(2.5rem, 5vw, 4rem);
+    --font-size-h2: clamp(2rem, 4vw, 3rem);
+    --font-size-h3: clamp(1.5rem, 3vw, 2.2rem);
+    --font-size-h4: clamp(1.25rem, 2.5vw, 1.8rem);
+    --font-size-body: clamp(1rem, 2vw, 1.2rem);
+    --font-size-small: clamp(0.875rem, 1.5vw, 1rem);
+    
+    /* Spacing Scale */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-xxl: 4rem;
+    
+    /* Base slide styling */
+    all: unset;
+    display: block;
+    max-width: 1400px !important;
+    width: 100% !important;
+    text-align: left !important;
+    padding: var(--spacing-lg) !important;
+    margin: 0 auto !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    line-height: 1.6 !important;
+    font-size: var(--font-size-body) !important;
+    color: var(--text-primary) !important;
+    background: var(--primary-bg) !important;
+    height: 100vh !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+
+/* Custom scrollbar styling for standalone slides */
+#backend-user-container .slide-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+#backend-user-container .slide-content::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
+}
+
+#backend-user-container .slide-content::-webkit-scrollbar-thumb {
+    background: rgba(31, 78, 121, 0.3);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+#backend-user-container .slide-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(31, 78, 121, 0.5);
+}
+
+/* Firefox scrollbar styling */
+#backend-user-container .slide-content {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(31, 78, 121, 0.3) transparent;
+}
+
+#backend-user-container * {
+    box-sizing: border-box;
+}
+
+#backend-user-container .slide-content * {
+    font-family: inherit !important;
+}
+
+/* Typography */
+#backend-user-container .slide-content h2 {
+    font-family: 'Orbitron', 'Georgia', serif !important;
+    font-size: var(--font-size-h2) !important;
+    font-weight: 600 !important;
+    line-height: 1.3 !important;
+    margin-bottom: var(--spacing-xl) !important;
+    color: var(--accent-blue) !important;
+    text-align: center !important;
+    letter-spacing: -0.01em !important;
+}
+
+#backend-user-container .slide-content h3 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h3) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#backend-user-container .slide-content h4 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h4) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-sm) !important;
+    color: var(--text-primary) !important;
+}
+
+#backend-user-container .slide-content p {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.7 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#backend-user-container .slide-content ul {
+    margin-bottom: var(--spacing-md) !important;
+    padding-left: var(--spacing-lg) !important;
+}
+
+#backend-user-container .slide-content li {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.6 !important;
+    margin-bottom: var(--spacing-xs) !important;
+    color: var(--text-primary) !important;
+}
+
+/* User Management Overview */
+#backend-user-container .user-overview {
+    background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--tertiary-bg) 100%) !important;
+    padding: var(--spacing-xl) !important;
+    border-radius: 20px !important;
+    border: 2px solid var(--accent-orange) !important;
+    box-shadow: var(--shadow-medium) !important;
+    text-align: center !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#backend-user-container .user-overview h3 {
+    color: var(--accent-orange) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-md) !important;
+}
+
+#backend-user-container .user-overview .subtitle {
+    font-size: calc(var(--font-size-body) * 1.1) !important;
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Dashboard Architecture Diagram */
+#backend-user-container .dashboard-diagram {
+    background: var(--secondary-bg) !important;
+    border: 2px dashed var(--accent-orange) !important;
+    border-radius: 12px !important;
+    padding: var(--spacing-xl) !important;
+    text-align: center !important;
+    margin: var(--spacing-xl) 0 !important;
+    min-height: 180px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+}
+
+#backend-user-container .diagram-placeholder {
+    color: var(--accent-orange) !important;
+    font-size: var(--font-size-h4) !important;
+    font-weight: 600 !important;
+    margin-bottom: var(--spacing-sm) !important;
+}
+
+#backend-user-container .diagram-description {
+    color: var(--text-secondary) !important;
+    font-size: var(--font-size-small) !important;
+    font-style: italic !important;
+}
+
+/* Management Features Grid */
+#backend-user-container .management-features {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
+    gap: var(--spacing-lg) !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#backend-user-container .feature-card {
+    background: var(--secondary-bg) !important;
+    border-radius: 16px !important;
+    padding: var(--spacing-lg) !important;
+    box-shadow: var(--shadow-light) !important;
+    transition: all 0.3s ease !important;
+    border-left: 4px solid var(--accent-blue) !important;
+}
+
+#backend-user-container .feature-card.dashboard {
+    border-left-color: var(--accent-blue) !important;
+}
+
+#backend-user-container .feature-card.participation {
+    border-left-color: var(--accent-green) !important;
+}
+
+#backend-user-container .feature-card.consent {
+    border-left-color: var(--accent-purple) !important;
+}
+
+#backend-user-container .feature-card.matching {
+    border-left-color: var(--accent-red) !important;
+}
+
+#backend-user-container .feature-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: var(--shadow-medium) !important;
+}
+
+#backend-user-container .feature-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--spacing-sm) !important;
+    margin-bottom: var(--spacing-md) !important;
+    padding-bottom: var(--spacing-sm) !important;
+    border-bottom: 2px solid var(--border-light) !important;
+}
+
+#backend-user-container .feature-header i {
+    font-size: var(--font-size-h3) !important;
+}
+
+#backend-user-container .feature-card.dashboard .feature-header i {
+    color: var(--accent-blue) !important;
+}
+
+#backend-user-container .feature-card.participation .feature-header i {
+    color: var(--accent-green) !important;
+}
+
+#backend-user-container .feature-card.consent .feature-header i {
+    color: var(--accent-purple) !important;
+}
+
+#backend-user-container .feature-card.matching .feature-header i {
+    color: var(--accent-red) !important;
+}
+
+#backend-user-container .feature-header h3 {
+    margin: 0 !important;
+    font-family: 'Orbitron', serif !important;
+}
+
+#backend-user-container .feature-card.dashboard .feature-header h3 {
+    color: var(--accent-blue) !important;
+}
+
+#backend-user-container .feature-card.participation .feature-header h3 {
+    color: var(--accent-green) !important;
+}
+
+#backend-user-container .feature-card.consent .feature-header h3 {
+    color: var(--accent-purple) !important;
+}
+
+#backend-user-container .feature-card.matching .feature-header h3 {
+    color: var(--accent-red) !important;
+}
+
+/* Feature Details */
+#backend-user-container .feature-details {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--spacing-sm) !important;
+}
+
+#backend-user-container .feature-item {
+    background: var(--primary-bg) !important;
+    padding: var(--spacing-sm) !important;
+    border-radius: 8px !important;
+    border-left: 3px solid var(--accent-blue) !important;
+    font-size: var(--font-size-small) !important;
+    line-height: 1.5 !important;
+    color: var(--text-secondary) !important;
+}
+
+#backend-user-container .feature-card.dashboard .feature-item {
+    border-left-color: var(--accent-blue) !important;
+}
+
+#backend-user-container .feature-card.participation .feature-item {
+    border-left-color: var(--accent-green) !important;
+}
+
+#backend-user-container .feature-card.consent .feature-item {
+    border-left-color: var(--accent-purple) !important;
+}
+
+#backend-user-container .feature-card.matching .feature-item {
+    border-left-color: var(--accent-red) !important;
+}
+
+/* Workflow Management Section */
+#backend-user-container .workflow-management {
+    margin: var(--spacing-xl) 0 !important;
+}
+
+#backend-user-container .workflow-management h3 {
+    color: var(--accent-teal) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-lg) !important;
+    text-align: center !important;
+}
+
+#backend-user-container .workflow-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
+    gap: var(--spacing-lg) !important;
+}
+
+#backend-user-container .workflow-section {
+    background: var(--secondary-bg) !important;
+    border-radius: 16px !important;
+    padding: var(--spacing-lg) !important;
+    box-shadow: var(--shadow-light) !important;
+    border-left: 4px solid var(--accent-teal) !important;
+}
+
+#backend-user-container .workflow-section.coordination {
+    border-left-color: var(--accent-purple) !important;
+}
+
+#backend-user-container .section-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--spacing-sm) !important;
+    margin-bottom: var(--spacing-md) !important;
+    padding-bottom: var(--spacing-sm) !important;
+    border-bottom: 2px solid var(--border-light) !important;
+}
+
+#backend-user-container .section-header i {
+    font-size: var(--font-size-h4) !important;
+    color: var(--accent-teal) !important;
+}
+
+#backend-user-container .workflow-section.coordination .section-header i {
+    color: var(--accent-purple) !important;
+}
+
+#backend-user-container .section-header h4 {
+    margin: 0 !important;
+    font-family: 'Orbitron', serif !important;
+    color: var(--text-primary) !important;
+    font-size: var(--font-size-h4) !important;
+}
+
+#backend-user-container .workflow-features {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--spacing-sm) !important;
+}
+
+#backend-user-container .workflow-features .feature-item {
+    border-left-color: var(--accent-teal) !important;
+}
+
+#backend-user-container .workflow-section.coordination .workflow-features .feature-item {
+    border-left-color: var(--accent-purple) !important;
+}
+
+/* Animation */
+#backend-user-container .animate-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: all 0.6s ease-out !important;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    #backend-user-container .slide-content {
+        padding: var(--spacing-md) !important;
+    }
+    
+    #backend-user-container .management-features {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+        gap: var(--spacing-md) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    #backend-user-container .slide-content {
+        padding: var(--spacing-sm) !important;
+    }
+    
+    #backend-user-container .user-overview {
+        padding: var(--spacing-lg) !important;
+    }
+    
+    #backend-user-container .management-features {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #backend-user-container .slide-content {
+        padding: var(--spacing-xs) !important;
+    }
+    
+    #backend-user-container .feature-header {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: var(--spacing-xs) !important;
+    }
+}
+</style>
+
+<div id="backend-user-container">
+<div class="slide-content">
+    <h2 class="section-title animate-in">Backend Systems: User Management System</h2>
+    
+    <div class="user-overview animate-in">
+        <h3>👥 Research Participation Coordination</h3>
+        <p class="subtitle">Comprehensive participant management system designed to facilitate seamless coordination between researchers and study participants through intelligent matching algorithms, digital consent workflows, and real-time status management.</p>
+    </div>
+
+    <div class="dashboard-diagram animate-in">
+        <div class="diagram-placeholder">📋 Figure 4.40: Participant Dashboard Architecture</div>
+        <div class="diagram-description">Card-based dashboard system with workflow management and status tracking</div>
+    </div>
+
+    <div class="management-features animate-in">
+        <div class="feature-card dashboard">
+            <div class="feature-header">
+                <i class="fas fa-tachometer-alt"></i>
+                <h3>Participant Dashboard</h3>
+            </div>
+            <div class="feature-details">
+                <div class="feature-item">Card-based architecture providing intuitive interface organization</div>
+                <div class="feature-item">Real-time status updates and progress tracking for ongoing studies</div>
+                <div class="feature-item">Personalized research opportunity recommendations</div>
+                <div class="feature-item">Comprehensive session history and participation analytics</div>
+                <div class="feature-item">Integrated communication tools for researcher-participant interaction</div>
+            </div>
+        </div>
+
+        <div class="feature-card participation">
+            <div class="feature-header">
+                <i class="fas fa-calendar-check"></i>
+                <h3>Research Participation Workflow</h3>
+            </div>
+            <div class="feature-details">
+                <div class="feature-item">14-day timeout mechanism for participation request management</div>
+                <div class="feature-item">Automated scheduling system with conflict resolution</div>
+                <div class="feature-item">Multi-stage approval process with researcher validation</div>
+                <div class="feature-item">Flexible rescheduling and cancellation policies</div>
+                <div class="feature-item">Participation history tracking and eligibility verification</div>
+            </div>
+        </div>
+
+        <div class="feature-card consent">
+            <div class="feature-header">
+                <i class="fas fa-file-signature"></i>
+                <h3>Digital Consent Management</h3>
+            </div>
+            <div class="feature-details">
+                <div class="feature-item">Comprehensive digital consent form system with legal compliance</div>
+                <div class="feature-item">Audit trail maintenance for regulatory compliance</div>
+                <div class="feature-item">Version control for consent document management</div>
+                <div class="feature-item">Electronic signature integration with timestamp verification</div>
+                <div class="feature-item">Withdrawal mechanism with data retention policy enforcement</div>
+            </div>
+        </div>
+
+        <div class="feature-card matching">
+            <div class="feature-header">
+                <i class="fas fa-users"></i>
+                <h3>Intelligent Matching Algorithms</h3>
+            </div>
+            <div class="feature-details">
+                <div class="feature-item">Sophisticated participant-researcher coordination algorithms</div>
+                <div class="feature-item">Demographic and eligibility criteria matching</div>
+                <div class="feature-item">Availability synchronization and scheduling optimization</div>
+                <div class="feature-item">Research requirement fulfillment tracking</div>
+                <div class="feature-item">Automated notification system for matching opportunities</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="workflow-management animate-in">
+        <h3>🔄 Workflow Management & Status Tracking</h3>
+        <div class="workflow-grid">
+            <div class="workflow-section status-management">
+                <div class="section-header">
+                    <i class="fas fa-tasks"></i>
+                    <h4>Real-Time Status Management</h4>
+                </div>
+                <div class="workflow-features">
+                    <div class="feature-item">Multi-channel notification system (email, in-app, SMS)</div>
+                    <div class="feature-item">Status synchronization across all system components</div>
+                    <div class="feature-item">Automated workflow progression with validation checkpoints</div>
+                    <div class="feature-item">Exception handling and error recovery mechanisms</div>
+                </div>
+            </div>
+
+            <div class="workflow-section coordination">
+                <div class="section-header">
+                    <i class="fas fa-handshake"></i>
+                    <h4>Researcher-Participant Coordination</h4>
+                </div>
+                <div class="workflow-features">
+                    <div class="feature-item">Bidirectional communication channels with message threading</div>
+                    <div class="feature-item">Automated reminder system for upcoming sessions</div>
+                    <div class="feature-item">Conflict resolution protocols for scheduling disputes</div>
+                    <div class="feature-item">Performance analytics and participation quality metrics</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

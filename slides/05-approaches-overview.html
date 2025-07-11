@@ -47,6 +47,35 @@
     font-size: var(--font-size-body);
     color: var(--text-primary);
     background: var(--primary-bg);
+    height: 100vh !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+
+/* Custom scrollbar styling for standalone slides */
+#approaches-slide-container .slide-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+#approaches-slide-container .slide-content::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
+}
+
+#approaches-slide-container .slide-content::-webkit-scrollbar-thumb {
+    background: rgba(31, 78, 121, 0.3);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+#approaches-slide-container .slide-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(31, 78, 121, 0.5);
+}
+
+/* Firefox scrollbar styling */
+#approaches-slide-container .slide-content {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(31, 78, 121, 0.3) transparent;
 }
 
 /* Typography Hierarchy - High specificity to override global styles */

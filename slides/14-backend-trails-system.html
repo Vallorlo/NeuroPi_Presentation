@@ -1,0 +1,532 @@
+<!-- Backend Systems Slide 3: Trails System -->
+<style>
+/* Standalone CSS for Backend Trails System Slide */
+#backend-trails-container .slide-content {
+    /* CSS Variables for Academic Theme */
+    --primary-bg: #ffffff;
+    --secondary-bg: #f8f9fa;
+    --tertiary-bg: #e9ecef;
+    --accent-red: #c41e3a;
+    --accent-blue: #1f4e79;
+    --accent-purple: #5a4fcf;
+    --accent-green: #2d7d32;
+    --accent-orange: #f57c00;
+    --accent-teal: #00695c;
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --text-muted: #6c757d;
+    --border-light: #dee2e6;
+    --border-primary: #ced4da;
+    --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-heavy: 0 8px 24px rgba(0, 0, 0, 0.16);
+    
+    /* Typography Scale */
+    --font-size-h1: clamp(2.5rem, 5vw, 4rem);
+    --font-size-h2: clamp(2rem, 4vw, 3rem);
+    --font-size-h3: clamp(1.5rem, 3vw, 2.2rem);
+    --font-size-h4: clamp(1.25rem, 2.5vw, 1.8rem);
+    --font-size-body: clamp(1rem, 2vw, 1.2rem);
+    --font-size-small: clamp(0.875rem, 1.5vw, 1rem);
+    
+    /* Spacing Scale */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-xxl: 4rem;
+    
+    /* Base slide styling */
+    all: unset;
+    display: block;
+    max-width: 1400px !important;
+    width: 100% !important;
+    text-align: left !important;
+    padding: var(--spacing-lg) !important;
+    margin: 0 auto !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    line-height: 1.6 !important;
+    font-size: var(--font-size-body) !important;
+    color: var(--text-primary) !important;
+    background: var(--primary-bg) !important;
+    height: 100vh !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+
+/* Custom scrollbar styling for standalone slides */
+#backend-trails-container .slide-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+#backend-trails-container .slide-content::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
+}
+
+#backend-trails-container .slide-content::-webkit-scrollbar-thumb {
+    background: rgba(31, 78, 121, 0.3);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+#backend-trails-container .slide-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(31, 78, 121, 0.5);
+}
+
+/* Firefox scrollbar styling */
+#backend-trails-container .slide-content {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(31, 78, 121, 0.3) transparent;
+}
+
+#backend-trails-container * {
+    box-sizing: border-box;
+}
+
+#backend-trails-container .slide-content * {
+    font-family: inherit !important;
+}
+
+/* Typography */
+#backend-trails-container .slide-content h2 {
+    font-family: 'Orbitron', 'Georgia', serif !important;
+    font-size: var(--font-size-h2) !important;
+    font-weight: 600 !important;
+    line-height: 1.3 !important;
+    margin-bottom: var(--spacing-xl) !important;
+    color: var(--accent-blue) !important;
+    text-align: center !important;
+    letter-spacing: -0.01em !important;
+}
+
+#backend-trails-container .slide-content h3 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h3) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#backend-trails-container .slide-content h4 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h4) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-sm) !important;
+    color: var(--text-primary) !important;
+}
+
+#backend-trails-container .slide-content p {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.7 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#backend-trails-container .slide-content ul {
+    margin-bottom: var(--spacing-md) !important;
+    padding-left: var(--spacing-lg) !important;
+}
+
+#backend-trails-container .slide-content li {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.6 !important;
+    margin-bottom: var(--spacing-xs) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Trails System Overview */
+#backend-trails-container .trails-overview {
+    background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--tertiary-bg) 100%) !important;
+    padding: var(--spacing-xl) !important;
+    border-radius: 20px !important;
+    border: 2px solid var(--accent-purple) !important;
+    box-shadow: var(--shadow-medium) !important;
+    text-align: center !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#backend-trails-container .trails-overview h3 {
+    color: var(--accent-purple) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-md) !important;
+}
+
+#backend-trails-container .trails-overview .subtitle {
+    font-size: calc(var(--font-size-body) * 1.1) !important;
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+    margin-bottom: 0 !important;
+}
+
+/* EEG Integration Diagram */
+#backend-trails-container .eeg-integration-diagram {
+    background: var(--secondary-bg) !important;
+    border: 2px dashed var(--accent-purple) !important;
+    border-radius: 12px !important;
+    padding: var(--spacing-xl) !important;
+    text-align: center !important;
+    margin: var(--spacing-xl) 0 !important;
+    min-height: 180px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+}
+
+#backend-trails-container .diagram-placeholder {
+    color: var(--accent-purple) !important;
+    font-size: var(--font-size-h4) !important;
+    font-weight: 600 !important;
+    margin-bottom: var(--spacing-sm) !important;
+}
+
+#backend-trails-container .diagram-description {
+    color: var(--text-secondary) !important;
+    font-size: var(--font-size-small) !important;
+    font-style: italic !important;
+}
+
+/* System Components Grid */
+#backend-trails-container .system-components {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
+    gap: var(--spacing-lg) !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#backend-trails-container .component-card {
+    background: var(--secondary-bg) !important;
+    border-radius: 16px !important;
+    padding: var(--spacing-lg) !important;
+    box-shadow: var(--shadow-light) !important;
+    transition: all 0.3s ease !important;
+    border-left: 4px solid var(--accent-blue) !important;
+}
+
+#backend-trails-container .component-card.data-acquisition {
+    border-left-color: var(--accent-blue) !important;
+}
+
+#backend-trails-container .component-card.timing-control {
+    border-left-color: var(--accent-green) !important;
+}
+
+#backend-trails-container .component-card.quality-assurance {
+    border-left-color: var(--accent-orange) !important;
+}
+
+#backend-trails-container .component-card.paradigm-framework {
+    border-left-color: var(--accent-red) !important;
+}
+
+#backend-trails-container .component-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: var(--shadow-medium) !important;
+}
+
+#backend-trails-container .component-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--spacing-sm) !important;
+    margin-bottom: var(--spacing-md) !important;
+    padding-bottom: var(--spacing-sm) !important;
+    border-bottom: 2px solid var(--border-light) !important;
+}
+
+#backend-trails-container .component-header i {
+    font-size: var(--font-size-h3) !important;
+}
+
+#backend-trails-container .component-card.data-acquisition .component-header i {
+    color: var(--accent-blue) !important;
+}
+
+#backend-trails-container .component-card.timing-control .component-header i {
+    color: var(--accent-green) !important;
+}
+
+#backend-trails-container .component-card.quality-assurance .component-header i {
+    color: var(--accent-orange) !important;
+}
+
+#backend-trails-container .component-card.paradigm-framework .component-header i {
+    color: var(--accent-red) !important;
+}
+
+#backend-trails-container .component-header h3 {
+    margin: 0 !important;
+    font-family: 'Orbitron', serif !important;
+}
+
+#backend-trails-container .component-card.data-acquisition .component-header h3 {
+    color: var(--accent-blue) !important;
+}
+
+#backend-trails-container .component-card.timing-control .component-header h3 {
+    color: var(--accent-green) !important;
+}
+
+#backend-trails-container .component-card.quality-assurance .component-header h3 {
+    color: var(--accent-orange) !important;
+}
+
+#backend-trails-container .component-card.paradigm-framework .component-header h3 {
+    color: var(--accent-red) !important;
+}
+
+/* Component Features */
+#backend-trails-container .component-features {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--spacing-sm) !important;
+}
+
+#backend-trails-container .feature-item {
+    background: var(--primary-bg) !important;
+    padding: var(--spacing-sm) !important;
+    border-radius: 8px !important;
+    border-left: 3px solid var(--accent-blue) !important;
+    font-size: var(--font-size-small) !important;
+    line-height: 1.5 !important;
+    color: var(--text-secondary) !important;
+}
+
+#backend-trails-container .component-card.data-acquisition .feature-item {
+    border-left-color: var(--accent-blue) !important;
+}
+
+#backend-trails-container .component-card.timing-control .feature-item {
+    border-left-color: var(--accent-green) !important;
+}
+
+#backend-trails-container .component-card.quality-assurance .feature-item {
+    border-left-color: var(--accent-orange) !important;
+}
+
+#backend-trails-container .component-card.paradigm-framework .feature-item {
+    border-left-color: var(--accent-red) !important;
+}
+
+/* Technical Specifications Section */
+#backend-trails-container .technical-specifications {
+    margin: var(--spacing-xl) 0 !important;
+}
+
+#backend-trails-container .technical-specifications h3 {
+    color: var(--accent-teal) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-lg) !important;
+    text-align: center !important;
+}
+
+#backend-trails-container .specs-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
+    gap: var(--spacing-lg) !important;
+}
+
+#backend-trails-container .spec-section {
+    background: var(--secondary-bg) !important;
+    border-radius: 16px !important;
+    padding: var(--spacing-lg) !important;
+    box-shadow: var(--shadow-light) !important;
+    border-left: 4px solid var(--accent-teal) !important;
+}
+
+#backend-trails-container .spec-section.performance {
+    border-left-color: var(--accent-purple) !important;
+}
+
+#backend-trails-container .section-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--spacing-sm) !important;
+    margin-bottom: var(--spacing-md) !important;
+    padding-bottom: var(--spacing-sm) !important;
+    border-bottom: 2px solid var(--border-light) !important;
+}
+
+#backend-trails-container .section-header i {
+    font-size: var(--font-size-h4) !important;
+    color: var(--accent-teal) !important;
+}
+
+#backend-trails-container .spec-section.performance .section-header i {
+    color: var(--accent-purple) !important;
+}
+
+#backend-trails-container .section-header h4 {
+    margin: 0 !important;
+    font-family: 'Orbitron', serif !important;
+    color: var(--text-primary) !important;
+    font-size: var(--font-size-h4) !important;
+}
+
+#backend-trails-container .spec-features {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--spacing-sm) !important;
+}
+
+#backend-trails-container .spec-features .feature-item {
+    border-left-color: var(--accent-teal) !important;
+}
+
+#backend-trails-container .spec-section.performance .spec-features .feature-item {
+    border-left-color: var(--accent-purple) !important;
+}
+
+/* Animation */
+#backend-trails-container .animate-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: all 0.6s ease-out !important;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    #backend-trails-container .slide-content {
+        padding: var(--spacing-md) !important;
+    }
+    
+    #backend-trails-container .system-components {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+        gap: var(--spacing-md) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    #backend-trails-container .slide-content {
+        padding: var(--spacing-sm) !important;
+    }
+    
+    #backend-trails-container .trails-overview {
+        padding: var(--spacing-lg) !important;
+    }
+    
+    #backend-trails-container .system-components {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #backend-trails-container .slide-content {
+        padding: var(--spacing-xs) !important;
+    }
+    
+    #backend-trails-container .component-header {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: var(--spacing-xs) !important;
+    }
+}
+</style>
+
+<div id="backend-trails-container">
+<div class="slide-content">
+    <h2 class="section-title animate-in">Backend Systems: Trails System</h2>
+    
+    <div class="trails-overview animate-in">
+        <h3>🧠 EEG Data Collection Architecture</h3>
+        <p class="subtitle">Sophisticated experimental framework designed to support diverse neuroscience research protocols through seamless integration with 14-channel EEG hardware, implementing advanced timing control and quality assurance mechanisms.</p>
+    </div>
+
+    <div class="eeg-integration-diagram animate-in">
+        <div class="diagram-placeholder">🔌 Figure 4.39: EEG Device Integration Architecture</div>
+        <div class="diagram-description">14-channel EPOC+ integration with real-time data acquisition pipeline</div>
+    </div>
+
+    <div class="system-components animate-in">
+        <div class="component-card data-acquisition">
+            <div class="component-header">
+                <i class="fas fa-download"></i>
+                <h3>Real-Time Data Acquisition</h3>
+            </div>
+            <div class="component-features">
+                <div class="feature-item">14-channel EEG device integration with EPOC+ optimization</div>
+                <div class="feature-item">Synchronized multi-modal data collection (EEG, audio, behavioral)</div>
+                <div class="feature-item">Real-time streaming with configurable sampling rates</div>
+                <div class="feature-item">Hardware abstraction layer for device compatibility</div>
+                <div class="feature-item">Automatic data validation and integrity checking</div>
+            </div>
+        </div>
+
+        <div class="component-card timing-control">
+            <div class="component-header">
+                <i class="fas fa-clock"></i>
+                <h3>Sophisticated Timing Control</h3>
+            </div>
+            <div class="component-features">
+                <div class="feature-item">Microsecond-level precision timing for experimental protocols</div>
+                <div class="feature-item">Event synchronization across multiple data streams</div>
+                <div class="feature-item">Configurable inter-stimulus intervals and trial timing</div>
+                <div class="feature-item">Jitter compensation and temporal drift correction</div>
+                <div class="feature-item">Real-time timing validation and performance monitoring</div>
+            </div>
+        </div>
+
+        <div class="component-card quality-assurance">
+            <div class="component-header">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Quality Assurance</h3>
+            </div>
+            <div class="component-features">
+                <div class="feature-item">Impedance monitoring with real-time electrode quality assessment</div>
+                <div class="feature-item">Artifact detection and automatic signal quality evaluation</div>
+                <div class="feature-item">Data integrity validation with checksum verification</div>
+                <div class="feature-item">Session quality metrics and performance reporting</div>
+                <div class="feature-item">Automated backup and recovery mechanisms</div>
+            </div>
+        </div>
+
+        <div class="component-card paradigm-framework">
+            <div class="component-header">
+                <i class="fas fa-cogs"></i>
+                <h3>Multi-Paradigm Framework</h3>
+            </div>
+            <div class="component-features">
+                <div class="feature-item">Support for diverse experimental protocols and paradigms</div>
+                <div class="feature-item">Modular architecture enabling custom experiment design</div>
+                <div class="feature-item">Protocol-specific parameter configuration and validation</div>
+                <div class="feature-item">Extensible framework for new paradigm integration</div>
+                <div class="feature-item">Standardized data formats across all experimental types</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="technical-specifications animate-in">
+        <h3>⚙️ Technical Specifications & Performance</h3>
+        <div class="specs-grid">
+            <div class="spec-section hardware">
+                <div class="section-header">
+                    <i class="fas fa-microchip"></i>
+                    <h4>Hardware Integration</h4>
+                </div>
+                <div class="spec-features">
+                    <div class="feature-item">EPOC+ 14-channel EEG headset with wireless connectivity</div>
+                    <div class="feature-item">128 Hz sampling rate with 16-bit resolution</div>
+                    <div class="feature-item">Real-time impedance monitoring and electrode quality assessment</div>
+                    <div class="feature-item">Automatic gain control and signal conditioning</div>
+                </div>
+            </div>
+
+            <div class="spec-section performance">
+                <div class="section-header">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <h4>Performance Metrics</h4>
+                </div>
+                <div class="spec-features">
+                    <div class="feature-item">Sub-millisecond timing precision for event synchronization</div>
+                    <div class="feature-item">Real-time data processing with minimal latency</div>
+                    <div class="feature-item">Concurrent multi-user session support</div>
+                    <div class="feature-item">Scalable architecture for research laboratory deployment</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

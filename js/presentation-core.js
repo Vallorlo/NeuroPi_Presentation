@@ -31,7 +31,7 @@ class NeuroPiPresentation {
             <div style="position: fixed; top: 10px; left: 10px; background: rgba(0,0,0,0.7); 
                         color: white; padding: 5px 10px; border-radius: 15px; font-size: 12px; 
                         font-family: 'Orbitron', monospace; z-index: 1001; opacity: 0.7;">
-                F: Fullscreen • O: Overview • Space/Arrows: Navigate • Esc: Exit
+                F: Fullscreen • O: Overview • Space/Arrows: Navigate • Scroll: Content/Slides • Esc: Exit
             </div>
         `;
         document.body.appendChild(indicator);
@@ -52,10 +52,10 @@ class NeuroPiPresentation {
         
         // Keyboard navigation
         document.addEventListener('keydown', (e) => this.handleKeyPress(e));
-        
+
         // Touch navigation
         this.setupTouchNavigation();
-        
+
         // Update navigation buttons
         this.updateNavigationButtons();
         
@@ -68,7 +68,58 @@ class NeuroPiPresentation {
             }
         });
     }
-    
+
+    setupWheelNavigation() {
+        let wheelTimeout;
+
+        document.addEventListener('wheel', (e) => {
+            if (this.isTransitioning) return;
+
+            // Get the current slide container
+            const currentSlide = document.querySelector('.slide.active');
+            if (!currentSlide) return;
+
+            // Check if the slide content is scrollable
+            const slideContent = currentSlide.querySelector('.slide-content') || currentSlide;
+            const isScrollable = slideContent.scrollHeight > slideContent.clientHeight;
+
+            if (isScrollable) {
+                // Check scroll position
+                const scrollTop = slideContent.scrollTop;
+                const scrollHeight = slideContent.scrollHeight;
+                const clientHeight = slideContent.clientHeight;
+                const isAtTop = scrollTop <= 0;
+                const isAtBottom = scrollTop + clientHeight >= scrollHeight - 1;
+
+                // Only navigate between slides if we're at the top/bottom of scrollable content
+                if ((e.deltaY > 0 && isAtBottom) || (e.deltaY < 0 && isAtTop)) {
+                    // Prevent default scrolling and navigate to next/previous slide
+                    e.preventDefault();
+                    clearTimeout(wheelTimeout);
+                    wheelTimeout = setTimeout(() => {
+                        if (e.deltaY > 0) {
+                            this.nextSlide();
+                        } else {
+                            this.previousSlide();
+                        }
+                    }, 100);
+                }
+                // Otherwise, allow normal scrolling within the slide
+            } else {
+                // Content fits on screen, use wheel for slide navigation
+                e.preventDefault();
+                clearTimeout(wheelTimeout);
+                wheelTimeout = setTimeout(() => {
+                    if (e.deltaY > 0) {
+                        this.nextSlide();
+                    } else {
+                        this.previousSlide();
+                    }
+                }, 50);
+            }
+        }, { passive: false });
+    }
+
     setupTouchNavigation() {
         let startX = 0, startY = 0;
         

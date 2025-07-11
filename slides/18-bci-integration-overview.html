@@ -1,0 +1,484 @@
+<!-- BCI Core Application Slide 1: BCI Integration Architecture Overview -->
+<style>
+/* Standalone CSS for BCI Integration Overview Slide */
+#bci-integration-container .slide-content {
+    /* CSS Variables for Academic Theme */
+    --primary-bg: #ffffff;
+    --secondary-bg: #f8f9fa;
+    --tertiary-bg: #e9ecef;
+    --accent-red: #c41e3a;
+    --accent-blue: #1f4e79;
+    --accent-purple: #5a4fcf;
+    --accent-green: #2d7d32;
+    --accent-orange: #f57c00;
+    --accent-teal: #00695c;
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --text-muted: #6c757d;
+    --border-light: #dee2e6;
+    --border-primary: #ced4da;
+    --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-heavy: 0 8px 24px rgba(0, 0, 0, 0.16);
+    
+    /* Typography Scale */
+    --font-size-h1: clamp(2.5rem, 5vw, 4rem);
+    --font-size-h2: clamp(2rem, 4vw, 3rem);
+    --font-size-h3: clamp(1.5rem, 3vw, 2.2rem);
+    --font-size-h4: clamp(1.25rem, 2.5vw, 1.8rem);
+    --font-size-body: clamp(1rem, 2vw, 1.2rem);
+    --font-size-small: clamp(0.875rem, 1.5vw, 1rem);
+    
+    /* Spacing Scale */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-xxl: 4rem;
+    
+    /* Base slide styling */
+    all: unset;
+    display: block;
+    max-width: 1400px !important;
+    width: 100% !important;
+    text-align: left !important;
+    padding: var(--spacing-lg) !important;
+    margin: 0 auto !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    line-height: 1.6 !important;
+    font-size: var(--font-size-body) !important;
+    color: var(--text-primary) !important;
+    background: var(--primary-bg) !important;
+    height: 100vh !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+
+/* Custom scrollbar styling for standalone slides */
+#bci-integration-container .slide-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+#bci-integration-container .slide-content::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
+}
+
+#bci-integration-container .slide-content::-webkit-scrollbar-thumb {
+    background: rgba(31, 78, 121, 0.3);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+#bci-integration-container .slide-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(31, 78, 121, 0.5);
+}
+
+/* Firefox scrollbar styling */
+#bci-integration-container .slide-content {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(31, 78, 121, 0.3) transparent;
+}
+
+#bci-integration-container * {
+    box-sizing: border-box;
+}
+
+#bci-integration-container .slide-content * {
+    font-family: inherit !important;
+}
+
+/* Typography */
+#bci-integration-container .slide-content h2 {
+    font-family: 'Orbitron', 'Georgia', serif !important;
+    font-size: var(--font-size-h2) !important;
+    font-weight: 600 !important;
+    line-height: 1.3 !important;
+    margin-bottom: var(--spacing-xl) !important;
+    color: var(--accent-blue) !important;
+    text-align: center !important;
+    letter-spacing: -0.01em !important;
+}
+
+#bci-integration-container .slide-content h3 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h3) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#bci-integration-container .slide-content h4 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h4) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-sm) !important;
+    color: var(--text-primary) !important;
+}
+
+#bci-integration-container .slide-content p {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.7 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#bci-integration-container .slide-content ul {
+    margin-bottom: var(--spacing-md) !important;
+    padding-left: var(--spacing-lg) !important;
+}
+
+#bci-integration-container .slide-content li {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.6 !important;
+    margin-bottom: var(--spacing-xs) !important;
+    color: var(--text-primary) !important;
+}
+
+/* BCI Integration Overview */
+#bci-integration-container .integration-overview {
+    background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--tertiary-bg) 100%) !important;
+    padding: var(--spacing-xl) !important;
+    border-radius: 20px !important;
+    border: 2px solid var(--accent-purple) !important;
+    box-shadow: var(--shadow-medium) !important;
+    text-align: center !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#bci-integration-container .integration-overview h3 {
+    color: var(--accent-purple) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-md) !important;
+}
+
+#bci-integration-container .integration-overview .subtitle {
+    font-size: calc(var(--font-size-body) * 1.1) !important;
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Architecture Diagram Placeholder */
+#bci-integration-container .architecture-diagram {
+    background: var(--secondary-bg) !important;
+    border: 2px dashed var(--accent-purple) !important;
+    border-radius: 12px !important;
+    padding: var(--spacing-xl) !important;
+    text-align: center !important;
+    margin: var(--spacing-xl) 0 !important;
+    min-height: 200px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+}
+
+#bci-integration-container .diagram-placeholder {
+    color: var(--accent-purple) !important;
+    font-size: var(--font-size-h4) !important;
+    font-weight: 600 !important;
+    margin-bottom: var(--spacing-sm) !important;
+}
+
+#bci-integration-container .diagram-description {
+    color: var(--text-secondary) !important;
+    font-size: var(--font-size-small) !important;
+    font-style: italic !important;
+}
+
+/* Challenge-Solution Grid */
+#bci-integration-container .challenge-solution {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: var(--spacing-lg) !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#bci-integration-container .challenge-card, 
+#bci-integration-container .solution-card {
+    background: var(--secondary-bg) !important;
+    border-radius: 16px !important;
+    padding: var(--spacing-lg) !important;
+    box-shadow: var(--shadow-light) !important;
+    transition: all 0.3s ease !important;
+}
+
+#bci-integration-container .challenge-card {
+    border-left: 4px solid var(--accent-red) !important;
+}
+
+#bci-integration-container .solution-card {
+    border-left: 4px solid var(--accent-green) !important;
+}
+
+#bci-integration-container .challenge-card:hover,
+#bci-integration-container .solution-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: var(--shadow-medium) !important;
+}
+
+#bci-integration-container .card-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--spacing-sm) !important;
+    margin-bottom: var(--spacing-md) !important;
+    padding-bottom: var(--spacing-sm) !important;
+    border-bottom: 2px solid var(--border-light) !important;
+}
+
+#bci-integration-container .card-header i {
+    font-size: var(--font-size-h3) !important;
+}
+
+#bci-integration-container .challenge-card .card-header i {
+    color: var(--accent-red) !important;
+}
+
+#bci-integration-container .solution-card .card-header i {
+    color: var(--accent-green) !important;
+}
+
+#bci-integration-container .card-header h3 {
+    margin: 0 !important;
+    font-family: 'Orbitron', serif !important;
+}
+
+#bci-integration-container .challenge-card .card-header h3 {
+    color: var(--accent-red) !important;
+}
+
+#bci-integration-container .solution-card .card-header h3 {
+    color: var(--accent-green) !important;
+}
+
+/* Components Grid */
+#bci-integration-container .components-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+    gap: var(--spacing-lg) !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#bci-integration-container .component-card {
+    background: var(--secondary-bg) !important;
+    border-radius: 16px !important;
+    padding: var(--spacing-lg) !important;
+    box-shadow: var(--shadow-light) !important;
+    transition: all 0.3s ease !important;
+    border-left: 4px solid var(--accent-blue) !important;
+}
+
+#bci-integration-container .component-card.eeg {
+    border-left-color: var(--accent-blue) !important;
+}
+
+#bci-integration-container .component-card.ml {
+    border-left-color: var(--accent-purple) !important;
+}
+
+#bci-integration-container .component-card.web {
+    border-left-color: var(--accent-orange) !important;
+}
+
+#bci-integration-container .component-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: var(--shadow-medium) !important;
+}
+
+#bci-integration-container .component-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--spacing-sm) !important;
+    margin-bottom: var(--spacing-md) !important;
+    padding-bottom: var(--spacing-sm) !important;
+    border-bottom: 2px solid var(--border-light) !important;
+}
+
+#bci-integration-container .component-header i {
+    font-size: var(--font-size-h3) !important;
+}
+
+#bci-integration-container .component-card.eeg .component-header i {
+    color: var(--accent-blue) !important;
+}
+
+#bci-integration-container .component-card.ml .component-header i {
+    color: var(--accent-purple) !important;
+}
+
+#bci-integration-container .component-card.web .component-header i {
+    color: var(--accent-orange) !important;
+}
+
+#bci-integration-container .component-header h4 {
+    margin: 0 !important;
+    font-family: 'Orbitron', serif !important;
+}
+
+#bci-integration-container .component-card.eeg .component-header h4 {
+    color: var(--accent-blue) !important;
+}
+
+#bci-integration-container .component-card.ml .component-header h4 {
+    color: var(--accent-purple) !important;
+}
+
+#bci-integration-container .component-card.web .component-header h4 {
+    color: var(--accent-orange) !important;
+}
+
+#bci-integration-container .component-description {
+    font-size: var(--font-size-small) !important;
+    color: var(--text-secondary) !important;
+    line-height: 1.5 !important;
+}
+
+/* Result Section */
+#bci-integration-container .result-section {
+    background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%) !important;
+    padding: var(--spacing-xl) !important;
+    border-radius: 16px !important;
+    border: 2px solid var(--accent-teal) !important;
+    box-shadow: var(--shadow-light) !important;
+    text-align: center !important;
+}
+
+#bci-integration-container .result-section h3 {
+    color: var(--accent-teal) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-md) !important;
+}
+
+#bci-integration-container .result-section p {
+    font-size: calc(var(--font-size-body) * 1.05) !important;
+    line-height: 1.7 !important;
+    color: var(--text-primary) !important;
+    margin: 0 !important;
+    max-width: 80ch !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* Animation */
+#bci-integration-container .animate-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: all 0.6s ease-out !important;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    #bci-integration-container .slide-content {
+        padding: var(--spacing-md) !important;
+    }
+    
+    #bci-integration-container .challenge-solution {
+        grid-template-columns: 1fr !important;
+        gap: var(--spacing-md) !important;
+    }
+    
+    #bci-integration-container .components-grid {
+        grid-template-columns: 1fr !important;
+        gap: var(--spacing-md) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    #bci-integration-container .slide-content {
+        padding: var(--spacing-sm) !important;
+    }
+    
+    #bci-integration-container .integration-overview,
+    #bci-integration-container .result-section {
+        padding: var(--spacing-lg) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #bci-integration-container .slide-content {
+        padding: var(--spacing-xs) !important;
+    }
+    
+    #bci-integration-container .card-header,
+    #bci-integration-container .component-header {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: var(--spacing-xs) !important;
+    }
+}
+</style>
+
+<div id="bci-integration-container">
+<div class="slide-content">
+    <h2 class="section-title animate-in">BCI Core Application: Integration Architecture Overview</h2>
+    
+    <div class="integration-overview animate-in">
+        <h3>🧠 Multi-Layered BCI Integration Approach</h3>
+        <p class="subtitle">Sophisticated multi-layered architecture bridging real-time neurophysiological data with web applications through scalable, maintainable research-grade software.</p>
+    </div>
+
+    <div class="architecture-diagram animate-in">
+        <div class="diagram-placeholder">🏗️ Figure 4.43: Layered BCI Integration Architecture</div>
+        <div class="diagram-description">Layered architecture showing EEG headset, processing layers, and web interface with data flow</div>
+    </div>
+
+    <div class="challenge-solution animate-in">
+        <div class="challenge-card">
+            <div class="card-header">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h3>Challenge</h3>
+            </div>
+            <p>Bridge real-time neurophysiological data with web applications while maintaining research-grade performance and scalability requirements.</p>
+        </div>
+
+        <div class="solution-card">
+            <div class="card-header">
+                <i class="fas fa-lightbulb"></i>
+                <h3>Solution</h3>
+            </div>
+            <p>Sophisticated multi-layered architecture with clear separation of concerns, standardized interfaces, and seamless integration protocols.</p>
+        </div>
+    </div>
+
+    <div class="components-grid animate-in">
+        <div class="component-card eeg">
+            <div class="component-header">
+                <i class="fas fa-brain"></i>
+                <h4>EEG Data Acquisition</h4>
+            </div>
+            <div class="component-description">
+                14-channel EPOC+ headset with real-time signal monitoring, electrode impedance detection, and automatic artifact rejection capabilities.
+            </div>
+        </div>
+
+        <div class="component-card ml">
+            <div class="component-header">
+                <i class="fas fa-robot"></i>
+                <h4>Machine Learning Processing</h4>
+            </div>
+            <div class="component-description">
+                ATCNet and EEGNet architectures optimized for 14-channel configuration with attention mechanisms and temporal processing capabilities.
+            </div>
+        </div>
+
+        <div class="component-card web">
+            <div class="component-header">
+                <i class="fas fa-globe"></i>
+                <h4>Web-based User Interfaces</h4>
+            </div>
+            <div class="component-description">
+                Django Framework with WebSocket real-time communication, comprehensive caching mechanisms, and three-tier authentication system.
+            </div>
+        </div>
+    </div>
+
+    <div class="result-section animate-in">
+        <h3>🎯 Result</h3>
+        <p>Scalable, maintainable research-grade software platform that successfully bridges real-time neuroscience with web technology, enabling widespread BCI research accessibility through comprehensive integration architecture.</p>
+    </div>
+</div>
+</div>

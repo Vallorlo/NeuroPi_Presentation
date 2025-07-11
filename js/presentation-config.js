@@ -132,13 +132,54 @@ const PRESENTATION_CONFIG = {
         // ============= BACKEND SYSTEMS =============
         {
             id: "backend-trials",
-            file: "slides/11-backend-trials.html",
+            file: "slides/12-backend-architecture-overview.html",
             section: "Backend Systems",
             title: "Backend: Trials & Accounts",
             duration: 3.5,
             description: "Data management and user systems",
-            placeholder: true
         },
+        {
+            id: "backend-trials",
+            file: "slides/13-backend-account-management.html",
+            section: "Backend Systems",
+            title: "Backend: Trials & Accounts",
+            duration: 3.5,
+            description: "Data management and user systems",
+        },
+        {
+            id: "backend-trials",
+            file: "slides/14-backend-trails-system.html",
+            section: "Backend Systems",
+            title: "Backend: Trials & Accounts",
+            duration: 3.5,
+            description: "Data management and user systems",
+        },
+        {
+            id: "backend-trials",
+            file: "slides/15-backend-user-management.html",
+            section: "Backend Systems",
+            title: "Backend: Trials & Accounts",
+            duration: 3.5,
+            description: "Data management and user systems",
+        },
+        {
+            id: "backend-trials",
+            file: "slides/16-backend-integration-security.html",
+            section: "Backend Systems",
+            title: "Backend: Trials & Accounts",
+            duration: 3.5,
+            description: "Data management and user systems",
+        },
+        {
+            id: "backend-trials",
+            file: "slides/17-backend-performance-scalability.html",
+            section: "Backend Systems",
+            title: "Backend: Trials & Accounts",
+            duration: 3.5,
+            description: "Data management and user systems",
+        },
+
+        //BCI - BACKEND
         {
             id: "backend-bci",
             file: "slides/12-backend-bci.html",

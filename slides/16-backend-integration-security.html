@@ -1,0 +1,582 @@
+<!-- Backend Systems Slide 5: System Integration & Security -->
+<style>
+/* Standalone CSS for Backend Integration & Security Slide */
+#backend-integration-container .slide-content {
+    /* CSS Variables for Academic Theme */
+    --primary-bg: #ffffff;
+    --secondary-bg: #f8f9fa;
+    --tertiary-bg: #e9ecef;
+    --accent-red: #c41e3a;
+    --accent-blue: #1f4e79;
+    --accent-purple: #5a4fcf;
+    --accent-green: #2d7d32;
+    --accent-orange: #f57c00;
+    --accent-teal: #00695c;
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --text-muted: #6c757d;
+    --border-light: #dee2e6;
+    --border-primary: #ced4da;
+    --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-heavy: 0 8px 24px rgba(0, 0, 0, 0.16);
+    
+    /* Typography Scale */
+    --font-size-h1: clamp(2.5rem, 5vw, 4rem);
+    --font-size-h2: clamp(2rem, 4vw, 3rem);
+    --font-size-h3: clamp(1.5rem, 3vw, 2.2rem);
+    --font-size-h4: clamp(1.25rem, 2.5vw, 1.8rem);
+    --font-size-body: clamp(1rem, 2vw, 1.2rem);
+    --font-size-small: clamp(0.875rem, 1.5vw, 1rem);
+    
+    /* Spacing Scale */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-xxl: 4rem;
+    
+    /* Base slide styling */
+    all: unset;
+    display: block;
+    max-width: 1400px !important;
+    width: 100% !important;
+    text-align: left !important;
+    padding: var(--spacing-lg) !important;
+    margin: 0 auto !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    line-height: 1.6 !important;
+    font-size: var(--font-size-body) !important;
+    color: var(--text-primary) !important;
+    background: var(--primary-bg) !important;
+    height: 100vh !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+
+/* Custom scrollbar styling for standalone slides */
+#backend-integration-container .slide-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+#backend-integration-container .slide-content::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
+}
+
+#backend-integration-container .slide-content::-webkit-scrollbar-thumb {
+    background: rgba(31, 78, 121, 0.3);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+#backend-integration-container .slide-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(31, 78, 121, 0.5);
+}
+
+/* Firefox scrollbar styling */
+#backend-integration-container .slide-content {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(31, 78, 121, 0.3) transparent;
+}
+
+#backend-integration-container * {
+    box-sizing: border-box;
+}
+
+#backend-integration-container .slide-content * {
+    font-family: inherit !important;
+}
+
+/* Typography */
+#backend-integration-container .slide-content h2 {
+    font-family: 'Orbitron', 'Georgia', serif !important;
+    font-size: var(--font-size-h2) !important;
+    font-weight: 600 !important;
+    line-height: 1.3 !important;
+    margin-bottom: var(--spacing-xl) !important;
+    color: var(--accent-blue) !important;
+    text-align: center !important;
+    letter-spacing: -0.01em !important;
+}
+
+#backend-integration-container .slide-content h3 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h3) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#backend-integration-container .slide-content h4 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h4) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-sm) !important;
+    color: var(--text-primary) !important;
+}
+
+#backend-integration-container .slide-content p {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.7 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#backend-integration-container .slide-content ul {
+    margin-bottom: var(--spacing-md) !important;
+    padding-left: var(--spacing-lg) !important;
+}
+
+#backend-integration-container .slide-content li {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.6 !important;
+    margin-bottom: var(--spacing-xs) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Integration Overview */
+#backend-integration-container .integration-overview {
+    background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--tertiary-bg) 100%) !important;
+    padding: var(--spacing-xl) !important;
+    border-radius: 20px !important;
+    border: 2px solid var(--accent-red) !important;
+    box-shadow: var(--shadow-medium) !important;
+    text-align: center !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#backend-integration-container .integration-overview h3 {
+    color: var(--accent-red) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-md) !important;
+}
+
+#backend-integration-container .integration-overview .subtitle {
+    font-size: calc(var(--font-size-body) * 1.1) !important;
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Integration Architecture Diagram */
+#backend-integration-container .integration-diagram {
+    background: var(--secondary-bg) !important;
+    border: 2px dashed var(--accent-red) !important;
+    border-radius: 12px !important;
+    padding: var(--spacing-xl) !important;
+    text-align: center !important;
+    margin: var(--spacing-xl) 0 !important;
+    min-height: 180px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+}
+
+#backend-integration-container .diagram-placeholder {
+    color: var(--accent-red) !important;
+    font-size: var(--font-size-h4) !important;
+    font-weight: 600 !important;
+    margin-bottom: var(--spacing-sm) !important;
+}
+
+#backend-integration-container .diagram-description {
+    color: var(--text-secondary) !important;
+    font-size: var(--font-size-small) !important;
+    font-style: italic !important;
+}
+
+/* Integration Components Grid */
+#backend-integration-container .integration-components {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
+    gap: var(--spacing-lg) !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#backend-integration-container .integration-card {
+    background: var(--secondary-bg) !important;
+    border-radius: 16px !important;
+    padding: var(--spacing-lg) !important;
+    box-shadow: var(--shadow-light) !important;
+    transition: all 0.3s ease !important;
+    border-left: 4px solid var(--accent-blue) !important;
+}
+
+#backend-integration-container .integration-card.component-integration {
+    border-left-color: var(--accent-blue) !important;
+}
+
+#backend-integration-container .integration-card.data-flow {
+    border-left-color: var(--accent-green) !important;
+}
+
+#backend-integration-container .integration-card.api-design {
+    border-left-color: var(--accent-purple) !important;
+}
+
+#backend-integration-container .integration-card.error-handling {
+    border-left-color: var(--accent-orange) !important;
+}
+
+#backend-integration-container .integration-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: var(--shadow-medium) !important;
+}
+
+#backend-integration-container .integration-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--spacing-sm) !important;
+    margin-bottom: var(--spacing-md) !important;
+    padding-bottom: var(--spacing-sm) !important;
+    border-bottom: 2px solid var(--border-light) !important;
+}
+
+#backend-integration-container .integration-header i {
+    font-size: var(--font-size-h3) !important;
+}
+
+#backend-integration-container .integration-card.component-integration .integration-header i {
+    color: var(--accent-blue) !important;
+}
+
+#backend-integration-container .integration-card.data-flow .integration-header i {
+    color: var(--accent-green) !important;
+}
+
+#backend-integration-container .integration-card.api-design .integration-header i {
+    color: var(--accent-purple) !important;
+}
+
+#backend-integration-container .integration-card.error-handling .integration-header i {
+    color: var(--accent-orange) !important;
+}
+
+#backend-integration-container .integration-header h3 {
+    margin: 0 !important;
+    font-family: 'Orbitron', serif !important;
+}
+
+#backend-integration-container .integration-card.component-integration .integration-header h3 {
+    color: var(--accent-blue) !important;
+}
+
+#backend-integration-container .integration-card.data-flow .integration-header h3 {
+    color: var(--accent-green) !important;
+}
+
+#backend-integration-container .integration-card.api-design .integration-header h3 {
+    color: var(--accent-purple) !important;
+}
+
+#backend-integration-container .integration-card.error-handling .integration-header h3 {
+    color: var(--accent-orange) !important;
+}
+
+/* Integration Features */
+#backend-integration-container .integration-features {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--spacing-sm) !important;
+}
+
+#backend-integration-container .feature-item {
+    background: var(--primary-bg) !important;
+    padding: var(--spacing-sm) !important;
+    border-radius: 8px !important;
+    border-left: 3px solid var(--accent-blue) !important;
+    font-size: var(--font-size-small) !important;
+    line-height: 1.5 !important;
+    color: var(--text-secondary) !important;
+}
+
+#backend-integration-container .integration-card.component-integration .feature-item {
+    border-left-color: var(--accent-blue) !important;
+}
+
+#backend-integration-container .integration-card.data-flow .feature-item {
+    border-left-color: var(--accent-green) !important;
+}
+
+#backend-integration-container .integration-card.api-design .feature-item {
+    border-left-color: var(--accent-purple) !important;
+}
+
+#backend-integration-container .integration-card.error-handling .feature-item {
+    border-left-color: var(--accent-orange) !important;
+}
+
+/* Security Architecture Section */
+#backend-integration-container .security-architecture {
+    margin: var(--spacing-xl) 0 !important;
+}
+
+#backend-integration-container .security-architecture h3 {
+    color: var(--accent-red) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-lg) !important;
+    text-align: center !important;
+}
+
+#backend-integration-container .security-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+    gap: var(--spacing-lg) !important;
+}
+
+#backend-integration-container .security-section {
+    background: var(--secondary-bg) !important;
+    border-radius: 16px !important;
+    padding: var(--spacing-lg) !important;
+    box-shadow: var(--shadow-light) !important;
+    border-left: 4px solid var(--accent-red) !important;
+}
+
+#backend-integration-container .security-section.data-protection {
+    border-left-color: var(--accent-blue) !important;
+}
+
+#backend-integration-container .security-section.monitoring {
+    border-left-color: var(--accent-green) !important;
+}
+
+#backend-integration-container .security-section.compliance {
+    border-left-color: var(--accent-purple) !important;
+}
+
+#backend-integration-container .section-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--spacing-sm) !important;
+    margin-bottom: var(--spacing-md) !important;
+    padding-bottom: var(--spacing-sm) !important;
+    border-bottom: 2px solid var(--border-light) !important;
+}
+
+#backend-integration-container .section-header i {
+    font-size: var(--font-size-h4) !important;
+    color: var(--accent-red) !important;
+}
+
+#backend-integration-container .security-section.data-protection .section-header i {
+    color: var(--accent-blue) !important;
+}
+
+#backend-integration-container .security-section.monitoring .section-header i {
+    color: var(--accent-green) !important;
+}
+
+#backend-integration-container .security-section.compliance .section-header i {
+    color: var(--accent-purple) !important;
+}
+
+#backend-integration-container .section-header h4 {
+    margin: 0 !important;
+    font-family: 'Orbitron', serif !important;
+    color: var(--text-primary) !important;
+    font-size: var(--font-size-h4) !important;
+}
+
+#backend-integration-container .security-features {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--spacing-sm) !important;
+}
+
+#backend-integration-container .security-features .feature-item {
+    border-left-color: var(--accent-red) !important;
+}
+
+#backend-integration-container .security-section.data-protection .security-features .feature-item {
+    border-left-color: var(--accent-blue) !important;
+}
+
+#backend-integration-container .security-section.monitoring .security-features .feature-item {
+    border-left-color: var(--accent-green) !important;
+}
+
+#backend-integration-container .security-section.compliance .security-features .feature-item {
+    border-left-color: var(--accent-purple) !important;
+}
+
+/* Animation */
+#backend-integration-container .animate-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: all 0.6s ease-out !important;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    #backend-integration-container .slide-content {
+        padding: var(--spacing-md) !important;
+    }
+    
+    #backend-integration-container .integration-components {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+        gap: var(--spacing-md) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    #backend-integration-container .slide-content {
+        padding: var(--spacing-sm) !important;
+    }
+    
+    #backend-integration-container .integration-overview {
+        padding: var(--spacing-lg) !important;
+    }
+    
+    #backend-integration-container .integration-components {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #backend-integration-container .slide-content {
+        padding: var(--spacing-xs) !important;
+    }
+    
+    #backend-integration-container .integration-header {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: var(--spacing-xs) !important;
+    }
+}
+</style>
+
+<div id="backend-integration-container">
+<div class="slide-content">
+    <h2 class="section-title animate-in">Backend Systems: System Integration & Security</h2>
+    
+    <div class="integration-overview animate-in">
+        <h3>🔗 Component Integration and Security Architecture</h3>
+        <p class="subtitle">Advanced architectural patterns implementing seamless component integration with comprehensive security measures, ensuring robust data protection and system reliability for neuroscience research applications.</p>
+    </div>
+
+    <div class="integration-diagram animate-in">
+        <div class="diagram-placeholder">🔐 Figure 4.41: Security & Integration Architecture</div>
+        <div class="diagram-description">Component integration patterns with security layer implementation</div>
+    </div>
+
+    <div class="integration-components animate-in">
+        <div class="integration-card component-integration">
+            <div class="integration-header">
+                <i class="fas fa-puzzle-piece"></i>
+                <h3>Component Integration</h3>
+            </div>
+            <div class="integration-features">
+                <div class="feature-item">Seamless integration between Account Management, Trails, and User Management systems</div>
+                <div class="feature-item">Modular architecture enabling independent component development and testing</div>
+                <div class="feature-item">Standardized interfaces and communication protocols across all components</div>
+                <div class="feature-item">Dependency injection patterns for loose coupling and maintainability</div>
+                <div class="feature-item">Event-driven architecture for real-time system coordination</div>
+            </div>
+        </div>
+
+        <div class="integration-card data-flow">
+            <div class="integration-header">
+                <i class="fas fa-exchange-alt"></i>
+                <h3>Data Flow Management</h3>
+            </div>
+            <div class="integration-features">
+                <div class="feature-item">Unified data models ensuring consistency across all system components</div>
+                <div class="feature-item">Real-time data synchronization with conflict resolution mechanisms</div>
+                <div class="feature-item">Transactional integrity maintenance across distributed operations</div>
+                <div class="feature-item">Data validation pipelines with comprehensive error checking</div>
+                <div class="feature-item">Audit logging for complete data lineage and compliance tracking</div>
+            </div>
+        </div>
+
+        <div class="integration-card api-design">
+            <div class="integration-header">
+                <i class="fas fa-code"></i>
+                <h3>API Design & Communication</h3>
+            </div>
+            <div class="integration-features">
+                <div class="feature-item">RESTful API design principles with consistent endpoint structure</div>
+                <div class="feature-item">JSON-based data exchange with schema validation</div>
+                <div class="feature-item">Rate limiting and throttling for system protection</div>
+                <div class="feature-item">API versioning strategy for backward compatibility</div>
+                <div class="feature-item">Comprehensive API documentation with interactive testing tools</div>
+            </div>
+        </div>
+
+        <div class="integration-card error-handling">
+            <div class="integration-header">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h3>Error Handling & Recovery</h3>
+            </div>
+            <div class="integration-features">
+                <div class="feature-item">Graceful error handling with user-friendly error messages</div>
+                <div class="feature-item">Automatic retry mechanisms for transient failures</div>
+                <div class="feature-item">Circuit breaker patterns for system resilience</div>
+                <div class="feature-item">Comprehensive logging and monitoring for issue diagnosis</div>
+                <div class="feature-item">Rollback capabilities for failed operations and data recovery</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="security-architecture animate-in">
+        <h3>🛡️ Security Architecture & Implementation</h3>
+        <div class="security-grid">
+            <div class="security-section authentication">
+                <div class="section-header">
+                    <i class="fas fa-lock"></i>
+                    <h4>Authentication & Authorization</h4>
+                </div>
+                <div class="security-features">
+                    <div class="feature-item">Multi-factor authentication with configurable security policies</div>
+                    <div class="feature-item">Role-based access control with granular permission management</div>
+                    <div class="feature-item">Session management with secure token handling and expiration</div>
+                    <div class="feature-item">OAuth 2.0 integration for third-party authentication providers</div>
+                </div>
+            </div>
+
+            <div class="security-section data-protection">
+                <div class="section-header">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Data Protection & Privacy</h4>
+                </div>
+                <div class="security-features">
+                    <div class="feature-item">End-to-end encryption for sensitive data transmission</div>
+                    <div class="feature-item">Database encryption at rest with key management</div>
+                    <div class="feature-item">GDPR compliance with data anonymization capabilities</div>
+                    <div class="feature-item">Secure data deletion and retention policy enforcement</div>
+                </div>
+            </div>
+
+            <div class="security-section monitoring">
+                <div class="section-header">
+                    <i class="fas fa-eye"></i>
+                    <h4>Security Monitoring & Auditing</h4>
+                </div>
+                <div class="security-features">
+                    <div class="feature-item">Real-time security event monitoring and alerting</div>
+                    <div class="feature-item">Intrusion detection and prevention systems</div>
+                    <div class="feature-item">Comprehensive audit trails for compliance reporting</div>
+                    <div class="feature-item">Vulnerability scanning and security assessment tools</div>
+                </div>
+            </div>
+
+            <div class="security-section compliance">
+                <div class="section-header">
+                    <i class="fas fa-certificate"></i>
+                    <h4>Compliance & Standards</h4>
+                </div>
+                <div class="security-features">
+                    <div class="feature-item">HIPAA compliance for healthcare data protection</div>
+                    <div class="feature-item">ISO 27001 security management standards</div>
+                    <div class="feature-item">Research ethics compliance with IRB requirements</div>
+                    <div class="feature-item">Regular security audits and penetration testing</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

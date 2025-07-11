@@ -1,0 +1,431 @@
+<!-- Backend Systems Slide 1: Architecture Overview -->
+<style>
+/* Standalone CSS for Backend Architecture Overview Slide */
+#backend-overview-container .slide-content {
+    /* CSS Variables for Academic Theme */
+    --primary-bg: #ffffff;
+    --secondary-bg: #f8f9fa;
+    --tertiary-bg: #e9ecef;
+    --accent-red: #c41e3a;
+    --accent-blue: #1f4e79;
+    --accent-purple: #5a4fcf;
+    --accent-green: #2d7d32;
+    --accent-orange: #f57c00;
+    --accent-teal: #00695c;
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --text-muted: #6c757d;
+    --border-light: #dee2e6;
+    --border-primary: #ced4da;
+    --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-heavy: 0 8px 24px rgba(0, 0, 0, 0.16);
+    
+    /* Typography Scale */
+    --font-size-h1: clamp(2.5rem, 5vw, 4rem);
+    --font-size-h2: clamp(2rem, 4vw, 3rem);
+    --font-size-h3: clamp(1.5rem, 3vw, 2.2rem);
+    --font-size-h4: clamp(1.25rem, 2.5vw, 1.8rem);
+    --font-size-body: clamp(1rem, 2vw, 1.2rem);
+    --font-size-small: clamp(0.875rem, 1.5vw, 1rem);
+    
+    /* Spacing Scale */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-xxl: 4rem;
+    
+    /* Base slide styling */
+    all: unset;
+    display: block;
+    max-width: 1400px !important;
+    width: 100% !important;
+    text-align: left !important;
+    padding: var(--spacing-lg) !important;
+    margin: 0 auto !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    line-height: 1.6 !important;
+    font-size: var(--font-size-body) !important;
+    color: var(--text-primary) !important;
+    background: var(--primary-bg) !important;
+    height: 100vh !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+
+/* Custom scrollbar styling for standalone slides */
+#backend-overview-container .slide-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+#backend-overview-container .slide-content::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
+}
+
+#backend-overview-container .slide-content::-webkit-scrollbar-thumb {
+    background: rgba(31, 78, 121, 0.3);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+#backend-overview-container .slide-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(31, 78, 121, 0.5);
+}
+
+/* Firefox scrollbar styling */
+#backend-overview-container .slide-content {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(31, 78, 121, 0.3) transparent;
+}
+
+#backend-overview-container * {
+    box-sizing: border-box;
+}
+
+#backend-overview-container .slide-content * {
+    font-family: inherit !important;
+}
+
+/* Typography */
+#backend-overview-container .slide-content h2 {
+    font-family: 'Orbitron', 'Georgia', serif !important;
+    font-size: var(--font-size-h2) !important;
+    font-weight: 600 !important;
+    line-height: 1.3 !important;
+    margin-bottom: var(--spacing-xl) !important;
+    color: var(--accent-blue) !important;
+    text-align: center !important;
+    letter-spacing: -0.01em !important;
+}
+
+#backend-overview-container .slide-content h3 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h3) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#backend-overview-container .slide-content h4 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h4) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-sm) !important;
+    color: var(--text-primary) !important;
+}
+
+#backend-overview-container .slide-content p {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.7 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#backend-overview-container .slide-content ul {
+    margin-bottom: var(--spacing-md) !important;
+    padding-left: var(--spacing-lg) !important;
+}
+
+#backend-overview-container .slide-content li {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.6 !important;
+    margin-bottom: var(--spacing-xs) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Architecture Overview */
+#backend-overview-container .architecture-overview {
+    background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--tertiary-bg) 100%) !important;
+    padding: var(--spacing-xl) !important;
+    border-radius: 20px !important;
+    border: 2px solid var(--accent-blue) !important;
+    box-shadow: var(--shadow-medium) !important;
+    text-align: center !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#backend-overview-container .architecture-overview h3 {
+    color: var(--accent-blue) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-md) !important;
+}
+
+#backend-overview-container .architecture-overview .subtitle {
+    font-size: calc(var(--font-size-body) * 1.1) !important;
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+    margin-bottom: 0 !important;
+}
+
+/* System Architecture Diagram Placeholder */
+#backend-overview-container .architecture-diagram {
+    background: var(--secondary-bg) !important;
+    border: 2px dashed var(--accent-blue) !important;
+    border-radius: 12px !important;
+    padding: var(--spacing-xl) !important;
+    text-align: center !important;
+    margin: var(--spacing-xl) 0 !important;
+    min-height: 200px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+}
+
+#backend-overview-container .diagram-placeholder {
+    color: var(--accent-blue) !important;
+    font-size: var(--font-size-h4) !important;
+    font-weight: 600 !important;
+    margin-bottom: var(--spacing-sm) !important;
+}
+
+#backend-overview-container .diagram-description {
+    color: var(--text-secondary) !important;
+    font-size: var(--font-size-small) !important;
+    font-style: italic !important;
+}
+
+/* Core Components Grid */
+#backend-overview-container .components-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
+    gap: var(--spacing-lg) !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#backend-overview-container .component-card {
+    background: var(--secondary-bg) !important;
+    border-radius: 16px !important;
+    padding: var(--spacing-lg) !important;
+    box-shadow: var(--shadow-light) !important;
+    transition: all 0.3s ease !important;
+    border-left: 4px solid var(--accent-green) !important;
+}
+
+#backend-overview-container .component-card.account-management {
+    border-left-color: var(--accent-green) !important;
+}
+
+#backend-overview-container .component-card.trails-system {
+    border-left-color: var(--accent-purple) !important;
+}
+
+#backend-overview-container .component-card.user-management {
+    border-left-color: var(--accent-orange) !important;
+}
+
+#backend-overview-container .component-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: var(--shadow-medium) !important;
+}
+
+#backend-overview-container .component-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--spacing-sm) !important;
+    margin-bottom: var(--spacing-md) !important;
+    padding-bottom: var(--spacing-sm) !important;
+    border-bottom: 2px solid var(--border-light) !important;
+}
+
+#backend-overview-container .component-header i {
+    font-size: var(--font-size-h3) !important;
+}
+
+#backend-overview-container .component-card.account-management .component-header i {
+    color: var(--accent-green) !important;
+}
+
+#backend-overview-container .component-card.trails-system .component-header i {
+    color: var(--accent-purple) !important;
+}
+
+#backend-overview-container .component-card.user-management .component-header i {
+    color: var(--accent-orange) !important;
+}
+
+#backend-overview-container .component-header h3 {
+    margin: 0 !important;
+    font-family: 'Orbitron', serif !important;
+}
+
+#backend-overview-container .component-card.account-management .component-header h3 {
+    color: var(--accent-green) !important;
+}
+
+#backend-overview-container .component-card.trails-system .component-header h3 {
+    color: var(--accent-purple) !important;
+}
+
+#backend-overview-container .component-card.user-management .component-header h3 {
+    color: var(--accent-orange) !important;
+}
+
+/* Component Features */
+#backend-overview-container .component-features {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--spacing-sm) !important;
+}
+
+#backend-overview-container .feature-item {
+    background: var(--primary-bg) !important;
+    padding: var(--spacing-sm) !important;
+    border-radius: 8px !important;
+    border-left: 3px solid var(--accent-green) !important;
+    font-size: var(--font-size-small) !important;
+    line-height: 1.5 !important;
+    color: var(--text-secondary) !important;
+}
+
+#backend-overview-container .component-card.account-management .feature-item {
+    border-left-color: var(--accent-green) !important;
+}
+
+#backend-overview-container .component-card.trails-system .feature-item {
+    border-left-color: var(--accent-purple) !important;
+}
+
+#backend-overview-container .component-card.user-management .feature-item {
+    border-left-color: var(--accent-orange) !important;
+}
+
+/* Design Philosophy Section */
+#backend-overview-container .design-philosophy {
+    background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%) !important;
+    padding: var(--spacing-xl) !important;
+    border-radius: 16px !important;
+    border: 2px solid var(--accent-teal) !important;
+    box-shadow: var(--shadow-light) !important;
+}
+
+#backend-overview-container .design-philosophy h3 {
+    color: var(--accent-teal) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-md) !important;
+    text-align: center !important;
+}
+
+#backend-overview-container .design-philosophy p {
+    font-size: calc(var(--font-size-body) * 1.05) !important;
+    line-height: 1.7 !important;
+    color: var(--text-primary) !important;
+    text-align: center !important;
+    margin: 0 !important;
+    max-width: 80ch !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* Animation */
+#backend-overview-container .animate-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: all 0.6s ease-out !important;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    #backend-overview-container .slide-content {
+        padding: var(--spacing-md) !important;
+    }
+    
+    #backend-overview-container .components-grid {
+        grid-template-columns: 1fr !important;
+        gap: var(--spacing-md) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    #backend-overview-container .slide-content {
+        padding: var(--spacing-sm) !important;
+    }
+    
+    #backend-overview-container .architecture-overview,
+    #backend-overview-container .design-philosophy {
+        padding: var(--spacing-lg) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #backend-overview-container .slide-content {
+        padding: var(--spacing-xs) !important;
+    }
+    
+    #backend-overview-container .component-header {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: var(--spacing-xs) !important;
+    }
+}
+</style>
+
+<div id="backend-overview-container">
+<div class="slide-content">
+    <h2 class="section-title animate-in">Backend Systems: Architecture Overview</h2>
+    
+    <div class="architecture-overview animate-in">
+        <h3>🏗️ Backend Architecture and Implementation</h3>
+        <p class="subtitle">Comprehensive analysis of three fundamental components that constitute the architectural foundation of the NeuroPi web application, demonstrating sophisticated implementations of modern web development principles applied to neuroscience research requirements.</p>
+    </div>
+
+    <div class="architecture-diagram animate-in">
+        <div class="diagram-placeholder">📊 Figure 4.37: NeuroPi System Architecture</div>
+        <div class="diagram-description">System architecture diagram showing component relationships and data flow</div>
+    </div>
+
+    <div class="components-grid animate-in">
+        <div class="component-card account-management">
+            <div class="component-header">
+                <i class="fas fa-user-shield"></i>
+                <h3>Account Management System</h3>
+            </div>
+            <div class="component-features">
+                <div class="feature-item">Three-tier authentication architecture (Guest, User, Trainer)</div>
+                <div class="feature-item">Progressive privilege escalation with role-based access control</div>
+                <div class="feature-item">Django middleware-based URL-level permission enforcement</div>
+                <div class="feature-item">Secure session management with CSRF protection</div>
+                <div class="feature-item">Email verification and automated profile provisioning</div>
+            </div>
+        </div>
+
+        <div class="component-card trails-system">
+            <div class="component-header">
+                <i class="fas fa-brain"></i>
+                <h3>Trails System</h3>
+            </div>
+            <div class="component-features">
+                <div class="feature-item">Multi-paradigm experimental framework supporting diverse protocols</div>
+                <div class="feature-item">14-channel EEG device integration with EPOC+ optimization</div>
+                <div class="feature-item">Real-time data acquisition with synchronized multi-modal collection</div>
+                <div class="feature-item">Sophisticated timing control with microsecond-level precision</div>
+                <div class="feature-item">Quality assurance with impedance monitoring and artifact detection</div>
+            </div>
+        </div>
+
+        <div class="component-card user-management">
+            <div class="component-header">
+                <i class="fas fa-users-cog"></i>
+                <h3>User Management System</h3>
+            </div>
+            <div class="component-features">
+                <div class="feature-item">Comprehensive participant dashboard with card-based architecture</div>
+                <div class="feature-item">Research participation request workflow with 14-day timeout</div>
+                <div class="feature-item">Digital consent management with audit trail compliance</div>
+                <div class="feature-item">Intelligent matching algorithms for participant-researcher coordination</div>
+                <div class="feature-item">Real-time status management with multi-channel notifications</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="design-philosophy animate-in">
+        <h3>🎯 Design Philosophy</h3>
+        <p><strong>Advanced architectural patterns, security considerations, and user experience design principles that collectively enable secure, scalable, and user-friendly EEG data collection and research participation workflows.</strong> The system demonstrates sophisticated integration between web technologies and specialized hardware, creating seamless interfaces between researchers, participants, and EEG recording equipment while maintaining high standards of usability, security, and scientific rigor.</p>
+    </div>
+</div>
+</div>

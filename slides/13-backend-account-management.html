@@ -1,0 +1,542 @@
+<!-- Backend Systems Slide 2: Account Management System -->
+<style>
+/* Standalone CSS for Backend Account Management Slide */
+#backend-account-container .slide-content {
+    /* CSS Variables for Academic Theme */
+    --primary-bg: #ffffff;
+    --secondary-bg: #f8f9fa;
+    --tertiary-bg: #e9ecef;
+    --accent-red: #c41e3a;
+    --accent-blue: #1f4e79;
+    --accent-purple: #5a4fcf;
+    --accent-green: #2d7d32;
+    --accent-orange: #f57c00;
+    --accent-teal: #00695c;
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --text-muted: #6c757d;
+    --border-light: #dee2e6;
+    --border-primary: #ced4da;
+    --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-heavy: 0 8px 24px rgba(0, 0, 0, 0.16);
+    
+    /* Typography Scale */
+    --font-size-h1: clamp(2.5rem, 5vw, 4rem);
+    --font-size-h2: clamp(2rem, 4vw, 3rem);
+    --font-size-h3: clamp(1.5rem, 3vw, 2.2rem);
+    --font-size-h4: clamp(1.25rem, 2.5vw, 1.8rem);
+    --font-size-body: clamp(1rem, 2vw, 1.2rem);
+    --font-size-small: clamp(0.875rem, 1.5vw, 1rem);
+    
+    /* Spacing Scale */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-xxl: 4rem;
+    
+    /* Base slide styling */
+    all: unset;
+    display: block;
+    max-width: 1400px !important;
+    width: 100% !important;
+    text-align: left !important;
+    padding: var(--spacing-lg) !important;
+    margin: 0 auto !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    line-height: 1.6 !important;
+    font-size: var(--font-size-body) !important;
+    color: var(--text-primary) !important;
+    background: var(--primary-bg) !important;
+    height: 100vh !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+
+/* Custom scrollbar styling for standalone slides */
+#backend-account-container .slide-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+#backend-account-container .slide-content::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
+}
+
+#backend-account-container .slide-content::-webkit-scrollbar-thumb {
+    background: rgba(31, 78, 121, 0.3);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+#backend-account-container .slide-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(31, 78, 121, 0.5);
+}
+
+/* Firefox scrollbar styling */
+#backend-account-container .slide-content {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(31, 78, 121, 0.3) transparent;
+}
+
+#backend-account-container * {
+    box-sizing: border-box;
+}
+
+#backend-account-container .slide-content * {
+    font-family: inherit !important;
+}
+
+/* Typography */
+#backend-account-container .slide-content h2 {
+    font-family: 'Orbitron', 'Georgia', serif !important;
+    font-size: var(--font-size-h2) !important;
+    font-weight: 600 !important;
+    line-height: 1.3 !important;
+    margin-bottom: var(--spacing-xl) !important;
+    color: var(--accent-blue) !important;
+    text-align: center !important;
+    letter-spacing: -0.01em !important;
+}
+
+#backend-account-container .slide-content h3 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h3) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#backend-account-container .slide-content h4 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h4) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-sm) !important;
+    color: var(--text-primary) !important;
+}
+
+#backend-account-container .slide-content p {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.7 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#backend-account-container .slide-content ul {
+    margin-bottom: var(--spacing-md) !important;
+    padding-left: var(--spacing-lg) !important;
+}
+
+#backend-account-container .slide-content li {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.6 !important;
+    margin-bottom: var(--spacing-xs) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Account Management Overview */
+#backend-account-container .account-overview {
+    background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--tertiary-bg) 100%) !important;
+    padding: var(--spacing-xl) !important;
+    border-radius: 20px !important;
+    border: 2px solid var(--accent-green) !important;
+    box-shadow: var(--shadow-medium) !important;
+    text-align: center !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#backend-account-container .account-overview h3 {
+    color: var(--accent-green) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-md) !important;
+}
+
+#backend-account-container .account-overview .subtitle {
+    font-size: calc(var(--font-size-body) * 1.1) !important;
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Authentication Flow Diagram */
+#backend-account-container .auth-flow-diagram {
+    background: var(--secondary-bg) !important;
+    border: 2px dashed var(--accent-green) !important;
+    border-radius: 12px !important;
+    padding: var(--spacing-xl) !important;
+    text-align: center !important;
+    margin: var(--spacing-xl) 0 !important;
+    min-height: 180px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+}
+
+#backend-account-container .diagram-placeholder {
+    color: var(--accent-green) !important;
+    font-size: var(--font-size-h4) !important;
+    font-weight: 600 !important;
+    margin-bottom: var(--spacing-sm) !important;
+}
+
+#backend-account-container .diagram-description {
+    color: var(--text-secondary) !important;
+    font-size: var(--font-size-small) !important;
+    font-style: italic !important;
+}
+
+/* Three-Tier Architecture */
+#backend-account-container .tier-architecture {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+    gap: var(--spacing-lg) !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#backend-account-container .tier-card {
+    background: var(--secondary-bg) !important;
+    border-radius: 16px !important;
+    padding: var(--spacing-lg) !important;
+    box-shadow: var(--shadow-light) !important;
+    transition: all 0.3s ease !important;
+    border-left: 4px solid var(--accent-blue) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+#backend-account-container .tier-card.guest {
+    border-left-color: var(--accent-blue) !important;
+}
+
+#backend-account-container .tier-card.user {
+    border-left-color: var(--accent-green) !important;
+}
+
+#backend-account-container .tier-card.trainer {
+    border-left-color: var(--accent-purple) !important;
+}
+
+#backend-account-container .tier-card::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    width: 60px !important;
+    height: 60px !important;
+    background: var(--accent-blue) !important;
+    opacity: 0.1 !important;
+    border-radius: 0 0 0 60px !important;
+}
+
+#backend-account-container .tier-card.user::before {
+    background: var(--accent-green) !important;
+}
+
+#backend-account-container .tier-card.trainer::before {
+    background: var(--accent-purple) !important;
+}
+
+#backend-account-container .tier-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: var(--shadow-medium) !important;
+}
+
+#backend-account-container .tier-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--spacing-sm) !important;
+    margin-bottom: var(--spacing-md) !important;
+    padding-bottom: var(--spacing-sm) !important;
+    border-bottom: 2px solid var(--border-light) !important;
+}
+
+#backend-account-container .tier-header i {
+    font-size: var(--font-size-h3) !important;
+}
+
+#backend-account-container .tier-card.guest .tier-header i {
+    color: var(--accent-blue) !important;
+}
+
+#backend-account-container .tier-card.user .tier-header i {
+    color: var(--accent-green) !important;
+}
+
+#backend-account-container .tier-card.trainer .tier-header i {
+    color: var(--accent-purple) !important;
+}
+
+#backend-account-container .tier-header h3 {
+    margin: 0 !important;
+    font-family: 'Orbitron', serif !important;
+}
+
+#backend-account-container .tier-card.guest .tier-header h3 {
+    color: var(--accent-blue) !important;
+}
+
+#backend-account-container .tier-card.user .tier-header h3 {
+    color: var(--accent-green) !important;
+}
+
+#backend-account-container .tier-card.trainer .tier-header h3 {
+    color: var(--accent-purple) !important;
+}
+
+#backend-account-container .tier-level {
+    background: var(--accent-blue) !important;
+    color: white !important;
+    padding: var(--spacing-xs) var(--spacing-sm) !important;
+    border-radius: 12px !important;
+    font-size: var(--font-size-small) !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+#backend-account-container .tier-card.user .tier-level {
+    background: var(--accent-green) !important;
+}
+
+#backend-account-container .tier-card.trainer .tier-level {
+    background: var(--accent-purple) !important;
+}
+
+/* Tier Features */
+#backend-account-container .tier-features {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--spacing-sm) !important;
+}
+
+#backend-account-container .feature-item {
+    background: var(--primary-bg) !important;
+    padding: var(--spacing-sm) !important;
+    border-radius: 8px !important;
+    border-left: 3px solid var(--accent-blue) !important;
+    font-size: var(--font-size-small) !important;
+    line-height: 1.5 !important;
+    color: var(--text-secondary) !important;
+}
+
+#backend-account-container .tier-card.guest .feature-item {
+    border-left-color: var(--accent-blue) !important;
+}
+
+#backend-account-container .tier-card.user .feature-item {
+    border-left-color: var(--accent-green) !important;
+}
+
+#backend-account-container .tier-card.trainer .feature-item {
+    border-left-color: var(--accent-purple) !important;
+}
+
+/* Security Features Section */
+#backend-account-container .security-features {
+    margin: var(--spacing-xl) 0 !important;
+}
+
+#backend-account-container .security-features h3 {
+    color: var(--accent-red) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-lg) !important;
+    text-align: center !important;
+}
+
+#backend-account-container .security-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
+    gap: var(--spacing-lg) !important;
+}
+
+#backend-account-container .security-section {
+    background: var(--secondary-bg) !important;
+    border-radius: 16px !important;
+    padding: var(--spacing-lg) !important;
+    box-shadow: var(--shadow-light) !important;
+    border-left: 4px solid var(--accent-red) !important;
+}
+
+#backend-account-container .security-section.session {
+    border-left-color: var(--accent-orange) !important;
+}
+
+#backend-account-container .section-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--spacing-sm) !important;
+    margin-bottom: var(--spacing-md) !important;
+    padding-bottom: var(--spacing-sm) !important;
+    border-bottom: 2px solid var(--border-light) !important;
+}
+
+#backend-account-container .section-header i {
+    font-size: var(--font-size-h4) !important;
+    color: var(--accent-red) !important;
+}
+
+#backend-account-container .security-section.session .section-header i {
+    color: var(--accent-orange) !important;
+}
+
+#backend-account-container .section-header h4 {
+    margin: 0 !important;
+    font-family: 'Orbitron', serif !important;
+    color: var(--text-primary) !important;
+    font-size: var(--font-size-h4) !important;
+}
+
+#backend-account-container .security-features-list {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--spacing-sm) !important;
+}
+
+#backend-account-container .security-features-list .feature-item {
+    border-left-color: var(--accent-red) !important;
+}
+
+#backend-account-container .security-section.session .security-features-list .feature-item {
+    border-left-color: var(--accent-orange) !important;
+}
+
+/* Animation */
+#backend-account-container .animate-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: all 0.6s ease-out !important;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    #backend-account-container .slide-content {
+        padding: var(--spacing-md) !important;
+    }
+    
+    #backend-account-container .tier-architecture {
+        grid-template-columns: 1fr !important;
+        gap: var(--spacing-md) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    #backend-account-container .slide-content {
+        padding: var(--spacing-sm) !important;
+    }
+    
+    #backend-account-container .account-overview {
+        padding: var(--spacing-lg) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #backend-account-container .slide-content {
+        padding: var(--spacing-xs) !important;
+    }
+    
+    #backend-account-container .tier-header {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: var(--spacing-xs) !important;
+    }
+}
+</style>
+
+<div id="backend-account-container">
+<div class="slide-content">
+    <h2 class="section-title animate-in">Backend Systems: Account Management System</h2>
+    
+    <div class="account-overview animate-in">
+        <h3>🔐 Three-Tier Authentication Architecture</h3>
+        <p class="subtitle">Hierarchical authentication architecture that extends beyond traditional binary access control models, implementing progressive privilege escalation specifically designed for research environments with varying user access requirements.</p>
+    </div>
+
+    <div class="auth-flow-diagram animate-in">
+        <div class="diagram-placeholder">🔄 Figure 4.38: Three-Tier Authentication Flow</div>
+        <div class="diagram-description">Authentication workflow and role-based access control implementation</div>
+    </div>
+
+    <div class="tier-architecture animate-in">
+        <div class="tier-card guest">
+            <div class="tier-header">
+                <i class="fas fa-eye"></i>
+                <h3>Guest Tier</h3>
+                <div class="tier-level">Level 1</div>
+            </div>
+            <div class="tier-features">
+                <div class="feature-item">Public interface layer with informational content access</div>
+                <div class="feature-item">No authentication required for basic system information</div>
+                <div class="feature-item">Limited access to research overview and platform capabilities</div>
+                <div class="feature-item">Entry point for user registration and role selection</div>
+                <div class="feature-item">Foundation tier for progressive privilege escalation</div>
+            </div>
+        </div>
+
+        <div class="tier-card user">
+            <div class="tier-header">
+                <i class="fas fa-user"></i>
+                <h3>User Tier</h3>
+                <div class="tier-level">Level 2</div>
+            </div>
+            <div class="tier-features">
+                <div class="feature-item">Primary research participant demographic access</div>
+                <div class="feature-item">Core data collection functionalities and trial participation</div>
+                <div class="feature-item">Personal dashboard with session management capabilities</div>
+                <div class="feature-item">Consent form management and digital signature workflows</div>
+                <div class="feature-item">Research participation request and scheduling systems</div>
+            </div>
+        </div>
+
+        <div class="tier-card trainer">
+            <div class="tier-header">
+                <i class="fas fa-user-graduate"></i>
+                <h3>Trainer Tier</h3>
+                <div class="tier-level">Level 3</div>
+            </div>
+            <div class="tier-features">
+                <div class="feature-item">Advanced user category for researchers and administrators</div>
+                <div class="feature-item">Comprehensive system access with technical personnel privileges</div>
+                <div class="feature-item">Study management and participant coordination tools</div>
+                <div class="feature-item">Data collection monitoring and quality assurance controls</div>
+                <div class="feature-item">Analytics, reporting, and research workflow management</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="security-features animate-in">
+        <h3>🛡️ Security Architecture & Implementation</h3>
+        <div class="security-grid">
+            <div class="security-section middleware">
+                <div class="section-header">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Middleware-Based Access Control</h4>
+                </div>
+                <div class="security-features-list">
+                    <div class="feature-item">Custom Django middleware for URL-level permission enforcement</div>
+                    <div class="feature-item">Sophisticated URL pattern matching with role requirements</div>
+                    <div class="feature-item">Graceful error handling and contextual user redirection</div>
+                    <div class="feature-item">Dynamic permission evaluation based on user context</div>
+                </div>
+            </div>
+
+            <div class="security-section session">
+                <div class="section-header">
+                    <i class="fas fa-key"></i>
+                    <h4>Session Management & Security</h4>
+                </div>
+                <div class="security-features-list">
+                    <div class="feature-item">Secure session management with configurable timeout periods</div>
+                    <div class="feature-item">CSRF protection and secure cookie handling mechanisms</div>
+                    <div class="feature-item">Session hijacking prevention and audit logging</div>
+                    <div class="feature-item">Email verification and automated profile provisioning</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
