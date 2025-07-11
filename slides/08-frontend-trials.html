@@ -1,0 +1,408 @@
+<!-- Frontend & Design Slide 3: Trials Application -->
+<style>
+/* Standalone CSS for Frontend Trials Slide */
+#frontend-trials-container .slide-content {
+    /* CSS Variables for Academic Theme */
+    --primary-bg: #ffffff;
+    --secondary-bg: #f8f9fa;
+    --tertiary-bg: #e9ecef;
+    --accent-red: #c41e3a;
+    --accent-blue: #1f4e79;
+    --accent-purple: #5a4fcf;
+    --accent-green: #2d7d32;
+    --accent-orange: #f57c00;
+    --accent-teal: #00695c;
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --text-muted: #6c757d;
+    --border-light: #dee2e6;
+    --border-primary: #ced4da;
+    --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-heavy: 0 8px 24px rgba(0, 0, 0, 0.16);
+    
+    /* Typography Scale */
+    --font-size-h1: clamp(2.5rem, 5vw, 4rem);
+    --font-size-h2: clamp(2rem, 4vw, 3rem);
+    --font-size-h3: clamp(1.5rem, 3vw, 2.2rem);
+    --font-size-h4: clamp(1.25rem, 2.5vw, 1.8rem);
+    --font-size-body: clamp(1rem, 2vw, 1.2rem);
+    --font-size-small: clamp(0.875rem, 1.5vw, 1rem);
+    
+    /* Spacing Scale */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-xxl: 4rem;
+    
+    /* Base slide styling */
+    all: unset;
+    display: block;
+    max-width: 1400px !important;
+    width: 100% !important;
+    text-align: left !important;
+    padding: var(--spacing-lg) !important;
+    margin: 0 auto !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    line-height: 1.6 !important;
+    font-size: var(--font-size-body) !important;
+    color: var(--text-primary) !important;
+    background: var(--primary-bg) !important;
+}
+
+#frontend-trials-container * {
+    box-sizing: border-box;
+}
+
+#frontend-trials-container .slide-content * {
+    font-family: inherit !important;
+}
+
+/* Typography */
+#frontend-trials-container .slide-content h2 {
+    font-family: 'Orbitron', 'Georgia', serif !important;
+    font-size: var(--font-size-h2) !important;
+    font-weight: 600 !important;
+    line-height: 1.3 !important;
+    margin-bottom: var(--spacing-xl) !important;
+    color: var(--accent-blue) !important;
+    text-align: center !important;
+    letter-spacing: -0.01em !important;
+}
+
+#frontend-trials-container .slide-content h3 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h3) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#frontend-trials-container .slide-content h4 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h4) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-sm) !important;
+    color: var(--text-primary) !important;
+}
+
+#frontend-trials-container .slide-content p {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.7 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#frontend-trials-container .slide-content ul {
+    margin-bottom: var(--spacing-md) !important;
+    padding-left: var(--spacing-lg) !important;
+}
+
+#frontend-trials-container .slide-content li {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.6 !important;
+    margin-bottom: var(--spacing-xs) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Trials Overview */
+#frontend-trials-container .trials-overview {
+    background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--tertiary-bg) 100%) !important;
+    padding: var(--spacing-xl) !important;
+    border-radius: 20px !important;
+    border: 2px solid var(--accent-green) !important;
+    box-shadow: var(--shadow-medium) !important;
+    text-align: center !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#frontend-trials-container .trials-overview h3 {
+    color: var(--accent-green) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-md) !important;
+}
+
+#frontend-trials-container .trials-overview .subtitle {
+    font-size: calc(var(--font-size-body) * 1.1) !important;
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Trial Types Grid */
+#frontend-trials-container .trial-types-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
+    gap: var(--spacing-lg) !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#frontend-trials-container .trial-type-card {
+    background: var(--secondary-bg) !important;
+    border-radius: 16px !important;
+    padding: var(--spacing-lg) !important;
+    box-shadow: var(--shadow-light) !important;
+    transition: all 0.3s ease !important;
+    border-left: 4px solid var(--accent-blue) !important;
+}
+
+#frontend-trials-container .trial-type-card.traditional {
+    border-left-color: var(--accent-blue) !important;
+}
+
+#frontend-trials-container .trial-type-card.p300 {
+    border-left-color: var(--accent-purple) !important;
+}
+
+#frontend-trials-container .trial-type-card.motor-imagery {
+    border-left-color: var(--accent-green) !important;
+}
+
+#frontend-trials-container .trial-type-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: var(--shadow-medium) !important;
+}
+
+#frontend-trials-container .trial-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--spacing-sm) !important;
+    margin-bottom: var(--spacing-md) !important;
+    padding-bottom: var(--spacing-sm) !important;
+    border-bottom: 2px solid var(--border-light) !important;
+}
+
+#frontend-trials-container .trial-header i {
+    font-size: var(--font-size-h3) !important;
+}
+
+#frontend-trials-container .trial-type-card.traditional .trial-header i {
+    color: var(--accent-blue) !important;
+}
+
+#frontend-trials-container .trial-type-card.p300 .trial-header i {
+    color: var(--accent-purple) !important;
+}
+
+#frontend-trials-container .trial-type-card.motor-imagery .trial-header i {
+    color: var(--accent-green) !important;
+}
+
+#frontend-trials-container .trial-header h3 {
+    margin: 0 !important;
+    font-family: 'Orbitron', serif !important;
+}
+
+#frontend-trials-container .trial-type-card.traditional .trial-header h3 {
+    color: var(--accent-blue) !important;
+}
+
+#frontend-trials-container .trial-type-card.p300 .trial-header h3 {
+    color: var(--accent-purple) !important;
+}
+
+#frontend-trials-container .trial-type-card.motor-imagery .trial-header h3 {
+    color: var(--accent-green) !important;
+}
+
+/* Feature Lists */
+#frontend-trials-container .trial-features {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--spacing-sm) !important;
+}
+
+#frontend-trials-container .feature-item {
+    background: var(--primary-bg) !important;
+    padding: var(--spacing-sm) !important;
+    border-radius: 8px !important;
+    border-left: 3px solid var(--accent-blue) !important;
+    font-size: var(--font-size-small) !important;
+    line-height: 1.5 !important;
+    color: var(--text-secondary) !important;
+}
+
+#frontend-trials-container .trial-type-card.traditional .feature-item {
+    border-left-color: var(--accent-blue) !important;
+}
+
+#frontend-trials-container .trial-type-card.p300 .feature-item {
+    border-left-color: var(--accent-purple) !important;
+}
+
+#frontend-trials-container .trial-type-card.motor-imagery .feature-item {
+    border-left-color: var(--accent-green) !important;
+}
+
+/* Session Management Section */
+#frontend-trials-container .session-management {
+    background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%) !important;
+    padding: var(--spacing-xl) !important;
+    border-radius: 16px !important;
+    border: 2px solid var(--accent-teal) !important;
+    box-shadow: var(--shadow-light) !important;
+}
+
+#frontend-trials-container .session-management h3 {
+    color: var(--accent-teal) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-lg) !important;
+    text-align: center !important;
+}
+
+#frontend-trials-container .management-features {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+    gap: var(--spacing-md) !important;
+}
+
+#frontend-trials-container .management-item {
+    background: var(--primary-bg) !important;
+    padding: var(--spacing-md) !important;
+    border-radius: 12px !important;
+    border-left: 3px solid var(--accent-teal) !important;
+    transition: all 0.3s ease !important;
+}
+
+#frontend-trials-container .management-item:hover {
+    transform: translateX(5px) !important;
+    box-shadow: var(--shadow-light) !important;
+}
+
+#frontend-trials-container .management-item h4 {
+    margin: 0 0 var(--spacing-xs) 0 !important;
+    color: var(--text-primary) !important;
+    font-size: var(--font-size-body) !important;
+}
+
+#frontend-trials-container .management-item p {
+    margin: 0 !important;
+    font-size: var(--font-size-small) !important;
+    color: var(--text-secondary) !important;
+    line-height: 1.5 !important;
+}
+
+/* Animation */
+#frontend-trials-container .animate-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: all 0.6s ease-out !important;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    #frontend-trials-container .slide-content {
+        padding: var(--spacing-md) !important;
+    }
+    
+    #frontend-trials-container .trial-types-grid {
+        grid-template-columns: 1fr !important;
+        gap: var(--spacing-md) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    #frontend-trials-container .slide-content {
+        padding: var(--spacing-sm) !important;
+    }
+    
+    #frontend-trials-container .trials-overview,
+    #frontend-trials-container .session-management {
+        padding: var(--spacing-lg) !important;
+    }
+    
+    #frontend-trials-container .management-features {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #frontend-trials-container .slide-content {
+        padding: var(--spacing-xs) !important;
+    }
+    
+    #frontend-trials-container .trial-header {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: var(--spacing-xs) !important;
+    }
+}
+</style>
+
+<div id="frontend-trials-container">
+<div class="slide-content">
+    <h2 class="section-title animate-in">Frontend & Design: Trials Application</h2>
+    
+    <div class="trials-overview animate-in">
+        <h3>🧪 Experimental Interface Hub - Three Specialized Trial Types</h3>
+        <p class="subtitle">Comprehensive experimental platform supporting diverse BCI paradigms with unified session management and specialized interfaces optimized for each research methodology.</p>
+    </div>
+
+    <div class="trial-types-grid animate-in">
+        <div class="trial-type-card traditional">
+            <div class="trial-header">
+                <i class="fas fa-microphone"></i>
+                <h3>Traditional Multi-Stage Trials</h3>
+            </div>
+            <div class="trial-features">
+                <div class="feature-item">Vocal, non-vocal, and motor task stages with synchronized protocols</div>
+                <div class="feature-item">Synchronized EEG and audio recording with real-time monitoring</div>
+                <div class="feature-item">Real-time microphone visualization with audio level indicators</div>
+                <div class="feature-item">Progress tracking and attempt management across experimental sessions</div>
+            </div>
+        </div>
+
+        <div class="trial-type-card p300">
+            <div class="trial-header">
+                <i class="fas fa-eye"></i>
+                <h3>Visual Word Focus (P300) Trials</h3>
+            </div>
+            <div class="trial-features">
+                <div class="feature-item">Full-screen word presentation system with precise timing control</div>
+                <div class="feature-item">Configurable timing and randomization for optimal ERP elicitation</div>
+                <div class="feature-item">Immersive interface optimized for event-related potential research</div>
+                <div class="feature-item">Color word paradigms (green, red, blue, yellow, purple) with customizable sequences</div>
+            </div>
+        </div>
+
+        <div class="trial-type-card motor-imagery">
+            <div class="trial-header">
+                <i class="fas fa-hand-paper"></i>
+                <h3>Motor Imagery Integration</h3>
+            </div>
+            <div class="trial-features">
+                <div class="feature-item">Seamless connection to BCI classification systems</div>
+                <div class="feature-item">Left hand, right hand, and feet imagery classes with visual cues</div>
+                <div class="feature-item">Real-time feedback during experiments with confidence indicators</div>
+                <div class="feature-item">Adaptive trial difficulty based on classification performance</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="session-management animate-in">
+        <h3>🗂️ Unified Session Management</h3>
+        <div class="management-features">
+            <div class="management-item">
+                <h4>Cross-Paradigm Trial Organization</h4>
+                <p>Consistent interface across all trial types with unified navigation and workflow management</p>
+            </div>
+            <div class="management-item">
+                <h4>Consistent Data Structure</h4>
+                <p>Unified export formats for analysis with standardized metadata and session organization</p>
+            </div>
+            <div class="management-item">
+                <h4>Comprehensive Tracking</h4>
+                <p>Participant and session management across experiments with detailed progress monitoring</p>
+            </div>
+            <div class="management-item">
+                <h4>Real-Time Session Status</h4>
+                <p>Live monitoring of experimental progress with automatic data validation and backup</p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

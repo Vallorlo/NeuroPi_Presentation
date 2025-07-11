@@ -1,0 +1,366 @@
+<!-- Frontend & Design Slide 6: Session Management and Training Configuration -->
+<style>
+/* Standalone CSS for Frontend Session Management Slide */
+#frontend-session-container .slide-content {
+    /* CSS Variables for Academic Theme */
+    --primary-bg: #ffffff;
+    --secondary-bg: #f8f9fa;
+    --tertiary-bg: #e9ecef;
+    --accent-red: #c41e3a;
+    --accent-blue: #1f4e79;
+    --accent-purple: #5a4fcf;
+    --accent-green: #2d7d32;
+    --accent-orange: #f57c00;
+    --accent-teal: #00695c;
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --text-muted: #6c757d;
+    --border-light: #dee2e6;
+    --border-primary: #ced4da;
+    --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-heavy: 0 8px 24px rgba(0, 0, 0, 0.16);
+    
+    /* Typography Scale */
+    --font-size-h1: clamp(2.5rem, 5vw, 4rem);
+    --font-size-h2: clamp(2rem, 4vw, 3rem);
+    --font-size-h3: clamp(1.5rem, 3vw, 2.2rem);
+    --font-size-h4: clamp(1.25rem, 2.5vw, 1.8rem);
+    --font-size-body: clamp(1rem, 2vw, 1.2rem);
+    --font-size-small: clamp(0.875rem, 1.5vw, 1rem);
+    
+    /* Spacing Scale */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-xxl: 4rem;
+    
+    /* Base slide styling */
+    all: unset;
+    display: block;
+    max-width: 1400px !important;
+    width: 100% !important;
+    text-align: left !important;
+    padding: var(--spacing-lg) !important;
+    margin: 0 auto !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    line-height: 1.6 !important;
+    font-size: var(--font-size-body) !important;
+    color: var(--text-primary) !important;
+    background: var(--primary-bg) !important;
+}
+
+#frontend-session-container * {
+    box-sizing: border-box;
+}
+
+#frontend-session-container .slide-content * {
+    font-family: inherit !important;
+}
+
+/* Typography */
+#frontend-session-container .slide-content h2 {
+    font-family: 'Orbitron', 'Georgia', serif !important;
+    font-size: var(--font-size-h2) !important;
+    font-weight: 600 !important;
+    line-height: 1.3 !important;
+    margin-bottom: var(--spacing-xl) !important;
+    color: var(--accent-blue) !important;
+    text-align: center !important;
+    letter-spacing: -0.01em !important;
+}
+
+#frontend-session-container .slide-content h3 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h3) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#frontend-session-container .slide-content h4 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h4) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-sm) !important;
+    color: var(--text-primary) !important;
+}
+
+#frontend-session-container .slide-content p {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.7 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#frontend-session-container .slide-content ul {
+    margin-bottom: var(--spacing-md) !important;
+    padding-left: var(--spacing-lg) !important;
+}
+
+#frontend-session-container .slide-content li {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.6 !important;
+    margin-bottom: var(--spacing-xs) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Session Management Overview */
+#frontend-session-container .session-overview {
+    background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--tertiary-bg) 100%) !important;
+    padding: var(--spacing-xl) !important;
+    border-radius: 20px !important;
+    border: 2px solid var(--accent-orange) !important;
+    box-shadow: var(--shadow-medium) !important;
+    text-align: center !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#frontend-session-container .session-overview h3 {
+    color: var(--accent-orange) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-md) !important;
+}
+
+#frontend-session-container .session-overview .subtitle {
+    font-size: calc(var(--font-size-body) * 1.1) !important;
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Management Components Grid */
+#frontend-session-container .management-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
+    gap: var(--spacing-lg) !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#frontend-session-container .management-card {
+    background: var(--secondary-bg) !important;
+    border-radius: 16px !important;
+    padding: var(--spacing-lg) !important;
+    box-shadow: var(--shadow-light) !important;
+    transition: all 0.3s ease !important;
+    border-left: 4px solid var(--accent-blue) !important;
+}
+
+#frontend-session-container .management-card.upload {
+    border-left-color: var(--accent-blue) !important;
+}
+
+#frontend-session-container .management-card.organization {
+    border-left-color: var(--accent-green) !important;
+}
+
+#frontend-session-container .management-card.training {
+    border-left-color: var(--accent-purple) !important;
+}
+
+#frontend-session-container .management-card.models {
+    border-left-color: var(--accent-teal) !important;
+}
+
+#frontend-session-container .management-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: var(--shadow-medium) !important;
+}
+
+#frontend-session-container .management-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--spacing-sm) !important;
+    margin-bottom: var(--spacing-md) !important;
+    padding-bottom: var(--spacing-sm) !important;
+    border-bottom: 2px solid var(--border-light) !important;
+}
+
+#frontend-session-container .management-header i {
+    font-size: var(--font-size-h3) !important;
+}
+
+#frontend-session-container .management-card.upload .management-header i {
+    color: var(--accent-blue) !important;
+}
+
+#frontend-session-container .management-card.organization .management-header i {
+    color: var(--accent-green) !important;
+}
+
+#frontend-session-container .management-card.training .management-header i {
+    color: var(--accent-purple) !important;
+}
+
+#frontend-session-container .management-card.models .management-header i {
+    color: var(--accent-teal) !important;
+}
+
+#frontend-session-container .management-header h3 {
+    margin: 0 !important;
+    font-family: 'Orbitron', serif !important;
+}
+
+#frontend-session-container .management-card.upload .management-header h3 {
+    color: var(--accent-blue) !important;
+}
+
+#frontend-session-container .management-card.organization .management-header h3 {
+    color: var(--accent-green) !important;
+}
+
+#frontend-session-container .management-card.training .management-header h3 {
+    color: var(--accent-purple) !important;
+}
+
+#frontend-session-container .management-card.models .management-header h3 {
+    color: var(--accent-teal) !important;
+}
+
+/* Feature Lists */
+#frontend-session-container .management-features {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--spacing-sm) !important;
+}
+
+#frontend-session-container .feature-item {
+    background: var(--primary-bg) !important;
+    padding: var(--spacing-sm) !important;
+    border-radius: 8px !important;
+    border-left: 3px solid var(--accent-blue) !important;
+    font-size: var(--font-size-small) !important;
+    line-height: 1.5 !important;
+    color: var(--text-secondary) !important;
+}
+
+#frontend-session-container .management-card.upload .feature-item {
+    border-left-color: var(--accent-blue) !important;
+}
+
+#frontend-session-container .management-card.organization .feature-item {
+    border-left-color: var(--accent-green) !important;
+}
+
+#frontend-session-container .management-card.training .feature-item {
+    border-left-color: var(--accent-purple) !important;
+}
+
+#frontend-session-container .management-card.models .feature-item {
+    border-left-color: var(--accent-teal) !important;
+}
+
+/* Animation */
+#frontend-session-container .animate-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: all 0.6s ease-out !important;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    #frontend-session-container .slide-content {
+        padding: var(--spacing-md) !important;
+    }
+    
+    #frontend-session-container .management-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+        gap: var(--spacing-md) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    #frontend-session-container .slide-content {
+        padding: var(--spacing-sm) !important;
+    }
+    
+    #frontend-session-container .session-overview {
+        padding: var(--spacing-lg) !important;
+    }
+    
+    #frontend-session-container .management-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #frontend-session-container .slide-content {
+        padding: var(--spacing-xs) !important;
+    }
+    
+    #frontend-session-container .management-header {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: var(--spacing-xs) !important;
+    }
+}
+</style>
+
+<div id="frontend-session-container">
+<div class="slide-content">
+    <h2 class="section-title animate-in">Frontend & Design: Session Management and Training Configuration</h2>
+    
+    <div class="session-overview animate-in">
+        <h3>🗂️ Comprehensive Data Management and Model Training</h3>
+        <p class="subtitle">Advanced session management system with intuitive interfaces for data upload, organization, and model training across all BCI paradigms with comprehensive tracking and validation.</p>
+    </div>
+
+    <div class="management-grid animate-in">
+        <div class="management-card upload">
+            <div class="management-header">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <h3>Session Upload System</h3>
+            </div>
+            <div class="management-features">
+                <div class="feature-item">Drag-and-drop file upload with visual feedback and progress indicators</div>
+                <div class="feature-item">Multi-file batch processing for research efficiency and workflow optimization</div>
+                <div class="feature-item">Approach selection (Motor Imagery, P300, Traditional) with automatic detection</div>
+                <div class="feature-item">Real-time validation and error handling with detailed feedback messages</div>
+            </div>
+        </div>
+
+        <div class="management-card organization">
+            <div class="management-header">
+                <i class="fas fa-folder-open"></i>
+                <h3>Session Organization</h3>
+            </div>
+            <div class="management-features">
+                <div class="feature-item">Advanced filtering by approach, date, and status with custom criteria</div>
+                <div class="feature-item">Real-time search across session metadata with intelligent suggestions</div>
+                <div class="feature-item">Batch operations for multiple session management and bulk actions</div>
+                <div class="feature-item">Consistent data structure across all trial types with unified formatting</div>
+            </div>
+        </div>
+
+        <div class="management-card training">
+            <div class="management-header">
+                <i class="fas fa-cogs"></i>
+                <h3>Training Configuration</h3>
+            </div>
+            <div class="management-features">
+                <div class="feature-item">Dynamic forms adapting to selected BCI approach with context-aware options</div>
+                <div class="feature-item">Progressive disclosure for advanced parameters with expert mode</div>
+                <div class="feature-item">Session selection with data validation and compatibility checking</div>
+                <div class="feature-item">Real-time training progress monitoring with detailed status updates</div>
+            </div>
+        </div>
+
+        <div class="management-card models">
+            <div class="management-header">
+                <i class="fas fa-brain"></i>
+                <h3>Model Management</h3>
+            </div>
+            <div class="management-features">
+                <div class="feature-item">Comprehensive model performance tracking with detailed metrics</div>
+                <div class="feature-item">Training history and accuracy evolution with trend analysis</div>
+                <div class="feature-item">Model comparison and selection tools with side-by-side evaluation</div>
+                <div class="feature-item">Automated model versioning and backup with rollback capabilities</div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

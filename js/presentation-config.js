@@ -83,23 +83,52 @@ const PRESENTATION_CONFIG = {
         // ============= FRONTEND & DESIGN =============
         {
             id: "frontend-design",
-            file: "slides/09-frontend-design.html",
+            file: "slides/06-frontend-overview.html",
             section: "Frontend & Design",
             title: "Frontend & Design Choices",
             duration: 4,
             description: "UI/UX design and user experience",
-            placeholder: true
         },
         {
             id: "frontend-realtime",
-            file: "slides/10-frontend-realtime.html",
+            file: "slides/07-frontend-navigation.html",
             section: "Frontend & Design",
             title: "Real-Time Visualization",
             duration: 3,
             description: "Live data visualization and controls",
-            placeholder: true
         },
-        
+        {
+            id: "frontend-realtime",
+            file: "slides/08-frontend-trials.html",
+            section: "Frontend & Design",
+            title: "Real-Time Visualization",
+            duration: 3,
+            description: "Live data visualization and controls",
+        },
+        {
+            id: "frontend-realtime",
+            file: "slides/09-frontend-dashboard.html",
+            section: "Frontend & Design",
+            title: "Real-Time Visualization",
+            duration: 3,
+            description: "Live data visualization and controls",
+        },
+        {
+            id: "frontend-realtime",
+            file: "slides/10-frontend-visualization.html",
+            section: "Frontend & Design",
+            title: "Real-Time Visualization",
+            duration: 3,
+            description: "Live data visualization and controls",
+        },
+        {
+            id: "frontend-realtime",
+            file: "slides/11-frontend-session-management.html",
+            section: "Frontend & Design",
+            title: "Real-Time Visualization",
+            duration: 3,
+            description: "Live data visualization and controls",
+        },
         // ============= BACKEND SYSTEMS =============
         {
             id: "backend-trials",

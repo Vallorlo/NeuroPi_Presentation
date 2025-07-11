@@ -1,0 +1,356 @@
+<!-- Frontend & Design Slide 2: Landing Page and Navigation Design -->
+<style>
+/* Standalone CSS for Frontend Navigation Slide */
+#frontend-nav-container .slide-content {
+    /* CSS Variables for Academic Theme */
+    --primary-bg: #ffffff;
+    --secondary-bg: #f8f9fa;
+    --tertiary-bg: #e9ecef;
+    --accent-red: #c41e3a;
+    --accent-blue: #1f4e79;
+    --accent-purple: #5a4fcf;
+    --accent-green: #2d7d32;
+    --accent-orange: #f57c00;
+    --accent-teal: #00695c;
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --text-muted: #6c757d;
+    --border-light: #dee2e6;
+    --border-primary: #ced4da;
+    --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-heavy: 0 8px 24px rgba(0, 0, 0, 0.16);
+    
+    /* Typography Scale */
+    --font-size-h1: clamp(2.5rem, 5vw, 4rem);
+    --font-size-h2: clamp(2rem, 4vw, 3rem);
+    --font-size-h3: clamp(1.5rem, 3vw, 2.2rem);
+    --font-size-h4: clamp(1.25rem, 2.5vw, 1.8rem);
+    --font-size-body: clamp(1rem, 2vw, 1.2rem);
+    --font-size-small: clamp(0.875rem, 1.5vw, 1rem);
+    
+    /* Spacing Scale */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-xxl: 4rem;
+    
+    /* Base slide styling */
+    all: unset;
+    display: block;
+    max-width: 1400px !important;
+    width: 100% !important;
+    text-align: left !important;
+    padding: var(--spacing-lg) !important;
+    margin: 0 auto !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    line-height: 1.6 !important;
+    font-size: var(--font-size-body) !important;
+    color: var(--text-primary) !important;
+    background: var(--primary-bg) !important;
+}
+
+#frontend-nav-container * {
+    box-sizing: border-box;
+}
+
+#frontend-nav-container .slide-content * {
+    font-family: inherit !important;
+}
+
+/* Typography */
+#frontend-nav-container .slide-content h2 {
+    font-family: 'Orbitron', 'Georgia', serif !important;
+    font-size: var(--font-size-h2) !important;
+    font-weight: 600 !important;
+    line-height: 1.3 !important;
+    margin-bottom: var(--spacing-xl) !important;
+    color: var(--accent-blue) !important;
+    text-align: center !important;
+    letter-spacing: -0.01em !important;
+}
+
+#frontend-nav-container .slide-content h3 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h3) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#frontend-nav-container .slide-content h4 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h4) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-sm) !important;
+    color: var(--text-primary) !important;
+}
+
+#frontend-nav-container .slide-content p {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.7 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#frontend-nav-container .slide-content ul {
+    margin-bottom: var(--spacing-md) !important;
+    padding-left: var(--spacing-lg) !important;
+}
+
+#frontend-nav-container .slide-content li {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.6 !important;
+    margin-bottom: var(--spacing-xs) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Design Overview */
+#frontend-nav-container .design-overview {
+    background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--tertiary-bg) 100%) !important;
+    padding: var(--spacing-xl) !important;
+    border-radius: 20px !important;
+    border: 2px solid var(--accent-teal) !important;
+    box-shadow: var(--shadow-medium) !important;
+    text-align: center !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#frontend-nav-container .design-overview h3 {
+    color: var(--accent-teal) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-md) !important;
+}
+
+#frontend-nav-container .design-overview .subtitle {
+    font-size: calc(var(--font-size-body) * 1.1) !important;
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Main Content Grid */
+#frontend-nav-container .navigation-content {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: var(--spacing-xl) !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#frontend-nav-container .content-section {
+    background: var(--secondary-bg) !important;
+    border-radius: 16px !important;
+    padding: var(--spacing-lg) !important;
+    box-shadow: var(--shadow-light) !important;
+}
+
+#frontend-nav-container .content-section.landing-features {
+    border-left: 4px solid var(--accent-orange) !important;
+}
+
+#frontend-nav-container .content-section.navigation-system {
+    border-left: 4px solid var(--accent-purple) !important;
+}
+
+#frontend-nav-container .section-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--spacing-sm) !important;
+    margin-bottom: var(--spacing-lg) !important;
+    padding-bottom: var(--spacing-sm) !important;
+    border-bottom: 2px solid var(--border-light) !important;
+}
+
+#frontend-nav-container .section-header i {
+    font-size: var(--font-size-h3) !important;
+}
+
+#frontend-nav-container .content-section.landing-features .section-header i {
+    color: var(--accent-orange) !important;
+}
+
+#frontend-nav-container .content-section.navigation-system .section-header i {
+    color: var(--accent-purple) !important;
+}
+
+#frontend-nav-container .section-header h3 {
+    margin: 0 !important;
+}
+
+#frontend-nav-container .content-section.landing-features .section-header h3 {
+    color: var(--accent-orange) !important;
+}
+
+#frontend-nav-container .content-section.navigation-system .section-header h3 {
+    color: var(--accent-purple) !important;
+}
+
+/* Feature Lists */
+#frontend-nav-container .feature-list {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--spacing-md) !important;
+}
+
+#frontend-nav-container .feature-item {
+    background: var(--primary-bg) !important;
+    padding: var(--spacing-md) !important;
+    border-radius: 12px !important;
+    border-left: 3px solid var(--accent-orange) !important;
+    transition: all 0.3s ease !important;
+}
+
+#frontend-nav-container .content-section.navigation-system .feature-item {
+    border-left-color: var(--accent-purple) !important;
+}
+
+#frontend-nav-container .feature-item:hover {
+    transform: translateX(5px) !important;
+    box-shadow: var(--shadow-light) !important;
+}
+
+#frontend-nav-container .feature-item h4 {
+    margin: 0 0 var(--spacing-xs) 0 !important;
+    color: var(--text-primary) !important;
+}
+
+#frontend-nav-container .feature-item p {
+    margin: 0 !important;
+    font-size: var(--font-size-small) !important;
+    color: var(--text-secondary) !important;
+    line-height: 1.5 !important;
+}
+
+/* Design Goal Section */
+#frontend-nav-container .design-goal {
+    background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%) !important;
+    padding: var(--spacing-xl) !important;
+    border-radius: 16px !important;
+    border: 2px solid var(--accent-blue) !important;
+    box-shadow: var(--shadow-light) !important;
+}
+
+#frontend-nav-container .design-goal h3 {
+    color: var(--accent-blue) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-md) !important;
+    text-align: center !important;
+}
+
+#frontend-nav-container .design-goal p {
+    font-size: calc(var(--font-size-body) * 1.05) !important;
+    line-height: 1.7 !important;
+    color: var(--text-primary) !important;
+    text-align: center !important;
+    margin: 0 !important;
+    max-width: 80ch !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* Animation */
+#frontend-nav-container .animate-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: all 0.6s ease-out !important;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    #frontend-nav-container .slide-content {
+        padding: var(--spacing-md) !important;
+    }
+    
+    #frontend-nav-container .navigation-content {
+        grid-template-columns: 1fr !important;
+        gap: var(--spacing-lg) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    #frontend-nav-container .slide-content {
+        padding: var(--spacing-sm) !important;
+    }
+    
+    #frontend-nav-container .design-overview,
+    #frontend-nav-container .design-goal {
+        padding: var(--spacing-lg) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #frontend-nav-container .slide-content {
+        padding: var(--spacing-xs) !important;
+    }
+    
+    #frontend-nav-container .section-header {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: var(--spacing-xs) !important;
+    }
+}
+</style>
+
+<div id="frontend-nav-container">
+<div class="slide-content">
+    <h2 class="section-title animate-in">Frontend & Design: Landing Page and Navigation Design</h2>
+    
+    <div class="design-overview animate-in">
+        <h3>🎨 Modern, Professional Research Interface</h3>
+        <p class="subtitle">Intuitive design that balances scientific sophistication with user accessibility, creating an inviting gateway to advanced BCI research capabilities.</p>
+    </div>
+
+    <div class="navigation-content animate-in">
+        <div class="content-section landing-features">
+            <div class="section-header">
+                <i class="fas fa-home"></i>
+                <h3>Landing Page Features</h3>
+            </div>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <h4>Animated Gradient Background</h4>
+                    <p>Dynamic visual elements with floating components that create an engaging, modern aesthetic while maintaining professional appearance</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Clear Call-to-Action Cards</h4>
+                    <p>Prominent feature cards highlighting platform capabilities with intuitive navigation to key research workflows</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Interactive Feature Showcase</h4>
+                    <p>Visual demonstrations of research workflows with hover effects and progressive disclosure of advanced features</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section navigation-system">
+            <div class="section-header">
+                <i class="fas fa-bars"></i>
+                <h3>Navigation System</h3>
+            </div>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <h4>Responsive Authentication States</h4>
+                    <p>Dynamic navigation adapting to user login status with contextual menu options and personalized dashboard access</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Clear Visual Hierarchy</h4>
+                    <p>Distinct separation between primary research functions and secondary administrative tools for optimal workflow efficiency</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Contextual Role-Based Menus</h4>
+                    <p>Intelligent menu systems that adapt based on user permissions and research roles, streamlining access to relevant tools</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="design-goal animate-in">
+        <h3>🎯 Design Goal</h3>
+        <p><strong>Create an inviting, professional interface that immediately communicates the platform's scientific capabilities while remaining approachable for researchers of varying technical backgrounds.</strong> The design balances academic rigor with modern usability principles, ensuring that both novice and expert users can efficiently navigate complex BCI research workflows.</p>
+    </div>
+</div>
+</div>

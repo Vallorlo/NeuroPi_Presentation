@@ -1,0 +1,538 @@
+<!-- Frontend & Design Slide 1: Platform Overview -->
+<style>
+/* Standalone CSS for Frontend & Design Slide */
+/* Reset and base styles for this slide only */
+#frontend-slide-container .slide-content {
+    /* CSS Variables for Academic Theme */
+    --primary-bg: #ffffff;
+    --secondary-bg: #f8f9fa;
+    --tertiary-bg: #e9ecef;
+    --accent-red: #c41e3a;
+    --accent-blue: #1f4e79;
+    --accent-purple: #5a4fcf;
+    --accent-green: #2d7d32;
+    --accent-orange: #f57c00;
+    --accent-teal: #00695c;
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --text-muted: #6c757d;
+    --border-light: #dee2e6;
+    --border-primary: #ced4da;
+    --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-heavy: 0 8px 24px rgba(0, 0, 0, 0.16);
+    
+    /* Typography Scale */
+    --font-size-h1: clamp(2.5rem, 5vw, 4rem);
+    --font-size-h2: clamp(2rem, 4vw, 3rem);
+    --font-size-h3: clamp(1.5rem, 3vw, 2.2rem);
+    --font-size-h4: clamp(1.25rem, 2.5vw, 1.8rem);
+    --font-size-body: clamp(1rem, 2vw, 1.2rem);
+    --font-size-small: clamp(0.875rem, 1.5vw, 1rem);
+    
+    /* Spacing Scale */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-xxl: 4rem;
+    
+    /* Base slide styling */
+    all: unset;
+    display: block;
+    max-width: 1400px !important;
+    width: 100% !important;
+    text-align: left !important;
+    padding: var(--spacing-lg) !important;
+    margin: 0 auto !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    line-height: 1.6 !important;
+    font-size: var(--font-size-body) !important;
+    color: var(--text-primary) !important;
+    background: var(--primary-bg) !important;
+}
+
+/* Use !important to ensure these styles override any global styles */
+#frontend-slide-container * {
+    box-sizing: border-box;
+}
+
+/* Global override for all styles within the container */
+#frontend-slide-container .slide-content * {
+    font-family: inherit !important;
+}
+
+/* Typography Hierarchy - High specificity to override global styles */
+#frontend-slide-container .slide-content h1, 
+#frontend-slide-container .slide-content .h1 {
+    font-family: 'Orbitron', 'Georgia', serif !important;
+    font-size: var(--font-size-h1) !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+    margin-bottom: var(--spacing-lg) !important;
+    color: var(--text-primary) !important;
+}
+
+#frontend-slide-container .slide-content h2, 
+#frontend-slide-container .slide-content .h2 {
+    font-family: 'Orbitron', 'Georgia', serif !important;
+    font-size: var(--font-size-h2) !important;
+    font-weight: 600 !important;
+    line-height: 1.3 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--accent-blue) !important;
+}
+
+#frontend-slide-container .slide-content h3, 
+#frontend-slide-container .slide-content .h3 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h3) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#frontend-slide-container .slide-content h4, 
+#frontend-slide-container .slide-content .h4 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h4) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-sm) !important;
+    color: var(--text-primary) !important;
+}
+
+#frontend-slide-container .slide-content h5, 
+#frontend-slide-container .slide-content .h5 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-body) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-xs) !important;
+    color: var(--text-primary) !important;
+}
+
+#frontend-slide-container .slide-content p {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.7 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+    max-width: 75ch !important;
+}
+
+#frontend-slide-container .slide-content .lead {
+    font-size: calc(var(--font-size-body) * 1.125) !important;
+    font-weight: 400 !important;
+    line-height: 1.6 !important;
+    color: var(--text-secondary) !important;
+}
+
+#frontend-slide-container .slide-content ul, 
+#frontend-slide-container .slide-content ol {
+    margin-bottom: var(--spacing-md) !important;
+    padding-left: var(--spacing-lg) !important;
+}
+
+#frontend-slide-container .slide-content li {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.6 !important;
+    margin-bottom: var(--spacing-xs) !important;
+    color: var(--text-primary) !important;
+}
+
+#frontend-slide-container .slide-content strong, 
+#frontend-slide-container .slide-content .strong {
+    font-weight: 600 !important;
+    color: var(--text-primary) !important;
+}
+
+#frontend-slide-container .slide-content em, 
+#frontend-slide-container .slide-content .em {
+    font-style: italic !important;
+    color: var(--text-secondary) !important;
+}
+
+/* Section Title */
+#frontend-slide-container .slide-content .section-title {
+    font-family: 'Orbitron', 'Georgia', serif !important;
+    font-size: var(--font-size-h2) !important;
+    font-weight: 600 !important;
+    margin-bottom: var(--spacing-xl) !important;
+    color: var(--accent-blue) !important;
+    text-align: center !important;
+    line-height: 1.3 !important;
+    letter-spacing: -0.01em !important;
+}
+
+/* Apply high specificity to all component styles */
+#frontend-slide-container .platform-overview h3,
+#frontend-slide-container .core-technologies h3,
+#frontend-slide-container .key-capabilities h3 {
+    color: var(--accent-green) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-md) !important;
+    font-size: var(--font-size-h3) !important;
+    text-align: center !important;
+}
+
+/* Platform Overview Section */
+#frontend-slide-container .platform-overview {
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#frontend-slide-container .platform-hero {
+    background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--tertiary-bg) 100%) !important;
+    padding: var(--spacing-xl) !important;
+    border-radius: 20px !important;
+    border: 2px solid var(--accent-blue) !important;
+    box-shadow: var(--shadow-medium) !important;
+    text-align: center !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#frontend-slide-container .platform-hero h3 {
+    color: var(--accent-blue) !important;
+    font-family: 'Orbitron', serif !important;
+    font-size: var(--font-size-h3) !important;
+    margin-bottom: var(--spacing-md) !important;
+}
+
+#frontend-slide-container .platform-hero .subtitle {
+    font-size: calc(var(--font-size-body) * 1.2) !important;
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+    margin-bottom: var(--spacing-lg) !important;
+}
+
+/* Technology Grid Layout */
+#frontend-slide-container .technology-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: var(--spacing-xl) !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#frontend-slide-container .tech-section {
+    background: var(--secondary-bg) !important;
+    border-radius: 16px !important;
+    padding: var(--spacing-lg) !important;
+    box-shadow: var(--shadow-light) !important;
+    border-left: 4px solid var(--accent-green) !important;
+}
+
+#frontend-slide-container .tech-section.key-capabilities {
+    border-left-color: var(--accent-purple) !important;
+}
+
+#frontend-slide-container .section-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--spacing-sm) !important;
+    margin-bottom: var(--spacing-lg) !important;
+    padding-bottom: var(--spacing-sm) !important;
+    border-bottom: 2px solid var(--border-light) !important;
+}
+
+#frontend-slide-container .section-header i {
+    font-size: var(--font-size-h3) !important;
+    color: var(--accent-green) !important;
+}
+
+#frontend-slide-container .tech-section.key-capabilities .section-header i {
+    color: var(--accent-purple) !important;
+}
+
+#frontend-slide-container .section-header h3 {
+    margin: 0 !important;
+    color: var(--accent-green) !important;
+}
+
+#frontend-slide-container .tech-section.key-capabilities .section-header h3 {
+    color: var(--accent-purple) !important;
+}
+
+/* Tech Stack Items */
+#frontend-slide-container .tech-stack {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--spacing-md) !important;
+}
+
+#frontend-slide-container .tech-item {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: var(--spacing-md) !important;
+    background: var(--primary-bg) !important;
+    padding: var(--spacing-md) !important;
+    border-radius: 12px !important;
+    border-left: 3px solid var(--accent-green) !important;
+    transition: all 0.3s ease !important;
+}
+
+#frontend-slide-container .tech-item:hover {
+    transform: translateX(5px) !important;
+    box-shadow: var(--shadow-light) !important;
+}
+
+#frontend-slide-container .tech-icon {
+    flex-shrink: 0 !important;
+    width: 50px !important;
+    height: 50px !important;
+    background: var(--accent-green) !important;
+    border-radius: 12px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+#frontend-slide-container .tech-icon i {
+    font-size: var(--font-size-h4) !important;
+    color: white !important;
+}
+
+#frontend-slide-container .tech-details h4 {
+    margin: 0 0 var(--spacing-xs) 0 !important;
+    font-size: var(--font-size-h4) !important;
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+}
+
+#frontend-slide-container .tech-details p {
+    margin: 0 !important;
+    font-size: var(--font-size-small) !important;
+    color: var(--text-secondary) !important;
+    line-height: 1.5 !important;
+}
+
+/* Capabilities Grid */
+#frontend-slide-container .capabilities-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: var(--spacing-md) !important;
+}
+
+#frontend-slide-container .capability-card {
+    background: var(--primary-bg) !important;
+    padding: var(--spacing-md) !important;
+    border-radius: 12px !important;
+    border-left: 3px solid var(--accent-purple) !important;
+    transition: all 0.3s ease !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: var(--spacing-md) !important;
+}
+
+#frontend-slide-container .capability-card:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: var(--shadow-light) !important;
+}
+
+#frontend-slide-container .capability-icon {
+    flex-shrink: 0 !important;
+    width: 45px !important;
+    height: 45px !important;
+    background: var(--accent-purple) !important;
+    border-radius: 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+#frontend-slide-container .capability-icon i {
+    font-size: var(--font-size-body) !important;
+    color: white !important;
+}
+
+#frontend-slide-container .capability-card h4 {
+    margin: 0 0 var(--spacing-xs) 0 !important;
+    font-size: var(--font-size-body) !important;
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+}
+
+#frontend-slide-container .capability-card p {
+    margin: 0 !important;
+    font-size: var(--font-size-small) !important;
+    color: var(--text-secondary) !important;
+    line-height: 1.5 !important;
+}
+
+/* Animation and responsive design */
+#frontend-slide-container .animate-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: all 0.6s ease-out !important;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    #frontend-slide-container .slide-content {
+        padding: var(--spacing-md) !important;
+    }
+
+    #frontend-slide-container .technology-grid {
+        grid-template-columns: 1fr !important;
+        gap: var(--spacing-lg) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    #frontend-slide-container .slide-content {
+        padding: var(--spacing-sm) !important;
+    }
+
+    #frontend-slide-container .section-title {
+        font-size: var(--font-size-h3) !important;
+        margin-bottom: var(--spacing-lg) !important;
+    }
+
+    #frontend-slide-container .tech-item,
+    #frontend-slide-container .capability-card {
+        flex-direction: column !important;
+        text-align: center !important;
+    }
+
+    #frontend-slide-container .platform-hero {
+        padding: var(--spacing-lg) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #frontend-slide-container .slide-content {
+        padding: var(--spacing-xs) !important;
+    }
+
+    #frontend-slide-container .platform-hero {
+        padding: var(--spacing-md) !important;
+    }
+
+    #frontend-slide-container .section-header {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: var(--spacing-xs) !important;
+    }
+}
+
+/* Print Styles */
+@media print {
+    #frontend-slide-container .slide-content {
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+    }
+
+    #frontend-slide-container .tech-section,
+    #frontend-slide-container .capability-card,
+    #frontend-slide-container .tech-item {
+        break-inside: avoid !important;
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+    }
+}
+</style>
+
+<div id="frontend-slide-container">
+<div class="slide-content">
+    <h2 class="section-title animate-in">Frontend & Design: Platform Overview</h2>
+    
+    <div class="platform-overview">
+        <div class="platform-hero animate-in">
+            <h3>🖥️ NeuroPi: Comprehensive BCI Research Platform</h3>
+            <p class="subtitle">Modern web-based interface designed for sophisticated brain-computer interface research with intuitive user experience and professional academic presentation.</p>
+        </div>
+
+        <div class="technology-grid animate-in">
+            <div class="tech-section core-technologies">
+                <div class="section-header">
+                    <i class="fas fa-code"></i>
+                    <h3>Core Technologies</h3>
+                </div>
+                <div class="tech-stack">
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-python"></i>
+                        </div>
+                        <div class="tech-details">
+                            <h4>Django Templates</h4>
+                            <p>Server-side rendering with Bootstrap 5.3.0 for responsive, modern UI components</p>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="tech-details">
+                            <h4>Chart.js Visualization</h4>
+                            <p>Real-time data visualization for EEG signals, predictions, and performance metrics</p>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="tech-details">
+                            <h4>Responsive Design</h4>
+                            <p>Cross-device compatibility ensuring optimal experience on desktop, tablet, and mobile</p>
+                        </div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-cubes"></i>
+                        </div>
+                        <div class="tech-details">
+                            <h4>Modular Architecture</h4>
+                            <p>Scalable component system supporting multiple BCI paradigms and research workflows</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tech-section key-capabilities">
+                <div class="section-header">
+                    <i class="fas fa-brain"></i>
+                    <h3>Key Capabilities</h3>
+                </div>
+                <div class="capabilities-grid">
+                    <div class="capability-card">
+                        <div class="capability-icon">
+                            <i class="fas fa-wave-square"></i>
+                        </div>
+                        <h4>Traditional Multi-Stage EEG Trials</h4>
+                        <p>Comprehensive experimental protocols with synchronized recording and real-time monitoring</p>
+                    </div>
+                    <div class="capability-card">
+                        <div class="capability-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h4>Visual Word Focus (P300) Experiments</h4>
+                        <p>Specialized interface for event-related potential research with configurable paradigms</p>
+                    </div>
+                    <div class="capability-card">
+                        <div class="capability-icon">
+                            <i class="fas fa-hand-paper"></i>
+                        </div>
+                        <h4>Motor Imagery Brain-Computer Interfaces</h4>
+                        <p>Real-time classification and feedback for motor imagery tasks with multiple classes</p>
+                    </div>
+                    <div class="capability-card">
+                        <div class="capability-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <h4>Real-Time Prediction & Feedback Systems</h4>
+                        <p>Sub-second latency prediction with confidence metrics and visual feedback</p>
+                    </div>
+                    <div class="capability-card">
+                        <div class="capability-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h4>Unified Session Management & Analysis</h4>
+                        <p>Comprehensive data organization with cross-paradigm analysis and export capabilities</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

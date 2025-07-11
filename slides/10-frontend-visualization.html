@@ -1,0 +1,366 @@
+<!-- Frontend & Design Slide 5: Real-Time Visualization System -->
+<style>
+/* Standalone CSS for Frontend Visualization Slide */
+#frontend-viz-container .slide-content {
+    /* CSS Variables for Academic Theme */
+    --primary-bg: #ffffff;
+    --secondary-bg: #f8f9fa;
+    --tertiary-bg: #e9ecef;
+    --accent-red: #c41e3a;
+    --accent-blue: #1f4e79;
+    --accent-purple: #5a4fcf;
+    --accent-green: #2d7d32;
+    --accent-orange: #f57c00;
+    --accent-teal: #00695c;
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --text-muted: #6c757d;
+    --border-light: #dee2e6;
+    --border-primary: #ced4da;
+    --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-heavy: 0 8px 24px rgba(0, 0, 0, 0.16);
+    
+    /* Typography Scale */
+    --font-size-h1: clamp(2.5rem, 5vw, 4rem);
+    --font-size-h2: clamp(2rem, 4vw, 3rem);
+    --font-size-h3: clamp(1.5rem, 3vw, 2.2rem);
+    --font-size-h4: clamp(1.25rem, 2.5vw, 1.8rem);
+    --font-size-body: clamp(1rem, 2vw, 1.2rem);
+    --font-size-small: clamp(0.875rem, 1.5vw, 1rem);
+    
+    /* Spacing Scale */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-xxl: 4rem;
+    
+    /* Base slide styling */
+    all: unset;
+    display: block;
+    max-width: 1400px !important;
+    width: 100% !important;
+    text-align: left !important;
+    padding: var(--spacing-lg) !important;
+    margin: 0 auto !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    line-height: 1.6 !important;
+    font-size: var(--font-size-body) !important;
+    color: var(--text-primary) !important;
+    background: var(--primary-bg) !important;
+}
+
+#frontend-viz-container * {
+    box-sizing: border-box;
+}
+
+#frontend-viz-container .slide-content * {
+    font-family: inherit !important;
+}
+
+/* Typography */
+#frontend-viz-container .slide-content h2 {
+    font-family: 'Orbitron', 'Georgia', serif !important;
+    font-size: var(--font-size-h2) !important;
+    font-weight: 600 !important;
+    line-height: 1.3 !important;
+    margin-bottom: var(--spacing-xl) !important;
+    color: var(--accent-blue) !important;
+    text-align: center !important;
+    letter-spacing: -0.01em !important;
+}
+
+#frontend-viz-container .slide-content h3 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h3) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#frontend-viz-container .slide-content h4 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h4) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-sm) !important;
+    color: var(--text-primary) !important;
+}
+
+#frontend-viz-container .slide-content p {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.7 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#frontend-viz-container .slide-content ul {
+    margin-bottom: var(--spacing-md) !important;
+    padding-left: var(--spacing-lg) !important;
+}
+
+#frontend-viz-container .slide-content li {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.6 !important;
+    margin-bottom: var(--spacing-xs) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Visualization Overview */
+#frontend-viz-container .viz-overview {
+    background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--tertiary-bg) 100%) !important;
+    padding: var(--spacing-xl) !important;
+    border-radius: 20px !important;
+    border: 2px solid var(--accent-red) !important;
+    box-shadow: var(--shadow-medium) !important;
+    text-align: center !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#frontend-viz-container .viz-overview h3 {
+    color: var(--accent-red) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-md) !important;
+}
+
+#frontend-viz-container .viz-overview .subtitle {
+    font-size: calc(var(--font-size-body) * 1.1) !important;
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Visualization Components Grid */
+#frontend-viz-container .viz-components {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
+    gap: var(--spacing-lg) !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#frontend-viz-container .viz-card {
+    background: var(--secondary-bg) !important;
+    border-radius: 16px !important;
+    padding: var(--spacing-lg) !important;
+    box-shadow: var(--shadow-light) !important;
+    transition: all 0.3s ease !important;
+    border-left: 4px solid var(--accent-red) !important;
+}
+
+#frontend-viz-container .viz-card.prediction {
+    border-left-color: var(--accent-red) !important;
+}
+
+#frontend-viz-container .viz-card.charts {
+    border-left-color: var(--accent-blue) !important;
+}
+
+#frontend-viz-container .viz-card.controls {
+    border-left-color: var(--accent-green) !important;
+}
+
+#frontend-viz-container .viz-card.performance {
+    border-left-color: var(--accent-purple) !important;
+}
+
+#frontend-viz-container .viz-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: var(--shadow-medium) !important;
+}
+
+#frontend-viz-container .viz-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--spacing-sm) !important;
+    margin-bottom: var(--spacing-md) !important;
+    padding-bottom: var(--spacing-sm) !important;
+    border-bottom: 2px solid var(--border-light) !important;
+}
+
+#frontend-viz-container .viz-header i {
+    font-size: var(--font-size-h3) !important;
+}
+
+#frontend-viz-container .viz-card.prediction .viz-header i {
+    color: var(--accent-red) !important;
+}
+
+#frontend-viz-container .viz-card.charts .viz-header i {
+    color: var(--accent-blue) !important;
+}
+
+#frontend-viz-container .viz-card.controls .viz-header i {
+    color: var(--accent-green) !important;
+}
+
+#frontend-viz-container .viz-card.performance .viz-header i {
+    color: var(--accent-purple) !important;
+}
+
+#frontend-viz-container .viz-header h3 {
+    margin: 0 !important;
+    font-family: 'Orbitron', serif !important;
+}
+
+#frontend-viz-container .viz-card.prediction .viz-header h3 {
+    color: var(--accent-red) !important;
+}
+
+#frontend-viz-container .viz-card.charts .viz-header h3 {
+    color: var(--accent-blue) !important;
+}
+
+#frontend-viz-container .viz-card.controls .viz-header h3 {
+    color: var(--accent-green) !important;
+}
+
+#frontend-viz-container .viz-card.performance .viz-header h3 {
+    color: var(--accent-purple) !important;
+}
+
+/* Feature Lists */
+#frontend-viz-container .viz-features {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--spacing-sm) !important;
+}
+
+#frontend-viz-container .feature-item {
+    background: var(--primary-bg) !important;
+    padding: var(--spacing-sm) !important;
+    border-radius: 8px !important;
+    border-left: 3px solid var(--accent-red) !important;
+    font-size: var(--font-size-small) !important;
+    line-height: 1.5 !important;
+    color: var(--text-secondary) !important;
+}
+
+#frontend-viz-container .viz-card.prediction .feature-item {
+    border-left-color: var(--accent-red) !important;
+}
+
+#frontend-viz-container .viz-card.charts .feature-item {
+    border-left-color: var(--accent-blue) !important;
+}
+
+#frontend-viz-container .viz-card.controls .feature-item {
+    border-left-color: var(--accent-green) !important;
+}
+
+#frontend-viz-container .viz-card.performance .feature-item {
+    border-left-color: var(--accent-purple) !important;
+}
+
+/* Animation */
+#frontend-viz-container .animate-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: all 0.6s ease-out !important;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    #frontend-viz-container .slide-content {
+        padding: var(--spacing-md) !important;
+    }
+    
+    #frontend-viz-container .viz-components {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+        gap: var(--spacing-md) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    #frontend-viz-container .slide-content {
+        padding: var(--spacing-sm) !important;
+    }
+    
+    #frontend-viz-container .viz-overview {
+        padding: var(--spacing-lg) !important;
+    }
+    
+    #frontend-viz-container .viz-components {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #frontend-viz-container .slide-content {
+        padding: var(--spacing-xs) !important;
+    }
+    
+    #frontend-viz-container .viz-header {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: var(--spacing-xs) !important;
+    }
+}
+</style>
+
+<div id="frontend-viz-container">
+<div class="slide-content">
+    <h2 class="section-title animate-in">Frontend & Design: Real-Time Visualization System</h2>
+    
+    <div class="viz-overview animate-in">
+        <h3>📈 Live BCI Prediction and Data Visualization</h3>
+        <p class="subtitle">Advanced real-time visualization system providing immediate feedback for BCI experiments with sub-second latency and comprehensive data monitoring capabilities.</p>
+    </div>
+
+    <div class="viz-components animate-in">
+        <div class="viz-card prediction">
+            <div class="viz-header">
+                <i class="fas fa-brain"></i>
+                <h3>Real-Time Prediction Interface</h3>
+            </div>
+            <div class="viz-features">
+                <div class="feature-item">Large, clear current classification display with prominent visual indicators</div>
+                <div class="feature-item">Dynamic confidence metrics with real-time visual feedback</div>
+                <div class="feature-item">Probability distribution bars for all classes with color coding</div>
+                <div class="feature-item">Processing time and session status monitoring with performance metrics</div>
+            </div>
+        </div>
+
+        <div class="viz-card charts">
+            <div class="viz-header">
+                <i class="fas fa-chart-line"></i>
+                <h3>Chart Visualization Components</h3>
+            </div>
+            <div class="viz-features">
+                <div class="feature-item">Multi-line confidence plots updating in real-time with smooth animations</div>
+                <div class="feature-item">Interactive EEG signal displays with filtering and zoom capabilities</div>
+                <div class="feature-item">Training progress charts and accuracy evolution tracking</div>
+                <div class="feature-item">Comparative analysis tools for model performance evaluation</div>
+            </div>
+        </div>
+
+        <div class="viz-card controls">
+            <div class="viz-header">
+                <i class="fas fa-sliders-h"></i>
+                <h3>Interactive Control Panels</h3>
+            </div>
+            <div class="viz-features">
+                <div class="feature-item">Start, stop, and pause controls with clear visual feedback</div>
+                <div class="feature-item">Real-time parameter adjustment capabilities during experiments</div>
+                <div class="feature-item">Live status indicators for data flow and system health</div>
+                <div class="feature-item">Emergency controls for session management and data protection</div>
+            </div>
+        </div>
+
+        <div class="viz-card performance">
+            <div class="viz-header">
+                <i class="fas fa-tachometer-alt"></i>
+                <h3>Performance Features</h3>
+            </div>
+            <div class="viz-features">
+                <div class="feature-item">Sub-second update latency for BCI feedback with optimized rendering</div>
+                <div class="feature-item">Efficient data management and caching for smooth performance</div>
+                <div class="feature-item">Responsive charts that adapt to screen size and device capabilities</div>
+                <div class="feature-item">Automatic quality adjustment based on system performance</div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
