@@ -48,8 +48,7 @@ const PRESENTATION_CONFIG = {
             section: "Approaches & Data",
             title: "Approaches & Data Collection",
             duration: 3.5,
-            description: "Methodology and BCI paradigms",
-            placeholder: true
+            description: "Methodology and BCI paradigms"
         },
         {
             id: "approaches-hardware",

@@ -1,0 +1,1009 @@
+<!-- Approaches & Data Collection Slide 1: Academic Overview -->
+<style>
+/* Standalone CSS for Approaches & Data Collection Slide */
+/* Reset and base styles for this slide only - High specificity to override global styles */
+#approaches-slide-container .slide-content {
+    /* CSS Variables for Academic Theme */
+    --primary-bg: #ffffff;
+    --secondary-bg: #f8f9fa;
+    --tertiary-bg: #e9ecef;
+    --accent-red: #c41e3a;
+    --accent-blue: #1f4e79;
+    --accent-purple: #5a4fcf;
+    --accent-green: #2d7d32;
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --text-muted: #6c757d;
+    --border-light: #dee2e6;
+    --border-primary: #ced4da;
+    --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-heavy: 0 8px 24px rgba(0, 0, 0, 0.16);
+
+    /* Typography Scale */
+    --font-size-h1: clamp(2.5rem, 5vw, 4rem);
+    --font-size-h2: clamp(2rem, 4vw, 3rem);
+    --font-size-h3: clamp(1.5rem, 3vw, 2.2rem);
+    --font-size-h4: clamp(1.25rem, 2.5vw, 1.8rem);
+    --font-size-body: clamp(1rem, 2vw, 1.2rem);
+    --font-size-small: clamp(0.875rem, 1.5vw, 1rem);
+
+    /* Spacing Scale */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-xxl: 4rem;
+
+    /* Base slide styling */
+    max-width: 1400px;
+    width: 100%;
+    text-align: left;
+    padding: var(--spacing-lg);
+    margin: 0 auto;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    font-size: var(--font-size-body);
+    color: var(--text-primary);
+    background: var(--primary-bg);
+}
+
+/* Typography Hierarchy - High specificity to override global styles */
+#approaches-slide-container .slide-content h1,
+#approaches-slide-container .slide-content .h1 {
+    font-family: 'Orbitron', 'Georgia', serif !important;
+    font-size: var(--font-size-h1) !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+    margin-bottom: var(--spacing-lg) !important;
+    color: var(--text-primary) !important;
+}
+
+#approaches-slide-container .slide-content h2,
+#approaches-slide-container .slide-content .h2 {
+    font-family: 'Orbitron', 'Georgia', serif !important;
+    font-size: var(--font-size-h2) !important;
+    font-weight: 600 !important;
+    line-height: 1.3 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--accent-blue) !important;
+}
+
+#approaches-slide-container .slide-content h3,
+#approaches-slide-container .slide-content .h3 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h3) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#approaches-slide-container .slide-content h4,
+#approaches-slide-container .slide-content .h4 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h4) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-sm) !important;
+    color: var(--text-primary) !important;
+}
+
+#approaches-slide-container .slide-content h5,
+#approaches-slide-container .slide-content .h5 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-body) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-xs) !important;
+    color: var(--text-primary) !important;
+}
+
+#approaches-slide-container .slide-content p {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.7 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+    max-width: 75ch !important;
+}
+
+#approaches-slide-container .slide-content .lead {
+    font-size: calc(var(--font-size-body) * 1.125) !important;
+    font-weight: 400 !important;
+    line-height: 1.6 !important;
+    color: var(--text-secondary) !important;
+}
+
+#approaches-slide-container .slide-content ul,
+#approaches-slide-container .slide-content ol {
+    margin-bottom: var(--spacing-md) !important;
+    padding-left: var(--spacing-lg) !important;
+}
+
+#approaches-slide-container .slide-content li {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.6 !important;
+    margin-bottom: var(--spacing-xs) !important;
+    color: var(--text-primary) !important;
+}
+
+#approaches-slide-container .slide-content strong,
+#approaches-slide-container .slide-content .strong {
+    font-weight: 600 !important;
+    color: var(--text-primary) !important;
+}
+
+#approaches-slide-container .slide-content em,
+#approaches-slide-container .slide-content .em {
+    font-style: italic !important;
+    color: var(--text-secondary) !important;
+}
+
+/* Section Title */
+#approaches-slide-container .slide-content .section-title {
+    font-family: 'Orbitron', 'Georgia', serif !important;
+    font-size: var(--font-size-h2) !important;
+    font-weight: 600 !important;
+    margin-bottom: var(--spacing-xl) !important;
+    color: var(--accent-blue) !important;
+    text-align: center !important;
+    line-height: 1.3 !important;
+    letter-spacing: -0.01em !important;
+}
+
+/* Use !important to ensure these styles override any global styles */
+#approaches-slide-container * {
+    box-sizing: border-box;
+}
+
+/* Override all global styles with high specificity */
+#approaches-slide-container .slide-content {
+    all: unset;
+    display: block;
+    max-width: 1400px !important;
+    width: 100% !important;
+    text-align: left !important;
+    padding: var(--spacing-lg) !important;
+    margin: 0 auto !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    line-height: 1.6 !important;
+    font-size: var(--font-size-body) !important;
+    color: var(--text-primary) !important;
+    background: var(--primary-bg) !important;
+}
+
+/* Apply all component styles with high specificity */
+#approaches-slide-container .academic-methodology-overview {
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+/* Global override for all styles within the container */
+#approaches-slide-container .slide-content * {
+    font-family: inherit !important;
+}
+
+#approaches-slide-container .research-objective {
+    background: var(--secondary-bg) !important;
+    padding: var(--spacing-xl) !important;
+    border-radius: 16px !important;
+    border-left: 4px solid var(--accent-blue) !important;
+    margin-bottom: var(--spacing-xl) !important;
+    text-align: center !important;
+    box-shadow: var(--shadow-light) !important;
+}
+
+/* Apply high specificity to all component styles */
+#approaches-slide-container .research-objective h3,
+#approaches-slide-container .paradigm-performance-summary h3,
+#approaches-slide-container .bci-paradigms-section h3,
+#approaches-slide-container .data-collection-pipeline h3,
+#approaches-slide-container .findings-summary h3,
+#approaches-slide-container .conclusion-box h4 {
+    color: var(--accent-blue) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-md) !important;
+    font-size: var(--font-size-h3) !important;
+    text-align: center !important;
+}
+
+#approaches-slide-container .paradigm-performance-summary h3 {
+    color: var(--accent-green) !important;
+}
+
+#approaches-slide-container .bci-paradigms-section h3 {
+    color: var(--accent-purple) !important;
+}
+
+#approaches-slide-container .findings-summary h3 {
+    color: var(--accent-red) !important;
+}
+
+/* Comprehensive component styling with high specificity */
+#approaches-slide-container .performance-grid,
+#approaches-slide-container .paradigms-detailed-grid,
+#approaches-slide-container .pipeline-overview {
+    display: grid !important;
+    gap: var(--spacing-lg) !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#approaches-slide-container .performance-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+}
+
+#approaches-slide-container .paradigms-detailed-grid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
+}
+
+#approaches-slide-container .pipeline-overview {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)) !important;
+}
+
+#approaches-slide-container .performance-card,
+#approaches-slide-container .paradigm-detailed-card,
+#approaches-slide-container .pipeline-section {
+    background: var(--primary-bg) !important;
+    border-radius: 16px !important;
+    padding: var(--spacing-lg) !important;
+    box-shadow: var(--shadow-light) !important;
+    transition: all 0.3s ease !important;
+}
+
+#approaches-slide-container .performance-card:hover,
+#approaches-slide-container .paradigm-detailed-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: var(--shadow-medium) !important;
+}
+
+#approaches-slide-container .academic-findings-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: var(--spacing-lg) 0 !important;
+    background: var(--primary-bg) !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    box-shadow: var(--shadow-medium) !important;
+}
+
+#approaches-slide-container .academic-findings-table th {
+    background: var(--accent-blue) !important;
+    color: white !important;
+    padding: var(--spacing-md) !important;
+    text-align: left !important;
+    font-weight: 600 !important;
+    font-family: 'Orbitron', serif !important;
+}
+
+#approaches-slide-container .academic-findings-table td {
+    padding: var(--spacing-md) !important;
+    border-bottom: 1px solid var(--border-light) !important;
+    font-size: var(--font-size-body) !important;
+    line-height: 1.5 !important;
+    vertical-align: middle !important;
+}
+
+/* Consolidated component styles with high specificity */
+#approaches-slide-container .paradigm-performance-summary,
+#approaches-slide-container .bci-paradigms-section,
+#approaches-slide-container .data-collection-pipeline,
+#approaches-slide-container .findings-summary,
+#approaches-slide-container .research-conclusion {
+    margin: var(--spacing-xl) 0 !important;
+}
+
+/* Performance cards styling */
+#approaches-slide-container .performance-card {
+    border: 2px solid var(--border-light) !important;
+    text-align: center !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+#approaches-slide-container .performance-card::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 4px !important;
+    background: var(--accent-blue) !important;
+}
+
+#approaches-slide-container .performance-card.excellent::before {
+    background: var(--accent-green) !important;
+}
+
+#approaches-slide-container .performance-card.poor::before {
+    background: var(--accent-red) !important;
+}
+
+#approaches-slide-container .performance-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: var(--spacing-sm) !important;
+    margin-bottom: var(--spacing-md) !important;
+    padding-bottom: var(--spacing-sm) !important;
+    border-bottom: 1px solid var(--border-light) !important;
+}
+
+#approaches-slide-container .performance-header i {
+    font-size: var(--font-size-h3) !important;
+    color: var(--accent-blue) !important;
+}
+
+#approaches-slide-container .performance-card.excellent .performance-header i {
+    color: var(--accent-green) !important;
+}
+
+#approaches-slide-container .performance-card.poor .performance-header i {
+    color: var(--accent-red) !important;
+}
+
+#approaches-slide-container .performance-header h4 {
+    margin: 0 !important;
+    font-family: 'Orbitron', serif !important;
+    color: var(--text-primary) !important;
+    font-size: var(--font-size-h4) !important;
+}
+
+#approaches-slide-container .performance-metrics {
+    margin: var(--spacing-md) 0 !important;
+}
+
+#approaches-slide-container .performance-metrics .metric-value {
+    font-family: 'Orbitron', monospace !important;
+    font-size: var(--font-size-h2) !important;
+    font-weight: 700 !important;
+    color: var(--accent-blue) !important;
+    display: block !important;
+    margin-bottom: var(--spacing-xs) !important;
+}
+
+#approaches-slide-container .performance-card.excellent .metric-value {
+    color: var(--accent-green) !important;
+}
+
+#approaches-slide-container .performance-card.poor .metric-value {
+    color: var(--accent-red) !important;
+}
+
+#approaches-slide-container .performance-metrics .metric-label {
+    font-size: var(--font-size-small) !important;
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+#approaches-slide-container .performance-details {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--spacing-xs) !important;
+    margin-top: var(--spacing-md) !important;
+}
+
+#approaches-slide-container .detail-tag {
+    background: var(--tertiary-bg) !important;
+    color: var(--text-primary) !important;
+    padding: var(--spacing-xs) var(--spacing-sm) !important;
+    border-radius: 6px !important;
+    font-size: var(--font-size-small) !important;
+    font-weight: 500 !important;
+    border-left: 3px solid var(--accent-blue) !important;
+}
+
+#approaches-slide-container .detail-tag.success {
+    background: rgba(45, 125, 50, 0.1) !important;
+    border-left-color: var(--accent-green) !important;
+    color: var(--accent-green) !important;
+}
+
+#approaches-slide-container .detail-tag.failure {
+    background: rgba(196, 30, 58, 0.1) !important;
+    border-left-color: var(--accent-red) !important;
+    color: var(--accent-red) !important;
+}
+
+/* Paradigm detailed cards */
+#approaches-slide-container .paradigm-detailed-card {
+    border: 1px solid var(--border-light) !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+#approaches-slide-container .paradigm-detailed-card.successful {
+    border-left: 4px solid var(--accent-green) !important;
+}
+
+#approaches-slide-container .paradigm-detailed-card.discarded {
+    border-left: 4px solid var(--accent-red) !important;
+    background: linear-gradient(135deg, #fff 0%, #fef8f8 100%) !important;
+}
+
+#approaches-slide-container .paradigm-icon-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--spacing-sm) !important;
+    margin-bottom: var(--spacing-md) !important;
+    padding-bottom: var(--spacing-sm) !important;
+    border-bottom: 2px solid var(--border-light) !important;
+}
+
+#approaches-slide-container .paradigm-icon-header i {
+    font-size: var(--font-size-h3) !important;
+    color: var(--accent-blue) !important;
+}
+
+#approaches-slide-container .paradigm-detailed-card.successful .paradigm-icon-header i {
+    color: var(--accent-green) !important;
+}
+
+#approaches-slide-container .paradigm-detailed-card.discarded .paradigm-icon-header i {
+    color: var(--accent-red) !important;
+}
+
+#approaches-slide-container .paradigm-icon-header h4 {
+    margin: 0 !important;
+    flex: 1 !important;
+    font-family: 'Orbitron', serif !important;
+    color: var(--text-primary) !important;
+    font-size: var(--font-size-h4) !important;
+}
+
+#approaches-slide-container .status-indicator {
+    background: var(--accent-blue) !important;
+    color: white !important;
+    padding: var(--spacing-xs) var(--spacing-sm) !important;
+    border-radius: 12px !important;
+    font-size: var(--font-size-small) !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+#approaches-slide-container .status-indicator.success {
+    background: var(--accent-green) !important;
+}
+
+#approaches-slide-container .status-indicator.failure {
+    background: var(--accent-red) !important;
+}
+
+#approaches-slide-container .paradigm-description {
+    margin-bottom: var(--spacing-md) !important;
+    flex: 1 !important;
+}
+
+#approaches-slide-container .paradigm-description p {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.6 !important;
+    color: var(--text-primary) !important;
+    margin: 0 !important;
+}
+
+#approaches-slide-container .technical-implementation {
+    background: var(--secondary-bg) !important;
+    padding: var(--spacing-md) !important;
+    border-radius: 8px !important;
+    margin-top: auto !important;
+}
+
+#approaches-slide-container .technical-implementation h5 {
+    font-size: var(--font-size-small) !important;
+    font-weight: 600 !important;
+    color: var(--accent-blue) !important;
+    margin-bottom: var(--spacing-sm) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+#approaches-slide-container .paradigm-detailed-card.successful .technical-implementation h5 {
+    color: var(--accent-green) !important;
+}
+
+#approaches-slide-container .paradigm-detailed-card.discarded .technical-implementation h5 {
+    color: var(--accent-red) !important;
+}
+
+#approaches-slide-container .technical-implementation ul {
+    margin: 0 !important;
+    padding-left: var(--spacing-md) !important;
+}
+
+#approaches-slide-container .technical-implementation li {
+    font-size: var(--font-size-small) !important;
+    line-height: 1.5 !important;
+    margin-bottom: var(--spacing-xs) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Pipeline sections and remaining components */
+#approaches-slide-container .pipeline-section {
+    background: var(--secondary-bg) !important;
+    border-left: 4px solid var(--accent-blue) !important;
+}
+
+#approaches-slide-container .pipeline-section.equipment {
+    border-left-color: var(--accent-green) !important;
+}
+
+#approaches-slide-container .pipeline-section.preprocessing {
+    border-left-color: var(--accent-purple) !important;
+}
+
+#approaches-slide-container .section-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--spacing-sm) !important;
+    margin-bottom: var(--spacing-md) !important;
+    padding-bottom: var(--spacing-sm) !important;
+    border-bottom: 2px solid var(--border-light) !important;
+}
+
+#approaches-slide-container .section-header i {
+    font-size: var(--font-size-h4) !important;
+    color: var(--accent-blue) !important;
+}
+
+#approaches-slide-container .pipeline-section.equipment .section-header i {
+    color: var(--accent-green) !important;
+}
+
+#approaches-slide-container .pipeline-section.preprocessing .section-header i {
+    color: var(--accent-purple) !important;
+}
+
+#approaches-slide-container .section-header h4 {
+    margin: 0 !important;
+    font-family: 'Orbitron', serif !important;
+    color: var(--text-primary) !important;
+    font-size: var(--font-size-h4) !important;
+}
+
+#approaches-slide-container .equipment-specs,
+#approaches-slide-container .preprocessing-steps {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--spacing-sm) !important;
+}
+
+#approaches-slide-container .spec-item,
+#approaches-slide-container .step-item {
+    background: var(--primary-bg) !important;
+    padding: var(--spacing-sm) !important;
+    border-radius: 8px !important;
+    border-left: 3px solid var(--accent-blue) !important;
+    font-size: var(--font-size-small) !important;
+    line-height: 1.5 !important;
+}
+
+#approaches-slide-container .pipeline-section.equipment .spec-item {
+    border-left-color: var(--accent-green) !important;
+}
+
+#approaches-slide-container .pipeline-section.preprocessing .step-item {
+    border-left-color: var(--accent-purple) !important;
+}
+
+/* Table badges and status indicators */
+#approaches-slide-container .feasibility-badge,
+#approaches-slide-container .performance-score,
+#approaches-slide-container .status-badge {
+    padding: var(--spacing-xs) var(--spacing-sm) !important;
+    border-radius: 12px !important;
+    font-size: var(--font-size-small) !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    display: inline-block !important;
+}
+
+#approaches-slide-container .feasibility-badge.high,
+#approaches-slide-container .performance-score.excellent,
+#approaches-slide-container .status-badge.implemented {
+    background: var(--accent-green) !important;
+    color: white !important;
+}
+
+#approaches-slide-container .feasibility-badge.low,
+#approaches-slide-container .performance-score.poor,
+#approaches-slide-container .status-badge.discarded {
+    background: var(--accent-red) !important;
+    color: white !important;
+}
+
+/* Research conclusion */
+#approaches-slide-container .conclusion-box {
+    background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--tertiary-bg) 100%) !important;
+    padding: var(--spacing-xl) !important;
+    border-radius: 20px !important;
+    border: 2px solid var(--accent-blue) !important;
+    box-shadow: var(--shadow-medium) !important;
+    text-align: center !important;
+}
+
+#approaches-slide-container .impact-metrics {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)) !important;
+    gap: var(--spacing-lg) !important;
+    margin-top: var(--spacing-lg) !important;
+}
+
+#approaches-slide-container .impact-item {
+    background: var(--primary-bg) !important;
+    padding: var(--spacing-md) !important;
+    border-radius: 12px !important;
+    border: 2px solid var(--accent-green) !important;
+    text-align: center !important;
+    transition: all 0.3s ease !important;
+}
+
+#approaches-slide-container .impact-item:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: var(--shadow-light) !important;
+}
+
+#approaches-slide-container .impact-number {
+    font-family: 'Orbitron', monospace !important;
+    font-size: var(--font-size-h3) !important;
+    font-weight: 700 !important;
+    color: var(--accent-green) !important;
+    display: block !important;
+    margin-bottom: var(--spacing-xs) !important;
+}
+
+#approaches-slide-container .impact-label {
+    font-size: var(--font-size-small) !important;
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+/* Animation and responsive design */
+#approaches-slide-container .animate-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: all 0.6s ease-out !important;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    #approaches-slide-container .slide-content {
+        padding: var(--spacing-md) !important;
+    }
+
+    #approaches-slide-container .performance-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+        gap: var(--spacing-md) !important;
+    }
+
+    #approaches-slide-container .paradigms-detailed-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+        gap: var(--spacing-md) !important;
+    }
+
+    #approaches-slide-container .pipeline-overview {
+        grid-template-columns: 1fr !important;
+        gap: var(--spacing-md) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    #approaches-slide-container .slide-content {
+        padding: var(--spacing-sm) !important;
+    }
+
+    #approaches-slide-container .section-title {
+        font-size: var(--font-size-h3) !important;
+        margin-bottom: var(--spacing-lg) !important;
+    }
+
+    #approaches-slide-container .performance-grid,
+    #approaches-slide-container .paradigms-detailed-grid {
+        grid-template-columns: 1fr !important;
+        gap: var(--spacing-sm) !important;
+    }
+
+    #approaches-slide-container .performance-card,
+    #approaches-slide-container .paradigm-detailed-card {
+        padding: var(--spacing-md) !important;
+    }
+
+    #approaches-slide-container .academic-findings-table {
+        font-size: var(--font-size-small) !important;
+    }
+
+    #approaches-slide-container .academic-findings-table th,
+    #approaches-slide-container .academic-findings-table td {
+        padding: var(--spacing-sm) !important;
+    }
+
+    #approaches-slide-container .impact-metrics {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)) !important;
+        gap: var(--spacing-sm) !important;
+    }
+
+    #approaches-slide-container .conclusion-box {
+        padding: var(--spacing-lg) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #approaches-slide-container .slide-content {
+        padding: var(--spacing-xs) !important;
+    }
+
+    #approaches-slide-container .research-objective,
+    #approaches-slide-container .conclusion-box {
+        padding: var(--spacing-md) !important;
+    }
+
+    #approaches-slide-container .performance-header,
+    #approaches-slide-container .paradigm-icon-header,
+    #approaches-slide-container .section-header {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: var(--spacing-xs) !important;
+    }
+}
+
+/* Print Styles */
+@media print {
+    #approaches-slide-container .slide-content {
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+    }
+
+    #approaches-slide-container .performance-card,
+    #approaches-slide-container .paradigm-detailed-card,
+    #approaches-slide-container .pipeline-section {
+        break-inside: avoid !important;
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+    }
+
+    #approaches-slide-container .academic-findings-table {
+        break-inside: avoid !important;
+    }
+}
+</style>
+
+<div id="approaches-slide-container">
+<div class="slide-content">
+    <h2 class="section-title animate-in">Methodology: Approaches & Data Collection</h2>
+
+    <div class="academic-methodology-overview">
+        <div class="research-objective animate-in">
+            <h3>🎯 Research Objective</h3>
+            <p class="lead">Comprehensive evaluation of three Brain-Computer Interface paradigms using consumer-grade EEG hardware to demonstrate that sophisticated neural communication is achievable with accessible technology through rigorous experimental design and advanced machine learning approaches.</p>
+        </div>
+
+        <div class="paradigm-performance-summary animate-in">
+            <h3>📊 Performance Summary</h3>
+            <div class="performance-grid">
+                <div class="performance-card excellent">
+                    <div class="performance-header">
+                        <i class="fas fa-bolt"></i>
+                        <h4>P300 Paradigm</h4>
+                    </div>
+                    <div class="performance-metrics">
+                        <div class="metric-value">91.16%</div>
+                        <div class="metric-label">Detection Accuracy</div>
+                    </div>
+                    <div class="performance-details">
+                        <span class="detail-tag success">Highly reliable detection</span>
+                        <span class="detail-tag">User-friendly, minimal training</span>
+                    </div>
+                </div>
+
+                <div class="performance-card excellent">
+                    <div class="performance-header">
+                        <i class="fas fa-brain"></i>
+                        <h4>Motor Imagery</h4>
+                    </div>
+                    <div class="performance-metrics">
+                        <div class="metric-value">75%</div>
+                        <div class="metric-label">Classification Accuracy</div>
+                    </div>
+                    <div class="performance-details">
+                        <span class="detail-tag success">Stable ERD/ERS signals</span>
+                        <span class="detail-tag">High classification accuracy</span>
+                    </div>
+                </div>
+
+                <div class="performance-card poor">
+                    <div class="performance-header">
+                        <i class="fas fa-microphone"></i>
+                        <h4>Speech Decoding</h4>
+                    </div>
+                    <div class="performance-metrics">
+                        <div class="metric-value">Poor</div>
+                        <div class="metric-label">High EMG contamination</div>
+                    </div>
+                    <div class="performance-details">
+                        <span class="detail-tag failure">High muscle interference</span>
+                        <span class="detail-tag failure">Not feasible for real-time</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bci-paradigms-section animate-in">
+            <h3>🧠 BCI Paradigms Evaluated</h3>
+            <div class="paradigms-detailed-grid">
+                <div class="paradigm-detailed-card successful">
+                    <div class="paradigm-icon-header">
+                        <i class="fas fa-brain"></i>
+                        <h4>Motor Imagery</h4>
+                        <div class="status-indicator success">Excellent</div>
+                    </div>
+                    <div class="paradigm-description">
+                        <p><strong>Principle:</strong> Imagining movement activates motor cortex without physical movement, producing Event-Related Desynchronization (ERD) in mu (8-12 Hz) and beta (13-30 Hz) frequency bands with clear lateralization patterns.</p>
+                    </div>
+                    <div class="technical-implementation">
+                        <h5>Implementation Details:</h5>
+                        <ul>
+                            <li><strong>Tasks:</strong> Left/Right Hand, Feet, Rest</li>
+                            <li><strong>Features:</strong> CSP feature extraction</li>
+                            <li><strong>Classifier:</strong> ATCNet architecture</li>
+                            <li><strong>Channels:</strong> C3, C4, Cz (motor cortex)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="paradigm-detailed-card successful">
+                    <div class="paradigm-icon-header">
+                        <i class="fas fa-bolt"></i>
+                        <h4>P300 Paradigm</h4>
+                        <div class="status-indicator success">Excellent</div>
+                    </div>
+                    <div class="paradigm-description">
+                        <p><strong>Principle:</strong> Positive EEG deflection occurring ~300ms after recognizing a target stimulus in an oddball paradigm with flashing symbols in matrix interface.</p>
+                    </div>
+                    <div class="technical-implementation">
+                        <h5>Implementation Details:</h5>
+                        <ul>
+                            <li><strong>Signal:</strong> Strong peak at Pz/Cz</li>
+                            <li><strong>Processing:</strong> Time-locked averaging</li>
+                            <li><strong>Classifier:</strong> CNN-LSTM-Attention</li>
+                            <li><strong>Interface:</strong> Matrix flashing paradigm</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="paradigm-detailed-card discarded">
+                    <div class="paradigm-icon-header">
+                        <i class="fas fa-microphone"></i>
+                        <h4>Speech Decoding</h4>
+                        <div class="status-indicator failure">Poor</div>
+                    </div>
+                    <div class="paradigm-description">
+                        <p><strong>Objective:</strong> Attempted to decode speech from brain signals but faced high contamination from facial EMG and inconsistent results with consumer EEG hardware.</p>
+                    </div>
+                    <div class="technical-implementation">
+                        <h5>Challenges Encountered:</h5>
+                        <ul>
+                            <li><strong>Issue:</strong> High muscle interference</li>
+                            <li><strong>Limitation:</strong> Low spatial resolution</li>
+                            <li><strong>Result:</strong> Unreliable for real-time</li>
+                            <li><strong>Conclusion:</strong> Not feasible for consumer EEG</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="data-collection-pipeline animate-in">
+        <h3>🔬 Data Collection & Processing Pipeline</h3>
+        <div class="pipeline-overview">
+            <div class="pipeline-section equipment">
+                <div class="section-header">
+                    <i class="fas fa-microchip"></i>
+                    <h4>Equipment & Protocols</h4>
+                </div>
+                <div class="equipment-specs">
+                    <div class="spec-item">
+                        <strong>Hardware:</strong> Emotiv EPOC+ (14-channel, 128 Hz, saline electrodes)
+                    </div>
+                    <div class="spec-item">
+                        <strong>Paradigm:</strong> Visual cues for structured trials
+                    </div>
+                    <div class="spec-item">
+                        <strong>Sessions:</strong> Multi-session recordings for robustness
+                    </div>
+                    <div class="spec-item">
+                        <strong>Data Format:</strong> CSV annotation with timestamps and channel data
+                    </div>
+                </div>
+            </div>
+
+            <div class="pipeline-section preprocessing">
+                <div class="section-header">
+                    <i class="fas fa-filter"></i>
+                    <h4>Preprocessing & Features</h4>
+                </div>
+                <div class="preprocessing-steps">
+                    <div class="step-item">
+                        <strong>Filtering:</strong> Bandpass filtering (8-30 Hz), Notch at 50 Hz
+                    </div>
+                    <div class="step-item">
+                        <strong>Artifacts:</strong> ICA and statistical thresholding for artifacts
+                    </div>
+                    <div class="step-item">
+                        <strong>Features:</strong> CSP, PSD, and Wavelet Transform features
+                    </div>
+                    <div class="step-item">
+                        <strong>Validation:</strong> Cross-validation training strategy
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="findings-summary animate-in">
+        <h3>📊 Summary of Findings</h3>
+        <table class="academic-findings-table">
+            <thead>
+                <tr>
+                    <th>BCI Paradigm</th>
+                    <th>Feasibility</th>
+                    <th>Performance</th>
+                    <th>Key Characteristics</th>
+                    <th>Implementation Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="success-row">
+                    <td><strong>Motor Imagery</strong></td>
+                    <td><span class="feasibility-badge high">High</span></td>
+                    <td><span class="performance-score excellent">75%</span></td>
+                    <td>Stable ERD/ERS signals, clear lateralization</td>
+                    <td><span class="status-badge implemented">Implemented</span></td>
+                </tr>
+                <tr class="success-row">
+                    <td><strong>P300 Paradigm</strong></td>
+                    <td><span class="feasibility-badge high">High</span></td>
+                    <td><span class="performance-score excellent">91.16%</span></td>
+                    <td>User-friendly, minimal training required</td>
+                    <td><span class="status-badge implemented">Implemented</span></td>
+                </tr>
+                <tr class="failure-row">
+                    <td><strong>Speech Decoding</strong></td>
+                    <td><span class="feasibility-badge low">Low</span></td>
+                    <td><span class="performance-score poor">Poor</span></td>
+                    <td>High EMG contamination, inconsistent patterns</td>
+                    <td><span class="status-badge discarded">Discarded</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="research-conclusion animate-in">
+        <div class="conclusion-box">
+            <h4>🎯 Key Research Conclusion</h4>
+            <p><strong>Validated Hypothesis:</strong> Sophisticated EEG-based Brain-Computer Interface functionality is achievable using consumer-grade hardware when combined with advanced signal processing techniques and machine learning architectures. Success factors include well-designed experimental protocols, robust preprocessing pipelines, and deep learning models specifically optimized for EEG signal characteristics.</p>
+
+            <div class="impact-metrics">
+                <div class="impact-item">
+                    <span class="impact-number">98%</span>
+                    <span class="impact-label">Cost Reduction</span>
+                </div>
+                <div class="impact-item">
+                    <span class="impact-number">2/3</span>
+                    <span class="impact-label">Paradigms Successful</span>
+                </div>
+                <div class="impact-item">
+                    <span class="impact-number">Clinical-Grade</span>
+                    <span class="impact-label">Performance Achieved</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
