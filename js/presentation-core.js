@@ -61,8 +61,10 @@ class NeuroPiPresentation {
         
         // Overview panel clicks
         document.getElementById('overviewPanel').addEventListener('click', (e) => {
-            if (e.target.classList.contains('overview-slide')) {
-                const slideNumber = parseInt(e.target.dataset.slide);
+            // Find the closest overview-slide element (handles clicks on child elements)
+            const overviewSlide = e.target.closest('.overview-slide');
+            if (overviewSlide && overviewSlide.dataset.slide) {
+                const slideNumber = parseInt(overviewSlide.dataset.slide);
                 this.goToSlide(slideNumber);
                 this.toggleOverview();
             }
@@ -340,7 +342,7 @@ class NeuroPiPresentation {
     async goToSlide(slideNumber) {
         if (slideNumber === this.currentSlide || this.isTransitioning) return;
         if (slideNumber < 1 || slideNumber > this.totalSlides) return;
-        
+
         this.isTransitioning = true;
         
         await this.loadSlide(slideNumber);
@@ -388,7 +390,7 @@ class NeuroPiPresentation {
     
     generateOverview() {
         const overviewGrid = document.getElementById('overviewGrid');
-        
+
         PRESENTATION_CONFIG.slides.forEach((slide, index) => {
             const slideElement = document.createElement('div');
             slideElement.className = 'overview-slide';
@@ -408,7 +410,7 @@ class NeuroPiPresentation {
                     </div>
                 </div>
             `;
-            
+
             overviewGrid.appendChild(slideElement);
         });
     }

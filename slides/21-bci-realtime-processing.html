@@ -1,0 +1,518 @@
+<!-- BCI Core Application Slide 7: Real-Time Processing Architecture -->
+<style>
+/* Standalone CSS for BCI Real-Time Processing Slide */
+#bci-realtime-container .slide-content {
+    /* CSS Variables for Academic Theme */
+    --primary-bg: #ffffff;
+    --secondary-bg: #f8f9fa;
+    --tertiary-bg: #e9ecef;
+    --accent-red: #c41e3a;
+    --accent-blue: #1f4e79;
+    --accent-purple: #5a4fcf;
+    --accent-green: #2d7d32;
+    --accent-orange: #f57c00;
+    --accent-teal: #00695c;
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --text-muted: #6c757d;
+    --border-light: #dee2e6;
+    --border-primary: #ced4da;
+    --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-heavy: 0 8px 24px rgba(0, 0, 0, 0.16);
+    
+    /* Typography Scale */
+    --font-size-h1: clamp(2.5rem, 5vw, 4rem);
+    --font-size-h2: clamp(2rem, 4vw, 3rem);
+    --font-size-h3: clamp(1.5rem, 3vw, 2.2rem);
+    --font-size-h4: clamp(1.25rem, 2.5vw, 1.8rem);
+    --font-size-body: clamp(1rem, 2vw, 1.2rem);
+    --font-size-small: clamp(0.875rem, 1.5vw, 1rem);
+    
+    /* Spacing Scale */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-xxl: 4rem;
+    
+    /* Base slide styling */
+    all: unset;
+    display: block;
+    max-width: 1400px !important;
+    width: 100% !important;
+    text-align: left !important;
+    padding: var(--spacing-lg) !important;
+    margin: 0 auto !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    line-height: 1.6 !important;
+    font-size: var(--font-size-body) !important;
+    color: var(--text-primary) !important;
+    background: var(--primary-bg) !important;
+    height: 100vh !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+
+/* Custom scrollbar styling for standalone slides */
+#bci-realtime-container .slide-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+#bci-realtime-container .slide-content::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
+}
+
+#bci-realtime-container .slide-content::-webkit-scrollbar-thumb {
+    background: rgba(31, 78, 121, 0.3);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+#bci-realtime-container .slide-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(31, 78, 121, 0.5);
+}
+
+/* Firefox scrollbar styling */
+#bci-realtime-container .slide-content {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(31, 78, 121, 0.3) transparent;
+}
+
+#bci-realtime-container * {
+    box-sizing: border-box;
+}
+
+#bci-realtime-container .slide-content * {
+    font-family: inherit !important;
+}
+
+/* Typography */
+#bci-realtime-container .slide-content h2 {
+    font-family: 'Orbitron', 'Georgia', serif !important;
+    font-size: var(--font-size-h2) !important;
+    font-weight: 600 !important;
+    line-height: 1.3 !important;
+    margin-bottom: var(--spacing-xl) !important;
+    color: var(--accent-blue) !important;
+    text-align: center !important;
+    letter-spacing: -0.01em !important;
+}
+
+#bci-realtime-container .slide-content h3 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h3) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#bci-realtime-container .slide-content h4 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h4) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-sm) !important;
+    color: var(--text-primary) !important;
+}
+
+#bci-realtime-container .slide-content p {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.7 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#bci-realtime-container .slide-content ul {
+    margin-bottom: var(--spacing-md) !important;
+    padding-left: var(--spacing-lg) !important;
+}
+
+#bci-realtime-container .slide-content li {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.6 !important;
+    margin-bottom: var(--spacing-xs) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Real-Time Overview */
+#bci-realtime-container .realtime-overview {
+    background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--tertiary-bg) 100%) !important;
+    padding: var(--spacing-xl) !important;
+    border-radius: 20px !important;
+    border: 2px solid var(--accent-red) !important;
+    box-shadow: var(--shadow-medium) !important;
+    text-align: center !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#bci-realtime-container .realtime-overview h3 {
+    color: var(--accent-red) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-md) !important;
+}
+
+#bci-realtime-container .realtime-overview .subtitle {
+    font-size: calc(var(--font-size-body) * 1.1) !important;
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Real-Time Diagram Placeholder */
+#bci-realtime-container .realtime-diagram {
+    background: var(--secondary-bg) !important;
+    border: 2px dashed var(--accent-red) !important;
+    border-radius: 12px !important;
+    padding: var(--spacing-xl) !important;
+    text-align: center !important;
+    margin: var(--spacing-xl) 0 !important;
+    min-height: 200px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+}
+
+#bci-realtime-container .diagram-placeholder {
+    color: var(--accent-red) !important;
+    font-size: var(--font-size-h4) !important;
+    font-weight: 600 !important;
+    margin-bottom: var(--spacing-sm) !important;
+}
+
+#bci-realtime-container .diagram-description {
+    color: var(--text-secondary) !important;
+    font-size: var(--font-size-small) !important;
+    font-style: italic !important;
+}
+
+/* Challenge-Solution Grid */
+#bci-realtime-container .challenge-solution {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: var(--spacing-lg) !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#bci-realtime-container .challenge-card, 
+#bci-realtime-container .solution-card {
+    background: var(--secondary-bg) !important;
+    border-radius: 16px !important;
+    padding: var(--spacing-lg) !important;
+    box-shadow: var(--shadow-light) !important;
+    transition: all 0.3s ease !important;
+}
+
+#bci-realtime-container .challenge-card {
+    border-left: 4px solid var(--accent-red) !important;
+}
+
+#bci-realtime-container .solution-card {
+    border-left: 4px solid var(--accent-green) !important;
+}
+
+#bci-realtime-container .challenge-card:hover,
+#bci-realtime-container .solution-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: var(--shadow-medium) !important;
+}
+
+#bci-realtime-container .card-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--spacing-sm) !important;
+    margin-bottom: var(--spacing-md) !important;
+    padding-bottom: var(--spacing-sm) !important;
+    border-bottom: 2px solid var(--border-light) !important;
+}
+
+#bci-realtime-container .card-header i {
+    font-size: var(--font-size-h3) !important;
+}
+
+#bci-realtime-container .challenge-card .card-header i {
+    color: var(--accent-red) !important;
+}
+
+#bci-realtime-container .solution-card .card-header i {
+    color: var(--accent-green) !important;
+}
+
+#bci-realtime-container .card-header h3 {
+    margin: 0 !important;
+    font-family: 'Orbitron', serif !important;
+}
+
+#bci-realtime-container .challenge-card .card-header h3 {
+    color: var(--accent-red) !important;
+}
+
+#bci-realtime-container .solution-card .card-header h3 {
+    color: var(--accent-green) !important;
+}
+
+/* Features Grid */
+#bci-realtime-container .features-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+    gap: var(--spacing-lg) !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#bci-realtime-container .feature-card {
+    background: var(--secondary-bg) !important;
+    border-radius: 16px !important;
+    padding: var(--spacing-lg) !important;
+    box-shadow: var(--shadow-light) !important;
+    transition: all 0.3s ease !important;
+    border-left: 4px solid var(--accent-blue) !important;
+}
+
+#bci-realtime-container .feature-card.threads {
+    border-left-color: var(--accent-blue) !important;
+}
+
+#bci-realtime-container .feature-card.buffer {
+    border-left-color: var(--accent-purple) !important;
+}
+
+#bci-realtime-container .feature-card.queue {
+    border-left-color: var(--accent-orange) !important;
+}
+
+#bci-realtime-container .feature-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: var(--shadow-medium) !important;
+}
+
+#bci-realtime-container .feature-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--spacing-sm) !important;
+    margin-bottom: var(--spacing-md) !important;
+    padding-bottom: var(--spacing-sm) !important;
+    border-bottom: 2px solid var(--border-light) !important;
+}
+
+#bci-realtime-container .feature-header i {
+    font-size: var(--font-size-h3) !important;
+}
+
+#bci-realtime-container .feature-card.threads .feature-header i {
+    color: var(--accent-blue) !important;
+}
+
+#bci-realtime-container .feature-card.buffer .feature-header i {
+    color: var(--accent-purple) !important;
+}
+
+#bci-realtime-container .feature-card.queue .feature-header i {
+    color: var(--accent-orange) !important;
+}
+
+#bci-realtime-container .feature-header h4 {
+    margin: 0 !important;
+    font-family: 'Orbitron', serif !important;
+}
+
+#bci-realtime-container .feature-card.threads .feature-header h4 {
+    color: var(--accent-blue) !important;
+}
+
+#bci-realtime-container .feature-card.buffer .feature-header h4 {
+    color: var(--accent-purple) !important;
+}
+
+#bci-realtime-container .feature-card.queue .feature-header h4 {
+    color: var(--accent-orange) !important;
+}
+
+#bci-realtime-container .feature-description {
+    font-size: var(--font-size-small) !important;
+    color: var(--text-secondary) !important;
+    line-height: 1.5 !important;
+}
+
+/* Technical Features */
+#bci-realtime-container .technical-features {
+    background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%) !important;
+    padding: var(--spacing-xl) !important;
+    border-radius: 16px !important;
+    border: 2px solid var(--accent-teal) !important;
+    box-shadow: var(--shadow-light) !important;
+}
+
+#bci-realtime-container .technical-features h3 {
+    color: var(--accent-teal) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-lg) !important;
+    text-align: center !important;
+}
+
+#bci-realtime-container .tech-features-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+    gap: var(--spacing-md) !important;
+}
+
+#bci-realtime-container .tech-feature-item {
+    background: var(--primary-bg) !important;
+    padding: var(--spacing-md) !important;
+    border-radius: 12px !important;
+    border-left: 4px solid var(--accent-teal) !important;
+    box-shadow: var(--shadow-light) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--spacing-sm) !important;
+}
+
+#bci-realtime-container .tech-feature-item i {
+    color: var(--accent-teal) !important;
+    font-size: var(--font-size-h4) !important;
+}
+
+#bci-realtime-container .tech-feature-text {
+    font-size: var(--font-size-body) !important;
+    color: var(--text-primary) !important;
+    font-weight: 500 !important;
+}
+
+/* Animation */
+#bci-realtime-container .animate-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: all 0.6s ease-out !important;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    #bci-realtime-container .slide-content {
+        padding: var(--spacing-md) !important;
+    }
+    
+    #bci-realtime-container .challenge-solution {
+        grid-template-columns: 1fr !important;
+        gap: var(--spacing-md) !important;
+    }
+    
+    #bci-realtime-container .features-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+        gap: var(--spacing-md) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    #bci-realtime-container .slide-content {
+        padding: var(--spacing-sm) !important;
+    }
+    
+    #bci-realtime-container .features-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    #bci-realtime-container .tech-features-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #bci-realtime-container .slide-content {
+        padding: var(--spacing-xs) !important;
+    }
+    
+    #bci-realtime-container .card-header,
+    #bci-realtime-container .feature-header {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: var(--spacing-xs) !important;
+    }
+}
+</style>
+
+<div id="bci-realtime-container">
+<div class="slide-content">
+    <h2 class="section-title animate-in">BCI Core Application: Real-Time Processing Architecture</h2>
+    
+    <div class="realtime-overview animate-in">
+        <h3>⚡ Bridging Real-Time and Web Paradigms</h3>
+        <p class="subtitle">Dual-processing architecture with background threads, circular buffer management, and queue-based communication protocols for seamless real-time EEG processing integration with web applications.</p>
+    </div>
+
+    <div class="realtime-diagram animate-in">
+        <div class="diagram-placeholder">⚡ Figure 4.46: Dual-Processing Architecture</div>
+        <div class="diagram-description">Dual-path diagram showing real-time data stream and web interface connected by buffer management system</div>
+    </div>
+
+    <div class="challenge-solution animate-in">
+        <div class="challenge-card">
+            <div class="card-header">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h3>Challenge</h3>
+            </div>
+            <p>Real-time EEG processing requires continuous data acquisition and immediate response, while web applications operate on request-response paradigms with inherent latency.</p>
+        </div>
+
+        <div class="solution-card">
+            <div class="card-header">
+                <i class="fas fa-lightbulb"></i>
+                <h3>Solution</h3>
+            </div>
+            <p>Dual-processing architecture with background threads for data acquisition, circular buffer management, and queue-based communication protocols.</p>
+        </div>
+    </div>
+
+    <div class="features-grid animate-in">
+        <div class="feature-card threads">
+            <div class="feature-header">
+                <i class="fas fa-cogs"></i>
+                <h4>Background Threads</h4>
+            </div>
+            <div class="feature-description">
+                Dedicated threads for continuous data acquisition with Threading.Lock synchronization and automatic overflow protection mechanisms.
+            </div>
+        </div>
+
+        <div class="feature-card buffer">
+            <div class="feature-header">
+                <i class="fas fa-memory"></i>
+                <h4>Circular Buffer Management</h4>
+            </div>
+            <div class="feature-description">
+                2-4 second sliding windows with memory optimization, automatic overflow protection, and configurable buffer sizes for different paradigms.
+            </div>
+        </div>
+
+        <div class="feature-card queue">
+            <div class="feature-header">
+                <i class="fas fa-exchange-alt"></i>
+                <h4>Queue-based Communication</h4>
+            </div>
+            <div class="feature-description">
+                Asynchronous communication protocols between real-time processing and web interface with message queuing and event coordination.
+            </div>
+        </div>
+    </div>
+
+    <div class="technical-features animate-in">
+        <h3>🔧 Technical Features</h3>
+        <div class="tech-features-grid">
+            <div class="tech-feature-item">
+                <i class="fas fa-lock"></i>
+                <div class="tech-feature-text">Threading.Lock synchronization</div>
+            </div>
+            <div class="tech-feature-item">
+                <i class="fas fa-shield-alt"></i>
+                <div class="tech-feature-text">Automatic overflow protection</div>
+            </div>
+            <div class="tech-feature-item">
+                <i class="fas fa-tachometer-alt"></i>
+                <div class="tech-feature-text">Memory optimization</div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

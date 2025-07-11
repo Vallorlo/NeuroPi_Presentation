@@ -181,13 +181,36 @@ const PRESENTATION_CONFIG = {
 
         //BCI - BACKEND
         {
-            id: "backend-bci",
-            file: "slides/12-backend-bci.html",
-            section: "Backend Systems",
-            title: "Backend: BCI Core Application",
+            id: "bci-integration-overview",
+            file: "slides/18-bci-integration-overview.html",
+            section: "BCI Core Application",
+            title: "BCI Integration Architecture Overview",
             duration: 3.5,
-            description: "Real-time processing and ML integration",
-            placeholder: true
+            description: "Multi-layered BCI integration approach"
+        },
+        {
+            id: "bci-modular-architecture",
+            file: "slides/19-bci-modular-architecture.html",
+            section: "BCI Core Application",
+            title: "Modular Architecture Design",
+            duration: 3.5,
+            description: "Eight integrated Django applications"
+        },
+        {
+            id: "bci-database-architecture",
+            file: "slides/20-bci-database-architecture.html",
+            section: "BCI Core Application",
+            title: "Database Architecture",
+            duration: 3.5,
+            description: "Sophisticated schema design"
+        },
+        {
+            id: "bci-realtime-processing",
+            file: "slides/21-bci-realtime-processing.html",
+            section: "BCI Core Application",
+            title: "Real-Time Processing Architecture",
+            duration: 3.5,
+            description: "Bridging real-time and web paradigms"
         },
         
         // ============= CONCLUSION & FUTURE =============
@@ -246,6 +269,10 @@ const PRESENTATION_CONFIG = {
         "Backend Systems": {
             color: "#fd7e14",
             gradient: "linear-gradient(135deg, #fd7e14 0%, #ffc107 100%)"
+        },
+        "BCI Core Application": {
+            color: "#6f42c1",
+            gradient: "linear-gradient(135deg, #6f42c1 0%, #764ba2 100%)"
         },
         "Conclusion & Future": {
             color: "#e83e8c",

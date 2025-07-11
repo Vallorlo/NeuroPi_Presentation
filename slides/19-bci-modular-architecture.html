@@ -1,0 +1,473 @@
+<!-- BCI Core Application Slide 2: Modular Architecture Design -->
+<style>
+/* Standalone CSS for BCI Modular Architecture Slide */
+#bci-modular-container .slide-content {
+    /* CSS Variables for Academic Theme */
+    --primary-bg: #ffffff;
+    --secondary-bg: #f8f9fa;
+    --tertiary-bg: #e9ecef;
+    --accent-red: #c41e3a;
+    --accent-blue: #1f4e79;
+    --accent-purple: #5a4fcf;
+    --accent-green: #2d7d32;
+    --accent-orange: #f57c00;
+    --accent-teal: #00695c;
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --text-muted: #6c757d;
+    --border-light: #dee2e6;
+    --border-primary: #ced4da;
+    --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-heavy: 0 8px 24px rgba(0, 0, 0, 0.16);
+    
+    /* Typography Scale */
+    --font-size-h1: clamp(2.5rem, 5vw, 4rem);
+    --font-size-h2: clamp(2rem, 4vw, 3rem);
+    --font-size-h3: clamp(1.5rem, 3vw, 2.2rem);
+    --font-size-h4: clamp(1.25rem, 2.5vw, 1.8rem);
+    --font-size-body: clamp(1rem, 2vw, 1.2rem);
+    --font-size-small: clamp(0.875rem, 1.5vw, 1rem);
+    
+    /* Spacing Scale */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-xxl: 4rem;
+    
+    /* Base slide styling */
+    all: unset;
+    display: block;
+    max-width: 1400px !important;
+    width: 100% !important;
+    text-align: left !important;
+    padding: var(--spacing-lg) !important;
+    margin: 0 auto !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    line-height: 1.6 !important;
+    font-size: var(--font-size-body) !important;
+    color: var(--text-primary) !important;
+    background: var(--primary-bg) !important;
+    height: 100vh !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+
+/* Custom scrollbar styling for standalone slides */
+#bci-modular-container .slide-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+#bci-modular-container .slide-content::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
+}
+
+#bci-modular-container .slide-content::-webkit-scrollbar-thumb {
+    background: rgba(31, 78, 121, 0.3);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+#bci-modular-container .slide-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(31, 78, 121, 0.5);
+}
+
+/* Firefox scrollbar styling */
+#bci-modular-container .slide-content {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(31, 78, 121, 0.3) transparent;
+}
+
+#bci-modular-container * {
+    box-sizing: border-box;
+}
+
+#bci-modular-container .slide-content * {
+    font-family: inherit !important;
+}
+
+/* Typography */
+#bci-modular-container .slide-content h2 {
+    font-family: 'Orbitron', 'Georgia', serif !important;
+    font-size: var(--font-size-h2) !important;
+    font-weight: 600 !important;
+    line-height: 1.3 !important;
+    margin-bottom: var(--spacing-xl) !important;
+    color: var(--accent-blue) !important;
+    text-align: center !important;
+    letter-spacing: -0.01em !important;
+}
+
+#bci-modular-container .slide-content h3 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h3) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#bci-modular-container .slide-content h4 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h4) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-sm) !important;
+    color: var(--text-primary) !important;
+}
+
+#bci-modular-container .slide-content p {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.7 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#bci-modular-container .slide-content ul {
+    margin-bottom: var(--spacing-md) !important;
+    padding-left: var(--spacing-lg) !important;
+}
+
+#bci-modular-container .slide-content li {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.6 !important;
+    margin-bottom: var(--spacing-xs) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Modular Overview */
+#bci-modular-container .modular-overview {
+    background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--tertiary-bg) 100%) !important;
+    padding: var(--spacing-xl) !important;
+    border-radius: 20px !important;
+    border: 2px solid var(--accent-green) !important;
+    box-shadow: var(--shadow-medium) !important;
+    text-align: center !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#bci-modular-container .modular-overview h3 {
+    color: var(--accent-green) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-md) !important;
+}
+
+#bci-modular-container .modular-overview .subtitle {
+    font-size: calc(var(--font-size-body) * 1.1) !important;
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Modular Diagram Placeholder */
+#bci-modular-container .modular-diagram {
+    background: var(--secondary-bg) !important;
+    border: 2px dashed var(--accent-green) !important;
+    border-radius: 12px !important;
+    padding: var(--spacing-xl) !important;
+    text-align: center !important;
+    margin: var(--spacing-xl) 0 !important;
+    min-height: 200px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+}
+
+#bci-modular-container .diagram-placeholder {
+    color: var(--accent-green) !important;
+    font-size: var(--font-size-h4) !important;
+    font-weight: 600 !important;
+    margin-bottom: var(--spacing-sm) !important;
+}
+
+#bci-modular-container .diagram-description {
+    color: var(--text-secondary) !important;
+    font-size: var(--font-size-small) !important;
+    font-style: italic !important;
+}
+
+/* Applications Grid */
+#bci-modular-container .applications-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+    gap: var(--spacing-lg) !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#bci-modular-container .app-card {
+    background: var(--secondary-bg) !important;
+    border-radius: 16px !important;
+    padding: var(--spacing-lg) !important;
+    box-shadow: var(--shadow-light) !important;
+    transition: all 0.3s ease !important;
+    border-left: 4px solid var(--accent-blue) !important;
+}
+
+#bci-modular-container .app-card.core {
+    border-left-color: var(--accent-blue) !important;
+}
+
+#bci-modular-container .app-card.data {
+    border-left-color: var(--accent-purple) !important;
+}
+
+#bci-modular-container .app-card.visualization {
+    border-left-color: var(--accent-orange) !important;
+}
+
+#bci-modular-container .app-card.processing {
+    border-left-color: var(--accent-teal) !important;
+}
+
+#bci-modular-container .app-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: var(--shadow-medium) !important;
+}
+
+#bci-modular-container .app-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--spacing-sm) !important;
+    margin-bottom: var(--spacing-md) !important;
+    padding-bottom: var(--spacing-sm) !important;
+    border-bottom: 2px solid var(--border-light) !important;
+}
+
+#bci-modular-container .app-header i {
+    font-size: var(--font-size-h3) !important;
+}
+
+#bci-modular-container .app-card.core .app-header i {
+    color: var(--accent-blue) !important;
+}
+
+#bci-modular-container .app-card.data .app-header i {
+    color: var(--accent-purple) !important;
+}
+
+#bci-modular-container .app-card.visualization .app-header i {
+    color: var(--accent-orange) !important;
+}
+
+#bci-modular-container .app-card.processing .app-header i {
+    color: var(--accent-teal) !important;
+}
+
+#bci-modular-container .app-header h4 {
+    margin: 0 !important;
+    font-family: 'Orbitron', serif !important;
+}
+
+#bci-modular-container .app-card.core .app-header h4 {
+    color: var(--accent-blue) !important;
+}
+
+#bci-modular-container .app-card.data .app-header h4 {
+    color: var(--accent-purple) !important;
+}
+
+#bci-modular-container .app-card.visualization .app-header h4 {
+    color: var(--accent-orange) !important;
+}
+
+#bci-modular-container .app-card.processing .app-header h4 {
+    color: var(--accent-teal) !important;
+}
+
+#bci-modular-container .app-list {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+#bci-modular-container .app-list li {
+    background: var(--primary-bg) !important;
+    padding: var(--spacing-sm) !important;
+    border-radius: 8px !important;
+    margin-bottom: var(--spacing-xs) !important;
+    border-left: 3px solid var(--accent-blue) !important;
+    font-size: var(--font-size-small) !important;
+    line-height: 1.5 !important;
+    color: var(--text-secondary) !important;
+}
+
+#bci-modular-container .app-card.core .app-list li {
+    border-left-color: var(--accent-blue) !important;
+}
+
+#bci-modular-container .app-card.data .app-list li {
+    border-left-color: var(--accent-purple) !important;
+}
+
+#bci-modular-container .app-card.visualization .app-list li {
+    border-left-color: var(--accent-orange) !important;
+}
+
+#bci-modular-container .app-card.processing .app-list li {
+    border-left-color: var(--accent-teal) !important;
+}
+
+/* Key Features Section */
+#bci-modular-container .key-features {
+    background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%) !important;
+    padding: var(--spacing-xl) !important;
+    border-radius: 16px !important;
+    border: 2px solid var(--accent-green) !important;
+    box-shadow: var(--shadow-light) !important;
+}
+
+#bci-modular-container .key-features h3 {
+    color: var(--accent-green) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-lg) !important;
+    text-align: center !important;
+}
+
+#bci-modular-container .features-list {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+    gap: var(--spacing-md) !important;
+}
+
+#bci-modular-container .feature-item {
+    background: var(--primary-bg) !important;
+    padding: var(--spacing-md) !important;
+    border-radius: 12px !important;
+    border-left: 4px solid var(--accent-green) !important;
+    box-shadow: var(--shadow-light) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--spacing-sm) !important;
+}
+
+#bci-modular-container .feature-item i {
+    color: var(--accent-green) !important;
+    font-size: var(--font-size-h4) !important;
+}
+
+#bci-modular-container .feature-text {
+    font-size: var(--font-size-body) !important;
+    color: var(--text-primary) !important;
+    font-weight: 500 !important;
+}
+
+/* Animation */
+#bci-modular-container .animate-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: all 0.6s ease-out !important;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    #bci-modular-container .slide-content {
+        padding: var(--spacing-md) !important;
+    }
+    
+    #bci-modular-container .applications-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+        gap: var(--spacing-md) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    #bci-modular-container .slide-content {
+        padding: var(--spacing-sm) !important;
+    }
+    
+    #bci-modular-container .applications-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    #bci-modular-container .features-list {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #bci-modular-container .slide-content {
+        padding: var(--spacing-xs) !important;
+    }
+    
+    #bci-modular-container .app-header {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: var(--spacing-xs) !important;
+    }
+}
+</style>
+
+<div id="bci-modular-container">
+<div class="slide-content">
+    <h2 class="section-title animate-in">BCI Core Application: Modular Architecture Design</h2>
+    
+    <div class="modular-overview animate-in">
+        <h3>🧩 Eight Integrated Django Applications</h3>
+        <p class="subtitle">Clear separation of concerns with standardized interfaces and seamless inter-application communication for scalable BCI research platform development.</p>
+    </div>
+
+    <div class="modular-diagram animate-in">
+        <div class="diagram-placeholder">🧩 Figure 4.44: Modular Django Applications</div>
+        <div class="diagram-description">Modular building blocks showing how eight applications fit together to form the complete system</div>
+    </div>
+
+    <div class="applications-grid animate-in">
+        <div class="app-card core">
+            <div class="app-header">
+                <i class="fas fa-users"></i>
+                <h4>Core Applications</h4>
+            </div>
+            <ul class="app-list">
+                <li><strong>accounts</strong> - User management and authentication</li>
+                <li><strong>user_management</strong> - Research participation coordination</li>
+                <li><strong>bci</strong> - Primary BCI orchestrator and control</li>
+            </ul>
+        </div>
+
+        <div class="app-card data">
+            <div class="app-header">
+                <i class="fas fa-database"></i>
+                <h4>Data Collection</h4>
+            </div>
+            <ul class="app-list">
+                <li><strong>trials</strong> - Experimental trial management</li>
+                <li><strong>motor_imagery</strong> - Motor imagery paradigm implementation</li>
+                <li><strong>preprocessor</strong> - Signal processing and filtering</li>
+            </ul>
+        </div>
+
+        <div class="app-card visualization">
+            <div class="app-header">
+                <i class="fas fa-chart-line"></i>
+                <h4>Data Visualization</h4>
+            </div>
+            <ul class="app-list">
+                <li><strong>eeg_visualization</strong> - Real-time EEG display</li>
+                <li><strong>plot</strong> - Data analysis and plotting tools</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="key-features animate-in">
+        <h3>🔑 Key Features</h3>
+        <div class="features-list">
+            <div class="feature-item">
+                <i class="fas fa-layer-group"></i>
+                <div class="feature-text">Clear separation of concerns</div>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-plug"></i>
+                <div class="feature-text">Standardized interfaces</div>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-network-wired"></i>
+                <div class="feature-text">Seamless inter-application communication</div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

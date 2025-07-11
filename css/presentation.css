@@ -283,13 +283,16 @@ body::before {
     cursor: pointer;
     transition: all 0.3s ease;
     display: flex;
+    align-items: center;
     gap: 1rem;
+    user-select: none;
 }
 
 .overview-slide:hover {
     border-color: var(--accent-blue);
     transform: translateX(5px);
     box-shadow: var(--shadow-light);
+    background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
 }
 
 .overview-slide.current {
