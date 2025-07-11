@@ -1,7 +1,7 @@
-<!-- BCI Core Application Slide 3: Database Architecture -->
+<!-- Data Collection Infrastructure Slide 1: Overview -->
 <style>
-/* Standalone CSS for BCI Database Architecture Slide */
-#bci-database-container .slide-content {
+/* Standalone CSS for Data Collection Overview Slide */
+#data-collection-container .slide-content {
     /* CSS Variables for Academic Theme */
     --primary-bg: #ffffff;
     --secondary-bg: #f8f9fa;
@@ -57,41 +57,41 @@
 }
 
 /* Custom scrollbar styling for standalone slides */
-#bci-database-container .slide-content::-webkit-scrollbar {
+#data-collection-container .slide-content::-webkit-scrollbar {
     width: 8px;
 }
 
-#bci-database-container .slide-content::-webkit-scrollbar-track {
+#data-collection-container .slide-content::-webkit-scrollbar-track {
     background: transparent;
     border-radius: 4px;
 }
 
-#bci-database-container .slide-content::-webkit-scrollbar-thumb {
+#data-collection-container .slide-content::-webkit-scrollbar-thumb {
     background: rgba(31, 78, 121, 0.3);
     border-radius: 4px;
     transition: background 0.3s ease;
 }
 
-#bci-database-container .slide-content::-webkit-scrollbar-thumb:hover {
+#data-collection-container .slide-content::-webkit-scrollbar-thumb:hover {
     background: rgba(31, 78, 121, 0.5);
 }
 
 /* Firefox scrollbar styling */
-#bci-database-container .slide-content {
+#data-collection-container .slide-content {
     scrollbar-width: thin;
     scrollbar-color: transparent transparent;
 }
 
-#bci-database-container * {
+#data-collection-container * {
     box-sizing: border-box;
 }
 
-#bci-database-container .slide-content * {
+#data-collection-container .slide-content * {
     font-family: inherit !important;
 }
 
 /* Typography */
-#bci-database-container .slide-content h2 {
+#data-collection-container .slide-content h2 {
     font-family: 'Orbitron', 'Georgia', serif !important;
     font-size: var(--font-size-h2) !important;
     font-weight: 600 !important;
@@ -102,7 +102,7 @@
     letter-spacing: -0.01em !important;
 }
 
-#bci-database-container .slide-content h3 {
+#data-collection-container .slide-content h3 {
     font-family: 'Inter', sans-serif !important;
     font-size: var(--font-size-h3) !important;
     font-weight: 600 !important;
@@ -111,7 +111,7 @@
     color: var(--text-primary) !important;
 }
 
-#bci-database-container .slide-content h4 {
+#data-collection-container .slide-content h4 {
     font-family: 'Inter', sans-serif !important;
     font-size: var(--font-size-h4) !important;
     font-weight: 600 !important;
@@ -120,53 +120,53 @@
     color: var(--text-primary) !important;
 }
 
-#bci-database-container .slide-content p {
+#data-collection-container .slide-content p {
     font-size: var(--font-size-body) !important;
     line-height: 1.7 !important;
     margin-bottom: var(--spacing-md) !important;
     color: var(--text-primary) !important;
 }
 
-#bci-database-container .slide-content ul {
+#data-collection-container .slide-content ul {
     margin-bottom: var(--spacing-md) !important;
     padding-left: var(--spacing-lg) !important;
 }
 
-#bci-database-container .slide-content li {
+#data-collection-container .slide-content li {
     font-size: var(--font-size-body) !important;
     line-height: 1.6 !important;
     margin-bottom: var(--spacing-xs) !important;
     color: var(--text-primary) !important;
 }
 
-/* Database Overview */
-#bci-database-container .database-overview {
+/* Data Collection Overview */
+#data-collection-container .data-overview {
     background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--tertiary-bg) 100%) !important;
     padding: var(--spacing-xl) !important;
     border-radius: 20px !important;
-    border: 2px solid var(--accent-teal) !important;
+    border: 2px solid var(--accent-blue) !important;
     box-shadow: var(--shadow-medium) !important;
     text-align: center !important;
     margin-bottom: var(--spacing-xl) !important;
 }
 
-#bci-database-container .database-overview h3 {
-    color: var(--accent-teal) !important;
+#data-collection-container .data-overview h3 {
+    color: var(--accent-blue) !important;
     font-family: 'Orbitron', serif !important;
     margin-bottom: var(--spacing-md) !important;
 }
 
-#bci-database-container .database-overview .subtitle {
+#data-collection-container .data-overview .subtitle {
     font-size: calc(var(--font-size-body) * 1.1) !important;
     color: var(--text-secondary) !important;
     font-weight: 500 !important;
     margin-bottom: 0 !important;
 }
 
-/* Database Diagram Placeholder */
-#bci-database-container .database-diagram {
+/* Architecture Diagram Placeholder */
+#data-collection-container .architecture-diagram {
     background: var(--secondary-bg) !important;
-    border: 2px dashed var(--accent-teal) !important;
+    border: 2px dashed var(--accent-blue) !important;
     border-radius: 12px !important;
     padding: var(--spacing-xl) !important;
     text-align: center !important;
@@ -178,28 +178,28 @@
     flex-direction: column !important;
 }
 
-#bci-database-container .diagram-placeholder {
-    color: var(--accent-teal) !important;
+#data-collection-container .diagram-placeholder {
+    color: var(--accent-blue) !important;
     font-size: var(--font-size-h4) !important;
     font-weight: 600 !important;
     margin-bottom: var(--spacing-sm) !important;
 }
 
-#bci-database-container .diagram-description {
+#data-collection-container .diagram-description {
     color: var(--text-secondary) !important;
     font-size: var(--font-size-small) !important;
     font-style: italic !important;
 }
 
-/* Models Grid */
-#bci-database-container .models-grid {
+/* Infrastructure Components Grid */
+#data-collection-container .infrastructure-grid {
     display: grid !important;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
     gap: var(--spacing-lg) !important;
     margin-bottom: var(--spacing-xl) !important;
 }
 
-#bci-database-container .model-card {
+#data-collection-container .infrastructure-card {
     background: var(--secondary-bg) !important;
     border-radius: 16px !important;
     padding: var(--spacing-lg) !important;
@@ -208,24 +208,24 @@
     border-left: 4px solid var(--accent-blue) !important;
 }
 
-#bci-database-container .model-card.session {
+#data-collection-container .infrastructure-card.hardware {
     border-left-color: var(--accent-blue) !important;
 }
 
-#bci-database-container .model-card.trained {
+#data-collection-container .infrastructure-card.interface {
+    border-left-color: var(--accent-green) !important;
+}
+
+#data-collection-container .infrastructure-card.trials {
     border-left-color: var(--accent-purple) !important;
 }
 
-#bci-database-container .model-card.prediction {
-    border-left-color: var(--accent-orange) !important;
-}
-
-#bci-database-container .model-card:hover {
+#data-collection-container .infrastructure-card:hover {
     transform: translateY(-5px) !important;
     box-shadow: var(--shadow-medium) !important;
 }
 
-#bci-database-container .model-header {
+#data-collection-container .infrastructure-header {
     display: flex !important;
     align-items: center !important;
     gap: var(--spacing-sm) !important;
@@ -234,48 +234,76 @@
     border-bottom: 2px solid var(--border-light) !important;
 }
 
-#bci-database-container .model-header i {
+#data-collection-container .infrastructure-header i {
     font-size: var(--font-size-h3) !important;
 }
 
-#bci-database-container .model-card.session .model-header i {
+#data-collection-container .infrastructure-card.hardware .infrastructure-header i {
     color: var(--accent-blue) !important;
 }
 
-#bci-database-container .model-card.trained .model-header i {
+#data-collection-container .infrastructure-card.interface .infrastructure-header i {
+    color: var(--accent-green) !important;
+}
+
+#data-collection-container .infrastructure-card.trials .infrastructure-header i {
     color: var(--accent-purple) !important;
 }
 
-#bci-database-container .model-card.prediction .model-header i {
-    color: var(--accent-orange) !important;
-}
-
-#bci-database-container .model-header h4 {
+#data-collection-container .infrastructure-header h4 {
     margin: 0 !important;
     font-family: 'Orbitron', serif !important;
 }
 
-#bci-database-container .model-card.session .model-header h4 {
+#data-collection-container .infrastructure-card.hardware .infrastructure-header h4 {
     color: var(--accent-blue) !important;
 }
 
-#bci-database-container .model-card.trained .model-header h4 {
+#data-collection-container .infrastructure-card.interface .infrastructure-header h4 {
+    color: var(--accent-green) !important;
+}
+
+#data-collection-container .infrastructure-card.trials .infrastructure-header h4 {
     color: var(--accent-purple) !important;
 }
 
-#bci-database-container .model-card.prediction .model-header h4 {
-    color: var(--accent-orange) !important;
-}
-
-#bci-database-container .model-description {
+#data-collection-container .infrastructure-description {
     font-size: var(--font-size-small) !important;
     color: var(--text-secondary) !important;
     line-height: 1.5 !important;
     margin-bottom: var(--spacing-md) !important;
 }
 
-/* Features Section */
-#bci-database-container .features-section {
+#data-collection-container .infrastructure-features {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--spacing-xs) !important;
+}
+
+#data-collection-container .feature-item {
+    background: var(--primary-bg) !important;
+    padding: var(--spacing-sm) !important;
+    border-radius: 8px !important;
+    border-left: 3px solid var(--accent-blue) !important;
+    font-size: var(--font-size-small) !important;
+    line-height: 1.5 !important;
+    color: var(--text-secondary) !important;
+}
+
+#data-collection-container .infrastructure-card.hardware .feature-item {
+    border-left-color: var(--accent-blue) !important;
+}
+
+#data-collection-container .infrastructure-card.interface .feature-item {
+    border-left-color: var(--accent-green) !important;
+}
+
+#data-collection-container .infrastructure-card.trials .feature-item {
+    border-left-color: var(--accent-purple) !important;
+}
+
+/* Key Objectives Section */
+#data-collection-container .objectives-section {
     background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%) !important;
     padding: var(--spacing-xl) !important;
     border-radius: 16px !important;
@@ -283,20 +311,20 @@
     box-shadow: var(--shadow-light) !important;
 }
 
-#bci-database-container .features-section h3 {
+#data-collection-container .objectives-section h3 {
     color: var(--accent-teal) !important;
     font-family: 'Orbitron', serif !important;
     margin-bottom: var(--spacing-lg) !important;
     text-align: center !important;
 }
 
-#bci-database-container .features-grid {
+#data-collection-container .objectives-grid {
     display: grid !important;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
     gap: var(--spacing-md) !important;
 }
 
-#bci-database-container .feature-item {
+#data-collection-container .objective-item {
     background: var(--primary-bg) !important;
     padding: var(--spacing-md) !important;
     border-radius: 12px !important;
@@ -307,19 +335,19 @@
     gap: var(--spacing-sm) !important;
 }
 
-#bci-database-container .feature-item i {
+#data-collection-container .objective-item i {
     color: var(--accent-teal) !important;
     font-size: var(--font-size-h4) !important;
 }
 
-#bci-database-container .feature-text {
+#data-collection-container .objective-text {
     font-size: var(--font-size-body) !important;
     color: var(--text-primary) !important;
     font-weight: 500 !important;
 }
 
 /* Animation */
-#bci-database-container .animate-in {
+#data-collection-container .animate-in {
     opacity: 1 !important;
     transform: translateY(0) !important;
     transition: all 0.6s ease-out !important;
@@ -327,36 +355,36 @@
 
 /* Responsive Design */
 @media (max-width: 1200px) {
-    #bci-database-container .slide-content {
+    #data-collection-container .slide-content {
         padding: var(--spacing-md) !important;
     }
     
-    #bci-database-container .models-grid {
+    #data-collection-container .infrastructure-grid {
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
         gap: var(--spacing-md) !important;
     }
 }
 
 @media (max-width: 768px) {
-    #bci-database-container .slide-content {
+    #data-collection-container .slide-content {
         padding: var(--spacing-sm) !important;
     }
     
-    #bci-database-container .models-grid {
+    #data-collection-container .infrastructure-grid {
         grid-template-columns: 1fr !important;
     }
     
-    #bci-database-container .features-grid {
+    #data-collection-container .objectives-grid {
         grid-template-columns: 1fr !important;
     }
 }
 
 @media (max-width: 480px) {
-    #bci-database-container .slide-content {
+    #data-collection-container .slide-content {
         padding: var(--spacing-xs) !important;
     }
     
-    #bci-database-container .model-header {
+    #data-collection-container .infrastructure-header {
         flex-direction: column !important;
         text-align: center !important;
         gap: var(--spacing-xs) !important;
@@ -364,70 +392,88 @@
 }
 </style>
 
-<div id="bci-database-container">
+<div id="data-collection-container">
 <div class="slide-content">
-    <h2 class="section-title animate-in">BCI Core Application: Database Architecture</h2>
+    <h2 class="section-title animate-in">Data Collection Infrastructure: Overview</h2>
     
-    <div class="database-overview animate-in">
-        <h3>🗄️ Sophisticated Schema Design</h3>
-        <p class="subtitle">Comprehensive data management with UUID-based primary keys, JSONField configurations, optimistic locking, and metadata tracking for research-grade BCI applications.</p>
+    <div class="data-overview animate-in">
+        <h3>🔬 Hardware Integration & Interface Architecture</h3>
+        <p class="subtitle">Comprehensive infrastructure providing robust, reliable communication with Emotiv EPOC+ EEG headset through sophisticated hardware abstraction, real-time data acquisition, signal quality monitoring, and error recovery mechanisms.</p>
     </div>
 
-    <div class="database-diagram animate-in">
-        <div class="diagram-placeholder">🗄️ Figure 4.45: Database Schema Architecture</div>
-        <div class="diagram-description">Database schema showing tables, relationships, and data types for EEG signals, neural networks, and user sessions</div>
+    <div class="architecture-diagram animate-in">
+        <div class="diagram-placeholder">🏗️ Figure 4.1: Hardware Interface Architecture</div>
+        <div class="diagram-description">Complete hardware interface architecture showing device connectivity and data flow</div>
     </div>
 
-    <div class="models-grid animate-in">
-        <div class="model-card session">
-            <div class="model-header">
-                <i class="fas fa-database"></i>
-                <h4>SessionData Model</h4>
+    <div class="infrastructure-grid animate-in">
+        <div class="infrastructure-card hardware">
+            <div class="infrastructure-header">
+                <i class="fas fa-microchip"></i>
+                <h4>Hardware Integration</h4>
             </div>
-            <div class="model-description">
-                Primary EEG data container with comprehensive metadata tracking, timestamp precision, and hierarchical file organization for research data integrity.
+            <div class="infrastructure-description">
+                Emotiv EPOC+ 14-channel EEG system with saline-based sensors, 128 Hz sampling rate, and proprietary 2.4GHz wireless communication protocol.
+            </div>
+            <div class="infrastructure-features">
+                <div class="feature-item">Real-time signal quality monitoring</div>
+                <div class="feature-item">Contact quality color-coded feedback</div>
+                <div class="feature-item">Universal USB receiver connectivity</div>
+                <div class="feature-item">Bluetooth Low Energy alternative</div>
             </div>
         </div>
 
-        <div class="model-card trained">
-            <div class="model-header">
-                <i class="fas fa-brain"></i>
-                <h4>TrainedModel Entity</h4>
-            </div>
-            <div class="model-description">
-                Neural network metadata management with versioning, performance tracking, and model configuration storage for reproducible research.
-            </div>
-        </div>
-
-        <div class="model-card prediction">
-            <div class="model-header">
-                <i class="fas fa-bolt"></i>
-                <h4>PredictionSession Model</h4>
-            </div>
-            <div class="model-description">
-                Real-time BCI coordination with session management, prediction tracking, and performance monitoring for live inference systems.
-            </div>
-        </div>
-    </div>
-
-    <div class="features-section animate-in">
-        <h3>🔧 Features</h3>
-        <div class="features-grid">
-            <div class="feature-item">
-                <i class="fas fa-key"></i>
-                <div class="feature-text">UUID-based primary keys</div>
-            </div>
-            <div class="feature-item">
+        <div class="infrastructure-card interface">
+            <div class="infrastructure-header">
                 <i class="fas fa-code"></i>
-                <div class="feature-text">JSONField for complex configurations</div>
+                <h4>Interface Architecture</h4>
             </div>
-            <div class="feature-item">
-                <i class="fas fa-lock"></i>
-                <div class="feature-text">Optimistic locking for concurrency</div>
+            <div class="infrastructure-description">
+                Django-compatible framework utilizing pywinusb library for HID communication, AES encryption handling, and comprehensive data preprocessing pipeline.
             </div>
-            <div class="feature-item">
-                <i class="fas fa-tags"></i>
-                <div class="feature-text">Comprehensive metadata tracking</div>
+            <div class="infrastructure-features">
+                <div class="feature-item">Low-level HID device access</div>
+                <div class="feature-item">AES encryption/decryption</div>
+                <div class="feature-item">Real-time data parsing</div>
+                <div class="feature-item">Error detection and recovery</div>
+            </div>
+        </div>
+
+        <div class="infrastructure-card trials">
+            <div class="infrastructure-header">
+                <i class="fas fa-flask"></i>
+                <h4>Trial Implementation</h4>
+            </div>
+            <div class="infrastructure-description">
+                Three distinct trial processes optimized for Motor Imagery, P300 Visual, and Speech Decoding paradigms with systematic data collection protocols.
+            </div>
+            <div class="infrastructure-features">
+                <div class="feature-item">Motor Imagery audio-cued trials</div>
+                <div class="feature-item">P300 visual word presentation</div>
+                <div class="feature-item">Speech decoding legacy protocols</div>
+                <div class="feature-item">Configurable timing parameters</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="objectives-section animate-in">
+        <h3>🎯 Key Objectives</h3>
+        <div class="objectives-grid">
+            <div class="objective-item">
+                <i class="fas fa-link"></i>
+                <div class="objective-text">Robust device connectivity</div>
+            </div>
+            <div class="objective-item">
+                <i class="fas fa-chart-line"></i>
+                <div class="objective-text">Real-time data acquisition</div>
+            </div>
+            <div class="objective-item">
+                <i class="fas fa-shield-alt"></i>
+                <div class="objective-text">Signal quality monitoring</div>
+            </div>
+            <div class="objective-item">
+                <i class="fas fa-sync-alt"></i>
+                <div class="objective-text">Error recovery mechanisms</div>
             </div>
         </div>
     </div>

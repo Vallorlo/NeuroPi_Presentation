@@ -548,10 +548,11 @@ body::before {
     width: 100%;
     text-align: center;
     animation: slideInUp 1s ease-out;
-    max-height: 100vh;
+    max-height: calc(100vh - 80px);
     overflow-y: auto;
     box-sizing: border-box;
     padding: var(--spacing-lg);
+    padding-bottom: calc(var(--spacing-lg) + 40px);
     margin: 0 auto;
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
@@ -582,7 +583,7 @@ body::before {
 /* Firefox scrollbar styling */
 .slide-content {
     scrollbar-width: thin;
-    scrollbar-color: rgba(31, 78, 121, 0.3) transparent;
+    scrollbar-color: transparent transparent;
 }
 
 @keyframes slideInUp {

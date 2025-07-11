@@ -1,0 +1,543 @@
+<!-- Data Collection Infrastructure Slide 2: EPOC+ Hardware Specifications -->
+<style>
+/* Standalone CSS for EPOC+ Hardware Specifications Slide */
+#epoc-hardware-container .slide-content {
+    /* CSS Variables for Academic Theme */
+    --primary-bg: #ffffff;
+    --secondary-bg: #f8f9fa;
+    --tertiary-bg: #e9ecef;
+    --accent-red: #c41e3a;
+    --accent-blue: #1f4e79;
+    --accent-purple: #5a4fcf;
+    --accent-green: #2d7d32;
+    --accent-orange: #f57c00;
+    --accent-teal: #00695c;
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --text-muted: #6c757d;
+    --border-light: #dee2e6;
+    --border-primary: #ced4da;
+    --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-heavy: 0 8px 24px rgba(0, 0, 0, 0.16);
+    
+    /* Typography Scale */
+    --font-size-h1: clamp(2.5rem, 5vw, 4rem);
+    --font-size-h2: clamp(2rem, 4vw, 3rem);
+    --font-size-h3: clamp(1.5rem, 3vw, 2.2rem);
+    --font-size-h4: clamp(1.25rem, 2.5vw, 1.8rem);
+    --font-size-body: clamp(1rem, 2vw, 1.2rem);
+    --font-size-small: clamp(0.875rem, 1.5vw, 1rem);
+    
+    /* Spacing Scale */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-xxl: 4rem;
+    
+    /* Base slide styling */
+    all: unset;
+    display: block;
+    max-width: 1400px !important;
+    width: 100% !important;
+    text-align: left !important;
+    padding: var(--spacing-lg) !important;
+    margin: 0 auto !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    line-height: 1.6 !important;
+    font-size: var(--font-size-body) !important;
+    color: var(--text-primary) !important;
+    background: var(--primary-bg) !important;
+    height: calc(100vh - 40px) !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    padding-bottom: calc(var(--spacing-lg) + 40px) !important;
+}
+
+/* Custom scrollbar styling for standalone slides */
+#epoc-hardware-container .slide-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+#epoc-hardware-container .slide-content::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
+}
+
+#epoc-hardware-container .slide-content::-webkit-scrollbar-thumb {
+    background: rgba(31, 78, 121, 0.3);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+#epoc-hardware-container .slide-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(31, 78, 121, 0.5);
+}
+
+/* Firefox scrollbar styling */
+#epoc-hardware-container .slide-content {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
+
+#epoc-hardware-container * {
+    box-sizing: border-box;
+}
+
+#epoc-hardware-container .slide-content * {
+    font-family: inherit !important;
+}
+
+/* Typography */
+#epoc-hardware-container .slide-content h2 {
+    font-family: 'Orbitron', 'Georgia', serif !important;
+    font-size: var(--font-size-h2) !important;
+    font-weight: 600 !important;
+    line-height: 1.3 !important;
+    margin-bottom: var(--spacing-xl) !important;
+    color: var(--accent-blue) !important;
+    text-align: center !important;
+    letter-spacing: -0.01em !important;
+}
+
+#epoc-hardware-container .slide-content h3 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h3) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#epoc-hardware-container .slide-content h4 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h4) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-sm) !important;
+    color: var(--text-primary) !important;
+}
+
+#epoc-hardware-container .slide-content p {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.7 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#epoc-hardware-container .slide-content ul {
+    margin-bottom: var(--spacing-md) !important;
+    padding-left: var(--spacing-lg) !important;
+}
+
+#epoc-hardware-container .slide-content li {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.6 !important;
+    margin-bottom: var(--spacing-xs) !important;
+    color: var(--text-primary) !important;
+}
+
+/* EPOC+ Overview */
+#epoc-hardware-container .epoc-overview {
+    background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--tertiary-bg) 100%) !important;
+    padding: var(--spacing-xl) !important;
+    border-radius: 20px !important;
+    border: 2px solid var(--accent-green) !important;
+    box-shadow: var(--shadow-medium) !important;
+    text-align: center !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#epoc-hardware-container .epoc-overview h3 {
+    color: var(--accent-green) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-md) !important;
+}
+
+#epoc-hardware-container .epoc-overview .subtitle {
+    font-size: calc(var(--font-size-body) * 1.1) !important;
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Hardware Images Grid */
+#epoc-hardware-container .hardware-images {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+    gap: var(--spacing-lg) !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#epoc-hardware-container .image-placeholder {
+    background: var(--secondary-bg) !important;
+    border: 2px dashed var(--accent-green) !important;
+    border-radius: 12px !important;
+    padding: var(--spacing-xl) !important;
+    text-align: center !important;
+    min-height: 200px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+}
+
+#epoc-hardware-container .image-title {
+    color: var(--accent-green) !important;
+    font-size: var(--font-size-h4) !important;
+    font-weight: 600 !important;
+    margin-bottom: var(--spacing-sm) !important;
+}
+
+#epoc-hardware-container .image-description {
+    color: var(--text-secondary) !important;
+    font-size: var(--font-size-small) !important;
+    font-style: italic !important;
+}
+
+/* Technical Specifications Table */
+#epoc-hardware-container .specifications-section {
+    background: var(--secondary-bg) !important;
+    border-radius: 16px !important;
+    padding: var(--spacing-xl) !important;
+    margin-bottom: var(--spacing-xl) !important;
+    border: 2px solid var(--accent-blue) !important;
+}
+
+#epoc-hardware-container .specifications-section h3 {
+    color: var(--accent-blue) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-lg) !important;
+    text-align: center !important;
+}
+
+#epoc-hardware-container .specs-table {
+    background: var(--primary-bg) !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    box-shadow: var(--shadow-light) !important;
+}
+
+#epoc-hardware-container .specs-table table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+}
+
+#epoc-hardware-container .specs-table th {
+    background: var(--accent-blue) !important;
+    color: white !important;
+    padding: var(--spacing-md) !important;
+    font-family: 'Orbitron', serif !important;
+    font-weight: 600 !important;
+    text-align: left !important;
+}
+
+#epoc-hardware-container .specs-table td {
+    padding: var(--spacing-md) !important;
+    border-bottom: 1px solid var(--border-light) !important;
+    font-size: var(--font-size-body) !important;
+    color: var(--text-primary) !important;
+}
+
+#epoc-hardware-container .specs-table tr:nth-child(even) {
+    background: var(--secondary-bg) !important;
+}
+
+#epoc-hardware-container .specs-table tr:hover {
+    background: var(--tertiary-bg) !important;
+}
+
+/* Electrode Configuration */
+#epoc-hardware-container .electrode-section {
+    background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%) !important;
+    padding: var(--spacing-xl) !important;
+    border-radius: 16px !important;
+    border: 2px solid var(--accent-purple) !important;
+    box-shadow: var(--shadow-light) !important;
+}
+
+#epoc-hardware-container .electrode-section h3 {
+    color: var(--accent-purple) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-lg) !important;
+    text-align: center !important;
+}
+
+#epoc-hardware-container .electrode-diagram {
+    background: var(--primary-bg) !important;
+    border: 2px dashed var(--accent-purple) !important;
+    border-radius: 12px !important;
+    padding: var(--spacing-xl) !important;
+    text-align: center !important;
+    margin: var(--spacing-lg) 0 !important;
+    min-height: 200px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+}
+
+#epoc-hardware-container .electrode-features {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+    gap: var(--spacing-md) !important;
+    margin-top: var(--spacing-lg) !important;
+}
+
+#epoc-hardware-container .electrode-feature {
+    background: var(--primary-bg) !important;
+    padding: var(--spacing-md) !important;
+    border-radius: 12px !important;
+    border-left: 4px solid var(--accent-purple) !important;
+    box-shadow: var(--shadow-light) !important;
+}
+
+#epoc-hardware-container .electrode-feature h4 {
+    color: var(--accent-purple) !important;
+    margin-bottom: var(--spacing-sm) !important;
+}
+
+#epoc-hardware-container .electrode-feature p {
+    margin: 0 !important;
+    font-size: var(--font-size-small) !important;
+    color: var(--text-secondary) !important;
+}
+
+/* Package Contents */
+#epoc-hardware-container .package-contents {
+    background: var(--secondary-bg) !important;
+    border-radius: 16px !important;
+    padding: var(--spacing-xl) !important;
+    border: 2px solid var(--accent-orange) !important;
+}
+
+#epoc-hardware-container .package-contents h3 {
+    color: var(--accent-orange) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-lg) !important;
+    text-align: center !important;
+}
+
+#epoc-hardware-container .package-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+    gap: var(--spacing-md) !important;
+}
+
+#epoc-hardware-container .package-item {
+    background: var(--primary-bg) !important;
+    padding: var(--spacing-md) !important;
+    border-radius: 12px !important;
+    text-align: center !important;
+    border: 2px solid var(--border-light) !important;
+    transition: all 0.3s ease !important;
+}
+
+#epoc-hardware-container .package-item:hover {
+    border-color: var(--accent-orange) !important;
+    transform: translateY(-5px) !important;
+    box-shadow: var(--shadow-light) !important;
+}
+
+#epoc-hardware-container .package-item i {
+    font-size: var(--font-size-h3) !important;
+    color: var(--accent-orange) !important;
+    margin-bottom: var(--spacing-sm) !important;
+}
+
+#epoc-hardware-container .package-item h4 {
+    color: var(--text-primary) !important;
+    margin-bottom: var(--spacing-xs) !important;
+}
+
+#epoc-hardware-container .package-item p {
+    font-size: var(--font-size-small) !important;
+    color: var(--text-secondary) !important;
+    margin: 0 !important;
+}
+
+/* Animation */
+#epoc-hardware-container .animate-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: all 0.6s ease-out !important;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    #epoc-hardware-container .slide-content {
+        padding: var(--spacing-md) !important;
+    }
+    
+    #epoc-hardware-container .hardware-images {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+        gap: var(--spacing-md) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    #epoc-hardware-container .slide-content {
+        padding: var(--spacing-sm) !important;
+    }
+    
+    #epoc-hardware-container .hardware-images,
+    #epoc-hardware-container .electrode-features,
+    #epoc-hardware-container .package-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    #epoc-hardware-container .specs-table {
+        overflow-x: auto !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #epoc-hardware-container .slide-content {
+        padding: var(--spacing-xs) !important;
+    }
+    
+    #epoc-hardware-container .specs-table th,
+    #epoc-hardware-container .specs-table td {
+        padding: var(--spacing-sm) !important;
+        font-size: var(--font-size-small) !important;
+    }
+}
+</style>
+
+<div id="epoc-hardware-container">
+<div class="slide-content">
+    <h2 class="section-title animate-in">Data Collection Infrastructure: EPOC+ Hardware Specifications</h2>
+    
+    <div class="epoc-overview animate-in">
+        <h3>🧠 EPOC+ 14-Channel EEG Headset</h3>
+        <p class="subtitle">Sophisticated consumer-grade EEG system designed for research applications and brain-computer interface development, incorporating technological innovations that bridge clinical-grade systems with consumer accessibility.</p>
+    </div>
+
+    <div class="hardware-images animate-in">
+        <div class="image-placeholder">
+            <div class="image-title">📷 Figure 4.2: EPOC+ EEG Headset</div>
+            <div class="image-description">The complete EPOC+ headset showing electrode placement and design</div>
+        </div>
+        
+        <div class="image-placeholder">
+            <div class="image-title">📷 Figure 4.3: Package Components</div>
+            <div class="image-description">Hydrator Pack, Hydrator Fluid, and Universal USB Receiver</div>
+        </div>
+    </div>
+
+    <div class="specifications-section animate-in">
+        <h3>📋 Technical Specifications (Version 1.1)</h3>
+        <div class="specs-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Specification</th>
+                        <th>Value</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Channels</strong></td>
+                        <td>14 + 2 references</td>
+                        <td>Saline-based sensors with international 10-20 positioning</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sampling Rate</strong></td>
+                        <td>128 Hz</td>
+                        <td>High-resolution temporal data acquisition</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Communication</strong></td>
+                        <td>2.4GHz Proprietary</td>
+                        <td>Universal USB receiver with BLE alternative</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Electrode Type</strong></td>
+                        <td>Saline-based</td>
+                        <td>Water-resistant electronics protection</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Coverage</strong></td>
+                        <td>Frontal, Temporal, Parietal, Occipital</td>
+                        <td>Comprehensive brain region monitoring</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Portability</strong></td>
+                        <td>Wireless, Lightweight</td>
+                        <td>Practical research settings compatibility</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="electrode-section animate-in">
+        <h3>🎯 Electrode Configuration & 10-20 System</h3>
+
+        <div class="electrode-diagram">
+            <div class="image-title">📷 Figure 4.4: Sensor Locations (10-20 System)</div>
+            <div class="image-description">14-channel electrode placement according to international 10-20 system</div>
+        </div>
+
+        <div class="electrode-features">
+            <div class="electrode-feature">
+                <h4>Electrode Arms</h4>
+                <p>Two electrode arms each containing 9 locations (7 sensors + 2 references) with rubber sensors fitted at M1/M2 positions</p>
+            </div>
+
+            <div class="electrode-feature">
+                <h4>Reference Channels</h4>
+                <p>DRL(P4)/Aux DRL(M1) and CMS(P3)/Aux CMS(M2) wired together for flexible reference positioning</p>
+            </div>
+
+            <div class="electrode-feature">
+                <h4>Brain Coverage</h4>
+                <p>Excellent frontal and prefrontal coverage with additional temporal, parietal, and occipital monitoring</p>
+            </div>
+
+            <div class="electrode-feature">
+                <h4>Contact Quality</h4>
+                <p>Real-time color-coded feedback: Green (excellent), Yellow (good), Orange (poor), Red (no contact)</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="package-contents animate-in">
+        <h3>📦 Package Contents</h3>
+        <div class="package-grid">
+            <div class="package-item">
+                <i class="fas fa-brain"></i>
+                <h4>Headset</h4>
+                <p>Main EEG device with 14 electrodes</p>
+            </div>
+
+            <div class="package-item">
+                <i class="fas fa-tint"></i>
+                <h4>Hydrator Pack</h4>
+                <p>Electrode hydration system</p>
+            </div>
+
+            <div class="package-item">
+                <i class="fas fa-flask"></i>
+                <h4>Hydrator Fluid</h4>
+                <p>Saline solution for electrodes</p>
+            </div>
+
+            <div class="package-item">
+                <i class="fas fa-wifi"></i>
+                <h4>USB Receiver</h4>
+                <p>Universal wireless communication</p>
+            </div>
+
+            <div class="package-item">
+                <i class="fas fa-usb"></i>
+                <h4>USB Cable</h4>
+                <p>Mini-B to A connection cable</p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

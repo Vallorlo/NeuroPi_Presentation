@@ -1,0 +1,516 @@
+<!-- Data Collection Infrastructure Slide 3: Signal Quality Monitoring -->
+<style>
+/* Standalone CSS for Signal Quality Monitoring Slide */
+#signal-quality-container .slide-content {
+    /* CSS Variables for Academic Theme */
+    --primary-bg: #ffffff;
+    --secondary-bg: #f8f9fa;
+    --tertiary-bg: #e9ecef;
+    --accent-red: #c41e3a;
+    --accent-blue: #1f4e79;
+    --accent-purple: #5a4fcf;
+    --accent-green: #2d7d32;
+    --accent-orange: #f57c00;
+    --accent-teal: #00695c;
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --text-muted: #6c757d;
+    --border-light: #dee2e6;
+    --border-primary: #ced4da;
+    --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-heavy: 0 8px 24px rgba(0, 0, 0, 0.16);
+    
+    /* Typography Scale */
+    --font-size-h1: clamp(2.5rem, 5vw, 4rem);
+    --font-size-h2: clamp(2rem, 4vw, 3rem);
+    --font-size-h3: clamp(1.5rem, 3vw, 2.2rem);
+    --font-size-h4: clamp(1.25rem, 2.5vw, 1.8rem);
+    --font-size-body: clamp(1rem, 2vw, 1.2rem);
+    --font-size-small: clamp(0.875rem, 1.5vw, 1rem);
+    
+    /* Spacing Scale */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-xxl: 4rem;
+    
+    /* Base slide styling */
+    all: unset;
+    display: block;
+    max-width: 1400px !important;
+    width: 100% !important;
+    text-align: left !important;
+    padding: var(--spacing-lg) !important;
+    margin: 0 auto !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    line-height: 1.6 !important;
+    font-size: var(--font-size-body) !important;
+    color: var(--text-primary) !important;
+    background: var(--primary-bg) !important;
+    height: calc(100vh - 40px) !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    padding-bottom: calc(var(--spacing-lg) + 40px) !important;
+}
+
+/* Custom scrollbar styling for standalone slides */
+#signal-quality-container .slide-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+#signal-quality-container .slide-content::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
+}
+
+#signal-quality-container .slide-content::-webkit-scrollbar-thumb {
+    background: rgba(31, 78, 121, 0.3);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+#signal-quality-container .slide-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(31, 78, 121, 0.5);
+}
+
+/* Firefox scrollbar styling */
+#signal-quality-container .slide-content {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
+
+#signal-quality-container * {
+    box-sizing: border-box;
+}
+
+#signal-quality-container .slide-content * {
+    font-family: inherit !important;
+}
+
+/* Typography */
+#signal-quality-container .slide-content h2 {
+    font-family: 'Orbitron', 'Georgia', serif !important;
+    font-size: var(--font-size-h2) !important;
+    font-weight: 600 !important;
+    line-height: 1.3 !important;
+    margin-bottom: var(--spacing-xl) !important;
+    color: var(--accent-blue) !important;
+    text-align: center !important;
+    letter-spacing: -0.01em !important;
+}
+
+#signal-quality-container .slide-content h3 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h3) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#signal-quality-container .slide-content h4 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h4) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-sm) !important;
+    color: var(--text-primary) !important;
+}
+
+#signal-quality-container .slide-content p {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.7 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#signal-quality-container .slide-content ul {
+    margin-bottom: var(--spacing-md) !important;
+    padding-left: var(--spacing-lg) !important;
+}
+
+#signal-quality-container .slide-content li {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.6 !important;
+    margin-bottom: var(--spacing-xs) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Signal Quality Overview */
+#signal-quality-container .quality-overview {
+    background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--tertiary-bg) 100%) !important;
+    padding: var(--spacing-xl) !important;
+    border-radius: 20px !important;
+    border: 2px solid var(--accent-teal) !important;
+    box-shadow: var(--shadow-medium) !important;
+    text-align: center !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#signal-quality-container .quality-overview h3 {
+    color: var(--accent-teal) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-md) !important;
+}
+
+#signal-quality-container .quality-overview .subtitle {
+    font-size: calc(var(--font-size-body) * 1.1) !important;
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Quality Levels Grid */
+#signal-quality-container .quality-levels {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+    gap: var(--spacing-lg) !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#signal-quality-container .quality-card {
+    background: var(--secondary-bg) !important;
+    border-radius: 16px !important;
+    padding: var(--spacing-lg) !important;
+    box-shadow: var(--shadow-light) !important;
+    transition: all 0.3s ease !important;
+    text-align: center !important;
+    border: 3px solid transparent !important;
+}
+
+#signal-quality-container .quality-card.excellent {
+    border-color: #28a745 !important;
+    background: linear-gradient(135deg, #f8fff9 0%, #e8f5e8 100%) !important;
+}
+
+#signal-quality-container .quality-card.good {
+    border-color: #ffc107 !important;
+    background: linear-gradient(135deg, #fffef8 0%, #fef9e7 100%) !important;
+}
+
+#signal-quality-container .quality-card.poor {
+    border-color: #fd7e14 !important;
+    background: linear-gradient(135deg, #fff8f0 0%, #fef2e7 100%) !important;
+}
+
+#signal-quality-container .quality-card.no-contact {
+    border-color: #dc3545 !important;
+    background: linear-gradient(135deg, #fff5f5 0%, #ffeaea 100%) !important;
+}
+
+#signal-quality-container .quality-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: var(--shadow-medium) !important;
+}
+
+#signal-quality-container .quality-indicator {
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 50% !important;
+    margin: 0 auto var(--spacing-md) auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: var(--font-size-h3) !important;
+    font-weight: bold !important;
+    color: white !important;
+}
+
+#signal-quality-container .quality-card.excellent .quality-indicator {
+    background: #28a745 !important;
+}
+
+#signal-quality-container .quality-card.good .quality-indicator {
+    background: #ffc107 !important;
+    color: #333 !important;
+}
+
+#signal-quality-container .quality-card.poor .quality-indicator {
+    background: #fd7e14 !important;
+}
+
+#signal-quality-container .quality-card.no-contact .quality-indicator {
+    background: #dc3545 !important;
+}
+
+#signal-quality-container .quality-title {
+    font-family: 'Orbitron', serif !important;
+    font-size: var(--font-size-h4) !important;
+    font-weight: 600 !important;
+    margin-bottom: var(--spacing-sm) !important;
+}
+
+#signal-quality-container .quality-card.excellent .quality-title {
+    color: #28a745 !important;
+}
+
+#signal-quality-container .quality-card.good .quality-title {
+    color: #ffc107 !important;
+}
+
+#signal-quality-container .quality-card.poor .quality-title {
+    color: #fd7e14 !important;
+}
+
+#signal-quality-container .quality-card.no-contact .quality-title {
+    color: #dc3545 !important;
+}
+
+#signal-quality-container .quality-description {
+    font-size: var(--font-size-small) !important;
+    color: var(--text-secondary) !important;
+    line-height: 1.5 !important;
+    margin-bottom: var(--spacing-sm) !important;
+}
+
+#signal-quality-container .quality-metrics {
+    background: var(--primary-bg) !important;
+    padding: var(--spacing-sm) !important;
+    border-radius: 8px !important;
+    font-size: var(--font-size-small) !important;
+    font-weight: 500 !important;
+}
+
+/* Monitoring Interface */
+#signal-quality-container .monitoring-interface {
+    background: var(--secondary-bg) !important;
+    border-radius: 16px !important;
+    padding: var(--spacing-xl) !important;
+    border: 2px solid var(--accent-purple) !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#signal-quality-container .monitoring-interface h3 {
+    color: var(--accent-purple) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-lg) !important;
+    text-align: center !important;
+}
+
+#signal-quality-container .interface-diagram {
+    background: var(--primary-bg) !important;
+    border: 2px dashed var(--accent-purple) !important;
+    border-radius: 12px !important;
+    padding: var(--spacing-xl) !important;
+    text-align: center !important;
+    min-height: 200px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+    margin-bottom: var(--spacing-lg) !important;
+}
+
+#signal-quality-container .interface-features {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+    gap: var(--spacing-md) !important;
+}
+
+#signal-quality-container .interface-feature {
+    background: var(--primary-bg) !important;
+    padding: var(--spacing-md) !important;
+    border-radius: 12px !important;
+    border-left: 4px solid var(--accent-purple) !important;
+    box-shadow: var(--shadow-light) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--spacing-sm) !important;
+}
+
+#signal-quality-container .interface-feature i {
+    color: var(--accent-purple) !important;
+    font-size: var(--font-size-h4) !important;
+}
+
+#signal-quality-container .interface-feature-text {
+    font-size: var(--font-size-body) !important;
+    color: var(--text-primary) !important;
+    font-weight: 500 !important;
+}
+
+/* USB Receiver Information */
+#signal-quality-container .usb-receiver {
+    background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%) !important;
+    padding: var(--spacing-xl) !important;
+    border-radius: 16px !important;
+    border: 2px solid var(--accent-orange) !important;
+    box-shadow: var(--shadow-light) !important;
+}
+
+#signal-quality-container .usb-receiver h3 {
+    color: var(--accent-orange) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-lg) !important;
+    text-align: center !important;
+}
+
+#signal-quality-container .receiver-features {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+    gap: var(--spacing-lg) !important;
+}
+
+#signal-quality-container .receiver-card {
+    background: var(--primary-bg) !important;
+    padding: var(--spacing-lg) !important;
+    border-radius: 12px !important;
+    border-left: 4px solid var(--accent-orange) !important;
+    box-shadow: var(--shadow-light) !important;
+}
+
+#signal-quality-container .receiver-card h4 {
+    color: var(--accent-orange) !important;
+    margin-bottom: var(--spacing-sm) !important;
+}
+
+#signal-quality-container .receiver-card p {
+    margin: 0 !important;
+    font-size: var(--font-size-small) !important;
+    color: var(--text-secondary) !important;
+}
+
+/* Animation */
+#signal-quality-container .animate-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: all 0.6s ease-out !important;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    #signal-quality-container .slide-content {
+        padding: var(--spacing-md) !important;
+    }
+    
+    #signal-quality-container .quality-levels {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+        gap: var(--spacing-md) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    #signal-quality-container .slide-content {
+        padding: var(--spacing-sm) !important;
+    }
+    
+    #signal-quality-container .quality-levels,
+    #signal-quality-container .interface-features,
+    #signal-quality-container .receiver-features {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #signal-quality-container .slide-content {
+        padding: var(--spacing-xs) !important;
+    }
+    
+    #signal-quality-container .quality-indicator {
+        width: 50px !important;
+        height: 50px !important;
+        font-size: var(--font-size-h4) !important;
+    }
+}
+</style>
+
+<div id="signal-quality-container">
+<div class="slide-content">
+    <h2 class="section-title animate-in">Data Collection Infrastructure: Signal Quality Monitoring</h2>
+    
+    <div class="quality-overview animate-in">
+        <h3>📊 Real-Time Signal Quality Assessment</h3>
+        <p class="subtitle">Comprehensive signal quality monitoring system providing real-time feedback on electrode-scalp contact quality through color-coded indicators, ensuring acceptable signal quality for research applications.</p>
+    </div>
+
+    <div class="quality-levels animate-in">
+        <div class="quality-card excellent">
+            <div class="quality-indicator">●</div>
+            <h4 class="quality-title">Green - Excellent</h4>
+            <div class="quality-description">Low impedance, high signal quality</div>
+            <div class="quality-metrics">Optimal for all BCI applications</div>
+        </div>
+
+        <div class="quality-card good">
+            <div class="quality-indicator">●</div>
+            <h4 class="quality-title">Yellow - Good</h4>
+            <div class="quality-description">Moderate impedance, acceptable signal quality</div>
+            <div class="quality-metrics">Suitable for most research tasks</div>
+        </div>
+
+        <div class="quality-card poor">
+            <div class="quality-indicator">●</div>
+            <h4 class="quality-title">Orange - Poor</h4>
+            <div class="quality-description">High impedance, degraded signal quality</div>
+            <div class="quality-metrics">Requires electrode adjustment</div>
+        </div>
+
+        <div class="quality-card no-contact">
+            <div class="quality-indicator">●</div>
+            <h4 class="quality-title">Red - No Contact</h4>
+            <div class="quality-description">Very high impedance, unusable signal</div>
+            <div class="quality-metrics">Immediate attention required</div>
+        </div>
+    </div>
+
+    <div class="monitoring-interface animate-in">
+        <h3>🖥️ Emotiv Software Quality Interface</h3>
+
+        <div class="interface-diagram">
+            <div class="image-title">📷 Figure 4.7: Quality Monitoring Interface</div>
+            <div class="image-description">Real-time quality monitoring interface in the Emotiv Software showing electrode status</div>
+        </div>
+
+        <div class="interface-features">
+            <div class="interface-feature">
+                <i class="fas fa-eye"></i>
+                <div class="interface-feature-text">Real-time visual feedback</div>
+            </div>
+
+            <div class="interface-feature">
+                <i class="fas fa-palette"></i>
+                <div class="interface-feature-text">Color-coded status indicators</div>
+            </div>
+
+            <div class="interface-feature">
+                <i class="fas fa-map"></i>
+                <div class="interface-feature-text">Electrode position mapping</div>
+            </div>
+
+            <div class="interface-feature">
+                <i class="fas fa-chart-bar"></i>
+                <div class="interface-feature-text">Impedance level monitoring</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="usb-receiver animate-in">
+        <h3>📡 Universal USB Receiver & Communication</h3>
+
+        <div class="receiver-features">
+            <div class="receiver-card">
+                <h4>Proprietary 2.4GHz Protocol</h4>
+                <p>High-speed wireless communication with automatic pairing and reliable connection maintenance for extended research sessions.</p>
+            </div>
+
+            <div class="receiver-card">
+                <h4>Multi-Headset Support</h4>
+                <p>Dongle pairing allows multiple headsets to co-exist with individual device identification and connection management.</p>
+            </div>
+
+            <div class="receiver-card">
+                <h4>Bluetooth Low Energy Alternative</h4>
+                <p>BLE connectivity option with manufacturer-specific protocol stack requirements for third-party application compatibility.</p>
+            </div>
+
+            <div class="receiver-card">
+                <h4>Connection Indicators</h4>
+                <p>LED status indicators showing power, pairing, and connection status for immediate troubleshooting and system monitoring.</p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

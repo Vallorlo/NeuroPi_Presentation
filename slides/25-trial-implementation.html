@@ -1,0 +1,536 @@
+<!-- Data Collection Infrastructure Slide 4: Trial Implementation -->
+<style>
+/* Standalone CSS for Trial Implementation Slide */
+#trial-implementation-container .slide-content {
+    /* CSS Variables for Academic Theme */
+    --primary-bg: #ffffff;
+    --secondary-bg: #f8f9fa;
+    --tertiary-bg: #e9ecef;
+    --accent-red: #c41e3a;
+    --accent-blue: #1f4e79;
+    --accent-purple: #5a4fcf;
+    --accent-green: #2d7d32;
+    --accent-orange: #f57c00;
+    --accent-teal: #00695c;
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --text-muted: #6c757d;
+    --border-light: #dee2e6;
+    --border-primary: #ced4da;
+    --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-heavy: 0 8px 24px rgba(0, 0, 0, 0.16);
+    
+    /* Typography Scale */
+    --font-size-h1: clamp(2.5rem, 5vw, 4rem);
+    --font-size-h2: clamp(2rem, 4vw, 3rem);
+    --font-size-h3: clamp(1.5rem, 3vw, 2.2rem);
+    --font-size-h4: clamp(1.25rem, 2.5vw, 1.8rem);
+    --font-size-body: clamp(1rem, 2vw, 1.2rem);
+    --font-size-small: clamp(0.875rem, 1.5vw, 1rem);
+    
+    /* Spacing Scale */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-xxl: 4rem;
+    
+    /* Base slide styling */
+    all: unset;
+    display: block;
+    max-width: 1400px !important;
+    width: 100% !important;
+    text-align: left !important;
+    padding: var(--spacing-lg) !important;
+    margin: 0 auto !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    line-height: 1.6 !important;
+    font-size: var(--font-size-body) !important;
+    color: var(--text-primary) !important;
+    background: var(--primary-bg) !important;
+    height: calc(100vh - 40px) !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    padding-bottom: calc(var(--spacing-lg) + 40px) !important;
+}
+
+/* Custom scrollbar styling for standalone slides */
+#trial-implementation-container .slide-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+#trial-implementation-container .slide-content::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
+}
+
+#trial-implementation-container .slide-content::-webkit-scrollbar-thumb {
+    background: rgba(31, 78, 121, 0.3);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+#trial-implementation-container .slide-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(31, 78, 121, 0.5);
+}
+
+/* Firefox scrollbar styling */
+#trial-implementation-container .slide-content {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
+
+#trial-implementation-container * {
+    box-sizing: border-box;
+}
+
+#trial-implementation-container .slide-content * {
+    font-family: inherit !important;
+}
+
+/* Typography */
+#trial-implementation-container .slide-content h2 {
+    font-family: 'Orbitron', 'Georgia', serif !important;
+    font-size: var(--font-size-h2) !important;
+    font-weight: 600 !important;
+    line-height: 1.3 !important;
+    margin-bottom: var(--spacing-xl) !important;
+    color: var(--accent-blue) !important;
+    text-align: center !important;
+    letter-spacing: -0.01em !important;
+}
+
+#trial-implementation-container .slide-content h3 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h3) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#trial-implementation-container .slide-content h4 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h4) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-sm) !important;
+    color: var(--text-primary) !important;
+}
+
+#trial-implementation-container .slide-content p {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.7 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#trial-implementation-container .slide-content ul {
+    margin-bottom: var(--spacing-md) !important;
+    padding-left: var(--spacing-lg) !important;
+}
+
+#trial-implementation-container .slide-content li {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.6 !important;
+    margin-bottom: var(--spacing-xs) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Trial Overview */
+#trial-implementation-container .trial-overview {
+    background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--tertiary-bg) 100%) !important;
+    padding: var(--spacing-xl) !important;
+    border-radius: 20px !important;
+    border: 2px solid var(--accent-purple) !important;
+    box-shadow: var(--shadow-medium) !important;
+    text-align: center !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#trial-implementation-container .trial-overview h3 {
+    color: var(--accent-purple) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-md) !important;
+}
+
+#trial-implementation-container .trial-overview .subtitle {
+    font-size: calc(var(--font-size-body) * 1.1) !important;
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Trial Types Grid */
+#trial-implementation-container .trial-types {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
+    gap: var(--spacing-lg) !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#trial-implementation-container .trial-card {
+    background: var(--secondary-bg) !important;
+    border-radius: 16px !important;
+    padding: var(--spacing-lg) !important;
+    box-shadow: var(--shadow-light) !important;
+    transition: all 0.3s ease !important;
+    border-left: 4px solid var(--accent-blue) !important;
+}
+
+#trial-implementation-container .trial-card.motor-imagery {
+    border-left-color: var(--accent-blue) !important;
+}
+
+#trial-implementation-container .trial-card.p300 {
+    border-left-color: var(--accent-green) !important;
+}
+
+#trial-implementation-container .trial-card.speech {
+    border-left-color: var(--accent-red) !important;
+}
+
+#trial-implementation-container .trial-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: var(--shadow-medium) !important;
+}
+
+#trial-implementation-container .trial-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--spacing-sm) !important;
+    margin-bottom: var(--spacing-md) !important;
+    padding-bottom: var(--spacing-sm) !important;
+    border-bottom: 2px solid var(--border-light) !important;
+}
+
+#trial-implementation-container .trial-header i {
+    font-size: var(--font-size-h3) !important;
+}
+
+#trial-implementation-container .trial-card.motor-imagery .trial-header i {
+    color: var(--accent-blue) !important;
+}
+
+#trial-implementation-container .trial-card.p300 .trial-header i {
+    color: var(--accent-green) !important;
+}
+
+#trial-implementation-container .trial-card.speech .trial-header i {
+    color: var(--accent-red) !important;
+}
+
+#trial-implementation-container .trial-header h4 {
+    margin: 0 !important;
+    font-family: 'Orbitron', serif !important;
+}
+
+#trial-implementation-container .trial-card.motor-imagery .trial-header h4 {
+    color: var(--accent-blue) !important;
+}
+
+#trial-implementation-container .trial-card.p300 .trial-header h4 {
+    color: var(--accent-green) !important;
+}
+
+#trial-implementation-container .trial-card.speech .trial-header h4 {
+    color: var(--accent-red) !important;
+}
+
+#trial-implementation-container .trial-description {
+    font-size: var(--font-size-small) !important;
+    color: var(--text-secondary) !important;
+    line-height: 1.5 !important;
+    margin-bottom: var(--spacing-md) !important;
+}
+
+#trial-implementation-container .trial-features {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--spacing-xs) !important;
+}
+
+#trial-implementation-container .trial-feature {
+    background: var(--primary-bg) !important;
+    padding: var(--spacing-sm) !important;
+    border-radius: 8px !important;
+    border-left: 3px solid var(--accent-blue) !important;
+    font-size: var(--font-size-small) !important;
+    line-height: 1.5 !important;
+    color: var(--text-secondary) !important;
+}
+
+#trial-implementation-container .trial-card.motor-imagery .trial-feature {
+    border-left-color: var(--accent-blue) !important;
+}
+
+#trial-implementation-container .trial-card.p300 .trial-feature {
+    border-left-color: var(--accent-green) !important;
+}
+
+#trial-implementation-container .trial-card.speech .trial-feature {
+    border-left-color: var(--accent-red) !important;
+}
+
+/* Trial Diagrams */
+#trial-implementation-container .trial-diagrams {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)) !important;
+    gap: var(--spacing-lg) !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#trial-implementation-container .diagram-card {
+    background: var(--secondary-bg) !important;
+    border-radius: 16px !important;
+    padding: var(--spacing-lg) !important;
+    border: 2px solid var(--accent-teal) !important;
+}
+
+#trial-implementation-container .diagram-card h4 {
+    color: var(--accent-teal) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-md) !important;
+    text-align: center !important;
+}
+
+#trial-implementation-container .diagram-placeholder {
+    background: var(--primary-bg) !important;
+    border: 2px dashed var(--accent-teal) !important;
+    border-radius: 12px !important;
+    padding: var(--spacing-xl) !important;
+    text-align: center !important;
+    min-height: 150px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+}
+
+#trial-implementation-container .diagram-title {
+    color: var(--accent-teal) !important;
+    font-size: var(--font-size-h4) !important;
+    font-weight: 600 !important;
+    margin-bottom: var(--spacing-sm) !important;
+}
+
+#trial-implementation-container .diagram-description {
+    color: var(--text-secondary) !important;
+    font-size: var(--font-size-small) !important;
+    font-style: italic !important;
+}
+
+/* Implementation Features */
+#trial-implementation-container .implementation-features {
+    background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%) !important;
+    padding: var(--spacing-xl) !important;
+    border-radius: 16px !important;
+    border: 2px solid var(--accent-orange) !important;
+    box-shadow: var(--shadow-light) !important;
+}
+
+#trial-implementation-container .implementation-features h3 {
+    color: var(--accent-orange) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-lg) !important;
+    text-align: center !important;
+}
+
+#trial-implementation-container .features-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+    gap: var(--spacing-md) !important;
+}
+
+#trial-implementation-container .feature-item {
+    background: var(--primary-bg) !important;
+    padding: var(--spacing-md) !important;
+    border-radius: 12px !important;
+    border-left: 4px solid var(--accent-orange) !important;
+    box-shadow: var(--shadow-light) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--spacing-sm) !important;
+}
+
+#trial-implementation-container .feature-item i {
+    color: var(--accent-orange) !important;
+    font-size: var(--font-size-h4) !important;
+}
+
+#trial-implementation-container .feature-text {
+    font-size: var(--font-size-body) !important;
+    color: var(--text-primary) !important;
+    font-weight: 500 !important;
+}
+
+/* Animation */
+#trial-implementation-container .animate-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: all 0.6s ease-out !important;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    #trial-implementation-container .slide-content {
+        padding: var(--spacing-md) !important;
+    }
+    
+    #trial-implementation-container .trial-types {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+        gap: var(--spacing-md) !important;
+    }
+    
+    #trial-implementation-container .trial-diagrams {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (max-width: 768px) {
+    #trial-implementation-container .slide-content {
+        padding: var(--spacing-sm) !important;
+    }
+    
+    #trial-implementation-container .trial-types,
+    #trial-implementation-container .features-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #trial-implementation-container .slide-content {
+        padding: var(--spacing-xs) !important;
+    }
+    
+    #trial-implementation-container .trial-header {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: var(--spacing-xs) !important;
+    }
+}
+</style>
+
+<div id="trial-implementation-container">
+<div class="slide-content">
+    <h2 class="section-title animate-in">Data Collection Infrastructure: Trial Implementation</h2>
+    
+    <div class="trial-overview animate-in">
+        <h3>🧪 Multi-Paradigm Trial Processes</h3>
+        <p class="subtitle">Three distinct trial processes optimized for Motor Imagery, P300 Visual, and Speech Decoding paradigms, each reflecting neurophysiological requirements and experimental protocols for systematic neural signature capture.</p>
+    </div>
+
+    <div class="trial-types animate-in">
+        <div class="trial-card motor-imagery">
+            <div class="trial-header">
+                <i class="fas fa-hand-rock"></i>
+                <h4>Motor Imagery Trials</h4>
+            </div>
+            <div class="trial-description">
+                Audio-cued paradigm for capturing neural signals associated with imagined movement without actual motor execution.
+            </div>
+            <div class="trial-features">
+                <div class="trial-feature">Three classes: left hand, right hand, bilateral feet</div>
+                <div class="trial-feature">Audio cue guidance with configurable timing</div>
+                <div class="trial-feature">Rest periods for baseline data collection</div>
+                <div class="trial-feature">Continuous EEG recording throughout phases</div>
+            </div>
+        </div>
+
+        <div class="trial-card p300">
+            <div class="trial-header">
+                <i class="fas fa-eye"></i>
+                <h4>P300 Visual Trials</h4>
+            </div>
+            <div class="trial-description">
+                Event-related potential paradigm using visual word presentation to elicit P300 responses through focused attention.
+            </div>
+            <div class="trial-features">
+                <div class="trial-feature">Color word stimuli: green, purple, yellow, red, blue</div>
+                <div class="trial-feature">Randomized presentation to prevent habituation</div>
+                <div class="trial-feature">Configurable display and rest durations</div>
+                <div class="trial-feature">Real-time EEG monitoring capabilities</div>
+            </div>
+        </div>
+
+        <div class="trial-card speech">
+            <div class="trial-header">
+                <i class="fas fa-microphone"></i>
+                <h4>Speech Decoding (Legacy)</h4>
+            </div>
+            <div class="trial-description">
+                Five-stage protocol exploring speech production, motor coordination, and cognitive speech processes.
+            </div>
+            <div class="trial-features">
+                <div class="trial-feature">Vocal expression and non-vocal thinking stages</div>
+                <div class="trial-feature">Motor action components with/without speech</div>
+                <div class="trial-feature">Microphone recording synchronization</div>
+                <div class="trial-feature">15-second standardized stage durations</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="trial-diagrams animate-in">
+        <div class="diagram-card">
+            <h4>Motor Imagery Trial Structure</h4>
+            <div class="diagram-placeholder">
+                <div class="diagram-title">📊 Figure 4.9: Motor Imagery Trial Timeline</div>
+                <div class="diagram-description">Audio cue → Imagery period → Rest phase structure</div>
+            </div>
+        </div>
+
+        <div class="diagram-card">
+            <h4>P300 Visual Trial Structure</h4>
+            <div class="diagram-placeholder">
+                <div class="diagram-title">📊 Figure 4.10: Visual Trial Timeline</div>
+                <div class="diagram-description">Word display → Rest period → Randomized sequence</div>
+            </div>
+        </div>
+
+        <div class="diagram-card">
+            <h4>Legacy Speech Trial Structure</h4>
+            <div class="diagram-placeholder">
+                <div class="diagram-title">📊 Figure 4.8: Legacy Trial Timeline</div>
+                <div class="diagram-description">Five-stage protocol with vocal and motor components</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="implementation-features animate-in">
+        <h3>🔧 Implementation Features</h3>
+        <div class="features-grid">
+            <div class="feature-item">
+                <i class="fas fa-clock"></i>
+                <div class="feature-text">Configurable timing parameters</div>
+            </div>
+
+            <div class="feature-item">
+                <i class="fas fa-random"></i>
+                <div class="feature-text">Randomized stimulus presentation</div>
+            </div>
+
+            <div class="feature-item">
+                <i class="fas fa-chart-line"></i>
+                <div class="feature-text">Continuous EEG data recording</div>
+            </div>
+
+            <div class="feature-item">
+                <i class="fas fa-sync"></i>
+                <div class="feature-text">Temporal alignment synchronization</div>
+            </div>
+
+            <div class="feature-item">
+                <i class="fas fa-cogs"></i>
+                <div class="feature-text">Systematic experimental protocols</div>
+            </div>
+
+            <div class="feature-item">
+                <i class="fas fa-shield-alt"></i>
+                <div class="feature-text">Data quality assurance</div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

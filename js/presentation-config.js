@@ -41,14 +41,38 @@ const PRESENTATION_CONFIG = {
             description: "Presentation roadmap and timeline"
         },
         
-        // ============= APPROACHES & DATA COLLECTION =============
+        // ============= DATA COLLECTION INFRASTRUCTURE =============
         {
-            id: "approaches-overview",
-            file: "slides/05-approaches-overview.html",
-            section: "Approaches & Data",
-            title: "Approaches & Data Collection",
+            id: "data-collection-overview",
+            file: "slides/22-data-collection-overview.html",
+            section: "Data Collection Infrastructure",
+            title: "Hardware Integration & Interface Architecture",
             duration: 3.5,
-            description: "Methodology and BCI paradigms"
+            description: "Comprehensive infrastructure overview"
+        },
+        {
+            id: "epoc-hardware-specs",
+            file: "slides/23-epoc-hardware-specs.html",
+            section: "Data Collection Infrastructure",
+            title: "EPOC+ Hardware Specifications",
+            duration: 3.5,
+            description: "14-channel EEG headset technical details"
+        },
+        {
+            id: "signal-quality-monitoring",
+            file: "slides/24-signal-quality-monitoring.html",
+            section: "Data Collection Infrastructure",
+            title: "Signal Quality Monitoring",
+            duration: 3.0,
+            description: "Real-time signal quality assessment"
+        },
+        {
+            id: "trial-implementation",
+            file: "slides/25-trial-implementation.html",
+            section: "Data Collection Infrastructure",
+            title: "Trial Implementation & Data Collection",
+            duration: 3.5,
+            description: "Multi-paradigm trial processes"
         },
         {
             id: "approaches-hardware",
@@ -254,8 +278,8 @@ const PRESENTATION_CONFIG = {
             color: "#dc3545",
             gradient: "linear-gradient(135deg, #dc3545 0%, #fd7e14 100%)"
         },
-        "Approaches & Data": {
-            color: "#0066cc", 
+        "Data Collection Infrastructure": {
+            color: "#0066cc",
             gradient: "linear-gradient(135deg, #0066cc 0%, #667eea 100%)"
         },
         "Model Architecture": {
