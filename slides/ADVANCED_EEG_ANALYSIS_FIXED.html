@@ -1,0 +1,551 @@
+<style>
+        /* Standalone CSS for Advanced EEG Analysis Slide */
+        #advanced-eeg-slide-container .slide-content {
+            /* CSS Variables for Academic Theme */
+            --primary-bg: #ffffff;
+            --secondary-bg: #f8f9fa;
+            --tertiary-bg: #e9ecef;
+            --accent-red: #c41e3a;
+            --accent-blue: #1f4e79;
+            --accent-green: #2d5a27;
+            --accent-purple: #5a4fcf;
+            --text-primary: #2c3e50;
+            --text-secondary: #6c757d;
+            --border-light: #dee2e6;
+            --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 0.75rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-xxl: 3rem;
+            --font-size-h1: 3rem;
+            --font-size-h2: 2.25rem;
+            --font-size-h3: 1.75rem;
+            --font-size-h4: 1.25rem;
+            --font-size-body: 1rem;
+            --font-size-small: 0.875rem;
+
+            /* Base styles with high specificity */
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+            line-height: 1.6 !important;
+            font-size: var(--font-size-body) !important;
+            color: var(--text-primary) !important;
+            background: var(--primary-bg) !important;
+            height: calc(100vh - 40px) !important;
+            overflow-y: auto !important;
+            overflow-x: hidden !important;
+            padding-bottom: calc(var(--spacing-lg) + 40px) !important;
+        }
+
+        /* Custom scrollbar styling for standalone slides */
+        #advanced-eeg-slide-container .slide-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #advanced-eeg-slide-container .slide-content::-webkit-scrollbar-track {
+            background: transparent;
+            border-radius: 4px;
+        }
+
+        #advanced-eeg-slide-container .slide-content::-webkit-scrollbar-thumb {
+            background: rgba(90, 79, 207, 0.3);
+            border-radius: 4px;
+            transition: background 0.3s ease;
+        }
+
+        #advanced-eeg-slide-container .slide-content::-webkit-scrollbar-thumb:hover {
+            background: rgba(90, 79, 207, 0.5);
+        }
+
+        /* Firefox scrollbar styling */
+        #advanced-eeg-slide-container .slide-content {
+            scrollbar-width: thin;
+            scrollbar-color: transparent transparent;
+        }
+
+        /* Use !important to ensure these styles override any global styles */
+        #advanced-eeg-slide-container * {
+            box-sizing: border-box;
+        }
+
+        .slide-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: var(--spacing-lg);
+        }
+
+        .slide-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-radius: 12px;
+            border-bottom: 3px solid #5a4fcf;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .slide-title {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            color: #5a4fcf;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            letter-spacing: -0.02em;
+        }
+
+        .slide-subtitle {
+            font-size: clamp(1.25rem, 2.5vw, 1.8rem);
+            color: #4a4a4a;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .slide-description {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: #6c757d;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .analysis-card {
+            background: #ffffff;
+            border: 2px solid #dee2e6;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .analysis-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+        }
+
+        .analysis-card.preprocessing {
+            border-color: #2d7d32;
+            background: linear-gradient(135deg, #e8f5e8 0%, #ffffff 100%);
+        }
+
+        .analysis-card.feature-extraction {
+            border-color: #f57c00;
+            background: linear-gradient(135deg, #fff3e0 0%, #ffffff 100%);
+        }
+
+        .analysis-card.classification {
+            border-color: #5a4fcf;
+            background: linear-gradient(135deg, #f3e5f5 0%, #ffffff 100%);
+        }
+
+        .analysis-card.validation {
+            border-color: #c41e3a;
+            background: linear-gradient(135deg, #fce4ec 0%, #ffffff 100%);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-right: 1rem;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            color: white;
+        }
+
+        .preprocessing .card-icon {
+            background: #2d7d32;
+        }
+
+        .feature-extraction .card-icon {
+            background: #f57c00;
+        }
+
+        .classification .card-icon {
+            background: #5a4fcf;
+        }
+
+        .validation .card-icon {
+            background: #c41e3a;
+        }
+
+        .card-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #f1f3f4;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list li i {
+            color: #2d7d32;
+            margin-top: 0.25rem;
+            flex-shrink: 0;
+        }
+
+        .feature-text {
+            flex: 1;
+        }
+
+        .feature-title {
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 0.25rem;
+        }
+
+        .feature-description {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .pipeline-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pipeline-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            color: #5a4fcf;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .pipeline-flow {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .pipeline-step {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            flex: 1;
+            min-width: 200px;
+            position: relative;
+        }
+
+        .pipeline-step:not(:last-child)::after {
+            content: '→';
+            position: absolute;
+            right: -1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: #5a4fcf;
+            font-weight: bold;
+        }
+
+        .step-icon {
+            font-size: 2rem;
+            color: #5a4fcf;
+            margin-bottom: 1rem;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-description {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #ffd54f 0%, #ffeb3b 100%);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .image-placeholder {
+            background: linear-gradient(135deg, #f1f3f4 0%, #e9ecef 100%);
+            border: 2px dashed #ced4da;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            color: #6c757d;
+            font-style: italic;
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pipeline-flow {
+                flex-direction: column;
+            }
+            
+            .pipeline-step:not(:last-child)::after {
+                content: '↓';
+                right: 50%;
+                top: 100%;
+                transform: translateX(50%);
+            }
+        }
+    </style>
+
+<div id="advanced-eeg-slide-container">
+<div class="slide-content">
+<div class="slide-container">
+        <div class="slide-header">
+            <h1 class="slide-title">🧠 Advanced EEG Analysis</h1>
+            <h2 class="slide-subtitle">Comprehensive Signal Processing Pipeline</h2>
+            <p class="slide-description">
+                State-of-the-art EEG signal processing and analysis framework featuring advanced 
+                preprocessing, feature extraction, and machine learning classification techniques 
+                for robust brain-computer interface applications.
+            </p>
+        </div>
+
+        <div class="content-grid">
+            <!-- Preprocessing -->
+            <div class="analysis-card preprocessing">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-filter"></i>
+                    </div>
+                    <h3 class="card-title">Signal Preprocessing</h3>
+                </div>
+                
+                <ul class="feature-list">
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div class="feature-text">
+                            <div class="feature-title">Bandpass Filtering</div>
+                            <div class="feature-description">8-30 Hz frequency band isolation for motor imagery</div>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div class="feature-text">
+                            <div class="feature-title">Artifact Removal</div>
+                            <div class="feature-description">EOG, EMG, and noise artifact elimination</div>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div class="feature-text">
+                            <div class="feature-title">Signal Normalization</div>
+                            <div class="feature-description">Z-score normalization for consistent amplitude</div>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="image-placeholder">
+                    📊 Preprocessing Pipeline Diagram
+                </div>
+            </div>
+
+            <!-- Feature Extraction -->
+            <div class="analysis-card feature-extraction">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="card-title">Feature Extraction</h3>
+                </div>
+                
+                <ul class="feature-list">
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div class="feature-text">
+                            <div class="feature-title">Common Spatial Patterns</div>
+                            <div class="feature-description">CSP for optimal spatial filtering and channel selection</div>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div class="feature-text">
+                            <div class="feature-title">ERD/ERS Analysis</div>
+                            <div class="feature-description">Event-related desynchronization/synchronization detection</div>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div class="feature-text">
+                            <div class="feature-title">Spectral Features</div>
+                            <div class="feature-description">Power spectral density and frequency domain analysis</div>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="image-placeholder">
+                    🔍 Feature Extraction Methods
+                </div>
+            </div>
+
+            <!-- Classification -->
+            <div class="analysis-card classification">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="card-title">ML Classification</h3>
+                </div>
+                
+                <ul class="feature-list">
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div class="feature-text">
+                            <div class="feature-title">ATCNet Architecture</div>
+                            <div class="feature-description">Attention-based Temporal Convolutional Networks</div>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div class="feature-text">
+                            <div class="feature-title">CNN-LSTM-Attention</div>
+                            <div class="feature-description">Hybrid deep learning for spatial-temporal modeling</div>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div class="feature-text">
+                            <div class="feature-title">Multi-class Output</div>
+                            <div class="feature-description">4-class motor imagery classification</div>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="image-placeholder">
+                    🤖 Classification Architecture
+                </div>
+            </div>
+
+            <!-- Validation -->
+            <div class="analysis-card validation">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="card-title">Performance Validation</h3>
+                </div>
+                
+                <ul class="feature-list">
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div class="feature-text">
+                            <div class="feature-title">Cross-Validation</div>
+                            <div class="feature-description">K-fold validation for robust performance assessment</div>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div class="feature-text">
+                            <div class="feature-title">Real-time Testing</div>
+                            <div class="feature-description">Online performance evaluation and optimization</div>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div class="feature-text">
+                            <div class="feature-title">Accuracy Metrics</div>
+                            <div class="feature-description">75% classification accuracy achieved</div>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="image-placeholder">
+                    📈 Performance Results
+                </div>
+            </div>
+        </div>
+
+        <div class="pipeline-section">
+            <h3 class="pipeline-title">🔄 Complete Analysis Pipeline</h3>
+            
+            <div class="pipeline-flow">
+                <div class="pipeline-step">
+                    <div class="step-icon">
+                        <i class="fas fa-wave-square"></i>
+                    </div>
+                    <div class="step-title">Raw EEG</div>
+                    <div class="step-description">14-channel Emotiv EPOC+ acquisition</div>
+                </div>
+                
+                <div class="pipeline-step">
+                    <div class="step-icon">
+                        <i class="fas fa-filter"></i>
+                    </div>
+                    <div class="step-title">Preprocessing</div>
+                    <div class="step-description">Filtering & artifact removal</div>
+                </div>
+                
+                <div class="pipeline-step">
+                    <div class="step-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="step-title">Feature Extraction</div>
+                    <div class="step-description">CSP & spectral analysis</div>
+                </div>
+                
+                <div class="pipeline-step">
+                    <div class="step-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="step-title">Classification</div>
+                    <div class="step-description">Deep learning models</div>
+                </div>
+                
+                <div class="pipeline-step">
+                    <div class="step-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <div class="step-title">Output</div>
+                    <div class="step-description">Motor imagery prediction</div>
+                </div>
+            </div>
+        </div>
+</div>
+</div>
+</div>

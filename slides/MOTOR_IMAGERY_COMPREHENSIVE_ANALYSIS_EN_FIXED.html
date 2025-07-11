@@ -1,0 +1,504 @@
+<style>
+        /* Standalone CSS for Motor Imagery Analysis Slide */
+        #motor-imagery-slide-container .slide-content {
+            /* CSS Variables for Academic Theme */
+            --primary-bg: #ffffff;
+            --secondary-bg: #f8f9fa;
+            --tertiary-bg: #e9ecef;
+            --accent-red: #c41e3a;
+            --accent-blue: #1f4e79;
+            --accent-green: #2d5a27;
+            --accent-purple: #6f42c1;
+            --text-primary: #2c3e50;
+            --text-secondary: #6c757d;
+            --border-light: #dee2e6;
+            --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 0.75rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-xxl: 3rem;
+            --font-size-h1: 3rem;
+            --font-size-h2: 2.25rem;
+            --font-size-h3: 1.75rem;
+            --font-size-h4: 1.25rem;
+            --font-size-body: 1rem;
+            --font-size-small: 0.875rem;
+
+            /* Base styles with high specificity */
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+            line-height: 1.6 !important;
+            font-size: var(--font-size-body) !important;
+            color: var(--text-primary) !important;
+            background: var(--primary-bg) !important;
+            height: calc(100vh - 40px) !important;
+            overflow-y: auto !important;
+            overflow-x: hidden !important;
+            padding-bottom: calc(var(--spacing-lg) + 40px) !important;
+        }
+
+        /* Custom scrollbar styling for standalone slides */
+        #motor-imagery-slide-container .slide-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #motor-imagery-slide-container .slide-content::-webkit-scrollbar-track {
+            background: transparent;
+            border-radius: 4px;
+        }
+
+        #motor-imagery-slide-container .slide-content::-webkit-scrollbar-thumb {
+            background: rgba(196, 30, 58, 0.3);
+            border-radius: 4px;
+            transition: background 0.3s ease;
+        }
+
+        #motor-imagery-slide-container .slide-content::-webkit-scrollbar-thumb:hover {
+            background: rgba(196, 30, 58, 0.5);
+        }
+
+        /* Firefox scrollbar styling */
+        #motor-imagery-slide-container .slide-content {
+            scrollbar-width: thin;
+            scrollbar-color: transparent transparent;
+        }
+
+        /* Use !important to ensure these styles override any global styles */
+        #motor-imagery-slide-container * {
+            box-sizing: border-box;
+        }
+
+        .slide-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: var(--spacing-lg);
+        }
+
+        .slide-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-radius: 12px;
+            border-bottom: 3px solid #c41e3a;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .slide-title {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            color: #c41e3a;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            letter-spacing: -0.02em;
+        }
+
+        .slide-subtitle {
+            font-size: clamp(1.25rem, 2.5vw, 1.8rem);
+            color: #4a4a4a;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .slide-description {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: #6c757d;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-card {
+            background: #ffffff;
+            border: 2px solid #dee2e6;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+            transition: all 0.3s ease;
+        }
+
+        .section-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+        }
+
+        .section-card.architecture {
+            border-color: #c41e3a;
+            background: linear-gradient(135deg, #fce4ec 0%, #ffffff 100%);
+        }
+
+        .section-card.performance {
+            border-color: #1f4e79;
+            background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%);
+        }
+
+        .section-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #c41e3a;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-title.performance-title {
+            color: #1f4e79;
+        }
+
+        .section-title i {
+            font-size: 1.25rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #f1f3f4;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list li i {
+            color: #2d7d32;
+            margin-top: 0.25rem;
+            flex-shrink: 0;
+        }
+
+        .feature-text {
+            flex: 1;
+        }
+
+        .feature-title {
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 0.25rem;
+        }
+
+        .feature-description {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .performance-metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .metric {
+            text-align: center;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f4e79;
+            margin-bottom: 0.25rem;
+        }
+
+        .metric-label {
+            font-size: 0.875rem;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .full-width-section {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .methodology-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            color: #c41e3a;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .methodology-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .methodology-step {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border-left: 4px solid #c41e3a;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: #c41e3a;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-description {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #ffd54f 0%, #ffeb3b 100%);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .image-placeholder {
+            background: linear-gradient(135deg, #f1f3f4 0%, #e9ecef 100%);
+            border: 2px dashed #ced4da;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            color: #6c757d;
+            font-style: italic;
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .performance-metrics {
+                grid-template-columns: 1fr;
+            }
+            
+            .methodology-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+<div id="motor-imagery-slide-container">
+<div class="slide-content">
+<div class="slide-container">
+        <div class="slide-header">
+            <h1 class="slide-title">🧠 Motor Imagery Comprehensive Analysis</h1>
+            <h2 class="slide-subtitle">ATCNet Architecture & Performance</h2>
+            <p class="slide-description">
+                Comprehensive analysis of motor imagery classification using advanced ATCNet architecture, 
+                featuring temporal convolutional networks with attention mechanisms for optimal EEG signal processing and movement intention recognition.
+            </p>
+        </div>
+
+        <div class="content-grid">
+            <!-- Architecture Section -->
+            <div class="section-card architecture">
+                <h3 class="section-title">
+                    <i class="fas fa-brain"></i>
+                    ATCNet Architecture & Performance
+                </h3>
+                
+                <ul class="feature-list">
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div class="feature-text">
+                            <div class="feature-title">Temporal Convolutional Networks</div>
+                            <div class="feature-description">Advanced TCN layers for optimal temporal feature extraction</div>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div class="feature-text">
+                            <div class="feature-title">Attention Mechanisms</div>
+                            <div class="feature-description">Multi-head attention for enhanced pattern recognition</div>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div class="feature-text">
+                            <div class="feature-title">Spatial Filtering</div>
+                            <div class="feature-description">CSP-based spatial feature optimization</div>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div class="feature-text">
+                            <div class="feature-title">ERD/ERS Analysis</div>
+                            <div class="feature-description">Event-related desynchronization/synchronization detection</div>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="image-placeholder">
+                    📊 ATCNet Architecture Diagram
+                    <br><small>Temporal Convolution + Attention Layers</small>
+                </div>
+            </div>
+
+            <!-- Performance Section -->
+            <div class="section-card performance">
+                <h3 class="section-title performance-title">
+                    <i class="fas fa-chart-line"></i>
+                    Model Overview
+                </h3>
+                
+                <div class="performance-metrics">
+                    <div class="metric">
+                        <div class="metric-value">75%</div>
+                        <div class="metric-label">Overall Accuracy</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">4-class</div>
+                        <div class="metric-label">Classification</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">EEG</div>
+                        <div class="metric-label">Signal Type</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">Real-time</div>
+                        <div class="metric-label">Processing</div>
+                    </div>
+                </div>
+
+                <ul class="feature-list">
+                    <li>
+                        <i class="fas fa-star"></i>
+                        <div class="feature-text">
+                            <div class="feature-title">Basic Information</div>
+                            <div class="feature-description">Model Type: ATCNet (Attention-based Temporal Convolutional Network)</div>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-cog"></i>
+                        <div class="feature-text">
+                            <div class="feature-title">Number of Classes</div>
+                            <div class="feature-description">4 classes (Left Hand, Right Hand, Feet, Tongue)</div>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-microchip"></i>
+                        <div class="feature-text">
+                            <div class="feature-title">Application System</div>
+                            <div class="feature-description">Neuron system for medical Brain-Computer Interface</div>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-bullseye"></i>
+                        <div class="feature-text">
+                            <div class="feature-title">Overall Accuracy</div>
+                            <div class="feature-description">75% for 4-class motor imagery classification</div>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-rocket"></i>
+                        <div class="feature-text">
+                            <div class="feature-title">Primary Application</div>
+                            <div class="feature-description">Medical Brain-Computer Interface systems</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Methodology Section -->
+            <div class="full-width-section">
+                <h3 class="methodology-title">🔬 Comprehensive Methodology</h3>
+                
+                <div class="methodology-grid">
+                    <div class="methodology-step">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Signal Acquisition</div>
+                        <div class="step-description">
+                            EEG data collection using <span class="highlight">Emotiv EPOC+</span> with 14 channels, 
+                            focusing on motor cortex regions for movement intention detection.
+                        </div>
+                    </div>
+                    
+                    <div class="methodology-step">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Preprocessing Pipeline</div>
+                        <div class="step-description">
+                            Bandpass filtering (8-30 Hz), artifact removal, and signal normalization 
+                            to enhance <span class="highlight">ERD/ERS patterns</span>.
+                        </div>
+                    </div>
+                    
+                    <div class="methodology-step">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Feature Extraction</div>
+                        <div class="step-description">
+                            <span class="highlight">Common Spatial Patterns (CSP)</span> for spatial filtering 
+                            and optimal channel combination for motor imagery classification.
+                        </div>
+                    </div>
+                    
+                    <div class="methodology-step">
+                        <div class="step-number">4</div>
+                        <div class="step-title">ATCNet Classification</div>
+                        <div class="step-description">
+                            Advanced temporal convolutional network with attention mechanisms 
+                            for robust <span class="highlight">4-class classification</span>.
+                        </div>
+                    </div>
+                    
+                    <div class="methodology-step">
+                        <div class="step-number">5</div>
+                        <div class="step-title">Real-time Processing</div>
+                        <div class="step-description">
+                            Optimized inference pipeline for real-time motor imagery detection 
+                            in medical BCI applications.
+                        </div>
+                    </div>
+                    
+                    <div class="methodology-step">
+                        <div class="step-number">6</div>
+                        <div class="step-title">Performance Validation</div>
+                        <div class="step-description">
+                            Cross-validation and testing achieving <span class="highlight">75% accuracy</span> 
+                            across all motor imagery classes.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+</div>
+</div>

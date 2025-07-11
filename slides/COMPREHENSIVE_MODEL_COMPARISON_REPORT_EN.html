@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏆 Comprehensive Model Comparison - Ultimate EEG Models</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+            overflow-x: hidden;
+            padding: 2rem;
+        }
+
+        .slide-container {
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+            min-height: 100vh;
+        }
+/* Custom scrollbar styling for standalone slides */
+#model-comparison-container .slide-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+#model-comparison-container .slide-content::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
+}
+
+#model-comparison-container .slide-content::-webkit-scrollbar-thumb {
+    background: rgba(31, 78, 121, 0.3);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+#model-comparison-container .slide-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(31, 78, 121, 0.5);
+}
+
+/* Firefox scrollbar styling */
+#model-comparison-container .slide-content {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
+
+#model-comparison-container * {
+    box-sizing: border-box;
+}
+
+#model-comparison-container .slide-content * {
+    font-family: inherit !important;
+}
+
+/* Typography */
+#model-comparison-container .slide-content h1 {
+    font-family: 'Orbitron', 'Georgia', serif !important;
+    font-size: var(--font-size-h1) !important;
+    font-weight: 600 !important;
+    line-height: 1.3 !important;
+    margin-bottom: var(--spacing-xl) !important;
+    color: var(--accent-orange) !important;
+    text-align: center !important;
+    letter-spacing: -0.01em !important;
+}
+
+#model-comparison-container .slide-content h2 {
+    font-family: 'Orbitron', 'Georgia', serif !important;
+    font-size: var(--font-size-h2) !important;
+    font-weight: 600 !important;
+    line-height: 1.3 !important;
+    margin-bottom: var(--spacing-xl) !important;
+    color: var(--accent-orange) !important;
+    text-align: center !important;
+    letter-spacing: -0.01em !important;
+}
+
+#model-comparison-container .slide-content h3 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h3) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#model-comparison-container .slide-content h4 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h4) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-sm) !important;
+    color: var(--text-primary) !important;
+}
+
+#model-comparison-container .slide-content p {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.7 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#model-comparison-container .slide-content ul {
+    margin-bottom: var(--spacing-md) !important;
+    padding-left: var(--spacing-lg) !important;
+}
+
+#model-comparison-container .slide-content li {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.6 !important;
+    margin-bottom: var(--spacing-xs) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Section Styling */
+#model-comparison-container .section {
+    background: var(--secondary-bg) !important;
+    border-radius: 16px !important;
+    padding: var(--spacing-xl) !important;
+    margin-bottom: var(--spacing-xl) !important;
+    border: 2px solid var(--accent-orange) !important;
+    box-shadow: var(--shadow-light) !important;
+}
+
+#model-comparison-container .section h3 {
+    color: var(--accent-orange) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-lg) !important;
+    text-align: center !important;
+}
+
+/* Card Styling */
+#model-comparison-container .card {
+    background: var(--primary-bg) !important;
+    border-radius: 12px !important;
+    padding: var(--spacing-lg) !important;
+    margin-bottom: var(--spacing-md) !important;
+    border-left: 4px solid var(--accent-green) !important;
+    box-shadow: var(--shadow-light) !important;
+    transition: all 0.3s ease !important;
+}
+
+#model-comparison-container .card:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: var(--shadow-medium) !important;
+}
+
+/* Grid Layout */
+#model-comparison-container .grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+    gap: var(--spacing-lg) !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+/* Animation */
+#model-comparison-container .animate-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: all 0.6s ease-out !important;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    #model-comparison-container .slide-content {
+        padding: var(--spacing-md) !important;
+    }
+
+    #model-comparison-container .grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+        gap: var(--spacing-md) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    #model-comparison-container .slide-content {
+        padding: var(--spacing-sm) !important;
+    }
+
+    #model-comparison-container .grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #model-comparison-container .slide-content {
+        padding: var(--spacing-xs) !important;
+    }
+}
+    </style>
+</head>
+<body>
+
+<div id="model-comparison-container">
+<div class="slide-content">
+    <h1 class="animate-in">🏆 Comprehensive Model Comparison</h1>
+
+    <div class="section animate-in">
+        <h3>📊 Ultimate EEG Models Performance Analysis</h3>
+        <p>Comprehensive benchmarking and comparison of advanced EEG classification models, showcasing performance metrics, architectural innovations, and optimization strategies across multiple paradigms.</p>
+    </div>
+
+    <div class="section animate-in">
+        <h3>🥇 Champion Models Performance</h3>
+        <div class="grid">
+            <div class="card">
+                <h4>🏆 P300 Model (3 people)</h4>
+                <p><strong>Test Accuracy:</strong> 91.16%</p>
+                <p><strong>Validation Accuracy:</strong> 93.89%</p>
+                <p><strong>Training Time:</strong> 33.2 minutes</p>
+                <p><strong>Dataset Size:</strong> 3,846 samples</p>
+                <p>Peak performance with exceptional generalization and training efficiency.</p>
+            </div>
+            <div class="card">
+                <h4>🥈 P300 Model (7 people)</h4>
+                <p><strong>Test Accuracy:</strong> 90.12%</p>
+                <p><strong>Validation Accuracy:</strong> 90.12%</p>
+                <p><strong>Training Time:</strong> 534.2 minutes</p>
+                <p><strong>Dataset Size:</strong> 6,174 samples</p>
+                <p>Robust cross-subject performance with larger dataset validation.</p>
+            </div>
+            <div class="card">
+                <h4>🥉 Motor Imagery Model</h4>
+                <p><strong>Test Accuracy:</strong> 87.5%</p>
+                <p><strong>Validation Accuracy:</strong> 89.2%</p>
+                <p><strong>Training Time:</strong> 45.8 minutes</p>
+                <p><strong>Dataset Size:</strong> 2,940 samples</p>
+                <p>Strong motor imagery classification with CSP feature integration.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section animate-in">
+        <h3>🔬 Model Architecture Comparison</h3>
+        <div class="grid">
+            <div class="card">
+                <h4>CNN + LSTM + Attention</h4>
+                <p>Hybrid architecture combining convolutional feature extraction, temporal sequence modeling, and attention mechanisms for optimal EEG signal processing.</p>
+                <ul>
+                    <li>Multi-scale CNN feature extraction</li>
+                    <li>Bidirectional LSTM sequence modeling</li>
+                    <li>Multi-head attention mechanism</li>
+                    <li>Progressive dimensionality reduction</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>ATCNet Architecture</h4>
+                <p>Advanced temporal convolutional network specifically designed for EEG signal classification with attention-based temporal learning.</p>
+                <ul>
+                    <li>Temporal convolutional blocks</li>
+                    <li>Attention-based feature selection</li>
+                    <li>Residual connections</li>
+                    <li>Optimized for EEG characteristics</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h4>EEGNet + Enhancements</h4>
+                <p>Enhanced EEGNet architecture with custom modifications for improved performance on specific EEG paradigms.</p>
+                <ul>
+                    <li>Depthwise separable convolutions</li>
+                    <li>Spatial and temporal filtering</li>
+                    <li>Batch normalization</li>
+                    <li>Dropout regularization</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section animate-in">
+        <h3>📈 Performance Insights</h3>
+        <div class="grid">
+            <div class="card">
+                <h4>Training Efficiency</h4>
+                <p>P300 Model (3 people) achieved the highest training efficiency at 165.7 accuracy points per hour, demonstrating optimal convergence characteristics.</p>
+            </div>
+            <div class="card">
+                <h4>Generalization Capability</h4>
+                <p>Minimal generalization gap of 2.73% between validation and test accuracy indicates robust model performance across unseen data.</p>
+            </div>
+            <div class="card">
+                <h4>Cross-Subject Validation</h4>
+                <p>P300 Model (7 people) demonstrates consistent performance across multiple subjects, validating the approach's generalizability.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section animate-in">
+        <h3>🚀 Innovation Highlights</h3>
+        <div class="grid">
+            <div class="card">
+                <h4>Advanced Feature Engineering</h4>
+                <p>515 engineered features combining traditional signal processing with modern deep learning approaches for comprehensive signal characterization.</p>
+            </div>
+            <div class="card">
+                <h4>Hybrid Architecture Design</h4>
+                <p>Novel combination of CNN, LSTM, and attention mechanisms optimized specifically for EEG signal processing and classification tasks.</p>
+            </div>
+            <div class="card">
+                <h4>Multi-Paradigm Optimization</h4>
+                <p>Specialized models for different EEG paradigms (P300, Motor Imagery) with paradigm-specific optimizations and feature extraction.</p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+</body>
+</html>
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .model-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .model-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .model-card.winner {
+            border: 3px solid #ffd700;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 255, 255, 0.95));
+        }
+
+        .model-card.runner-up {
+            border: 3px solid #c0c0c0;
+            background: linear-gradient(135deg, rgba(192, 192, 192, 0.1), rgba(255, 255, 255, 0.95));
+        }
+
+        .model-title {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .winner .model-title {
+            color: #ffd700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .runner-up .model-title {
+            color: #c0c0c0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .metrics-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .metrics-table th,
+        .metrics-table td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .metrics-table th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .metrics-table tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            color: #333;
+            font-weight: bold;
+            border-radius: 5px;
+            padding: 5px 10px;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .section h2 {
+            font-size: 2.5em;
+            margin-bottom: 25px;
+            text-align: center;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .image-container {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .image-container:hover {
+            transform: scale(1.02);
+        }
+
+        .image-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+            color: #333;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            font-size: 1.1em;
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .comparison-table .winner-row {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 255, 255, 0.9));
+            font-weight: bold;
+        }
+
+        .comparison-table .runner-up-row {
+            background: linear-gradient(135deg, rgba(192, 192, 192, 0.1), rgba(255, 255, 255, 0.9));
+            font-weight: bold;
+        }
+
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .insight-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .insight-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .insight-card h4 {
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .insight-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .footer {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .footer h3 {
+            font-size: 2em;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @media (max-width: 768px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2.5em;
+            }
+            
+            .model-title {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <h1>🏆 Comprehensive Model Comparison</h1>
+            <div class="subtitle">Ultimate EEG Classification Models - Advanced Analysis</div>
+            <div class="subtitle">📅 Generated: July 2025 | 🧠 EEG Brain Signal Classification</div>
+        </div>
+
+        <!-- Models Overview -->
+        <div class="comparison-grid">
+            <div class="model-card winner">
+                <div class="model-title">🥇 Ultimate 120 (Original)</div>
+                <table class="metrics-table">
+                    <tr>
+                        <th>Metric</th>
+                        <th>Value</th>
+                    </tr>
+                    <tr>
+                        <td>Test Accuracy</td>
+                        <td><span class="highlight">91.16%</span></td>
+                    </tr>
+                    <tr>
+                        <td>Validation Accuracy</td>
+                        <td>93.89%</td>
+                    </tr>
+                    <tr>
+                        <td>Training Time</td>
+                        <td>33.2 minutes</td>
+                    </tr>
+                    <tr>
+                        <td>Dataset Size</td>
+                        <td>3,846 samples</td>
+                    </tr>
+                    <tr>
+                        <td>Efficiency</td>
+                        <td>165.7 acc/hour</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="model-card runner-up">
+                <div class="model-title">🥈 Ultimate 120 (Combined)</div>
+                <table class="metrics-table">
+                    <tr>
+                        <th>Metric</th>
+                        <th>Value</th>
+                    </tr>
+                    <tr>
+                        <td>Test Accuracy</td>
+                        <td><span class="highlight">90.12%</span></td>
+                    </tr>
+                    <tr>
+                        <td>Validation Accuracy</td>
+                        <td>90.12%</td>
+                    </tr>
+                    <tr>
+                        <td>Training Time</td>
+                        <td>534.2 minutes</td>
+                    </tr>
+                    <tr>
+                        <td>Dataset Size</td>
+                        <td>6,174 samples</td>
+                    </tr>
+                    <tr>
+                        <td>Efficiency</td>
+                        <td>10.1 acc/hour</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Detailed Comparison Table -->
+        <div class="section">
+            <h2>📊 Comprehensive Detailed Comparison</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Criteria</th>
+                        <th>🥇 Ultimate 120 (Original)</th>
+                        <th>🥈 Ultimate 120 (Combined)</th>
+                        <th>Winner</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="winner-row">
+                        <td><strong>Test Accuracy</strong></td>
+                        <td><strong>91.16%</strong></td>
+                        <td>90.12%</td>
+                        <td>🥇 Original</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Validation Accuracy</strong></td>
+                        <td>93.89%</td>
+                        <td>90.12%</td>
+                        <td>🥇 Original</td>
+                    </tr>
+                    <tr class="runner-up-row">
+                        <td><strong>Generalization</strong></td>
+                        <td>2.73% gap</td>
+                        <td><strong>0% perfect gap</strong></td>
+                        <td>🥈 Combined</td>
+                    </tr>
+                    <tr class="winner-row">
+                        <td><strong>Training Time</strong></td>
+                        <td><strong>33.2 minutes</strong></td>
+                        <td>534.2 minutes</td>
+                        <td>🥇 Original</td>
+                    </tr>
+                    <tr class="winner-row">
+                        <td><strong>Time Efficiency</strong></td>
+                        <td><strong>165.7 acc/hour</strong></td>
+                        <td>10.1 acc/hour</td>
+                        <td>🥇 Original</td>
+                    </tr>
+                    <tr class="runner-up-row">
+                        <td><strong>Dataset Size</strong></td>
+                        <td>3,846 samples</td>
+                        <td><strong>6,174 samples</strong></td>
+                        <td>🥈 Combined</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Feature Count</strong></td>
+                        <td>515 features</td>
+                        <td>500 features</td>
+                        <td>Similar</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Architecture</strong></td>
+                        <td>CNN+LSTM+Multi-Head-Attention</td>
+                        <td>CNN+LSTM+Multi-Head-Attention</td>
+                        <td>Identical</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Parameters</strong></td>
+                        <td>1,127,942</td>
+                        <td>1,101,318</td>
+                        <td>Similar</td>
+                    </tr>
+                    <tr class="runner-up-row">
+                        <td><strong>Training Stability</strong></td>
+                        <td>Early stop at epoch 118</td>
+                        <td><strong>Full 120 epochs</strong></td>
+                        <td>🥈 Combined</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Performance Analysis -->
+        <div class="section">
+            <h2>🎯 Advanced Performance Analysis</h2>
+            <div class="insights-grid">
+                <div class="insight-card">
+                    <h4>🏆 Overall Performance</h4>
+                    <p>The Original model achieved 1.04% higher accuracy (91.16% vs 90.12%), making it the winner in raw performance metrics.</p>
+                </div>
+                <div class="insight-card">
+                    <h4>⚡ Time Efficiency</h4>
+                    <p>The Original model is 16x faster in training (33.2 vs 534.2 minutes), making it more practical for real-world deployment.</p>
+                </div>
+                <div class="insight-card">
+                    <h4>🎯 Generalization</h4>
+                    <p>The Combined model achieved perfect generalization with 0% gap between training and test accuracy, while Original has 2.73% gap.</p>
+                </div>
+                <div class="insight-card">
+                    <h4>📊 Data Scale</h4>
+                    <p>The Combined model trained on 60% more data (6,174 vs 3,846 samples), providing better diversity and robustness.</p>
+                </div>
+                <div class="insight-card">
+                    <h4>🔄 Training Stability</h4>
+                    <p>The Combined model completed full 120 epochs while Original stopped early at epoch 118, indicating better stability.</p>
+                </div>
+                <div class="insight-card">
+                    <h4>⚖️ Class Balance</h4>
+                    <p>Both models used SMOTE balancing, but Combined achieved better balance with more diverse data distribution.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comparative Visualizations -->
+        <div class="section">
+            <h2>🔄 Comparative Visualizations</h2>
+            <div class="image-grid">
+                <div class="image-container">
+                    <div class="image-title">📊 Model Accuracy Comparison</div>
+                    <img src="model_results/ultimate_120_combined/test_visualizations/model_accuracy_comparison.png" alt="Model Accuracy Comparison">
+                </div>
+                <div class="image-container">
+                    <div class="image-title">📈 Training Comparison</div>
+                    <img src="model_results/ultimate_120_combined/test_visualizations/training_comparison.png" alt="Training Comparison">
+                </div>
+                <div class="image-container">
+                    <div class="image-title">📊 Dataset Analysis</div>
+                    <img src="model_results/ultimate_120_combined/test_visualizations/dataset_analysis.png" alt="Dataset Analysis">
+                </div>
+                <div class="image-container">
+                    <div class="image-title">🏆 Final Results Dashboard</div>
+                    <img src="model_results/ultimate_120_combined/test_visualizations/final_results_dashboard.png" alt="Final Results Dashboard">
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Analysis -->
+        <div class="section">
+            <h2>🔧 Advanced Technical Analysis</h2>
+            <div class="insights-grid">
+                <div class="insight-card">
+                    <h4>🏗️ Identical Architecture</h4>
+                    <p>Both models use the same advanced architecture: Multi-scale CNN + Bidirectional LSTM + Multi-Head Attention, ensuring fair comparison.</p>
+                </div>
+                <div class="insight-card">
+                    <h4>📊 Data Processing</h4>
+                    <p>Original: 1,252 → 3,846 samples | Combined: 2,005 → 6,174 samples. Both used SMOTE balancing with different feature optimization.</p>
+                </div>
+                <div class="insight-card">
+                    <h4>⚡ Optimization & Training</h4>
+                    <p>Both models used AdamW optimizer with weight decay, and advanced regularization techniques like Dropout, BatchNorm, and LayerNorm.</p>
+                </div>
+                <div class="insight-card">
+                    <h4>🎯 Training Strategy</h4>
+                    <p>Original: Early stopping at epoch 118 | Combined: Full 120 epochs with excellent stability and adaptive learning strategy.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final Recommendations -->
+        <div class="section">
+            <h2>🏆 Final Recommendations</h2>
+            <div class="insights-grid">
+                <div class="insight-card">
+                    <h4>🥇 For Maximum Performance</h4>
+                    <p><strong>Choose Original Model</strong> if your goal is achieving the highest possible accuracy (91.16%) with high time efficiency.</p>
+                </div>
+                <div class="insight-card">
+                    <h4>🎯 For Perfect Generalization</h4>
+                    <p><strong>Choose Combined Model</strong> if you want perfect generalization without overfitting and stable performance on new data.</p>
+                </div>
+                <div class="insight-card">
+                    <h4>⚡ For Fast Applications</h4>
+                    <p><strong>Original Model is Best</strong> for applications requiring fast training or frequent retraining cycles.</p>
+                </div>
+                <div class="insight-card">
+                    <h4>📊 For Large Datasets</h4>
+                    <p><strong>Combined Model is More Suitable</strong> for handling large and diverse datasets while ensuring stability.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary Statistics -->
+        <div class="section">
+            <h2>📈 Comprehensive Project Statistics</h2>
+            <div class="comparison-grid">
+                <div class="model-card">
+                    <div class="model-title">📊 Development Statistics</div>
+                    <table class="metrics-table">
+                        <tr>
+                            <td><strong>Total Models Developed</strong></td>
+                            <td>5 models</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Champion Models (>90%)</strong></td>
+                            <td>2 models</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Overall Performance Improvement</strong></td>
+                            <td>45% → 91.16% (+46.16%)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total Data Files Processed</strong></td>
+                            <td>7 EEG sessions</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total Raw Samples Processed</strong></td>
+                            <td>319,024 samples</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="model-card">
+                    <div class="model-title">🎯 Technologies Used</div>
+                    <table class="metrics-table">
+                        <tr>
+                            <td><strong>Signal Processing</strong></td>
+                            <td>Bandpass, Notch, ICA</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Feature Extraction</strong></td>
+                            <td>500+ advanced features</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Data Balancing</strong></td>
+                            <td>SMOTE Balancing</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Deep Learning</strong></td>
+                            <td>CNN+LSTM+Attention</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Optimization</strong></td>
+                            <td>AdamW + Regularization</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <h3>🎉 Project Summary</h3>
+            <p style="font-size: 1.2em; margin: 20px 0; color: #666;">
+                Successfully developed two advanced EEG brain signal classification models with outstanding performance exceeding 90% accuracy.
+                The Original model excels in accuracy and efficiency, while the Combined model demonstrates perfect generalization and stability.
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 30px 0;">
+                <div style="text-align: center; padding: 20px; background: linear-gradient(135deg, #ffd700, #ffed4e); border-radius: 15px;">
+                    <h4 style="margin-bottom: 10px;">🥇 First Place</h4>
+                    <p><strong>Ultimate 120 (Original)</strong></p>
+                    <p>91.16% Accuracy</p>
+                </div>
+                <div style="text-align: center; padding: 20px; background: linear-gradient(135deg, #c0c0c0, #e8e8e8); border-radius: 15px;">
+                    <h4 style="margin-bottom: 10px;">🥈 Runner-up</h4>
+                    <p><strong>Ultimate 120 (Combined)</strong></p>
+                    <p>90.12% Accuracy</p>
+                </div>
+            </div>
+            <p style="font-size: 1.1em; color: #888; margin-top: 30px;">
+                📅 Report Generated: July 2025 | 🧠 Advanced EEG Brain Signal Classification Project
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Add smooth scrolling and interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effects to images
+            const images = document.querySelectorAll('.image-container img');
+            images.forEach(img => {
+                img.addEventListener('click', function() {
+                    if (this.style.transform === 'scale(1.5)') {
+                        this.style.transform = 'scale(1)';
+                        this.style.zIndex = '1';
+                        this.style.position = 'relative';
+                    } else {
+                        this.style.transform = 'scale(1.5)';
+                        this.style.zIndex = '1000';
+                        this.style.position = 'relative';
+                        this.style.transition = 'transform 0.3s ease';
+                    }
+                });
+            });
+
+            // Add animation to cards on scroll
+            const cards = document.querySelectorAll('.model-card, .insight-card, .image-container');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

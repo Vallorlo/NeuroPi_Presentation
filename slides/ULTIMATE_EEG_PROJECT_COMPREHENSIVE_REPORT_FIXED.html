@@ -1,0 +1,599 @@
+<style>
+        /* Standalone CSS for Ultimate EEG Project Slide */
+        #ultimate-eeg-slide-container .slide-content {
+            /* CSS Variables for Academic Theme */
+            --primary-bg: #ffffff;
+            --secondary-bg: #f8f9fa;
+            --tertiary-bg: #e9ecef;
+            --accent-red: #c41e3a;
+            --accent-blue: #1f4e79;
+            --accent-green: #2d5a27;
+            --accent-orange: #f57c00;
+            --text-primary: #2c3e50;
+            --text-secondary: #6c757d;
+            --border-light: #dee2e6;
+            --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 0.75rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-xxl: 3rem;
+            --font-size-h1: 3rem;
+            --font-size-h2: 2.25rem;
+            --font-size-h3: 1.75rem;
+            --font-size-h4: 1.25rem;
+            --font-size-body: 1rem;
+            --font-size-small: 0.875rem;
+
+            /* Base styles with high specificity */
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+            line-height: 1.6 !important;
+            font-size: var(--font-size-body) !important;
+            color: var(--text-primary) !important;
+            background: var(--primary-bg) !important;
+            height: calc(100vh - 40px) !important;
+            overflow-y: auto !important;
+            overflow-x: hidden !important;
+            padding-bottom: calc(var(--spacing-lg) + 40px) !important;
+        }
+
+        /* Custom scrollbar styling for standalone slides */
+        #ultimate-eeg-slide-container .slide-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #ultimate-eeg-slide-container .slide-content::-webkit-scrollbar-track {
+            background: transparent;
+            border-radius: 4px;
+        }
+
+        #ultimate-eeg-slide-container .slide-content::-webkit-scrollbar-thumb {
+            background: rgba(245, 124, 0, 0.3);
+            border-radius: 4px;
+            transition: background 0.3s ease;
+        }
+
+        #ultimate-eeg-slide-container .slide-content::-webkit-scrollbar-thumb:hover {
+            background: rgba(245, 124, 0, 0.5);
+        }
+
+        /* Firefox scrollbar styling */
+        #ultimate-eeg-slide-container .slide-content {
+            scrollbar-width: thin;
+            scrollbar-color: transparent transparent;
+        }
+
+        /* Use !important to ensure these styles override any global styles */
+        #ultimate-eeg-slide-container * {
+            box-sizing: border-box;
+        }
+
+        .slide-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: var(--spacing-lg);
+        }
+
+        .slide-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-radius: 12px;
+            border-bottom: 3px solid #f57c00;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .slide-title {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            color: #f57c00;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            letter-spacing: -0.02em;
+        }
+
+        .slide-subtitle {
+            font-size: clamp(1.25rem, 2.5vw, 1.8rem);
+            color: #4a4a4a;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .slide-description {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: #6c757d;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .project-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .overview-card {
+            background: #ffffff;
+            border: 2px solid #dee2e6;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .overview-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+        }
+
+        .overview-card.objectives {
+            border-color: #2d7d32;
+            background: linear-gradient(135deg, #e8f5e8 0%, #ffffff 100%);
+        }
+
+        .overview-card.methodology {
+            border-color: #1f4e79;
+            background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%);
+        }
+
+        .overview-card.achievements {
+            border-color: #f57c00;
+            background: linear-gradient(135deg, #fff3e0 0%, #ffffff 100%);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-right: 1rem;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            color: white;
+        }
+
+        .objectives .card-icon {
+            background: #2d7d32;
+        }
+
+        .methodology .card-icon {
+            background: #1f4e79;
+        }
+
+        .achievements .card-icon {
+            background: #f57c00;
+        }
+
+        .card-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #f1f3f4;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list li i {
+            color: #2d7d32;
+            margin-top: 0.25rem;
+            flex-shrink: 0;
+        }
+
+        .feature-text {
+            flex: 1;
+        }
+
+        .feature-title {
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 0.25rem;
+        }
+
+        .feature-description {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .results-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .results-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            color: #f57c00;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .result-metric {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #f57c00;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #f57c00;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            font-size: 1rem;
+            color: #4a4a4a;
+            font-weight: 500;
+        }
+
+        .metric-description {
+            font-size: 0.875rem;
+            color: #6c757d;
+            margin-top: 0.5rem;
+        }
+
+        .models-comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .model-card {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border: 1px solid #dee2e6;
+        }
+
+        .model-name {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1f4e79;
+            margin-bottom: 1rem;
+        }
+
+        .model-performance {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .performance-score {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2d7d32;
+        }
+
+        .performance-label {
+            font-size: 0.875rem;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .model-features {
+            list-style: none;
+        }
+
+        .model-features li {
+            padding: 0.25rem 0;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .model-features li i {
+            color: #2d7d32;
+            margin-right: 0.5rem;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #ffd54f 0%, #ffeb3b 100%);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .image-placeholder {
+            background: linear-gradient(135deg, #f1f3f4 0%, #e9ecef 100%);
+            border: 2px dashed #ced4da;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            color: #6c757d;
+            font-style: italic;
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .project-overview {
+                grid-template-columns: 1fr;
+            }
+            
+            .results-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .models-comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+<div id="ultimate-eeg-slide-container">
+<div class="slide-content">
+<div class="slide-container">
+        <div class="slide-header">
+            <h1 class="slide-title">🏆 Ultimate EEG Project</h1>
+            <h2 class="slide-subtitle">Comprehensive Model Training Report</h2>
+            <p class="slide-description">
+                Complete overview of the advanced EEG signal processing and machine learning project, 
+                showcasing cutting-edge methodologies, comprehensive model comparisons, and 
+                outstanding performance achievements in brain-computer interface applications.
+            </p>
+        </div>
+
+        <div class="project-overview">
+            <!-- Project Objectives -->
+            <div class="overview-card objectives">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 class="card-title">Project Objectives</h3>
+                </div>
+                
+                <ul class="feature-list">
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div class="feature-text">
+                            <div class="feature-title">Multi-Paradigm BCI</div>
+                            <div class="feature-description">Develop comprehensive BCI system supporting multiple paradigms</div>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div class="feature-text">
+                            <div class="feature-title">Advanced ML Models</div>
+                            <div class="feature-description">Implement state-of-the-art deep learning architectures</div>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div class="feature-text">
+                            <div class="feature-title">Real-time Processing</div>
+                            <div class="feature-description">Achieve real-time EEG signal processing and classification</div>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div class="feature-text">
+                            <div class="feature-title">Clinical Applications</div>
+                            <div class="feature-description">Target medical and assistive technology applications</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Methodology -->
+            <div class="overview-card methodology">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="card-title">Methodology</h3>
+                </div>
+                
+                <ul class="feature-list">
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div class="feature-text">
+                            <div class="feature-title">Motor Imagery</div>
+                            <div class="feature-description">ERD/ERS analysis with CSP features and ATCNet classifier</div>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div class="feature-text">
+                            <div class="feature-title">P300 Paradigm</div>
+                            <div class="feature-description">Oddball matrix with CNN-LSTM-Attention models</div>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div class="feature-text">
+                            <div class="feature-title">Advanced Preprocessing</div>
+                            <div class="feature-description">Comprehensive signal filtering and artifact removal</div>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <div class="feature-text">
+                            <div class="feature-title">Model Comparison</div>
+                            <div class="feature-description">Systematic evaluation of multiple architectures</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Key Achievements -->
+            <div class="overview-card achievements">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3 class="card-title">Key Achievements</h3>
+                </div>
+                
+                <ul class="feature-list">
+                    <li>
+                        <i class="fas fa-star"></i>
+                        <div class="feature-text">
+                            <div class="feature-title">Superior Performance</div>
+                            <div class="feature-description">75% accuracy in 4-class motor imagery classification</div>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-star"></i>
+                        <div class="feature-text">
+                            <div class="feature-title">Model Innovation</div>
+                            <div class="feature-description">EEGNet + LSTM + Attention emerged as top performer</div>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-star"></i>
+                        <div class="feature-text">
+                            <div class="feature-title">Platform Development</div>
+                            <div class="feature-description">Complete web-based BCI platform with real-time visualization</div>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-star"></i>
+                        <div class="feature-text">
+                            <div class="feature-title">Clinical Readiness</div>
+                            <div class="feature-description">Medical-grade system suitable for clinical deployment</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="results-section">
+            <h3 class="results-title">📊 Performance Results & Model Comparison</h3>
+            
+            <div class="results-grid">
+                <div class="result-metric">
+                    <div class="metric-value">75%</div>
+                    <div class="metric-label">Motor Imagery Accuracy</div>
+                    <div class="metric-description">4-class classification performance</div>
+                </div>
+                
+                <div class="result-metric">
+                    <div class="metric-value">5</div>
+                    <div class="metric-label">Model Architectures</div>
+                    <div class="metric-description">Comprehensive comparison study</div>
+                </div>
+                
+                <div class="result-metric">
+                    <div class="metric-value">14</div>
+                    <div class="metric-label">EEG Channels</div>
+                    <div class="metric-description">Emotiv EPOC+ system</div>
+                </div>
+                
+                <div class="result-metric">
+                    <div class="metric-value">Real-time</div>
+                    <div class="metric-label">Processing Speed</div>
+                    <div class="metric-description">Live classification capability</div>
+                </div>
+            </div>
+
+            <div class="models-comparison">
+                <div class="model-card">
+                    <div class="model-name">🥇 EEGNet + LSTM + Attention</div>
+                    <div class="model-performance">
+                        <span class="performance-score">★★★★★</span>
+                        <span class="performance-label">Winner</span>
+                    </div>
+                    <ul class="model-features">
+                        <li><i class="fas fa-check"></i> Excellent temporal modeling</li>
+                        <li><i class="fas fa-check"></i> Superior attention mechanisms</li>
+                        <li><i class="fas fa-check"></i> High accuracy across tasks</li>
+                    </ul>
+                </div>
+                
+                <div class="model-card">
+                    <div class="model-name">🥈 Transformer</div>
+                    <div class="model-performance">
+                        <span class="performance-score">★★★★☆</span>
+                        <span class="performance-label">Runner-up</span>
+                    </div>
+                    <ul class="model-features">
+                        <li><i class="fas fa-check"></i> Advanced self-attention</li>
+                        <li><i class="fas fa-check"></i> Parallel processing</li>
+                        <li><i class="fas fa-exclamation-triangle"></i> High computational cost</li>
+                    </ul>
+                </div>
+                
+                <div class="model-card">
+                    <div class="model-name">🥉 CNN + LSTM + Attention</div>
+                    <div class="model-performance">
+                        <span class="performance-score">★★★☆☆</span>
+                        <span class="performance-label">Good</span>
+                    </div>
+                    <ul class="model-features">
+                        <li><i class="fas fa-check"></i> Balanced approach</li>
+                        <li><i class="fas fa-check"></i> Reasonable computational cost</li>
+                        <li><i class="fas fa-exclamation-triangle"></i> Limited temporal modeling</li>
+                    </ul>
+                </div>
+                
+                <div class="model-card">
+                    <div class="model-name">📊 EEGNet</div>
+                    <div class="model-performance">
+                        <span class="performance-score">★★★☆☆</span>
+                        <span class="performance-label">Baseline</span>
+                    </div>
+                    <ul class="model-features">
+                        <li><i class="fas fa-check"></i> Lightweight and efficient</li>
+                        <li><i class="fas fa-check"></i> Fast training</li>
+                        <li><i class="fas fa-exclamation-triangle"></i> Limited complexity</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="image-placeholder">
+                📈 Comprehensive Performance Comparison Charts
+                <br><small>Model accuracy, training time, and computational requirements</small>
+            </div>
+        </div>
+</div>
+</div>
+</div>

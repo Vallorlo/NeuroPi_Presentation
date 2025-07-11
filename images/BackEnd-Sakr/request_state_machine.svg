@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-165.726 -44.463 715.848 532.337">
+  <defs>
+    <linearGradient id="createdGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0" style="stop-color:#95A5A6;stop-opacity:1"/>
+      <stop offset="1" style="stop-color:#7F8C8D;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="pendingGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0" style="stop-color:#F39C12;stop-opacity:1"/>
+      <stop offset="1" style="stop-color:#E67E22;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="reviewedGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0" style="stop-color:#3498DB;stop-opacity:1"/>
+      <stop offset="1" style="stop-color:#2980B9;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="approvedGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0" style="stop-color:#2ECC71;stop-opacity:1"/>
+      <stop offset="1" style="stop-color:#27AE60;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="expiredGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0" style="stop-color:#E74C3C;stop-opacity:1"/>
+      <stop offset="1" style="stop-color:#C0392B;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="scheduledGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0" style="stop-color:#9B59B6;stop-opacity:1"/>
+      <stop offset="1" style="stop-color:#8E44AD;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="completedGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0" style="stop-color:#1ABC9C;stop-opacity:1"/>
+      <stop offset="1" style="stop-color:#16A085;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="timerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0" style="stop-color:#34495E;stop-opacity:1"/>
+      <stop offset="1" style="stop-color:#2C3E50;stop-opacity:1"/>
+    </linearGradient>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#34495E"/>
+    </marker>
+  </defs>
+  <text x="193.467" y="-24.862" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#2C3E50" style="white-space: pre; stroke-width: 1; font-size: 18px;">
+    Request Lifecycle State Machine
+  </text>
+  <rect x="-156.53" y="30.138" width="120" height="60" rx="10" fill="url(#createdGradient)" stroke="#7F8C8D" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="-96.533" y="55.138" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 12px;">
+    CREATED
+  </text>
+  <text x="-96.533" y="70.138" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" style="white-space: pre; stroke-width: 1; font-size: 9px;">
+    Initial State
+  </text>
+  <path d="M -36.533 60.138 L 42.759 60.138" stroke="#34495E" stroke-width="3" marker-end="url(#arrowhead)" style="stroke-width: 3;"/>
+  <text x="-19.854" y="54.219" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#34495E" style="white-space: pre; stroke-width: 1; font-size: 8px;" transform="matrix(1.643952, 0, 0, 1.15, 21.931362, -9.3271)">auto</text>
+  <rect x="43.467" y="30.138" width="120" height="60" rx="10" fill="url(#pendingGradient)" stroke="#E67E22" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="103.467" y="55.138" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 12px;">
+    PENDING
+  </text>
+  <text x="103.467" y="70.138" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" style="white-space: pre; stroke-width: 1; font-size: 9px;">
+    Awaiting Response
+  </text>
+  <rect x="243.467" y="30.138" width="200" height="60" rx="10" fill="url(#timerGradient)" stroke="#2C3E50" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="343.467" y="50.138" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 12px;">
+    14-Day Timer
+  </text>
+  <text x="343.467" y="65.138" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" style="white-space: pre; stroke-width: 1; font-size: 9px;">
+    Automatic Expiration
+  </text>
+  <text x="343.467" y="78.138" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" style="white-space: pre; stroke-width: 1; font-size: 9px;">
+    expires_at = now() + 14d
+  </text>
+  <path d="M 163.467 60.138 L 243.467 60.138" stroke="#34495E" stroke-width="3" marker-end="url(#arrowhead)" style="stroke-width: 3;"/>
+  <path d="M 343.467 90.138 L 343.467 150.138" stroke="#E74C3C" stroke-width="3" marker-end="url(#arrowhead)" style="stroke-width: 3;"/>
+  <text x="363.467" y="120.138" font-family="Arial, sans-serif" font-size="8" fill="#E74C3C" style="white-space: pre; stroke-width: 1; font-size: 8px;" transform="matrix(1.411978, 0, 0, 1.5, -154.603777, -66.499658)">timeout</text>
+  <rect x="283.467" y="160.138" width="120" height="60" rx="10" fill="url(#expiredGradient)" stroke="#C0392B" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="343.467" y="185.138" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 12px;">
+    EXPIRED
+  </text>
+  <text x="343.467" y="200.138" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" style="white-space: pre; stroke-width: 1; font-size: 9px;">
+    Timed Out
+  </text>
+  <path d="M 103.467 90.138 L 103.467 150.138" stroke="#3498DB" stroke-width="3" marker-end="url(#arrowhead)" style="stroke-width: 3;"/>
+  <text x="123.467" y="120.138" font-family="Arial, sans-serif" font-size="8" fill="#3498DB" style="white-space: pre; stroke-width: 1; font-size: 8px;" transform="matrix(1.394199, 0, 0, 1.300001, -56.019917, -42.104748)">review</text>
+  <rect x="43.467" y="160.138" width="120" height="60" rx="10" fill="url(#reviewedGradient)" stroke="#2980B9" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="103.467" y="185.138" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 12px;">
+    REVIEWED
+  </text>
+  <text x="103.467" y="200.138" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" style="white-space: pre; stroke-width: 1; font-size: 9px;">
+    Under Evaluation
+  </text>
+  <path d="M 103.467 220.138 L 103.467 287.947" stroke="#2ECC71" stroke-width="3" marker-end="url(#arrowhead)" style="stroke-width: 3;"/>
+  <text x="123.467" y="250.138" font-family="Arial, sans-serif" font-size="8" fill="#2ECC71" style="white-space: pre; stroke-width: 1; font-size: 8px;" transform="matrix(1.160491, 0, 0, 1.75, -29.002003, -192.196826)">approve/deny</text>
+  <rect x="43.467" y="290.138" width="120" height="60" rx="10" fill="url(#approvedGradient)" stroke="#27AE60" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="103.467" y="310.138" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 11px;">
+    APPROVED/
+  </text>
+  <text x="103.467" y="325.138" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 11px;">
+    DENIED
+  </text>
+  <text x="103.467" y="340.138" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" style="white-space: pre; stroke-width: 1; font-size: 9px;">
+    Decision Made
+  </text>
+  <path d="M 163.467 320.138 L 242.3 320.138" stroke="#9B59B6" stroke-width="3" marker-end="url(#arrowhead)" style="stroke-width: 3;"/>
+  <text x="193.467" y="315.138" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#9B59B6" style="white-space: pre; stroke-width: 1; font-size: 8px;" transform="matrix(1.528509, 0, 0, 1.5, -104.812463, -159.865664)">schedule</text>
+  <rect x="243.467" y="290.138" width="120" height="60" rx="10" fill="url(#scheduledGradient)" stroke="#8E44AD" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="303.467" y="315.138" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 12px;">
+    SCHEDULED
+  </text>
+  <text x="303.467" y="330.138" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" style="white-space: pre; stroke-width: 1; font-size: 9px;">
+    Session Planned
+  </text>
+  <path d="M 303.467 350.138 L 303.467 420.243" stroke="#1ABC9C" stroke-width="3" marker-end="url(#arrowhead)" style="stroke-width: 3;"/>
+  <text x="323.467" y="380.138" font-family="Arial, sans-serif" font-size="8" fill="#1ABC9C" style="white-space: pre; stroke-width: 1; font-size: 8px;" transform="matrix(1.507028, 0, 0, 1.549999, -174.571643, -211.00481)">conduct</text>
+  <rect x="243.467" y="420.138" width="120" height="60" rx="10" fill="url(#completedGradient)" stroke="#16A085" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="303.467" y="445.138" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 12px;">
+    COMPLETED
+  </text>
+  <text x="303.467" y="460.138" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" style="white-space: pre; stroke-width: 1; font-size: 9px;">
+    Research Done
+  </text>
+  <rect x="-156.53" y="300.138" width="180" height="180" rx="10" fill="#ECF0F1" stroke="#BDC3C7" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="-66.533" y="325.138" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#2C3E50" style="white-space: pre; stroke-width: 1; font-size: 12px;">
+    Timeout Management
+  </text>
+  <text x="-136.53" y="350.138" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#2C3E50" style="white-space: pre; stroke-width: 1; font-size: 10px;">
+    Automated Features:
+  </text>
+  <circle cx="-126.53" cy="365.138" r="2" fill="#34495E" style="stroke-width: 1;"/>
+  <text x="-116.53" y="370.138" font-family="Arial, sans-serif" font-size="9" fill="#34495E" style="white-space: pre; stroke-width: 1; font-size: 9px;">
+    Database constraint check
+  </text>
+  <circle cx="-126.53" cy="385.138" r="2" fill="#34495E" style="stroke-width: 1;"/>
+  <text x="-116.53" y="390.138" font-family="Arial, sans-serif" font-size="9" fill="#34495E" style="white-space: pre; stroke-width: 1; font-size: 9px;">
+    Daily cleanup task
+  </text>
+  <circle cx="-126.53" cy="405.138" r="2" fill="#34495E" style="stroke-width: 1;"/>
+  <text x="-116.53" y="410.138" font-family="Arial, sans-serif" font-size="9" fill="#34495E" style="white-space: pre; stroke-width: 1; font-size: 9px;">
+    Status update automation
+  </text>
+  <text x="-136.53" y="430.138" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#2C3E50" style="white-space: pre; stroke-width: 1; font-size: 10px;">
+    Notifications:
+  </text>
+  <circle cx="-126.53" cy="445.138" r="2" fill="#34495E" style="stroke-width: 1;"/>
+  <text x="-116.53" y="450.138" font-family="Arial, sans-serif" font-size="9" fill="#34495E" style="white-space: pre; stroke-width: 1; font-size: 9px;">
+    48-hour warning
+  </text>
+  <circle cx="-126.53" cy="465.138" r="2" fill="#34495E" style="stroke-width: 1;"/>
+  <text x="-116.53" y="470.138" font-family="Arial, sans-serif" font-size="9" fill="#34495E" style="white-space: pre; stroke-width: 1; font-size: 9px;">
+    24-hour final notice
+  </text>
+  <rect x="393.467" y="300.138" width="150" height="180" rx="10" fill="#ECF0F1" stroke="#BDC3C7" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="468.467" y="325.138" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#2C3E50" style="white-space: pre; stroke-width: 1; font-size: 12px;">
+    State Transitions
+  </text>
+  <rect x="413.467" y="340.138" width="15" height="10" fill="#F39C12" style="stroke-width: 1;"/>
+  <text x="438.467" y="348.138" font-family="Arial, sans-serif" font-size="9" fill="#34495E" style="white-space: pre; stroke-width: 1; font-size: 9px;">Pending</text>
+  <rect x="413.467" y="360.138" width="15" height="10" fill="#3498DB" style="stroke-width: 1;"/>
+  <text x="438.467" y="368.138" font-family="Arial, sans-serif" font-size="9" fill="#34495E" style="white-space: pre; stroke-width: 1; font-size: 9px;">Reviewed</text>
+  <rect x="413.467" y="380.138" width="15" height="10" fill="#2ECC71" style="stroke-width: 1;"/>
+  <text x="438.467" y="388.138" font-family="Arial, sans-serif" font-size="9" fill="#34495E" style="white-space: pre; stroke-width: 1; font-size: 9px;">Approved</text>
+  <rect x="413.467" y="400.138" width="15" height="10" fill="#E74C3C" style="stroke-width: 1;"/>
+  <text x="438.467" y="408.138" font-family="Arial, sans-serif" font-size="9" fill="#34495E" style="white-space: pre; stroke-width: 1; font-size: 9px;">Expired</text>
+  <rect x="413.467" y="420.138" width="15" height="10" fill="#9B59B6" style="stroke-width: 1;"/>
+  <text x="438.467" y="428.138" font-family="Arial, sans-serif" font-size="9" fill="#34495E" style="white-space: pre; stroke-width: 1; font-size: 9px;">Scheduled</text>
+  <rect x="413.467" y="440.138" width="15" height="10" fill="#1ABC9C" style="stroke-width: 1;"/>
+  <text x="438.467" y="448.138" font-family="Arial, sans-serif" font-size="9" fill="#34495E" style="white-space: pre; stroke-width: 1; font-size: 9px;">Completed</text>
+</svg>

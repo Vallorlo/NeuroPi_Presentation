@@ -42,14 +42,14 @@ const PRESENTATION_CONFIG = {
         },
         
         // ============= DATA COLLECTION INFRASTRUCTURE =============
-        {
-            id: "data-collection-overview",
-            file: "slides/22-data-collection-overview.html",
-            section: "Data Collection Infrastructure",
-            title: "Hardware Integration & Interface Architecture",
-            duration: 3.5,
-            description: "Comprehensive infrastructure overview"
-        },
+        // {
+        //     id: "data-collection-overview",
+        //     file: "slides/22-data-collection-overview.html",
+        //     section: "Data Collection Infrastructure",
+        //     title: "Hardware Integration & Interface Architecture",
+        //     duration: 3.5,
+        //     description: "Comprehensive infrastructure overview"
+        // },
         {
             id: "epoc-hardware-specs",
             file: "slides/23-epoc-hardware-specs.html",
@@ -74,34 +74,47 @@ const PRESENTATION_CONFIG = {
             duration: 3.5,
             description: "Multi-paradigm trial processes"
         },
-        {
-            id: "approaches-hardware",
-            file: "slides/06-approaches-hardware.html",
-            section: "Approaches & Data",
-            title: "Hardware & Trial Protocols", 
-            duration: 3.5,
-            description: "EPOC+ integration and experimental setup",
-            placeholder: true
-        },
         
         // ============= MODEL ARCHITECTURE =============
         {
             id: "models-architecture",
-            file: "slides/07-models-architecture.html",
+            file: "slides/ADVANCED_EEG_ANALYSIS_FIXED.html",
             section: "Model Architecture",
             title: "Model Architectures",
             duration: 4,
             description: "ATCNet and CNN-LSTM-Attention designs",
-            placeholder: true
         },
         {
             id: "models-performance",
-            file: "slides/08-models-performance.html",
+            file: "slides/ULTIMATE_EEG_PROJECT_COMPREHENSIVE_REPORT_FIXED.html",
             section: "Model Architecture", 
             title: "Performance Results",
             duration: 3,
             description: "Classification results and benchmarks",
-            placeholder: true
+        },
+        {
+            id: "models-performance",
+            file: "slides/COMPREHENSIVE_MODEL_COMPARISON_REPORT_EN_FIXED.html",
+            section: "Model Architecture", 
+            title: "Performance Results",
+            duration: 3,
+            description: "Classification results and benchmarks",
+        },
+        {
+            id: "models-performance",
+            file: "slides/MOTOR_IMAGERY_COMPREHENSIVE_ANALYSIS_EN_FIXED.html",
+            section: "Model Architecture", 
+            title: "Performance Results",
+            duration: 3,
+            description: "Classification results and benchmarks",
+        },
+        {
+            id: "models-performance",
+            file: "slides/EEG_MODELS_COMPARISON_FIXED.html",
+            section: "Model Architecture", 
+            title: "Performance Results",
+            duration: 3,
+            description: "Classification results and benchmarks",
         },
         
         // ============= FRONTEND & DESIGN =============
@@ -170,9 +183,10 @@ const PRESENTATION_CONFIG = {
             duration: 3.5,
             description: "Data management and user systems",
         },
+        
         {
             id: "backend-trials",
-            file: "slides/14-backend-trails-system.html",
+            file: "slides/15-backend-user-management.html",
             section: "Backend Systems",
             title: "Backend: Trials & Accounts",
             duration: 3.5,
@@ -180,7 +194,7 @@ const PRESENTATION_CONFIG = {
         },
         {
             id: "backend-trials",
-            file: "slides/15-backend-user-management.html",
+            file: "slides/14-backend-trails-system.html",
             section: "Backend Systems",
             title: "Backend: Trials & Accounts",
             duration: 3.5,
@@ -194,14 +208,14 @@ const PRESENTATION_CONFIG = {
             duration: 3.5,
             description: "Data management and user systems",
         },
-        {
-            id: "backend-trials",
-            file: "slides/17-backend-performance-scalability.html",
-            section: "Backend Systems",
-            title: "Backend: Trials & Accounts",
-            duration: 3.5,
-            description: "Data management and user systems",
-        },
+        // {
+        //     id: "backend-trials",
+        //     file: "slides/17-backend-performance-scalability.html",
+        //     section: "Backend Systems",
+        //     title: "Backend: Trials & Accounts",
+        //     duration: 3.5,
+        //     description: "Data management and user systems",
+        // },
 
         //BCI - BACKEND
         {

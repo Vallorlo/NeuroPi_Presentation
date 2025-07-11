@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-124.657 -154.614 709.695 661.378">
+  <defs>
+    <linearGradient id="networkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0" style="stop-color:#E74C3C;stop-opacity:1"/>
+      <stop offset="1" style="stop-color:#C0392B;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="applicationGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0" style="stop-color:#F39C12;stop-opacity:1"/>
+      <stop offset="1" style="stop-color:#E67E22;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="authGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0" style="stop-color:#3498DB;stop-opacity:1"/>
+      <stop offset="1" style="stop-color:#2980B9;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="dataGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0" style="stop-color:#2ECC71;stop-opacity:1"/>
+      <stop offset="1" style="stop-color:#27AE60;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="privacyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0" style="stop-color:#9B59B6;stop-opacity:1"/>
+      <stop offset="1" style="stop-color:#8E44AD;stop-opacity:1"/>
+    </linearGradient>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#34495E"/>
+    </marker>
+  </defs>
+  <text x="231.065" y="-145.67" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#2C3E50" style="white-space: pre; stroke-width: 1; font-size: 18px;"><tspan x="231.06500244140625" dy="1em">​</tspan>    NeuroPi Security Implementation <tspan x="231.06500244140625" dy="1em">​</tspan>  </text>
+  <rect x="-118.94" y="-110.67" width="700" height="80" rx="10" fill="url(#networkGradient)" stroke="#C0392B" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="230.099" y="-89.536" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 14px;">
+    Development Environment Security
+  </text>
+  <rect x="-88.935" y="-65.671" width="150" height="25" rx="3" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="-13.935" y="-50.671" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" style="white-space: pre; stroke-width: 1; font-size: 10px;">Local Development</text>
+  <rect x="81.065" y="-65.671" width="150" height="25" rx="3" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="156.065" y="-50.671" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" style="white-space: pre; stroke-width: 1; font-size: 10px;">DEBUG = True</text>
+  <rect x="251.065" y="-65.671" width="150" height="25" rx="3" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="326.065" y="-50.671" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" style="white-space: pre; stroke-width: 1; font-size: 10px;">Static File Serving</text>
+  <rect x="421.065" y="-65.671" width="130" height="25" rx="3" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="486.065" y="-50.671" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" style="white-space: pre; stroke-width: 1; font-size: 10px;">SQLite Database</text>
+  <path d="M 231.065 -20.671 L 231.065 -0.671" stroke="#34495E" stroke-width="3" marker-end="url(#arrowhead)" style="stroke-width: 3;"/>
+  <rect x="-118.94" y="9.329" width="700" height="80" rx="10" fill="url(#applicationGradient)" stroke="#E67E22" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="231.065" y="34.329" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 14px;" transform="matrix(1, 0, 0, 1, 0, -21.259438)"><tspan x="231.06500244140625" dy="1em">​</tspan>    Django Middleware Security <tspan x="231.06500244140625" dy="1em">​</tspan>  </text>
+  <rect x="-98.935" y="54.329" width="120" height="25" rx="3" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="-38.935" y="69.329" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" style="white-space: pre; stroke-width: 1; font-size: 9px;">CSRF Middleware</text>
+  <rect x="31.065" y="54.329" width="120" height="25" rx="3" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="91.065" y="69.329" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" style="white-space: pre; stroke-width: 1; font-size: 9px;">Security Middleware</text>
+  <rect x="161.065" y="54.329" width="140" height="25" rx="3" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="231.065" y="69.329" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" style="white-space: pre; stroke-width: 1; font-size: 9px;">Clickjacking Protection</text>
+  <rect x="311.065" y="54.329" width="120" height="25" rx="3" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="371.065" y="69.329" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" style="white-space: pre; stroke-width: 1; font-size: 9px;">Session Middleware</text>
+  <rect x="441.065" y="54.329" width="120" height="25" rx="3" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="501.065" y="69.329" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" style="white-space: pre; stroke-width: 1; font-size: 9px;">Common Middleware</text>
+  <path d="M 231.065 99.329 L 231.065 119.329" stroke="#34495E" stroke-width="3" marker-end="url(#arrowhead)" style="stroke-width: 3;"/>
+  <rect x="-118.94" y="129.329" width="700" height="80" rx="10" fill="url(#authGradient)" stroke="#2980B9" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="231.065" y="154.329" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 14px;" transform="matrix(1, 0, 0, 1, 0, -21.259438)"><tspan x="231.06500244140625" dy="1em">​</tspan>    Custom Authentication &amp; Authorization <tspan x="231.06500244140625" dy="1em">​</tspan>  </text>
+  <rect x="-98.935" y="174.329" width="120" height="25" rx="3" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="-38.935" y="189.329" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" style="white-space: pre; stroke-width: 1; font-size: 9px;">Django Auth</text>
+  <rect x="31.065" y="174.329" width="140" height="25" rx="3" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="101.065" y="189.329" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" style="white-space: pre; stroke-width: 1; font-size: 9px;">Role-Based Middleware</text>
+  <rect x="181.065" y="174.329" width="120" height="25" rx="3" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="241.065" y="189.329" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" style="white-space: pre; stroke-width: 1; font-size: 9px;">3-Tier Roles</text>
+  <rect x="311.065" y="174.329" width="120" height="25" rx="3" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="371.065" y="189.329" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" style="white-space: pre; stroke-width: 1; font-size: 9px;">URL Protection</text>
+  <rect x="441.065" y="174.329" width="120" height="25" rx="3" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="501.065" y="189.329" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" style="white-space: pre; stroke-width: 1; font-size: 9px;">AJAX Security</text>
+  <path d="M 231.065 219.329 L 231.065 239.329" stroke="#34495E" stroke-width="3" marker-end="url(#arrowhead)" style="stroke-width: 3;"/>
+  <rect x="-118.94" y="249.329" width="700" height="80" rx="10" fill="url(#dataGradient)" stroke="#27AE60" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="231.065" y="274.329" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 14px;" transform="matrix(1, 0, 0, 1, 0, -16.427748)"><tspan x="231.06500244140625" dy="1em">​</tspan>    Form Validation &amp; Data Protection <tspan x="231.06500244140625" dy="1em">​</tspan>  </text>
+  <rect x="-88.935" y="294.329" width="130" height="25" rx="3" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="-23.935" y="309.329" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" style="white-space: pre; stroke-width: 1; font-size: 9px;">Django ORM</text>
+  <rect x="51.065" y="294.329" width="140" height="25" rx="3" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="121.065" y="309.329" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" style="white-space: pre; stroke-width: 1; font-size: 9px;">Input Validation</text>
+  <rect x="201.065" y="294.329" width="120" height="25" rx="3" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="261.065" y="309.329" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" style="white-space: pre; stroke-width: 1; font-size: 9px;">File Validation</text>
+  <rect x="331.065" y="294.329" width="130" height="25" rx="3" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="396.065" y="309.329" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" style="white-space: pre; stroke-width: 1; font-size: 9px;">Digital Signatures</text>
+  <rect x="471.065" y="294.329" width="100" height="25" rx="3" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="521.065" y="309.329" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" style="white-space: pre; stroke-width: 1; font-size: 9px;">Data Sanitization</text>
+  <path d="M 231.065 339.329 L 231.065 359.329" stroke="#34495E" stroke-width="3" marker-end="url(#arrowhead)" style="stroke-width: 3;"/>
+  <rect x="-118.94" y="369.329" width="700" height="50" rx="10" fill="url(#privacyGradient)" stroke="#8E44AD" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="231.065" y="389.329" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 14px;" transform="matrix(1, 0, 0, 1, 0, -14.495071)"><tspan x="231.06500244140625" dy="1em">​</tspan>    Research Ethics &amp; Password Security <tspan x="231.06500244140625" dy="1em">​</tspan>  </text>
+  <rect x="-88.935" y="399.329" width="120" height="15" rx="2" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="-28.935" y="409.329" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white" style="white-space: pre; stroke-width: 1; font-size: 8px;">Password Validators</text>
+  <rect x="41.065" y="399.329" width="120" height="15" rx="2" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="101.065" y="409.329" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white" style="white-space: pre; stroke-width: 1; font-size: 8px;">Consent Forms</text>
+  <rect x="171.065" y="399.329" width="120" height="15" rx="2" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="231.065" y="409.329" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white" style="white-space: pre; stroke-width: 1; font-size: 8px;">Research Ethics</text>
+  <rect x="301.065" y="399.329" width="120" height="15" rx="2" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="361.065" y="409.329" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white" style="white-space: pre; stroke-width: 1; font-size: 8px;">Email Notifications</text>
+  <rect x="431.065" y="399.329" width="120" height="15" rx="2" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="491.065" y="409.329" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white" style="white-space: pre; stroke-width: 1; font-size: 8px;">Audit Trails</text>
+  <rect x="-118.94" y="439.329" width="700" height="60" rx="10" fill="#ECF0F1" stroke="#BDC3C7" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="231.065" y="459.329" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#2C3E50" style="white-space: pre; stroke-width: 1; font-size: 12px;">
+    Current Implementation Status
+  </text>
+  <text x="231.065" y="479.329" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#34495E" style="white-space: pre; stroke-width: 1; font-size: 10px;">
+    ✅ Implemented: Django security middleware, custom role-based access control, form validation
+  </text>
+  <text x="231.065" y="494.329" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#34495E" style="white-space: pre; stroke-width: 1; font-size: 10px;">
+    🚧 Development Environment: HTTP (not HTTPS), SQLite database, console email backend
+  </text>
+  <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 28px;" x="418.181" y="-127.06"> </text>
+</svg>

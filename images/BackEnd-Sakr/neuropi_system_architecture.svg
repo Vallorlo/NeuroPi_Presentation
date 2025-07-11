@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-201.716 -183.06 918.59 757.683">
+  <defs>
+    <linearGradient id="clientGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0" style="stop-color:#4A90E2;stop-opacity:1"/>
+      <stop offset="1" style="stop-color:#357ABD;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="djangoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0" style="stop-color:#2ECC71;stop-opacity:1"/>
+      <stop offset="1" style="stop-color:#27AE60;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="externalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0" style="stop-color:#E74C3C;stop-opacity:1"/>
+      <stop offset="1" style="stop-color:#C0392B;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="databaseGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0" style="stop-color:#9B59B6;stop-opacity:1"/>
+      <stop offset="1" style="stop-color:#8E44AD;stop-opacity:1"/>
+    </linearGradient>
+    <marker id="arrowhead" markerWidth="12" markerHeight="9" refX="11" refY="4.5" orient="auto">
+      <polygon points="0 0, 12 4.5, 0 9" fill="#34495E"/>
+    </marker>
+  </defs>
+  <text x="257.72" y="-156.03" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#2C3E50" style="white-space: pre; stroke-width: 1; font-size: 24px;">
+    NeuroPi System Architecture
+  </text>
+  <rect x="-192.28" y="-126.03" width="900" height="100" rx="10" fill="url(#clientGradient)" stroke="#2980B9" stroke-width="3" style="stroke-width: 3;"/>
+  <text x="257.72" y="-96.033" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 20px;">
+    Client Layer
+  </text>
+  <rect x="-162.28" y="-76.033" width="200" height="35" rx="5" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="-62.28" y="-54.033" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white" style="white-space: pre; stroke-width: 1; font-size: 16px;">Web Browser</text>
+  <rect x="57.72" y="-76.033" width="200" height="35" rx="5" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="157.72" y="-54.033" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white" style="white-space: pre; stroke-width: 1; font-size: 16px;">JavaScript/AJAX</text>
+  <rect x="277.72" y="-76.033" width="200" height="35" rx="5" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="377.72" y="-54.033" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white" style="white-space: pre; stroke-width: 1; font-size: 16px;">CSS/Bootstrap</text>
+  <rect x="497.72" y="-76.033" width="180" height="35" rx="5" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="587.72" y="-54.033" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white" style="white-space: pre; stroke-width: 1; font-size: 16px;">Responsive UI</text>
+  <path d="M 257.72 -16.033 L 257.72 13.967" stroke="#34495E" stroke-width="4" marker-end="url(#arrowhead)" style="stroke-width: 4;"/>
+  <rect x="-192.28" y="23.967" width="900" height="280" rx="10" fill="url(#djangoGradient)" stroke="#27AE60" stroke-width="3" style="stroke-width: 3;"/>
+  <text x="257.72" y="53.967" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 20px;">
+    Django Web Framework
+  </text>
+  <rect x="-162.28" y="73.967" width="840" height="60" rx="5" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="257.72" y="98.967" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 18px;">
+    Authentication Layer
+  </text>
+  <rect x="-142.28" y="108.967" width="150" height="20" rx="3" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="-67.28" y="121.967" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white" style="white-space: pre; stroke-width: 1; font-size: 16px;">accounts app</text>
+  <rect x="27.72" y="108.967" width="180" height="20" rx="3" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="117.72" y="121.967" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white" style="white-space: pre; stroke-width: 1; font-size: 16px;">RoleBasedMiddleware</text>
+  <rect x="227.72" y="108.967" width="150" height="20" rx="3" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="302.72" y="121.967" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white" style="white-space: pre; stroke-width: 1; font-size: 16px;">Django Signals</text>
+  <rect x="397.72" y="108.967" width="160" height="20" rx="3" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="477.72" y="121.967" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white" style="white-space: pre; stroke-width: 1; font-size: 16px;">Three-Tier Roles</text>
+  <rect x="-162.28" y="148.967" width="840" height="60" rx="5" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="257.72" y="173.967" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 18px;">
+    Core Applications
+  </text>
+  <rect x="-122.28" y="183.967" width="180" height="20" rx="3" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="-32.28" y="196.967" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white" style="white-space: pre; stroke-width: 1; font-size: 16px;">user_management</text>
+  <rect x="77.72" y="183.967" width="120" height="20" rx="3" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="137.72" y="196.967" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white" style="white-space: pre; stroke-width: 1; font-size: 16px;">trials</text>
+  <rect x="217.72" y="183.967" width="140" height="20" rx="3" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="287.72" y="196.967" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white" style="white-space: pre; stroke-width: 1; font-size: 16px;">motor_imagery</text>
+  <rect x="377.72" y="183.967" width="100" height="20" rx="3" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="427.72" y="196.967" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white" style="white-space: pre; stroke-width: 1; font-size: 16px;">bci</text>
+  <rect x="497.72" y="183.967" width="100" height="20" rx="3" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="547.72" y="196.967" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white" style="white-space: pre; stroke-width: 1; font-size: 16px;">plot</text>
+  <rect x="-162.28" y="223.967" width="840" height="60" rx="5" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="257.72" y="248.967" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 18px;">
+    Data Layer
+  </text>
+  <rect x="-92.28" y="258.967" width="150" height="20" rx="2" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="-17.28" y="271.967" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white" style="white-space: pre; stroke-width: 1; font-size: 16px;">Django Models</text>
+  <rect x="77.72" y="258.967" width="120" height="20" rx="2" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="137.72" y="271.967" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white" style="white-space: pre; stroke-width: 1; font-size: 16px;">Django ORM</text>
+  <rect x="217.72" y="258.967" width="140" height="20" rx="2" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="287.72" y="271.967" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white" style="white-space: pre; stroke-width: 1; font-size: 16px;">Django Forms</text>
+  <rect x="377.72" y="258.967" width="150" height="20" rx="2" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="452.72" y="271.967" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white" style="white-space: pre; stroke-width: 1; font-size: 16px;">CSRF Protection</text>
+  <path d="M 257.72 313.967 L 257.72 343.967" stroke="#34495E" stroke-width="4" marker-end="url(#arrowhead)" style="stroke-width: 4;"/>
+  <rect x="-192.28" y="353.967" width="900" height="80" rx="10" fill="url(#externalGradient)" stroke="#C0392B" stroke-width="3" style="stroke-width: 3;"/>
+  <text x="257.72" y="383.967" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 20px;">
+    External Systems &amp; Hardware Integration
+  </text>
+  <rect x="-142.28" y="398.967" width="180" height="25" rx="3" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="-52.28" y="415.967" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white" style="white-space: pre; stroke-width: 1; font-size: 16px;">EPOC+ EEG Headset</text>
+  <rect x="57.72" y="398.967" width="150" height="25" rx="3" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="132.72" y="415.967" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white" style="white-space: pre; stroke-width: 1; font-size: 16px;">Audio Recording</text>
+  <rect x="227.72" y="398.967" width="160" height="25" rx="3" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="307.72" y="415.967" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white" style="white-space: pre; stroke-width: 1; font-size: 16px;">Email Services</text>
+  <rect x="407.72" y="398.967" width="180" height="25" rx="3" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="497.72" y="415.967" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white" style="white-space: pre; stroke-width: 1; font-size: 16px;">File System Storage</text>
+  <path d="M 257.72 443.967 L 257.72 473.967" stroke="#34495E" stroke-width="4" marker-end="url(#arrowhead)" style="stroke-width: 4;"/>
+  <rect x="-192.28" y="483.967" width="900" height="80" rx="10" fill="url(#databaseGradient)" stroke="#8E44AD" stroke-width="3" style="stroke-width: 3;"/>
+  <text x="257.72" y="513.967" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 20px;">
+    Database Layer
+  </text>
+  <rect x="-92.28" y="528.967" width="150" height="25" rx="3" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="-17.28" y="545.967" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white" style="white-space: pre; stroke-width: 1; font-size: 16px;">SQLite Database</text>
+  <rect x="77.72" y="528.967" width="140" height="25" rx="3" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="147.72" y="545.967" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white" style="white-space: pre; stroke-width: 1; font-size: 16px;">Session Logs</text>
+  <rect x="237.72" y="528.967" width="160" height="25" rx="3" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="317.72" y="545.967" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white" style="white-space: pre; stroke-width: 1; font-size: 16px;">Trial Data Storage</text>
+  <rect x="417.72" y="528.967" width="180" height="25" rx="3" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="507.72" y="545.967" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white" style="white-space: pre; stroke-width: 1; font-size: 16px;">User Profile Data</text>
+</svg>

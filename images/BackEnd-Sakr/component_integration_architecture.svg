@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-117.238 -178.942 810.99 686.346" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <linearGradient id="accountGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0" style="stop-color:#3498DB;stop-opacity:1"/>
+      <stop offset="1" style="stop-color:#2980B9;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="trialsGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0" style="stop-color:#2ECC71;stop-opacity:1"/>
+      <stop offset="1" style="stop-color:#27AE60;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="userMgmtGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0" style="stop-color:#E67E22;stop-opacity:1"/>
+      <stop offset="1" style="stop-color:#D35400;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="sharedGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0" style="stop-color:#9B59B6;stop-opacity:1"/>
+      <stop offset="1" style="stop-color:#8E44AD;stop-opacity:1"/>
+    </linearGradient>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#34495E"/>
+    </marker>
+    <bx:export>
+      <bx:file format="png" background="#fff" path="component_integration_architecture.png"/>
+    </bx:export>
+  </defs>
+  <text x="288.107" y="-154.3" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#2C3E50" style="white-space: pre; stroke-width: 1; font-size: 18px;">
+    Component Integration Architecture
+  </text>
+  <rect x="-111.89" y="-119.3" width="800" height="120" rx="10" fill="url(#accountGradient)" stroke="#2980B9" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="288.107" y="-94.301" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 16px;">
+    Account Management System
+  </text>
+  <rect x="-81.893" y="-79.301" width="150" height="60" rx="5" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="-6.893" y="-59.301" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 11px;">
+    Authentication Service
+  </text>
+  <text x="-6.893" y="-44.301" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" style="white-space: pre; stroke-width: 1; font-size: 9px;">
+    • Login/Logout
+  </text>
+  <text x="-6.893" y="-31.301" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" style="white-space: pre; stroke-width: 1; font-size: 9px;">
+    • Session Management
+  </text>
+  <rect x="213.616" y="-79.89" width="150" height="60" rx="5" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="285.08" y="-59.301" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 11px;">
+    Role-Based Access
+  </text>
+  <text x="282.134" y="-44.89" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" style="white-space: pre; stroke-width: 1; font-size: 9px;">
+    • Permission Control
+  </text>
+  <text x="282.723" y="-31.301" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" style="white-space: pre; stroke-width: 1; font-size: 9px;">
+    • URL Protection
+  </text>
+  <rect x="459.039" y="-79.301" width="200" height="60" rx="5" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="563.164" y="-58.998" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 11px;">
+    Profile Management
+  </text>
+  <text x="560.217" y="-46.944" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" style="white-space: pre; stroke-width: 1; font-size: 9px;">
+    • User Profiles • Participant Profiles
+  </text>
+  <text x="559.628" y="-35.123" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" style="white-space: pre; stroke-width: 1; font-size: 9px;">
+    • Researcher Profiles
+  </text>
+  <text x="560.807" y="-23.89" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" style="white-space: pre; stroke-width: 1; font-size: 9px;">
+    • Role Assignment
+  </text>
+  <rect x="188.107" y="20.699" width="200" height="80" rx="10" fill="#34495E" stroke="#2C3E50" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="288.107" y="45.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 14px;">
+    Integration Hub
+  </text>
+  <text x="288.107" y="65.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" style="white-space: pre; stroke-width: 1; font-size: 10px;">
+    • Event-Driven Communication
+  </text>
+  <text x="288.107" y="80.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" style="white-space: pre; stroke-width: 1; font-size: 10px;">
+    • Shared Data Models
+  </text>
+  <text x="288.107" y="95.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" style="white-space: pre; stroke-width: 1; font-size: 10px;">
+    • Service Coordination
+  </text>
+  <path d="M 288.107 0.699 L 288.107 20.699" stroke="#3498DB" stroke-width="3" marker-end="url(#arrowhead)" style="stroke-width: 3;"/>
+  <rect x="-111.89" y="120.699" width="380" height="120" rx="10" fill="url(#trialsGradient)" stroke="#27AE60" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="78.107" y="145.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 16px;">
+    Trails System
+  </text>
+  <rect x="-91.893" y="160.699" width="100" height="70" rx="5" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="-41.893" y="180.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 10px;">
+    Traditional
+  </text>
+  <text x="-41.893" y="195.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 10px;">
+    Trials
+  </text>
+  <text x="-41.893" y="210.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white" style="white-space: pre; stroke-width: 1; font-size: 8px;">
+    Multi-stage
+  </text>
+  <text x="-41.893" y="222.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white" style="white-space: pre; stroke-width: 1; font-size: 8px;">
+    experiments
+  </text>
+  <rect x="28.107" y="160.699" width="100" height="70" rx="5" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="78.107" y="180.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 10px;">
+    Visual Word
+  </text>
+  <text x="78.107" y="195.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 10px;">
+    Focus
+  </text>
+  <text x="78.107" y="210.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white" style="white-space: pre; stroke-width: 1; font-size: 8px;">
+    Stimulus
+  </text>
+  <text x="78.107" y="222.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white" style="white-space: pre; stroke-width: 1; font-size: 8px;">
+    presentation
+  </text>
+  <rect x="148.107" y="160.699" width="100" height="70" rx="5" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="198.107" y="180.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 10px;">
+    Motor Imagery
+  </text>
+  <text x="198.107" y="195.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 10px;">
+    Trials
+  </text>
+  <text x="198.107" y="210.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white" style="white-space: pre; stroke-width: 1; font-size: 8px;">
+    BCI
+  </text>
+  <text x="198.107" y="222.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white" style="white-space: pre; stroke-width: 1; font-size: 8px;">
+    experiments
+  </text>
+  <rect x="308.107" y="120.699" width="380" height="120" rx="10" fill="url(#userMgmtGradient)" stroke="#D35400" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="498.107" y="145.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 16px;">
+    User Management System
+  </text>
+  <rect x="328.107" y="160.699" width="100" height="70" rx="5" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="378.107" y="180.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 10px;">
+    Participant
+  </text>
+  <text x="378.107" y="195.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 10px;">
+    Dashboard
+  </text>
+  <text x="378.107" y="210.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white" style="white-space: pre; stroke-width: 1; font-size: 8px;">
+    Research
+  </text>
+  <text x="378.107" y="222.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white" style="white-space: pre; stroke-width: 1; font-size: 8px;">
+    coordination
+  </text>
+  <rect x="448.107" y="160.699" width="100" height="70" rx="5" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="498.107" y="180.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 10px;">
+    Researcher
+  </text>
+  <text x="498.107" y="195.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 10px;">
+    Dashboard
+  </text>
+  <text x="498.107" y="210.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white" style="white-space: pre; stroke-width: 1; font-size: 8px;">
+    Study
+  </text>
+  <text x="498.107" y="222.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white" style="white-space: pre; stroke-width: 1; font-size: 8px;">
+    management
+  </text>
+  <rect x="568.107" y="160.699" width="100" height="70" rx="5" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="618.107" y="180.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 10px;">
+    Consent
+  </text>
+  <text x="618.107" y="195.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 10px;">
+    Management
+  </text>
+  <text x="618.107" y="210.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white" style="white-space: pre; stroke-width: 1; font-size: 8px;">
+    Digital
+  </text>
+  <text x="618.107" y="222.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="white" style="white-space: pre; stroke-width: 1; font-size: 8px;">
+    signatures
+  </text>
+  <path d="M 188.107 60.699 L 78.107 120.699" stroke="#2ECC71" stroke-width="3" marker-end="url(#arrowhead)" style="stroke-width: 3;"/>
+  <path d="M 388.107 60.699 L 498.107 120.699" stroke="#E67E22" stroke-width="3" marker-end="url(#arrowhead)" style="stroke-width: 3;"/>
+  <path d="M 268.107 180.699 L 308.107 180.699" stroke="#34495E" stroke-width="2" marker-end="url(#arrowhead)" style="stroke-width: 2;"/>
+  <path d="M 308.107 200.699 L 268.107 200.699" stroke="#34495E" stroke-width="2" marker-end="url(#arrowhead)" style="stroke-width: 2;"/>
+  <rect x="-111.89" y="270.699" width="800" height="100" rx="10" fill="url(#sharedGradient)" stroke="#8E44AD" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="288.107" y="295.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 16px;">
+    Shared Services Layer
+  </text>
+  <rect x="-61.893" y="310.699" width="150" height="50" rx="5" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="13.107" y="330.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 11px;">
+    Email Service
+  </text>
+  <text x="13.107" y="345.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" style="white-space: pre; stroke-width: 1; font-size: 9px;">
+    Notifications &amp; Alerts
+  </text>
+  <rect x="113.107" y="310.699" width="150" height="50" rx="5" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="188.107" y="330.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 11px;">
+    File Management
+  </text>
+  <text x="188.107" y="345.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" style="white-space: pre; stroke-width: 1; font-size: 9px;">
+    EEG Data &amp; Documents
+  </text>
+  <rect x="288.107" y="310.699" width="150" height="50" rx="5" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="363.107" y="330.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 11px;">
+    Audit &amp; Logging
+  </text>
+  <text x="363.107" y="345.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" style="white-space: pre; stroke-width: 1; font-size: 9px;">
+    Compliance Tracking
+  </text>
+  <rect x="463.107" y="310.699" width="150" height="50" rx="5" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1" style="stroke-width: 1;"/>
+  <text x="538.107" y="330.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 11px;">
+    Analytics Engine
+  </text>
+  <text x="538.107" y="345.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white" style="white-space: pre; stroke-width: 1; font-size: 9px;">
+    Performance Metrics
+  </text>
+  <path d="M 78.107 240.699 L 78.107 270.699" stroke="#2ECC71" stroke-width="2" marker-end="url(#arrowhead)" style="stroke-width: 2;"/>
+  <path d="M 498.107 240.699 L 498.107 270.699" stroke="#E67E22" stroke-width="2" marker-end="url(#arrowhead)" style="stroke-width: 2;"/>
+  <path d="M 288.107 100.699 L 288.107 270.699" stroke="#34495E" stroke-width="2" marker-end="url(#arrowhead)" stroke-dasharray="5,5" style="stroke-width: 2;"/>
+  <rect x="-111.89" y="390.699" width="800" height="110" rx="10" fill="#ECF0F1" stroke="#BDC3C7" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="288.107" y="415.699" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2C3E50" style="white-space: pre; stroke-width: 1; font-size: 14px;">
+    Data Flow and Integration Patterns
+  </text>
+  <text x="-81.893" y="440.699" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#2C3E50" style="white-space: pre; stroke-width: 1; font-size: 11px;">
+    Authentication Flow:
+  </text>
+  <text x="-81.893" y="455.699" font-family="Arial, sans-serif" font-size="9" fill="#34495E" style="white-space: pre; stroke-width: 1; font-size: 9px;">
+    • User login → Role verification → Component access
+  </text>
+  <text x="-81.893" y="468.699" font-family="Arial, sans-serif" font-size="9" fill="#34495E" style="white-space: pre; stroke-width: 1; font-size: 9px;">
+    • Session management across all components
+  </text>
+  <text x="-81.893" y="481.699" font-family="Arial, sans-serif" font-size="9" fill="#34495E" style="white-space: pre; stroke-width: 1; font-size: 9px;">
+    • Automatic profile creation via Django signals
+  </text>
+  <text x="158.107" y="440.699" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#2C3E50" style="white-space: pre; stroke-width: 1; font-size: 11px;">
+    Data Synchronization:
+  </text>
+  <text x="158.107" y="455.699" font-family="Arial, sans-serif" font-size="9" fill="#34495E" style="white-space: pre; stroke-width: 1; font-size: 9px;">
+    • Real-time status updates between dashboards
+  </text>
+  <text x="158.107" y="468.699" font-family="Arial, sans-serif" font-size="9" fill="#34495E" style="white-space: pre; stroke-width: 1; font-size: 9px;">
+    • Trial data linked to participant profiles
+  </text>
+  <text x="158.107" y="481.699" font-family="Arial, sans-serif" font-size="9" fill="#34495E" style="white-space: pre; stroke-width: 1; font-size: 9px;">
+    • Consent status propagation
+  </text>
+  <text x="418.107" y="440.699" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#2C3E50" style="white-space: pre; stroke-width: 1; font-size: 11px;">
+    Service Integration:
+  </text>
+  <text x="418.107" y="455.699" font-family="Arial, sans-serif" font-size="9" fill="#34495E" style="white-space: pre; stroke-width: 1; font-size: 9px;">
+    • RESTful API endpoints for external tools
+  </text>
+  <text x="418.107" y="468.699" font-family="Arial, sans-serif" font-size="9" fill="#34495E" style="white-space: pre; stroke-width: 1; font-size: 9px;">
+    • Webhook support for real-time notifications
+  </text>
+  <text x="418.107" y="481.699" font-family="Arial, sans-serif" font-size="9" fill="#34495E" style="white-space: pre; stroke-width: 1; font-size: 9px;">
+    • Standardized data exchange formats
+  </text>
+</svg>

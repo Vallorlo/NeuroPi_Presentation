@@ -1,0 +1,44 @@
+
+🏆 ULTIMATE 120 EPOCH TRAINING SUMMARY - COMBINED DATA
+=====================================================
+
+📊 FINAL RESULTS:
+• Test Accuracy: 0.9012 (90.12%)
+• Best Validation Accuracy: 0.9012 (90.12%)
+• Best Epoch: 119
+• Training Time: 534.2 minutes
+• Total Epochs: 120
+
+📈 DATASET INFORMATION:
+• Original Dataset: 2005 samples
+• After SMOTE Balancing: 6174 samples
+• Features Selected: 500
+• Training Samples: 4321
+• Validation Samples: 648
+• Test Samples: 1205
+
+🎯 CLASS PERFORMANCE:
+              precision    recall  f1-score   support
+
+     Silence       1.00      0.99      1.00       200
+       Green       0.88      0.86      0.87       201
+      Purple       0.80      0.95      0.87       201
+      Yellow       0.96      0.85      0.90       201
+         Red       0.86      0.93      0.89       201
+        Blue       0.95      0.83      0.89       201
+
+    accuracy                           0.90      1205
+   macro avg       0.91      0.90      0.90      1205
+weighted avg       0.91      0.90      0.90      1205
+
+
+🔧 TECHNICAL SPECIFICATIONS:
+• Architecture: Multi-scale CNN + Bidirectional LSTM + Multi-Head Attention
+• Optimizer: AdamW with weight decay (1e-4)
+• Feature Selection: F-test + Mutual Information (500 features total)
+• Data Balancing: SMOTE with k_neighbors=3
+• Regularization: Dropout, BatchNorm, LayerNorm, L2
+• Early Stopping: 25 epochs patience
+• Learning Rate: Adaptive with ReduceLROnPlateau
+
+🎉 OUTSTANDING PERFORMANCE ON COMBINED DATASET!

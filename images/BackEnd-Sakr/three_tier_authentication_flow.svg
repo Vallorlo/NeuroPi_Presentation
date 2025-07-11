@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-149.235 -68.294 807.744 465.432">
+  <defs>
+    <linearGradient id="guestGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0" style="stop-color:#95A5A6;stop-opacity:1"/>
+      <stop offset="1" style="stop-color:#7F8C8D;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="userGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0" style="stop-color:#3498DB;stop-opacity:1"/>
+      <stop offset="1" style="stop-color:#2980B9;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="trainerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0" style="stop-color:#E67E22;stop-opacity:1"/>
+      <stop offset="1" style="stop-color:#D35400;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="middlewareGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0" style="stop-color:#2ECC71;stop-opacity:1"/>
+      <stop offset="1" style="stop-color:#27AE60;stop-opacity:1"/>
+    </linearGradient>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#34495E"/>
+    </marker>
+  </defs>
+  <text x="254.814" y="-47.089" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#2C3E50" style="white-space: pre; stroke-width: 1; font-size: 18px;">
+    Three-Tier Authentication Flow
+  </text>
+  <rect x="-145.19" y="-22.089" width="800" height="60" rx="10" fill="#ECF0F1" stroke="#BDC3C7" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="254.814" y="2.911" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2C3E50" style="white-space: pre; stroke-width: 1; font-size: 14px;">
+    Authentication Flow Process
+  </text>
+  <text x="254.814" y="22.911" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#34495E" style="white-space: pre; stroke-width: 1; font-size: 12px;">
+    User Request → Middleware → Role Check → Access Decision
+  </text>
+  <text x="254.814" y="67.911" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#2C3E50" style="white-space: pre; stroke-width: 1; font-size: 16px;">
+    Role Hierarchy and Permissions
+  </text>
+  <rect x="-115.19" y="87.911" width="200" height="180" rx="10" fill="url(#guestGradient)" stroke="#7F8C8D" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="-15.186" y="112.911" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 16px;">
+    Guest
+  </text>
+  <text x="-15.186" y="132.911" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="white" style="white-space: pre; stroke-width: 1; font-size: 11px;">
+    (Unauthenticated)
+  </text>
+  <circle cx="-95.186" cy="157.911" r="3" fill="white" style="stroke-width: 1;"/>
+  <text x="-85.186" y="162.911" font-family="Arial, sans-serif" font-size="11" fill="white" style="white-space: pre; stroke-width: 1; font-size: 11px;">Home Page</text>
+  <circle cx="-95.186" cy="177.911" r="3" fill="white" style="stroke-width: 1;"/>
+  <text x="-85.186" y="182.911" font-family="Arial, sans-serif" font-size="11" fill="white" style="white-space: pre; stroke-width: 1; font-size: 11px;">About Page</text>
+  <circle cx="-95.186" cy="197.911" r="3" fill="white" style="stroke-width: 1;"/>
+  <text x="-85.186" y="202.911" font-family="Arial, sans-serif" font-size="11" fill="white" style="white-space: pre; stroke-width: 1; font-size: 11px;">Login/Register</text>
+  <circle cx="-95.186" cy="217.911" r="3" fill="white" style="stroke-width: 1;"/>
+  <text x="-85.186" y="222.911" font-family="Arial, sans-serif" font-size="11" fill="white" style="white-space: pre; stroke-width: 1; font-size: 11px;">Public Content</text>
+  <circle cx="-95.186" cy="237.911" r="3" fill="white" style="stroke-width: 1;"/>
+  <text x="-85.186" y="242.911" font-family="Arial, sans-serif" font-size="11" fill="white" style="white-space: pre; stroke-width: 1; font-size: 11px;">Documentation</text>
+  <rect x="154.814" y="87.911" width="200" height="180" rx="10" fill="url(#userGradient)" stroke="#2980B9" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="254.814" y="112.911" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 16px;">
+    User
+  </text>
+  <text x="254.814" y="132.911" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="white" style="white-space: pre; stroke-width: 1; font-size: 11px;">
+    (Research Participant)
+  </text>
+  <circle cx="174.814" cy="157.911" r="3" fill="white" style="stroke-width: 1;"/>
+  <text x="184.814" y="162.911" font-family="Arial, sans-serif" font-size="11" fill="white" style="white-space: pre; stroke-width: 1; font-size: 11px;">Guest Permissions +</text>
+  <circle cx="174.814" cy="177.911" r="3" fill="white" style="stroke-width: 1;"/>
+  <text x="184.814" y="182.911" font-family="Arial, sans-serif" font-size="11" fill="white" style="white-space: pre; stroke-width: 1; font-size: 11px;">EEG Trials</text>
+  <circle cx="174.814" cy="197.911" r="3" fill="white" style="stroke-width: 1;"/>
+  <text x="184.814" y="202.911" font-family="Arial, sans-serif" font-size="11" fill="white" style="white-space: pre; stroke-width: 1; font-size: 11px;">Profile Management</text>
+  <circle cx="174.814" cy="217.911" r="3" fill="white" style="stroke-width: 1;"/>
+  <text x="184.814" y="222.911" font-family="Arial, sans-serif" font-size="11" fill="white" style="white-space: pre; stroke-width: 1; font-size: 11px;">Participant Dashboard</text>
+  <circle cx="174.814" cy="237.911" r="3" fill="white" style="stroke-width: 1;"/>
+  <text x="184.814" y="242.911" font-family="Arial, sans-serif" font-size="11" fill="white" style="white-space: pre; stroke-width: 1; font-size: 11px;">Research Participation</text>
+  <rect x="424.814" y="87.911" width="200" height="180" rx="10" fill="url(#trainerGradient)" stroke="#D35400" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="524.814" y="112.911" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 16px;">
+    Trainer
+  </text>
+  <text x="524.814" y="132.911" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="white" style="white-space: pre; stroke-width: 1; font-size: 11px;">
+    (Researcher/Admin)
+  </text>
+  <circle cx="444.814" cy="157.911" r="3" fill="white" style="stroke-width: 1;"/>
+  <text x="454.814" y="162.911" font-family="Arial, sans-serif" font-size="11" fill="white" style="white-space: pre; stroke-width: 1; font-size: 11px;">User Permissions +</text>
+  <circle cx="444.814" cy="177.911" r="3" fill="white" style="stroke-width: 1;"/>
+  <text x="454.814" y="182.911" font-family="Arial, sans-serif" font-size="11" fill="white" style="white-space: pre; stroke-width: 1; font-size: 11px;">Data Visualization</text>
+  <circle cx="444.814" cy="197.911" r="3" fill="white" style="stroke-width: 1;"/>
+  <text x="454.814" y="202.911" font-family="Arial, sans-serif" font-size="11" fill="white" style="white-space: pre; stroke-width: 1; font-size: 11px;">Preprocessing Tools</text>
+  <circle cx="444.814" cy="217.911" r="3" fill="white" style="stroke-width: 1;"/>
+  <text x="454.814" y="222.911" font-family="Arial, sans-serif" font-size="11" fill="white" style="white-space: pre; stroke-width: 1; font-size: 11px;">Neural Networks</text>
+  <circle cx="444.814" cy="237.911" r="3" fill="white" style="stroke-width: 1;"/>
+  <text x="454.814" y="242.911" font-family="Arial, sans-serif" font-size="11" fill="white" style="white-space: pre; stroke-width: 1; font-size: 11px;">BCI Interface</text>
+  <circle cx="444.814" cy="257.911" r="3" fill="white" style="stroke-width: 1;"/>
+  <text x="454.814" y="262.911" font-family="Arial, sans-serif" font-size="11" fill="white" style="white-space: pre; stroke-width: 1; font-size: 11px;">Research Management</text>
+  <path d="M 84.814 177.911 L 154.814 177.911" stroke="#34495E" stroke-width="3" marker-end="url(#arrowhead)" stroke-dasharray="5,5" style="stroke-width: 3;"/>
+  <path d="M 354.814 177.911 L 424.814 177.911" stroke="#34495E" stroke-width="3" marker-end="url(#arrowhead)" stroke-dasharray="5,5" style="stroke-width: 3;"/>
+  <rect x="54.814" y="307.911" width="400" height="80" rx="10" fill="url(#middlewareGradient)" stroke="#27AE60" stroke-width="2" style="stroke-width: 2;"/>
+  <text x="254.814" y="332.911" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" style="white-space: pre; stroke-width: 1; font-size: 14px;">
+    Access Control Middleware
+  </text>
+  <text x="254.814" y="352.911" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="white" style="white-space: pre; stroke-width: 1; font-size: 11px;">
+    • URL Pattern Matching
+  </text>
+  <text x="254.814" y="367.911" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="white" style="white-space: pre; stroke-width: 1; font-size: 11px;">
+    • Role-Based Permission Enforcement
+  </text>
+  <text x="254.814" y="382.911" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="white" style="white-space: pre; stroke-width: 1; font-size: 11px;">
+    • Graceful Error Handling &amp; Redirects
+  </text>
+  <path d="M -15.186 267.911 L 154.814 307.911" stroke="#7F8C8D" stroke-width="2" marker-end="url(#arrowhead)" style="stroke-width: 2;"/>
+  <path d="M 254.814 267.911 L 254.814 307.911" stroke="#2980B9" stroke-width="2" marker-end="url(#arrowhead)" style="stroke-width: 2;"/>
+  <path d="M 524.814 267.911 L 354.814 307.911" stroke="#D35400" stroke-width="2" marker-end="url(#arrowhead)" style="stroke-width: 2;"/>
+</svg>

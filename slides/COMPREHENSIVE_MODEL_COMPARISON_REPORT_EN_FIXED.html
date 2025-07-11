@@ -1,0 +1,447 @@
+<style>
+        /* Standalone CSS for Comprehensive Model Comparison Slide */
+        #comprehensive-model-slide-container .slide-content {
+            /* CSS Variables for Academic Theme */
+            --primary-bg: #ffffff;
+            --secondary-bg: #f8f9fa;
+            --tertiary-bg: #e9ecef;
+            --accent-red: #c41e3a;
+            --accent-blue: #1f4e79;
+            --accent-green: #2d5a27;
+            --accent-purple: #6f42c1;
+            --text-primary: #2c3e50;
+            --text-secondary: #6c757d;
+            --border-light: #dee2e6;
+            --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 0.75rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-xxl: 3rem;
+            --font-size-h1: 3rem;
+            --font-size-h2: 2.25rem;
+            --font-size-h3: 1.75rem;
+            --font-size-h4: 1.25rem;
+            --font-size-body: 1rem;
+            --font-size-small: 0.875rem;
+
+            /* Base styles with high specificity */
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+            line-height: 1.6 !important;
+            font-size: var(--font-size-body) !important;
+            color: var(--text-primary) !important;
+            background: var(--primary-bg) !important;
+            height: calc(100vh - 40px) !important;
+            overflow-y: auto !important;
+            overflow-x: hidden !important;
+            padding-bottom: calc(var(--spacing-lg) + 40px) !important;
+        }
+
+        /* Custom scrollbar styling for standalone slides */
+        #comprehensive-model-slide-container .slide-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #comprehensive-model-slide-container .slide-content::-webkit-scrollbar-track {
+            background: transparent;
+            border-radius: 4px;
+        }
+
+        #comprehensive-model-slide-container .slide-content::-webkit-scrollbar-thumb {
+            background: rgba(31, 78, 121, 0.3);
+            border-radius: 4px;
+            transition: background 0.3s ease;
+        }
+
+        #comprehensive-model-slide-container .slide-content::-webkit-scrollbar-thumb:hover {
+            background: rgba(31, 78, 121, 0.5);
+        }
+
+        /* Firefox scrollbar styling */
+        #comprehensive-model-slide-container .slide-content {
+            scrollbar-width: thin;
+            scrollbar-color: transparent transparent;
+        }
+
+        /* Use !important to ensure these styles override any global styles */
+        #comprehensive-model-slide-container * {
+            box-sizing: border-box;
+        }
+
+        .slide-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: var(--spacing-lg);
+        }
+
+        .slide-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border-radius: 12px;
+            border-bottom: 3px solid #1f4e79;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .slide-title {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            color: #1f4e79;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            letter-spacing: -0.02em;
+        }
+
+        .slide-subtitle {
+            font-size: clamp(1.25rem, 2.5vw, 1.8rem);
+            color: #4a4a4a;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .slide-description {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: #6c757d;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .model-card {
+            background: #ffffff;
+            border: 2px solid #dee2e6;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .model-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+        }
+
+        .model-card.winner {
+            border-color: #2d7d32;
+            background: linear-gradient(135deg, #e8f5e8 0%, #ffffff 100%);
+        }
+
+        .model-card.runner-up {
+            border-color: #1f4e79;
+            background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%);
+        }
+
+        .model-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .model-name {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1f4e79;
+        }
+
+        .model-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-winner {
+            background: #2d7d32;
+            color: white;
+        }
+
+        .badge-runner-up {
+            background: #1f4e79;
+            color: white;
+        }
+
+        .badge-good {
+            background: #f57c00;
+            color: white;
+        }
+
+        .performance-metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .metric {
+            text-align: center;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f4e79;
+            margin-bottom: 0.25rem;
+        }
+
+        .metric-label {
+            font-size: 0.875rem;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .model-features {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .model-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f1f3f4;
+            display: flex;
+            align-items: center;
+        }
+
+        .model-features li:last-child {
+            border-bottom: none;
+        }
+
+        .model-features li i {
+            color: #2d7d32;
+            margin-right: 0.75rem;
+            width: 16px;
+        }
+
+        .summary-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .summary-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            color: #1f4e79;
+            margin-bottom: 1rem;
+        }
+
+        .summary-text {
+            font-size: 1.1rem;
+            color: #4a4a4a;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #ffd54f 0%, #ffeb3b 100%);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .performance-metrics {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+<div id="comprehensive-model-slide-container">
+<div class="slide-content">
+<div class="slide-container">
+        <div class="slide-header">
+            <h1 class="slide-title">🏆 EEG Analysis Models Comparison</h1>
+            <h2 class="slide-subtitle">Comprehensive Model Performance Analysis</h2>
+            <p class="slide-description">
+                Detailed comparison and analysis of advanced EEG classification models, 
+                showcasing performance metrics, architectural differences, and 
+                optimization strategies across multiple paradigms.
+            </p>
+        </div>
+
+        <div class="comparison-grid">
+            <!-- EEGNet + LSTM + Attention Model -->
+            <div class="model-card winner">
+                <div class="model-header">
+                    <h3 class="model-name">EEGNet + LSTM + Attention</h3>
+                    <span class="model-badge badge-winner">🥇 Winner</span>
+                </div>
+                
+                <div class="performance-metrics">
+                    <div class="metric">
+                        <div class="metric-value">★★★★★</div>
+                        <div class="metric-label">Overall Rating</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">Excellent</div>
+                        <div class="metric-label">Performance</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">High</div>
+                        <div class="metric-label">GPU Requirements</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">Complex</div>
+                        <div class="metric-label">Architecture</div>
+                    </div>
+                </div>
+
+                <ul class="model-features">
+                    <li><i class="fas fa-check"></i> State-of-the-art temporal modeling</li>
+                    <li><i class="fas fa-check"></i> Excellent attention mechanisms</li>
+                    <li><i class="fas fa-check"></i> Superior sequence learning</li>
+                    <li><i class="fas fa-check"></i> High accuracy across tasks</li>
+                    <li><i class="fas fa-check"></i> Robust feature extraction</li>
+                </ul>
+            </div>
+
+            <!-- Transformer Model -->
+            <div class="model-card runner-up">
+                <div class="model-header">
+                    <h3 class="model-name">Transformer</h3>
+                    <span class="model-badge badge-runner-up">🥈 Runner-up</span>
+                </div>
+                
+                <div class="performance-metrics">
+                    <div class="metric">
+                        <div class="metric-value">★★★★☆</div>
+                        <div class="metric-label">Overall Rating</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">Very Good</div>
+                        <div class="metric-label">Performance</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">Very High</div>
+                        <div class="metric-label">GPU Requirements</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">Complex</div>
+                        <div class="metric-label">Architecture</div>
+                    </div>
+                </div>
+
+                <ul class="model-features">
+                    <li><i class="fas fa-check"></i> Advanced self-attention</li>
+                    <li><i class="fas fa-check"></i> Parallel processing capability</li>
+                    <li><i class="fas fa-check"></i> Strong pattern recognition</li>
+                    <li><i class="fas fa-exclamation-triangle"></i> High computational cost</li>
+                    <li><i class="fas fa-exclamation-triangle"></i> Memory intensive</li>
+                </ul>
+            </div>
+
+            <!-- CNN + LSTM + Attention Model -->
+            <div class="model-card">
+                <div class="model-header">
+                    <h3 class="model-name">CNN + LSTM + Attention</h3>
+                    <span class="model-badge badge-good">🥉 Good</span>
+                </div>
+                
+                <div class="performance-metrics">
+                    <div class="metric">
+                        <div class="metric-value">★★★☆☆</div>
+                        <div class="metric-label">Overall Rating</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">Good</div>
+                        <div class="metric-label">Performance</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">Medium</div>
+                        <div class="metric-label">GPU Requirements</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">Moderate</div>
+                        <div class="metric-label">Architecture</div>
+                    </div>
+                </div>
+
+                <ul class="model-features">
+                    <li><i class="fas fa-check"></i> Balanced approach</li>
+                    <li><i class="fas fa-check"></i> Good spatial-temporal learning</li>
+                    <li><i class="fas fa-check"></i> Reasonable computational cost</li>
+                    <li><i class="fas fa-exclamation-triangle"></i> Limited in temporal modeling</li>
+                    <li><i class="fas fa-exclamation-triangle"></i> Less sophisticated attention</li>
+                </ul>
+            </div>
+
+            <!-- EEGNet Model -->
+            <div class="model-card">
+                <div class="model-header">
+                    <h3 class="model-name">EEGNet</h3>
+                    <span class="model-badge badge-good">📊 Baseline</span>
+                </div>
+                
+                <div class="performance-metrics">
+                    <div class="metric">
+                        <div class="metric-value">★★★☆☆</div>
+                        <div class="metric-label">Overall Rating</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">Good</div>
+                        <div class="metric-label">Performance</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">Low</div>
+                        <div class="metric-label">GPU Requirements</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">Simple</div>
+                        <div class="metric-label">Architecture</div>
+                    </div>
+                </div>
+
+                <ul class="model-features">
+                    <li><i class="fas fa-check"></i> Lightweight and efficient</li>
+                    <li><i class="fas fa-check"></i> Fast training and inference</li>
+                    <li><i class="fas fa-check"></i> Good baseline performance</li>
+                    <li><i class="fas fa-exclamation-triangle"></i> Limited temporal modeling</li>
+                    <li><i class="fas fa-exclamation-triangle"></i> No attention mechanisms</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="summary-section">
+            <h2 class="summary-title">🎯 Key Findings</h2>
+            <p class="summary-text">
+                The <span class="highlight">EEGNet + LSTM + Attention</span> model emerges as the clear winner, 
+                demonstrating superior performance across all evaluation metrics. Its combination of 
+                spatial feature extraction, temporal sequence modeling, and attention mechanisms 
+                provides the most comprehensive approach to EEG signal analysis. While computationally 
+                more demanding, the performance gains justify the increased complexity for 
+                high-accuracy applications.
+            </p>
+        </div>
+</div>
+</div>
+</div>
