@@ -1,495 +1,490 @@
-<!-- BCI Backend Slide 5: System Integration and Deployment -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hybrid Prediction Integration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../styles/common.css" rel="stylesheet">
+</head>
+<body>
+
 <style>
-/* Standalone CSS for BCI Backend System Integration Slide */
-#bci-backend-integration-container .slide-content {
-    /* CSS Variables for Academic Theme */
-    --primary-bg: #ffffff;
-    --secondary-bg: #f8f9fa;
-    --tertiary-bg: #e9ecef;
-    --accent-red: #c41e3a;
-    --accent-blue: #1f4e79;
-    --accent-purple: #5a4fcf;
-    --accent-green: #2d7d32;
-    --accent-orange: #f57c00;
-    --accent-teal: #00695c;
-    --text-primary: #1a1a1a;
-    --text-secondary: #4a4a4a;
-    --text-muted: #6c757d;
-    --border-light: #dee2e6;
-    --border-primary: #ced4da;
-    --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
-    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
-    --shadow-heavy: 0 8px 24px rgba(0, 0, 0, 0.16);
-    
-    /* Typography Scale */
-    --font-size-h1: clamp(2.5rem, 5vw, 4rem);
-    --font-size-h2: clamp(2rem, 4vw, 3rem);
-    --font-size-h3: clamp(1.5rem, 3vw, 2.2rem);
-    --font-size-h4: clamp(1.25rem, 2.5vw, 1.8rem);
-    --font-size-body: clamp(1rem, 2vw, 1.2rem);
-    --font-size-small: clamp(0.875rem, 1.5vw, 1rem);
-    
-    /* Spacing Scale */
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --accent-color: #4f46e5;
+    --text-primary: #1e293b;
+    --text-secondary: #475569;
+    --bg-light: #f8fafc;
+    --border-color: #e2e8f0;
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --hybrid-color: #e11d48;
     --spacing-xs: 0.5rem;
-    --spacing-sm: 1rem;
-    --spacing-md: 1.5rem;
-    --spacing-lg: 2rem;
-    --spacing-xl: 3rem;
-    --spacing-xxl: 4rem;
-    
-    /* Base slide styling */
-    all: unset;
-    display: block;
-    max-width: 1400px !important;
-    width: 100% !important;
-    text-align: left !important;
-    padding: var(--spacing-lg) !important;
-    margin: 0 auto !important;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-    line-height: 1.6 !important;
-    font-size: var(--font-size-body) !important;
-    color: var(--text-primary) !important;
-    background: var(--primary-bg) !important;
-    height: calc(100vh - 40px) !important;
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-    padding-bottom: calc(var(--spacing-lg) + 40px) !important;
+    --spacing-sm: 0.75rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 2.5rem;
+    --border-radius: 12px;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
-/* Custom scrollbar styling for standalone slides */
-#bci-backend-integration-container .slide-content::-webkit-scrollbar {
-    width: 8px;
+#hybrid-prediction-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    padding: var(--spacing-xl);
 }
 
-#bci-backend-integration-container .slide-content::-webkit-scrollbar-track {
-    background: transparent;
-    border-radius: 4px;
+.slide-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-lg);
 }
 
-#bci-backend-integration-container .slide-content::-webkit-scrollbar-thumb {
-    background: rgba(90, 79, 207, 0.3);
-    border-radius: 4px;
-    transition: background 0.3s ease;
+.section-title {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
 }
 
-#bci-backend-integration-container .slide-content::-webkit-scrollbar-thumb:hover {
-    background: rgba(90, 79, 207, 0.5);
+.overview-card {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-lg);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    border: 1px solid var(--border-color);
 }
 
-/* Firefox scrollbar styling */
-#bci-backend-integration-container .slide-content {
-    scrollbar-width: thin;
-    scrollbar-color: transparent transparent;
+.overview-title {
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
 }
 
-#bci-backend-integration-container * {
-    box-sizing: border-box;
+.hybrid-main-card {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: var(--spacing-lg);
+    border-left: 4px solid var(--hybrid-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: var(--spacing-xl);
 }
 
-#bci-backend-integration-container .slide-content * {
-    font-family: inherit !important;
+.hybrid-main-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
 }
 
-/* Typography */
-#bci-backend-integration-container .slide-content h2 {
-    font-family: 'Orbitron', 'Georgia', serif !important;
-    font-size: var(--font-size-h2) !important;
-    font-weight: 600 !important;
-    line-height: 1.3 !important;
-    margin-bottom: var(--spacing-xl) !important;
-    color: var(--accent-purple) !important;
-    text-align: center !important;
-    letter-spacing: -0.01em !important;
+.hybrid-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
 }
 
-#bci-backend-integration-container .slide-content h3 {
-    font-family: 'Inter', sans-serif !important;
-    font-size: var(--font-size-h3) !important;
-    font-weight: 600 !important;
-    line-height: 1.4 !important;
-    margin-bottom: var(--spacing-md) !important;
-    color: var(--text-primary) !important;
+.hybrid-header i {
+    color: var(--hybrid-color);
+    font-size: 1.5rem;
 }
 
-#bci-backend-integration-container .slide-content h4 {
-    font-family: 'Inter', sans-serif !important;
-    font-size: var(--font-size-h4) !important;
-    font-weight: 600 !important;
-    line-height: 1.4 !important;
-    margin-bottom: var(--spacing-sm) !important;
-    color: var(--text-primary) !important;
+.hybrid-header h3 {
+    color: var(--text-primary);
+    font-weight: 600;
+    margin: 0;
+    font-size: 1.3rem;
 }
 
-#bci-backend-integration-container .slide-content p {
-    font-size: var(--font-size-body) !important;
-    line-height: 1.7 !important;
-    margin-bottom: var(--spacing-md) !important;
-    color: var(--text-primary) !important;
+.subsection-number {
+    background: var(--hybrid-color);
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 600;
 }
 
-#bci-backend-integration-container .slide-content ul {
-    margin-bottom: var(--spacing-md) !important;
-    padding-left: var(--spacing-lg) !important;
+.paradigm-comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+    margin: var(--spacing-md) 0;
 }
 
-#bci-backend-integration-container .slide-content li {
-    font-size: var(--font-size-body) !important;
-    line-height: 1.6 !important;
-    margin-bottom: var(--spacing-xs) !important;
-    color: var(--text-primary) !important;
+.paradigm-card {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    border: 2px solid #bae6fd;
+    transition: all 0.3s ease;
 }
 
-/* Architecture Overview */
-#bci-backend-integration-container .architecture-overview {
-    background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--tertiary-bg) 100%) !important;
-    padding: var(--spacing-xl) !important;
-    border-radius: 20px !important;
-    border: 2px solid var(--accent-purple) !important;
-    box-shadow: var(--shadow-medium) !important;
-    text-align: center !important;
-    margin-bottom: var(--spacing-xl) !important;
+.paradigm-card.motor-imagery {
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    border-color: #bbf7d0;
 }
 
-#bci-backend-integration-container .architecture-overview h3 {
-    color: var(--accent-purple) !important;
-    font-family: 'Orbitron', serif !important;
-    margin-bottom: var(--spacing-md) !important;
+.paradigm-card.p300 {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-color: #fcd34d;
 }
 
-#bci-backend-integration-container .architecture-overview .subtitle {
-    font-size: calc(var(--font-size-body) * 1.1) !important;
-    color: var(--text-secondary) !important;
-    font-weight: 500 !important;
-    margin-bottom: 0 !important;
+.paradigm-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
 }
 
-/* Integration Diagram Placeholder */
-#bci-backend-integration-container .integration-diagram {
-    background: var(--secondary-bg) !important;
-    border: 2px dashed var(--accent-purple) !important;
-    border-radius: 12px !important;
-    padding: var(--spacing-xl) !important;
-    text-align: center !important;
-    margin: var(--spacing-xl) 0 !important;
-    min-height: 200px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    flex-direction: column !important;
+.paradigm-icon {
+    color: white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-md);
 }
 
-#bci-backend-integration-container .diagram-placeholder {
-    color: var(--accent-purple) !important;
-    font-size: var(--font-size-h4) !important;
-    font-weight: 600 !important;
-    margin-bottom: var(--spacing-sm) !important;
+.motor-imagery .paradigm-icon {
+    background: var(--success-color);
 }
 
-#bci-backend-integration-container .diagram-description {
-    color: var(--text-secondary) !important;
-    font-size: var(--font-size-small) !important;
-    font-style: italic !important;
+.p300 .paradigm-icon {
+    background: var(--warning-color);
 }
 
-/* Integration Areas Grid */
-#bci-backend-integration-container .integration-grid {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
-    gap: var(--spacing-lg) !important;
-    margin-bottom: var(--spacing-xl) !important;
+.paradigm-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.1rem;
 }
 
-#bci-backend-integration-container .integration-card {
-    background: var(--secondary-bg) !important;
-    border-radius: 16px !important;
-    padding: var(--spacing-lg) !important;
-    box-shadow: var(--shadow-light) !important;
-    transition: all 0.3s ease !important;
-    border-left: 4px solid var(--accent-purple) !important;
+.paradigm-description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: var(--spacing-md);
 }
 
-#bci-backend-integration-container .integration-card.component-integration {
-    border-left-color: var(--accent-green) !important;
+.paradigm-benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-#bci-backend-integration-container .integration-card.security-middleware {
-    border-left-color: var(--accent-red) !important;
+.paradigm-benefits li {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-xs) 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
 }
 
-#bci-backend-integration-container .integration-card.performance-deployment {
-    border-left-color: var(--accent-blue) !important;
+.paradigm-benefits li i {
+    color: var(--success-color);
+    font-size: 0.8rem;
 }
 
-#bci-backend-integration-container .integration-card:hover {
-    transform: translateY(-5px) !important;
-    box-shadow: var(--shadow-medium) !important;
+.integration-features {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: var(--spacing-lg);
+    border-left: 4px solid var(--hybrid-color);
+    margin-bottom: var(--spacing-xl);
 }
 
-#bci-backend-integration-container .integration-header {
-    display: flex !important;
-    align-items: center !important;
-    gap: var(--spacing-sm) !important;
-    margin-bottom: var(--spacing-md) !important;
-    padding-bottom: var(--spacing-sm) !important;
-    border-bottom: 2px solid var(--border-light) !important;
+.integration-features h4 {
+    color: var(--hybrid-color);
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
 }
 
-#bci-backend-integration-container .integration-header i {
-    font-size: var(--font-size-h3) !important;
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
 }
 
-#bci-backend-integration-container .integration-card.component-integration .integration-header i {
-    color: var(--accent-green) !important;
+.feature-item {
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
 }
 
-#bci-backend-integration-container .integration-card.security-middleware .integration-header i {
-    color: var(--accent-red) !important;
+.feature-item:hover {
+    background: #f1f5f9;
+    border-color: var(--hybrid-color);
 }
 
-#bci-backend-integration-container .integration-card.performance-deployment .integration-header i {
-    color: var(--accent-blue) !important;
+.feature-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: 0.95rem;
 }
 
-#bci-backend-integration-container .integration-header h3 {
-    margin: 0 !important;
-    font-family: 'Orbitron', serif !important;
+.feature-title i {
+    color: var(--hybrid-color);
+    font-size: 0.9rem;
 }
 
-#bci-backend-integration-container .integration-card.component-integration .integration-header h3 {
-    color: var(--accent-green) !important;
+.feature-desc {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.4;
 }
 
-#bci-backend-integration-container .integration-card.security-middleware .integration-header h3 {
-    color: var(--accent-red) !important;
+.system-benefits {
+    background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-xl);
+    border: 1px solid #e9d5ff;
 }
 
-#bci-backend-integration-container .integration-card.performance-deployment .integration-header h3 {
-    color: var(--accent-blue) !important;
+.system-benefits h3 {
+    color: var(--hybrid-color);
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
 }
 
-/* Integration Features */
-#bci-backend-integration-container .integration-features {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: var(--spacing-sm) !important;
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
 }
 
-#bci-backend-integration-container .feature-item {
-    background: var(--primary-bg) !important;
-    padding: var(--spacing-sm) !important;
-    border-radius: 8px !important;
-    border-left: 3px solid var(--accent-purple) !important;
-    font-size: var(--font-size-small) !important;
-    line-height: 1.5 !important;
-    color: var(--text-secondary) !important;
+.benefit-item {
+    background: white;
+    border-radius: 8px;
+    padding: var(--spacing-md);
+    border: 1px solid #e9d5ff;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    transition: transform 0.3s ease;
 }
 
-#bci-backend-integration-container .integration-card.component-integration .feature-item {
-    border-left-color: var(--accent-green) !important;
+.benefit-item:hover {
+    transform: translateY(-2px);
 }
 
-#bci-backend-integration-container .integration-card.security-middleware .feature-item {
-    border-left-color: var(--accent-red) !important;
+.benefit-item i {
+    color: var(--hybrid-color);
+    font-size: 1rem;
 }
 
-#bci-backend-integration-container .integration-card.performance-deployment .feature-item {
-    border-left-color: var(--accent-blue) !important;
+.animate-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideInUp 0.6s ease forwards;
 }
 
-/* Deployment Readiness Section */
-#bci-backend-integration-container .deployment-section {
-    background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%) !important;
-    padding: var(--spacing-xl) !important;
-    border-radius: 16px !important;
-    border: 2px solid var(--accent-teal) !important;
-    box-shadow: var(--shadow-light) !important;
-    margin-bottom: var(--spacing-xl) !important;
-}
+.animate-in:nth-child(2) { animation-delay: 0.1s; }
+.animate-in:nth-child(3) { animation-delay: 0.2s; }
+.animate-in:nth-child(4) { animation-delay: 0.3s; }
+.animate-in:nth-child(5) { animation-delay: 0.4s; }
 
-#bci-backend-integration-container .deployment-section h3 {
-    color: var(--accent-teal) !important;
-    font-family: 'Orbitron', serif !important;
-    margin-bottom: var(--spacing-md) !important;
-    text-align: center !important;
-}
-
-#bci-backend-integration-container .deployment-features {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
-    gap: var(--spacing-md) !important;
-}
-
-#bci-backend-integration-container .deployment-feature {
-    background: var(--primary-bg) !important;
-    padding: var(--spacing-md) !important;
-    border-radius: 8px !important;
-    border-left: 3px solid var(--accent-teal) !important;
-    font-size: var(--font-size-small) !important;
-    line-height: 1.5 !important;
-    color: var(--text-secondary) !important;
-}
-
-/* Design Philosophy Section */
-#bci-backend-integration-container .design-philosophy {
-    background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%) !important;
-    padding: var(--spacing-xl) !important;
-    border-radius: 16px !important;
-    border: 2px solid var(--accent-purple) !important;
-    box-shadow: var(--shadow-light) !important;
-}
-
-#bci-backend-integration-container .design-philosophy h3 {
-    color: var(--accent-purple) !important;
-    font-family: 'Orbitron', serif !important;
-    margin-bottom: var(--spacing-md) !important;
-    text-align: center !important;
-}
-
-#bci-backend-integration-container .design-philosophy p {
-    font-size: calc(var(--font-size-body) * 1.05) !important;
-    line-height: 1.7 !important;
-    color: var(--text-primary) !important;
-    text-align: center !important;
-    margin: 0 !important;
-    max-width: 80ch !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-}
-
-/* Animation */
-#bci-backend-integration-container .animate-in {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-    transition: all 0.6s ease-out !important;
-}
-
-/* Responsive Design */
-@media (max-width: 1200px) {
-    #bci-backend-integration-container .slide-content {
-        padding: var(--spacing-md) !important;
-    }
-    
-    #bci-backend-integration-container .integration-grid {
-        grid-template-columns: 1fr !important;
-        gap: var(--spacing-md) !important;
+@keyframes slideInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
 @media (max-width: 768px) {
-    #bci-backend-integration-container .slide-content {
-        padding: var(--spacing-sm) !important;
+    .section-title {
+        font-size: 2rem;
     }
     
-    #bci-backend-integration-container .architecture-overview,
-    #bci-backend-integration-container .design-philosophy,
-    #bci-backend-integration-container .deployment-section {
-        padding: var(--spacing-lg) !important;
-    }
-}
-
-@media (max-width: 480px) {
-    #bci-backend-integration-container .slide-content {
-        padding: var(--spacing-xs) !important;
+    .paradigm-comparison,
+    .features-grid,
+    .benefits-grid {
+        grid-template-columns: 1fr;
     }
     
-    #bci-backend-integration-container .integration-header {
-        flex-direction: column !important;
-        text-align: center !important;
-        gap: var(--spacing-xs) !important;
+    #hybrid-prediction-container {
+        padding: var(--spacing-sm);
     }
 }
 </style>
 
-<div id="bci-backend-integration-container">
+<div id="hybrid-prediction-container">
 <div class="slide-content">
-    <h2 class="section-title animate-in">BCI Backend: System Integration & Deployment</h2>
+    <h2 class="section-title animate-in">Hybrid Prediction Integration</h2>
     
-    <div class="architecture-overview animate-in">
-        <h3>🔗 Component Integration Architecture</h3>
-        <p class="subtitle">Sophisticated integration patterns uniting data collection, preprocessing, machine learning, and user interface components within a cohesive platform with comprehensive data flow management while maintaining component autonomy and enabling independent development cycles.</p>
+    <div class="overview-card animate-in">
+        <h3 class="overview-title">
+            <i class="fas fa-sync-alt"></i>
+            Section 4.5.3.6.2: Advanced Paradigm Coordination
+        </h3>
+        <p>Sophisticated hybrid prediction capabilities combining Motor Imagery and P300 paradigms within unified interaction workflows. Advanced coordination between different prediction modalities while maintaining real-time performance requirements.</p>
     </div>
 
-    <div class="integration-diagram animate-in">
-        <div class="diagram-placeholder">📊 System Integration Architecture and Component Relationships (Fig 4.57 & 4.58)</div>
-        <div class="diagram-description">Integration architecture showing component relationships, data flow, and security mechanisms</div>
+    <div class="hybrid-main-card animate-in">
+        <div class="hybrid-header">
+            <div class="subsection-number">2</div>
+            <i class="fas fa-puzzle-piece"></i>
+            <h3>Hybrid Prediction Integration</h3>
+        </div>
+        <p style="color: var(--text-secondary); margin-bottom: var(--spacing-md);">
+            The communicator implements sophisticated hybrid prediction capabilities that combine Motor Imagery and P300 paradigms within unified interaction workflows with advanced coordination between different prediction modalities.
+        </p>
+
+        <div class="paradigm-comparison">
+            <div class="paradigm-card motor-imagery">
+                <div class="paradigm-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div class="paradigm-title">Motor Imagery Paradigm</div>
+                <div class="paradigm-description">
+                    Continuous control through imagined motor movements with spatial pattern recognition.
+                </div>
+                <ul class="paradigm-benefits">
+                    <li><i class="fas fa-check"></i> Continuous control capabilities</li>
+                    <li><i class="fas fa-check"></i> Spatial pattern recognition</li>
+                    <li><i class="fas fa-check"></i> Self-paced interaction</li>
+                    <li><i class="fas fa-check"></i> High information transfer rate</li>
+                </ul>
+            </div>
+
+            <div class="paradigm-card p300">
+                <div class="paradigm-icon">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <div class="paradigm-title">P300 Paradigm</div>
+                <div class="paradigm-description">
+                    Event-related potential detection for discrete selection with high accuracy classification.
+                </div>
+                <ul class="paradigm-benefits">
+                    <li><i class="fas fa-check"></i> High accuracy classification</li>
+                    <li><i class="fas fa-check"></i> Discrete selection capability</li>
+                    <li><i class="fas fa-check"></i> Robust signal detection</li>
+                    <li><i class="fas fa-check"></i> Reliable performance</li>
+                </ul>
+            </div>
+        </div>
     </div>
 
-    <div class="integration-grid animate-in">
-        <div class="integration-card component-integration">
-            <div class="integration-header">
-                <i class="fas fa-puzzle-piece"></i>
-                <h3>Component Integration</h3>
+    <div class="integration-features animate-in">
+        <h4>
+            <i class="fas fa-cogs"></i>
+            Hybrid System Integration Features
+        </h4>
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-title">
+                    <i class="fas fa-sync"></i>
+                    Unified Workflows
+                </div>
+                <div class="feature-desc">Combined paradigm operation within single interaction frameworks</div>
             </div>
-            <p><strong>Django application integration</strong> enabling seamless data sharing while maintaining clear boundaries between functional domains.</p>
-            
-            <div class="integration-features">
-                <div class="feature-item">Shared model relationships across applications</div>
-                <div class="feature-item">Cross-application service calls with unified interfaces</div>
-                <div class="feature-item">Event-driven communication patterns for loose coupling</div>
-                <div class="feature-item">Synchronous and asynchronous communication support</div>
-                <div class="feature-item">Database integration with referential integrity</div>
-                <div class="feature-item">Atomic operations across application boundaries</div>
+
+            <div class="feature-item">
+                <div class="feature-title">
+                    <i class="fas fa-network-wired"></i>
+                    Advanced Coordination
+                </div>
+                <div class="feature-desc">Sophisticated coordination between different prediction modalities</div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-title">
+                    <i class="fas fa-clock"></i>
+                    Real-Time Performance
+                </div>
+                <div class="feature-desc">Maintained real-time performance requirements across paradigms</div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-title">
+                    <i class="fas fa-balance-scale"></i>
+                    Prediction Fusion
+                </div>
+                <div class="feature-desc">Intelligent fusion of predictions from multiple paradigms</div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-title">
+                    <i class="fas fa-route"></i>
+                    Context Switching
+                </div>
+                <div class="feature-desc">Dynamic paradigm selection based on task requirements</div>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-title">
+                    <i class="fas fa-shield-check"></i>
+                    Error Mitigation
+                </div>
+                <div class="feature-desc">Cross-paradigm validation and error correction</div>
             </div>
         </div>
+    </div>
 
-        <div class="integration-card security-middleware">
-            <div class="integration-header">
-                <i class="fas fa-shield-alt"></i>
-                <h3>Security & Middleware</h3>
+    <div class="system-benefits animate-in">
+        <h3><i class="fas fa-star"></i> Hybrid System Benefits</h3>
+        <div class="benefits-grid">
+            <div class="benefit-item">
+                <i class="fas fa-plus-circle"></i>
+                <span>Combined paradigm strengths</span>
             </div>
-            <p><strong>Custom middleware implementation</strong> providing cross-cutting functionality with comprehensive protection mechanisms for research environments.</p>
-            
-            <div class="integration-features">
-                <div class="feature-item">RoleBasedAccessMiddleware with URL-level permission evaluation</div>
-                <div class="feature-item">Dynamic permission evaluation and contextual access control</div>
-                <div class="feature-item">Input validation, output encoding, and session management</div>
-                <div class="feature-item">Protection against common web vulnerabilities</div>
-                <div class="feature-item">Comprehensive audit logging and monitoring capabilities</div>
-                <div class="feature-item">User privacy and research confidentiality compliance</div>
-            </div>
-        </div>
-
-        <div class="integration-card performance-deployment">
-            <div class="integration-header">
+            <div class="benefit-item">
                 <i class="fas fa-rocket"></i>
-                <h3>Performance & Deployment</h3>
+                <span>Enhanced system performance</span>
             </div>
-            <p><strong>Optimization strategies and deployment readiness</strong> ensuring responsive performance under research workloads with scalable architecture patterns.</p>
-            
-            <div class="integration-features">
-                <div class="feature-item">Database optimization with indexing and query optimization</div>
-                <div class="feature-item">Strategic caching mechanisms for frequently accessed data</div>
-                <div class="feature-item">Template, query result, and computed metric caching</div>
-                <div class="feature-item">Comprehensive monitoring and profiling capabilities</div>
-                <div class="feature-item">Environment-specific configuration management</div>
-                <div class="feature-item">Production-grade security and scalable backends</div>
+            <div class="benefit-item">
+                <i class="fas fa-chart-line"></i>
+                <span>Improved classification accuracy</span>
             </div>
-        </div>
-    </div>
-
-    <div class="deployment-section animate-in">
-        <h3>🚀 Production Deployment Readiness</h3>
-        <p style="text-align: center; margin-bottom: var(--spacing-md); color: var(--text-primary);">Comprehensive deployment architecture supporting transition to production environments with minimal configuration changes.</p>
-        
-        <div class="deployment-features">
-            <div class="deployment-feature">
-                <strong>Development Environment:</strong> Comprehensive development configuration with sophisticated logging, debugging capabilities, and development tool integration for efficient workflows
+            <div class="benefit-item">
+                <i class="fas fa-users"></i>
+                <span>Better user experience</span>
             </div>
-            <div class="deployment-feature">
-                <strong>Testing Infrastructure:</strong> Unit testing, integration testing, and performance testing capabilities ensuring system reliability during active development cycles
+            <div class="benefit-item">
+                <i class="fas fa-cogs"></i>
+                <span>Flexible interaction modes</span>
             </div>
-            <div class="deployment-feature">
-                <strong>Production Monitoring:</strong> Comprehensive monitoring, logging, and alerting capabilities enabling effective system administration and proactive issue identification
-            </div>
-            <div class="deployment-feature">
-                <strong>Backup & Recovery:</strong> Automated backup scheduling, data integrity verification, and recovery testing procedures ensuring data protection reliability
+            <div class="benefit-item">
+                <i class="fas fa-shield-alt"></i>
+                <span>Robust error handling</span>
             </div>
         </div>
     </div>
+</div>
+</div>
 
-    <div class="design-philosophy animate-in">
-        <h3>🎯 Integration Philosophy</h3>
-        <p><strong>Sophisticated integration patterns unite multiple components within a cohesive platform while maintaining component autonomy and enabling independent development cycles.</strong> The architecture demonstrates comprehensive data flow management, security integration, and deployment readiness that collectively enable scalable BCI research workflows with production-grade reliability, performance optimization, and maintainable system architecture.</p>
-    </div>
-</div>
-</div>
+</body>
+</html>

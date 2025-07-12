@@ -268,30 +268,6 @@ const PRESENTATION_CONFIG = {
             duration: 3.5,
             description: "SessionData, TrainedModel, and PredictionSession models"
         },
-        {
-            id: "bci-backend-view-architecture",
-            file: "slides/28-bci-backend-view-architecture.html",
-            section: "BCI - Backend",
-            title: "BCI Backend: View Architecture & Request Processing",
-            duration: 3.5,
-            description: "Class-based views and API endpoints"
-        },
-        {
-            id: "bci-backend-ml-integration",
-            file: "slides/29-bci-backend-ml-integration.html",
-            section: "BCI - Backend",
-            title: "BCI Backend: Machine Learning Integration",
-            duration: 3.5,
-            description: "Trainer and predictor abstractions with lifecycle management"
-        },
-        {
-            id: "bci-backend-system-integration",
-            file: "slides/30-bci-backend-system-integration.html",
-            section: "BCI - Backend",
-            title: "BCI Backend: System Integration & Deployment",
-            duration: 3.5,
-            description: "Component integration, security, and deployment readiness"
-        },
         
         // ============= CONCLUSION & FUTURE =============
         {

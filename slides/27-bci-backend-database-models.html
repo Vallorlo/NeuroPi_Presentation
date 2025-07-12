@@ -1,469 +1,472 @@
-<!-- BCI Backend Slide 2: Database Models and Data Management -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Handling and Data Processing</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../styles/common.css" rel="stylesheet">
+</head>
+<body>
+
 <style>
-/* Standalone CSS for BCI Backend Database Models Slide */
-#bci-backend-db-container .slide-content {
-    /* CSS Variables for Academic Theme */
-    --primary-bg: #ffffff;
-    --secondary-bg: #f8f9fa;
-    --tertiary-bg: #e9ecef;
-    --accent-red: #c41e3a;
-    --accent-blue: #1f4e79;
-    --accent-purple: #5a4fcf;
-    --accent-green: #2d7d32;
-    --accent-orange: #f57c00;
-    --accent-teal: #00695c;
-    --text-primary: #1a1a1a;
-    --text-secondary: #4a4a4a;
-    --text-muted: #6c757d;
-    --border-light: #dee2e6;
-    --border-primary: #ced4da;
-    --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
-    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
-    --shadow-heavy: 0 8px 24px rgba(0, 0, 0, 0.16);
-    
-    /* Typography Scale */
-    --font-size-h1: clamp(2.5rem, 5vw, 4rem);
-    --font-size-h2: clamp(2rem, 4vw, 3rem);
-    --font-size-h3: clamp(1.5rem, 3vw, 2.2rem);
-    --font-size-h4: clamp(1.25rem, 2.5vw, 1.8rem);
-    --font-size-body: clamp(1rem, 2vw, 1.2rem);
-    --font-size-small: clamp(0.875rem, 1.5vw, 1rem);
-    
-    /* Spacing Scale */
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --accent-color: #4f46e5;
+    --text-primary: #1e293b;
+    --text-secondary: #475569;
+    --bg-light: #f8fafc;
+    --border-color: #e2e8f0;
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --file-color: #059669;
+    --data-color: #dc2626;
     --spacing-xs: 0.5rem;
-    --spacing-sm: 1rem;
-    --spacing-md: 1.5rem;
-    --spacing-lg: 2rem;
-    --spacing-xl: 3rem;
-    --spacing-xxl: 4rem;
-    
-    /* Base slide styling */
-    all: unset;
-    display: block;
-    max-width: 1400px !important;
-    width: 100% !important;
-    text-align: left !important;
-    padding: var(--spacing-lg) !important;
-    margin: 0 auto !important;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-    line-height: 1.6 !important;
-    font-size: var(--font-size-body) !important;
-    color: var(--text-primary) !important;
-    background: var(--primary-bg) !important;
-    height: calc(100vh - 40px) !important;
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-    padding-bottom: calc(var(--spacing-lg) + 40px) !important;
+    --spacing-sm: 0.75rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 2.5rem;
+    --border-radius: 12px;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
-/* Custom scrollbar styling for standalone slides */
-#bci-backend-db-container .slide-content::-webkit-scrollbar {
-    width: 8px;
+#file-handling-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    padding: var(--spacing-xl);
 }
 
-#bci-backend-db-container .slide-content::-webkit-scrollbar-track {
-    background: transparent;
-    border-radius: 4px;
+.slide-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-lg);
 }
 
-#bci-backend-db-container .slide-content::-webkit-scrollbar-thumb {
-    background: rgba(90, 79, 207, 0.3);
-    border-radius: 4px;
-    transition: background 0.3s ease;
+.section-title {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
 }
 
-#bci-backend-db-container .slide-content::-webkit-scrollbar-thumb:hover {
-    background: rgba(90, 79, 207, 0.5);
+.overview-card {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-lg);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    border: 1px solid var(--border-color);
 }
 
-/* Firefox scrollbar styling */
-#bci-backend-db-container .slide-content {
-    scrollbar-width: thin;
-    scrollbar-color: transparent transparent;
+.overview-title {
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
 }
 
-#bci-backend-db-container * {
-    box-sizing: border-box;
+.subsections-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
 }
 
-#bci-backend-db-container .slide-content * {
-    font-family: inherit !important;
+.subsection-card {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: var(--spacing-lg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Typography */
-#bci-backend-db-container .slide-content h2 {
-    font-family: 'Orbitron', 'Georgia', serif !important;
-    font-size: var(--font-size-h2) !important;
-    font-weight: 600 !important;
-    line-height: 1.3 !important;
-    margin-bottom: var(--spacing-xl) !important;
-    color: var(--accent-purple) !important;
-    text-align: center !important;
-    letter-spacing: -0.01em !important;
+.subsection-card.file-mgmt {
+    border-left: 4px solid var(--file-color);
 }
 
-#bci-backend-db-container .slide-content h3 {
-    font-family: 'Inter', sans-serif !important;
-    font-size: var(--font-size-h3) !important;
-    font-weight: 600 !important;
-    line-height: 1.4 !important;
-    margin-bottom: var(--spacing-md) !important;
-    color: var(--text-primary) !important;
+.subsection-card.data-processing {
+    border-left: 4px solid var(--data-color);
 }
 
-#bci-backend-db-container .slide-content h4 {
-    font-family: 'Inter', sans-serif !important;
-    font-size: var(--font-size-h4) !important;
-    font-weight: 600 !important;
-    line-height: 1.4 !important;
-    margin-bottom: var(--spacing-sm) !important;
-    color: var(--text-primary) !important;
+.subsection-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
 }
 
-#bci-backend-db-container .slide-content p {
-    font-size: var(--font-size-body) !important;
-    line-height: 1.7 !important;
-    margin-bottom: var(--spacing-md) !important;
-    color: var(--text-primary) !important;
+.subsection-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
 }
 
-#bci-backend-db-container .slide-content ul {
-    margin-bottom: var(--spacing-md) !important;
-    padding-left: var(--spacing-lg) !important;
+.subsection-header i {
+    font-size: 1.5rem;
 }
 
-#bci-backend-db-container .slide-content li {
-    font-size: var(--font-size-body) !important;
-    line-height: 1.6 !important;
-    margin-bottom: var(--spacing-xs) !important;
-    color: var(--text-primary) !important;
+.file-mgmt .subsection-header i {
+    color: var(--file-color);
 }
 
-/* Architecture Overview */
-#bci-backend-db-container .architecture-overview {
-    background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--tertiary-bg) 100%) !important;
-    padding: var(--spacing-xl) !important;
-    border-radius: 20px !important;
-    border: 2px solid var(--accent-purple) !important;
-    box-shadow: var(--shadow-medium) !important;
-    text-align: center !important;
-    margin-bottom: var(--spacing-xl) !important;
+.data-processing .subsection-header i {
+    color: var(--data-color);
 }
 
-#bci-backend-db-container .architecture-overview h3 {
-    color: var(--accent-purple) !important;
-    font-family: 'Orbitron', serif !important;
-    margin-bottom: var(--spacing-md) !important;
+.subsection-header h3 {
+    color: var(--text-primary);
+    font-weight: 600;
+    margin: 0;
+    font-size: 1.3rem;
 }
 
-#bci-backend-db-container .architecture-overview .subtitle {
-    font-size: calc(var(--font-size-body) * 1.1) !important;
-    color: var(--text-secondary) !important;
-    font-weight: 500 !important;
-    margin-bottom: 0 !important;
+.subsection-number {
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 600;
 }
 
-/* Model Cards Grid */
-#bci-backend-db-container .models-grid {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)) !important;
-    gap: var(--spacing-lg) !important;
-    margin-bottom: var(--spacing-xl) !important;
+.file-mgmt .subsection-number {
+    background: var(--file-color);
 }
 
-#bci-backend-db-container .model-card {
-    background: var(--secondary-bg) !important;
-    border-radius: 16px !important;
-    padding: var(--spacing-lg) !important;
-    box-shadow: var(--shadow-light) !important;
-    transition: all 0.3s ease !important;
-    border-left: 4px solid var(--accent-purple) !important;
+.data-processing .subsection-number {
+    background: var(--data-color);
 }
 
-#bci-backend-db-container .model-card.session-data {
-    border-left-color: var(--accent-green) !important;
+.diagram-section {
+    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-xl);
+    text-align: center;
+    margin: var(--spacing-md) 0;
+    border: 2px dashed var(--accent-color);
 }
 
-#bci-backend-db-container .model-card.trained-model {
-    border-left-color: var(--accent-blue) !important;
+.diagram-placeholder {
+    font-size: 1.25rem;
+    color: var(--accent-color);
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
 }
 
-#bci-backend-db-container .model-card.prediction-session {
-    border-left-color: var(--accent-orange) !important;
+.diagram-description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
 }
 
-#bci-backend-db-container .model-card:hover {
-    transform: translateY(-5px) !important;
-    box-shadow: var(--shadow-medium) !important;
+.features-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--spacing-md) 0 0 0;
 }
 
-#bci-backend-db-container .model-header {
-    display: flex !important;
-    align-items: center !important;
-    gap: var(--spacing-sm) !important;
-    margin-bottom: var(--spacing-md) !important;
-    padding-bottom: var(--spacing-sm) !important;
-    border-bottom: 2px solid var(--border-light) !important;
+.features-list li {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid #f1f5f9;
 }
 
-#bci-backend-db-container .model-header i {
-    font-size: var(--font-size-h3) !important;
+.features-list li:last-child {
+    border-bottom: none;
 }
 
-#bci-backend-db-container .model-card.session-data .model-header i {
-    color: var(--accent-green) !important;
+.features-list li i {
+    color: var(--success-color);
+    font-size: 0.9rem;
 }
 
-#bci-backend-db-container .model-card.trained-model .model-header i {
-    color: var(--accent-blue) !important;
+.feature-categories {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+    margin: var(--spacing-md) 0;
 }
 
-#bci-backend-db-container .model-card.prediction-session .model-header i {
-    color: var(--accent-orange) !important;
+.feature-category {
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
 }
 
-#bci-backend-db-container .model-header h3 {
-    margin: 0 !important;
-    font-family: 'Orbitron', serif !important;
+.category-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
 }
 
-#bci-backend-db-container .model-card.session-data .model-header h3 {
-    color: var(--accent-green) !important;
+.category-title i {
+    color: var(--accent-color);
+    font-size: 0.9rem;
 }
 
-#bci-backend-db-container .model-card.trained-model .model-header h3 {
-    color: var(--accent-blue) !important;
+.category-desc {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.4;
 }
 
-#bci-backend-db-container .model-card.prediction-session .model-header h3 {
-    color: var(--accent-orange) !important;
+.pipeline-workflow {
+    background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-xl);
+    border: 1px solid #e9d5ff;
 }
 
-/* Code Block Styling */
-#bci-backend-db-container .code-block {
-    background: #2d3748 !important;
-    color: #e2e8f0 !important;
-    padding: var(--spacing-md) !important;
-    border-radius: 8px !important;
-    font-family: 'Fira Code', 'Monaco', 'Consolas', monospace !important;
-    font-size: var(--font-size-small) !important;
-    line-height: 1.4 !important;
-    overflow-x: auto !important;
-    margin: var(--spacing-md) 0 !important;
-    border-left: 4px solid var(--accent-purple) !important;
+.pipeline-workflow h3 {
+    color: var(--accent-color);
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
 }
 
-#bci-backend-db-container .model-card.session-data .code-block {
-    border-left-color: var(--accent-green) !important;
+.workflow-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
 }
 
-#bci-backend-db-container .model-card.trained-model .code-block {
-    border-left-color: var(--accent-blue) !important;
+.workflow-step {
+    background: white;
+    border-radius: 8px;
+    padding: var(--spacing-md);
+    border: 1px solid #e9d5ff;
+    text-align: center;
+    position: relative;
 }
 
-#bci-backend-db-container .model-card.prediction-session .code-block {
-    border-left-color: var(--accent-orange) !important;
+.step-number {
+    background: var(--accent-color);
+    color: white;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin: 0 auto var(--spacing-sm) auto;
 }
 
-/* Model Features */
-#bci-backend-db-container .model-features {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: var(--spacing-sm) !important;
+.step-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+    font-size: 0.9rem;
 }
 
-#bci-backend-db-container .feature-item {
-    background: var(--primary-bg) !important;
-    padding: var(--spacing-sm) !important;
-    border-radius: 8px !important;
-    border-left: 3px solid var(--accent-purple) !important;
-    font-size: var(--font-size-small) !important;
-    line-height: 1.5 !important;
-    color: var(--text-secondary) !important;
+.step-desc {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    line-height: 1.4;
 }
 
-#bci-backend-db-container .model-card.session-data .feature-item {
-    border-left-color: var(--accent-green) !important;
+.animate-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideInUp 0.6s ease forwards;
 }
 
-#bci-backend-db-container .model-card.trained-model .feature-item {
-    border-left-color: var(--accent-blue) !important;
-}
+.animate-in:nth-child(2) { animation-delay: 0.1s; }
+.animate-in:nth-child(3) { animation-delay: 0.2s; }
+.animate-in:nth-child(4) { animation-delay: 0.3s; }
+.animate-in:nth-child(5) { animation-delay: 0.4s; }
 
-#bci-backend-db-container .model-card.prediction-session .feature-item {
-    border-left-color: var(--accent-orange) !important;
-}
-
-/* Design Philosophy Section */
-#bci-backend-db-container .design-philosophy {
-    background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%) !important;
-    padding: var(--spacing-xl) !important;
-    border-radius: 16px !important;
-    border: 2px solid var(--accent-purple) !important;
-    box-shadow: var(--shadow-light) !important;
-}
-
-#bci-backend-db-container .design-philosophy h3 {
-    color: var(--accent-purple) !important;
-    font-family: 'Orbitron', serif !important;
-    margin-bottom: var(--spacing-md) !important;
-    text-align: center !important;
-}
-
-#bci-backend-db-container .design-philosophy p {
-    font-size: calc(var(--font-size-body) * 1.05) !important;
-    line-height: 1.7 !important;
-    color: var(--text-primary) !important;
-    text-align: center !important;
-    margin: 0 !important;
-    max-width: 80ch !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-}
-
-/* Animation */
-#bci-backend-db-container .animate-in {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-    transition: all 0.6s ease-out !important;
-}
-
-/* Responsive Design */
-@media (max-width: 1200px) {
-    #bci-backend-db-container .slide-content {
-        padding: var(--spacing-md) !important;
-    }
-    
-    #bci-backend-db-container .models-grid {
-        grid-template-columns: 1fr !important;
-        gap: var(--spacing-md) !important;
+@keyframes slideInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
 @media (max-width: 768px) {
-    #bci-backend-db-container .slide-content {
-        padding: var(--spacing-sm) !important;
+    .section-title {
+        font-size: 2rem;
     }
     
-    #bci-backend-db-container .architecture-overview,
-    #bci-backend-db-container .design-philosophy {
-        padding: var(--spacing-lg) !important;
-    }
-}
-
-@media (max-width: 480px) {
-    #bci-backend-db-container .slide-content {
-        padding: var(--spacing-xs) !important;
+    .subsections-grid {
+        grid-template-columns: 1fr;
     }
     
-    #bci-backend-db-container .model-header {
-        flex-direction: column !important;
-        text-align: center !important;
-        gap: var(--spacing-xs) !important;
+    .workflow-steps {
+        grid-template-columns: 1fr;
+    }
+    
+    #file-handling-container {
+        padding: var(--spacing-sm);
     }
 }
 </style>
 
-<div id="bci-backend-db-container">
+<div id="file-handling-container">
 <div class="slide-content">
-    <h2 class="section-title animate-in">BCI Backend: Database Models & Data Management</h2>
+    <h2 class="section-title animate-in">File Handling and Data Processing</h2>
     
-    <div class="architecture-overview animate-in">
-        <h3>🗄️ Sophisticated Data Model Architecture</h3>
-        <p class="subtitle">Advanced database models supporting complex BCI workflows while maintaining data integrity and enabling efficient queries across different experimental paradigms with comprehensive metadata storage and lifecycle management.</p>
+    <div class="overview-card animate-in">
+        <h3 class="overview-title">
+            <i class="fas fa-folder-open"></i>
+            Section 4.5.3.5: File Management and Data Processing Systems
+        </h3>
+        <p>Comprehensive data export capabilities with format conversion for external analysis tools. Automated backup systems with versioning and sophisticated data processing utilities for preprocessing pipelines.</p>
     </div>
 
-    <div class="models-grid animate-in">
-        <div class="model-card session-data">
-            <div class="model-header">
-                <i class="fas fa-file-csv"></i>
-                <h3>SessionData Model</h3>
+    <div class="diagram-section animate-in">
+        <div class="diagram-placeholder">📊 Figure 4.55: File Processing Pipeline and Validation Workflow</div>
+        <img width="100%" src="/images/BackEnd-Sakr/image178.png" alt="Integration Diagram">
+        <div class="diagram-description">Validation system with approach-specific checks ensuring data compatibility</div>
+    </div>
+
+    <div class="subsections-grid">
+        <div class="subsection-card file-mgmt animate-in">
+            <div class="subsection-header">
+                <div class="subsection-number">1</div>
+                <i class="fas fa-file-alt"></i>
+                <h3>File Management System</h3>
             </div>
-            <p><strong>Foundation for EEG data management</strong> with comprehensive metadata storage and file handling capabilities.</p>
-            
-            <div class="code-block">
-class SessionData(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=255)
-    approach = models.CharField(max_length=50, choices=APPROACH_CHOICES)
-    session_file = models.FileField(upload_to='sessions/')
-    sampling_rate = models.FloatField(default=128.0)
-    channels = models.JSONField(default=list)
-    classes = models.JSONField(default=list)
-    total_samples = models.IntegerField(default=0)
+            <p style="color: var(--text-secondary); margin-bottom: var(--spacing-md);">
+                Comprehensive data export capabilities supporting multiple formats with data integrity maintenance and automated protection systems.
+            </p>
+
+            <div class="feature-categories">
+                <div class="feature-category">
+                    <div class="category-title">
+                        <i class="fas fa-download"></i>
+                        Data Export
+                    </div>
+                    <div class="category-desc">Multiple format support for external analysis tools with format conversion capabilities</div>
+                </div>
+
+                <div class="feature-category">
+                    <div class="category-title">
+                        <i class="fas fa-shield-alt"></i>
+                        Automated Backup
+                    </div>
+                    <div class="category-desc">Versioning capabilities ensuring data accessibility and protection against loss</div>
+                </div>
+
+                <div class="feature-category">
+                    <div class="category-title">
+                        <i class="fas fa-check-double"></i>
+                        Validation System
+                    </div>
+                    <div class="category-desc">Approach-specific checks for data compatibility with detailed feedback</div>
+                </div>
             </div>
-            
-            <div class="model-features">
-                <div class="feature-item">User association with cascade deletion</div>
-                <div class="feature-item">Approach-specific categorization (Motor Imagery/P300)</div>
-                <div class="feature-item">Automatic metadata extraction via Django signals</div>
-                <div class="feature-item">JSON fields for flexible channel and class configuration</div>
-                <div class="feature-item">Data quality metrics and validation</div>
-            </div>
+
+            <ul class="features-list">
+                <li><i class="fas fa-check"></i> Multiple export format support</li>
+                <li><i class="fas fa-check"></i> Data integrity maintenance</li>
+                <li><i class="fas fa-check"></i> External tool integration capabilities</li>
+                <li><i class="fas fa-check"></i> Automated backup scheduling</li>
+                <li><i class="fas fa-check"></i> Version control systems</li>
+                <li><i class="fas fa-check"></i> Data corruption protection</li>
+            </ul>
         </div>
 
-        <div class="model-card trained-model">
-            <div class="model-header">
-                <i class="fas fa-brain"></i>
-                <h3>TrainedModel Management</h3>
+        <div class="subsection-card data-processing animate-in">
+            <div class="subsection-header">
+                <div class="subsection-number">2</div>
+                <i class="fas fa-microchip"></i>
+                <h3>Data Processing Utilities</h3>
             </div>
-            <p><strong>Comprehensive model lifecycle management</strong> supporting multiple ML approaches with version control and performance tracking.</p>
-            
-            <div class="code-block">
-class TrainedModel(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    approach = models.CharField(max_length=50, choices=APPROACH_CHOICES)
-    model_file = models.FileField(upload_to='models/')
-    config = models.JSONField(default=dict)
-    performance_metrics = models.JSONField(default=dict)
-    is_active = models.BooleanField(default=False)
-    created_at = models.DateTimeField(auto_now_add=True)
-            </div>
-            
-            <div class="model-features">
-                <div class="feature-item">Atomic model activation with race condition prevention</div>
-                <div class="feature-item">Approach-specific configuration storage (JSON)</div>
-                <div class="feature-item">Performance tracking and validation metrics</div>
-                <div class="feature-item">Version control with creation timestamps</div>
-                <div class="feature-item">Automatic deactivation of existing models</div>
-            </div>
-        </div>
+            <p style="color: var(--text-secondary); margin-bottom: var(--spacing-md);">
+                Sophisticated processing capabilities supporting preprocessing pipelines and feature extraction with optimized signal processing operations.
+            </p>
 
-        <div class="model-card prediction-session">
-            <div class="model-header">
-                <i class="fas fa-play-circle"></i>
-                <h3>PredictionSession Infrastructure</h3>
+            <div class="feature-categories">
+                <div class="feature-category">
+                    <div class="category-title">
+                        <i class="fas fa-wave-square"></i>
+                        Signal Processing
+                    </div>
+                    <div class="category-desc">Optimized implementations maintaining numerical stability and computational efficiency</div>
+                </div>
+
+                <div class="feature-category">
+                    <div class="category-title">
+                        <i class="fas fa-search"></i>
+                        Feature Extraction
+                    </div>
+                    <div class="category-desc">Advanced procedures for extracting meaningful features from EEG data</div>
+                </div>
+
+                <div class="feature-category">
+                    <div class="category-title">
+                        <i class="fas fa-vial"></i>
+                        Testing & Validation
+                    </div>
+                    <div class="category-desc">Comprehensive procedures ensuring consistent behavior across configurations</div>
+                </div>
             </div>
-            <p><strong>Real-time BCI applications</strong> through comprehensive session management and state tracking with automatic timeout handling.</p>
-            
-            <div class="code-block">
-class PredictionSession(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    model = models.ForeignKey(TrainedModel, on_delete=models.CASCADE)
-    name = models.CharField(max_length=255)
-    prediction_interval = models.FloatField(default=8.0)
-    window_duration = models.FloatField(default=2.0)
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES)
-    started_at = models.DateTimeField(null=True, blank=True)
-    stopped_at = models.DateTimeField(null=True, blank=True)
-            </div>
-            
-            <div class="model-features">
-                <div class="feature-item">Sophisticated session lifecycle management</div>
-                <div class="feature-item">Configurable prediction intervals and window durations</div>
-                <div class="feature-item">Status tracking with temporal information</div>
-                <div class="feature-item">Automatic timeout handling and resource cleanup</div>
-                <div class="feature-item">Performance metrics and usage pattern analysis</div>
-            </div>
+
+            <ul class="features-list">
+                <li><i class="fas fa-check"></i> Preprocessing pipeline support</li>
+                <li><i class="fas fa-check"></i> Numerical stability optimization</li>
+                <li><i class="fas fa-check"></i> Computational efficiency focus</li>
+                <li><i class="fas fa-check"></i> Comprehensive testing procedures</li>
+                <li><i class="fas fa-check"></i> Cross-configuration validation</li>
+                <li><i class="fas fa-check"></i> Data characteristic adaptability</li>
+            </ul>
         </div>
     </div>
 
-    <div class="design-philosophy animate-in">
-        <h3>🎯 Data Architecture Philosophy</h3>
-        <p><strong>Sophisticated data model architecture supports complex BCI workflows while maintaining data integrity and enabling efficient queries across different experimental paradigms.</strong> The models implement comprehensive validation, automatic processing, and flexible configuration storage that adapts to evolving research requirements while ensuring consistent data management and reliable system operation.</p>
+    <div class="pipeline-workflow animate-in">
+        <h3><i class="fas fa-cogs"></i> Processing Pipeline Workflow</h3>
+        <div class="workflow-steps">
+            <div class="workflow-step">
+                <div class="step-number">1</div>
+                <div class="step-title">Data Ingestion</div>
+                <div class="step-desc">Validate and import EEG data with format checking</div>
+            </div>
+            <div class="workflow-step">
+                <div class="step-number">2</div>
+                <div class="step-title">Preprocessing</div>
+                <div class="step-desc">Apply filtering and signal processing operations</div>
+            </div>
+            <div class="workflow-step">
+                <div class="step-number">3</div>
+                <div class="step-title">Feature Extraction</div>
+                <div class="step-desc">Extract relevant features for analysis</div>
+            </div>
+            <div class="workflow-step">
+                <div class="step-number">4</div>
+                <div class="step-title">Quality Assessment</div>
+                <div class="step-desc">Validate data quality and provide feedback</div>
+            </div>
+            <div class="workflow-step">
+                <div class="step-number">5</div>
+                <div class="step-title">Export & Backup</div>
+                <div class="step-desc">Save processed data with versioning</div>
+            </div>
+        </div>
     </div>
 </div>
 </div>
+
+</body>
+</html>

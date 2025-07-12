@@ -1,470 +1,406 @@
-<!-- BCI Backend Slide 3: View Architecture and Request Processing -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BCI Communicator Integration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../styles/common.css" rel="stylesheet">
+</head>
+<body>
+
 <style>
-/* Standalone CSS for BCI Backend View Architecture Slide */
-#bci-backend-views-container .slide-content {
-    /* CSS Variables for Academic Theme */
-    --primary-bg: #ffffff;
-    --secondary-bg: #f8f9fa;
-    --tertiary-bg: #e9ecef;
-    --accent-red: #c41e3a;
-    --accent-blue: #1f4e79;
-    --accent-purple: #5a4fcf;
-    --accent-green: #2d7d32;
-    --accent-orange: #f57c00;
-    --accent-teal: #00695c;
-    --text-primary: #1a1a1a;
-    --text-secondary: #4a4a4a;
-    --text-muted: #6c757d;
-    --border-light: #dee2e6;
-    --border-primary: #ced4da;
-    --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
-    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
-    --shadow-heavy: 0 8px 24px rgba(0, 0, 0, 0.16);
-    
-    /* Typography Scale */
-    --font-size-h1: clamp(2.5rem, 5vw, 4rem);
-    --font-size-h2: clamp(2rem, 4vw, 3rem);
-    --font-size-h3: clamp(1.5rem, 3vw, 2.2rem);
-    --font-size-h4: clamp(1.25rem, 2.5vw, 1.8rem);
-    --font-size-body: clamp(1rem, 2vw, 1.2rem);
-    --font-size-small: clamp(0.875rem, 1.5vw, 1rem);
-    
-    /* Spacing Scale */
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --accent-color: #4f46e5;
+    --text-primary: #1e293b;
+    --text-secondary: #475569;
+    --bg-light: #f8fafc;
+    --border-color: #e2e8f0;
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --comm-color: #7c3aed;
     --spacing-xs: 0.5rem;
-    --spacing-sm: 1rem;
-    --spacing-md: 1.5rem;
-    --spacing-lg: 2rem;
-    --spacing-xl: 3rem;
-    --spacing-xxl: 4rem;
-    
-    /* Base slide styling */
-    all: unset;
-    display: block;
-    max-width: 1400px !important;
-    width: 100% !important;
-    text-align: left !important;
-    padding: var(--spacing-lg) !important;
-    margin: 0 auto !important;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-    line-height: 1.6 !important;
-    font-size: var(--font-size-body) !important;
-    color: var(--text-primary) !important;
-    background: var(--primary-bg) !important;
-    height: calc(100vh - 40px) !important;
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-    padding-bottom: calc(var(--spacing-lg) + 40px) !important;
+    --spacing-sm: 0.75rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 2.5rem;
+    --border-radius: 12px;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
-/* Custom scrollbar styling for standalone slides */
-#bci-backend-views-container .slide-content::-webkit-scrollbar {
-    width: 8px;
+#bci-communicator-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    padding: var(--spacing-xl);
 }
 
-#bci-backend-views-container .slide-content::-webkit-scrollbar-track {
-    background: transparent;
-    border-radius: 4px;
+.slide-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-lg);
 }
 
-#bci-backend-views-container .slide-content::-webkit-scrollbar-thumb {
-    background: rgba(90, 79, 207, 0.3);
-    border-radius: 4px;
-    transition: background 0.3s ease;
+.section-title {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
 }
 
-#bci-backend-views-container .slide-content::-webkit-scrollbar-thumb:hover {
-    background: rgba(90, 79, 207, 0.5);
+.overview-card {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-lg);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    border: 1px solid var(--border-color);
 }
 
-/* Firefox scrollbar styling */
-#bci-backend-views-container .slide-content {
-    scrollbar-width: thin;
-    scrollbar-color: transparent transparent;
+.overview-title {
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
 }
 
-#bci-backend-views-container * {
-    box-sizing: border-box;
+.communicator-card {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: var(--spacing-lg);
+    border-left: 4px solid var(--comm-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: var(--spacing-xl);
 }
 
-#bci-backend-views-container .slide-content * {
-    font-family: inherit !important;
+.communicator-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
 }
 
-/* Typography */
-#bci-backend-views-container .slide-content h2 {
-    font-family: 'Orbitron', 'Georgia', serif !important;
-    font-size: var(--font-size-h2) !important;
-    font-weight: 600 !important;
-    line-height: 1.3 !important;
-    margin-bottom: var(--spacing-xl) !important;
-    color: var(--accent-purple) !important;
-    text-align: center !important;
-    letter-spacing: -0.01em !important;
+.comm-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
 }
 
-#bci-backend-views-container .slide-content h3 {
-    font-family: 'Inter', sans-serif !important;
-    font-size: var(--font-size-h3) !important;
-    font-weight: 600 !important;
-    line-height: 1.4 !important;
-    margin-bottom: var(--spacing-md) !important;
-    color: var(--text-primary) !important;
+.comm-header i {
+    color: var(--comm-color);
+    font-size: 1.5rem;
 }
 
-#bci-backend-views-container .slide-content h4 {
-    font-family: 'Inter', sans-serif !important;
-    font-size: var(--font-size-h4) !important;
-    font-weight: 600 !important;
-    line-height: 1.4 !important;
-    margin-bottom: var(--spacing-sm) !important;
-    color: var(--text-primary) !important;
+.comm-header h3 {
+    color: var(--text-primary);
+    font-weight: 600;
+    margin: 0;
+    font-size: 1.3rem;
 }
 
-#bci-backend-views-container .slide-content p {
-    font-size: var(--font-size-body) !important;
-    line-height: 1.7 !important;
-    margin-bottom: var(--spacing-md) !important;
-    color: var(--text-primary) !important;
+.subsection-number {
+    background: var(--comm-color);
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 600;
 }
 
-#bci-backend-views-container .slide-content ul {
-    margin-bottom: var(--spacing-md) !important;
-    padding-left: var(--spacing-lg) !important;
+.diagram-section {
+    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-xl);
+    text-align: center;
+    margin: var(--spacing-md) 0;
+    border: 2px dashed var(--comm-color);
 }
 
-#bci-backend-views-container .slide-content li {
-    font-size: var(--font-size-body) !important;
-    line-height: 1.6 !important;
-    margin-bottom: var(--spacing-xs) !important;
-    color: var(--text-primary) !important;
+.diagram-placeholder {
+    font-size: 1.25rem;
+    color: var(--comm-color);
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
 }
 
-/* Architecture Overview */
-#bci-backend-views-container .architecture-overview {
-    background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--tertiary-bg) 100%) !important;
-    padding: var(--spacing-xl) !important;
-    border-radius: 20px !important;
-    border: 2px solid var(--accent-purple) !important;
-    box-shadow: var(--shadow-medium) !important;
-    text-align: center !important;
-    margin-bottom: var(--spacing-xl) !important;
+.diagram-description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
 }
 
-#bci-backend-views-container .architecture-overview h3 {
-    color: var(--accent-purple) !important;
-    font-family: 'Orbitron', serif !important;
-    margin-bottom: var(--spacing-md) !important;
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+    margin: var(--spacing-md) 0;
 }
 
-#bci-backend-views-container .architecture-overview .subtitle {
-    font-size: calc(var(--font-size-body) * 1.1) !important;
-    color: var(--text-secondary) !important;
-    font-weight: 500 !important;
-    margin-bottom: 0 !important;
+.feature-card {
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
 }
 
-/* Flow Diagram Placeholder */
-#bci-backend-views-container .flow-diagram {
-    background: var(--secondary-bg) !important;
-    border: 2px dashed var(--accent-purple) !important;
-    border-radius: 12px !important;
-    padding: var(--spacing-xl) !important;
-    text-align: center !important;
-    margin: var(--spacing-xl) 0 !important;
-    min-height: 200px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    flex-direction: column !important;
+.feature-card:hover {
+    background: #f1f5f9;
+    border-color: var(--comm-color);
 }
 
-#bci-backend-views-container .diagram-placeholder {
-    color: var(--accent-purple) !important;
-    font-size: var(--font-size-h4) !important;
-    font-weight: 600 !important;
-    margin-bottom: var(--spacing-sm) !important;
+.feature-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
 }
 
-#bci-backend-views-container .diagram-description {
-    color: var(--text-secondary) !important;
-    font-size: var(--font-size-small) !important;
-    font-style: italic !important;
+.feature-title i {
+    color: var(--success-color);
+    font-size: 0.9rem;
 }
 
-/* View Types Grid */
-#bci-backend-views-container .views-grid {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
-    gap: var(--spacing-lg) !important;
-    margin-bottom: var(--spacing-xl) !important;
+.feature-desc {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.4;
 }
 
-#bci-backend-views-container .view-card {
-    background: var(--secondary-bg) !important;
-    border-radius: 16px !important;
-    padding: var(--spacing-lg) !important;
-    box-shadow: var(--shadow-light) !important;
-    transition: all 0.3s ease !important;
-    border-left: 4px solid var(--accent-purple) !important;
+.session-management {
+    margin-top: var(--spacing-lg);
 }
 
-#bci-backend-views-container .view-card.dashboard {
-    border-left-color: var(--accent-green) !important;
+.session-features {
+    list-style: none;
+    padding: 0;
+    margin: var(--spacing-md) 0 0 0;
 }
 
-#bci-backend-views-container .view-card.session-mgmt {
-    border-left-color: var(--accent-blue) !important;
+.session-features li {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid #f1f5f9;
 }
 
-#bci-backend-views-container .view-card.training-config {
-    border-left-color: var(--accent-orange) !important;
+.session-features li:last-child {
+    border-bottom: none;
 }
 
-#bci-backend-views-container .view-card.api-endpoints {
-    border-left-color: var(--accent-teal) !important;
+.session-features li i {
+    color: var(--success-color);
+    font-size: 0.9rem;
 }
 
-#bci-backend-views-container .view-card:hover {
-    transform: translateY(-5px) !important;
-    box-shadow: var(--shadow-medium) !important;
+.paradigm-integration {
+    background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-xl);
+    border: 1px solid #e9d5ff;
+    margin-top: var(--spacing-xl);
 }
 
-#bci-backend-views-container .view-header {
-    display: flex !important;
-    align-items: center !important;
-    gap: var(--spacing-sm) !important;
-    margin-bottom: var(--spacing-md) !important;
-    padding-bottom: var(--spacing-sm) !important;
-    border-bottom: 2px solid var(--border-light) !important;
+.paradigm-integration h3 {
+    color: var(--comm-color);
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
 }
 
-#bci-backend-views-container .view-header i {
-    font-size: var(--font-size-h3) !important;
+.paradigm-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
 }
 
-#bci-backend-views-container .view-card.dashboard .view-header i {
-    color: var(--accent-green) !important;
+.paradigm-item {
+    background: white;
+    border-radius: 8px;
+    padding: var(--spacing-md);
+    border: 1px solid #e9d5ff;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    transition: transform 0.3s ease;
 }
 
-#bci-backend-views-container .view-card.session-mgmt .view-header i {
-    color: var(--accent-blue) !important;
+.paradigm-item:hover {
+    transform: translateY(-2px);
 }
 
-#bci-backend-views-container .view-card.training-config .view-header i {
-    color: var(--accent-orange) !important;
+.paradigm-item i {
+    color: var(--comm-color);
+    font-size: 1rem;
 }
 
-#bci-backend-views-container .view-card.api-endpoints .view-header i {
-    color: var(--accent-teal) !important;
+.animate-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideInUp 0.6s ease forwards;
 }
 
-#bci-backend-views-container .view-header h3 {
-    margin: 0 !important;
-    font-family: 'Orbitron', serif !important;
-}
+.animate-in:nth-child(2) { animation-delay: 0.1s; }
+.animate-in:nth-child(3) { animation-delay: 0.2s; }
+.animate-in:nth-child(4) { animation-delay: 0.3s; }
+.animate-in:nth-child(5) { animation-delay: 0.4s; }
 
-#bci-backend-views-container .view-card.dashboard .view-header h3 {
-    color: var(--accent-green) !important;
-}
-
-#bci-backend-views-container .view-card.session-mgmt .view-header h3 {
-    color: var(--accent-blue) !important;
-}
-
-#bci-backend-views-container .view-card.training-config .view-header h3 {
-    color: var(--accent-orange) !important;
-}
-
-#bci-backend-views-container .view-card.api-endpoints .view-header h3 {
-    color: var(--accent-teal) !important;
-}
-
-/* View Features */
-#bci-backend-views-container .view-features {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: var(--spacing-sm) !important;
-}
-
-#bci-backend-views-container .feature-item {
-    background: var(--primary-bg) !important;
-    padding: var(--spacing-sm) !important;
-    border-radius: 8px !important;
-    border-left: 3px solid var(--accent-purple) !important;
-    font-size: var(--font-size-small) !important;
-    line-height: 1.5 !important;
-    color: var(--text-secondary) !important;
-}
-
-#bci-backend-views-container .view-card.dashboard .feature-item {
-    border-left-color: var(--accent-green) !important;
-}
-
-#bci-backend-views-container .view-card.session-mgmt .feature-item {
-    border-left-color: var(--accent-blue) !important;
-}
-
-#bci-backend-views-container .view-card.training-config .feature-item {
-    border-left-color: var(--accent-orange) !important;
-}
-
-#bci-backend-views-container .view-card.api-endpoints .feature-item {
-    border-left-color: var(--accent-teal) !important;
-}
-
-/* Design Philosophy Section */
-#bci-backend-views-container .design-philosophy {
-    background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%) !important;
-    padding: var(--spacing-xl) !important;
-    border-radius: 16px !important;
-    border: 2px solid var(--accent-purple) !important;
-    box-shadow: var(--shadow-light) !important;
-}
-
-#bci-backend-views-container .design-philosophy h3 {
-    color: var(--accent-purple) !important;
-    font-family: 'Orbitron', serif !important;
-    margin-bottom: var(--spacing-md) !important;
-    text-align: center !important;
-}
-
-#bci-backend-views-container .design-philosophy p {
-    font-size: calc(var(--font-size-body) * 1.05) !important;
-    line-height: 1.7 !important;
-    color: var(--text-primary) !important;
-    text-align: center !important;
-    margin: 0 !important;
-    max-width: 80ch !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-}
-
-/* Animation */
-#bci-backend-views-container .animate-in {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-    transition: all 0.6s ease-out !important;
-}
-
-/* Responsive Design */
-@media (max-width: 1200px) {
-    #bci-backend-views-container .slide-content {
-        padding: var(--spacing-md) !important;
-    }
-    
-    #bci-backend-views-container .views-grid {
-        grid-template-columns: 1fr !important;
-        gap: var(--spacing-md) !important;
+@keyframes slideInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
 @media (max-width: 768px) {
-    #bci-backend-views-container .slide-content {
-        padding: var(--spacing-sm) !important;
+    .section-title {
+        font-size: 2rem;
     }
     
-    #bci-backend-views-container .architecture-overview,
-    #bci-backend-views-container .design-philosophy {
-        padding: var(--spacing-lg) !important;
-    }
-}
-
-@media (max-width: 480px) {
-    #bci-backend-views-container .slide-content {
-        padding: var(--spacing-xs) !important;
+    .features-grid,
+    .paradigm-grid {
+        grid-template-columns: 1fr;
     }
     
-    #bci-backend-views-container .view-header {
-        flex-direction: column !important;
-        text-align: center !important;
-        gap: var(--spacing-xs) !important;
+    #bci-communicator-container {
+        padding: var(--spacing-sm);
     }
 }
 </style>
 
-<div id="bci-backend-views-container">
+<div id="bci-communicator-container">
 <div class="slide-content">
-    <h2 class="section-title animate-in">BCI Backend: View Architecture & Request Processing</h2>
+    <h2 class="section-title animate-in">BCI Communicator Integration</h2>
     
-    <div class="architecture-overview animate-in">
-        <h3>🔄 Class-Based View Hierarchy</h3>
-        <p class="subtitle">Sophisticated view hierarchy using Django's class-based views, providing consistent interfaces while enabling paradigm-specific customizations with inheritance patterns that promote code reuse and clear separation of concerns.</p>
+    <div class="overview-card animate-in">
+        <h3 class="overview-title">
+            <i class="fas fa-comments"></i>
+            Section 4.5.3.6: Real-Time Communication Architecture
+        </h3>
+        <p>Sophisticated real-time communication capabilities enabling practical brain-computer interface applications. Advanced integration between multiple BCI paradigms within unified interaction frameworks.</p>
     </div>
 
-    <div class="flow-diagram animate-in">
-        <div class="diagram-placeholder">📊 View Hierarchy and Request Processing Flow (Fig 4.51)</div>
-        <div class="diagram-description">Request processing flow showing inheritance patterns and component interactions</div>
-    </div>
+    <div class="communicator-card animate-in">
+        <div class="comm-header">
+            <div class="subsection-number">1</div>
+            <i class="fas fa-broadcast-tower"></i>
+            <h3>Real-Time Communication Architecture</h3>
+        </div>
+        <p style="color: var(--text-secondary); margin-bottom: var(--spacing-md);">
+            BCI Communicator application implementing sophisticated real-time communication capabilities for practical brain-computer interface applications.
+        </p>
 
-    <div class="views-grid animate-in">
-        <div class="view-card dashboard">
-            <div class="view-header">
-                <i class="fas fa-tachometer-alt"></i>
-                <h3>Dashboard Views</h3>
+        <div class="diagram-section">
+            <div class="diagram-placeholder">🔄 Figure 4.56: BCI Communicator Architecture and Data Flow</div>
+            <div class="diagram-description">Advanced integration between multiple BCI paradigms within unified interaction frameworks</div>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-sync"></i>
+                    Real-Time Processing
+                </div>
+                <div class="feature-desc">Continuous EEG data processing with immediate response capabilities</div>
             </div>
-            <p><strong>Comprehensive system overview</strong> aggregating statistics across multiple dimensions with real-time metrics and performance insights.</p>
-            
-            <div class="view-features">
-                <div class="feature-item">Real-time metrics including session counts and model status</div>
-                <div class="feature-item">Approach-specific statistics and recent activity summaries</div>
-                <div class="feature-item">Efficient database queries with optimized response times</div>
-                <div class="feature-item">Caching strategies for performance optimization</div>
-                <div class="feature-item">Context data aggregation with computed metrics</div>
+
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-layer-group"></i>
+                    Multi-Paradigm Support
+                </div>
+                <div class="feature-desc">Motor Imagery and P300 paradigms within unified frameworks</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-users"></i>
+                    Interaction Frameworks
+                </div>
+                <div class="feature-desc">Advanced user interaction patterns with system responsiveness</div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-title">
+                    <i class="fas fa-shield-alt"></i>
+                    Error Recovery
+                </div>
+                <div class="feature-desc">Robust error handling and automatic recovery capabilities</div>
             </div>
         </div>
 
-        <div class="view-card session-mgmt">
-            <div class="view-header">
-                <i class="fas fa-folder-open"></i>
-                <h3>Session Management</h3>
-            </div>
-            <p><strong>Comprehensive CRUD operations</strong> with sophisticated file handling, validation capabilities, and advanced filtering systems.</p>
-            
-            <div class="view-features">
-                <div class="feature-item">SessionUploadView with automatic metadata extraction</div>
-                <div class="feature-item">SessionListView with advanced filtering and pagination</div>
-                <div class="feature-item">Approach-specific filtering and date range selection</div>
-                <div class="feature-item">Text-based searching across session metadata</div>
-                <div class="feature-item">File processing integration with validation</div>
-            </div>
-        </div>
+        <div class="session-management">
+            <h4 style="color: var(--text-primary); margin-bottom: var(--spacing-md); display: flex; align-items: center; gap: var(--spacing-sm);">
+                <i class="fas fa-cogs" style="color: var(--comm-color);"></i>
+                Communication Session Management
+            </h4>
+            <p style="color: var(--text-secondary); margin-bottom: var(--spacing-md);">
+                CommunicationSession model implementing comprehensive session management for hybrid BCI applications with simultaneous Motor Imagery and P300 operation.
+            </p>
 
-        <div class="view-card training-config">
-            <div class="view-header">
+            <ul class="session-features">
+                <li><i class="fas fa-check"></i> Hybrid BCI application support</li>
+                <li><i class="fas fa-check"></i> Simultaneous paradigm operation</li>
+                <li><i class="fas fa-check"></i> Consistent state management</li>
+                <li><i class="fas fa-check"></i> User interaction flow coordination</li>
+                <li><i class="fas fa-check"></i> Sophisticated state machines</li>
+                <li><i class="fas fa-check"></i> Complex interaction pattern coordination</li>
+                <li><i class="fas fa-check"></i> System responsiveness maintenance</li>
+                <li><i class="fas fa-check"></i> Automatic error recovery mechanisms</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="paradigm-integration animate-in">
+        <h3><i class="fas fa-puzzle-piece"></i> Multi-Paradigm Integration Benefits</h3>
+        <div class="paradigm-grid">
+            <div class="paradigm-item">
+                <i class="fas fa-brain"></i>
+                <span>Advanced Motor Imagery integration</span>
+            </div>
+            <div class="paradigm-item">
+                <i class="fas fa-eye"></i>
+                <span>Sophisticated P300 paradigm support</span>
+            </div>
+            <div class="paradigm-item">
+                <i class="fas fa-sync-alt"></i>
+                <span>Unified interaction frameworks</span>
+            </div>
+            <div class="paradigm-item">
+                <i class="fas fa-chart-line"></i>
+                <span>Real-time performance optimization</span>
+            </div>
+            <div class="paradigm-item">
                 <i class="fas fa-cogs"></i>
-                <h3>Training Configuration</h3>
+                <span>State machine coordination</span>
             </div>
-            <p><strong>Dynamic form generation</strong> based on approach selection with comprehensive validation and model lifecycle management.</p>
-            
-            <div class="view-features">
-                <div class="feature-item">TrainingConfigView with paradigm-specific parameters</div>
-                <div class="feature-item">Dynamic form adaptation based on user selections</div>
-                <div class="feature-item">Comprehensive validation including compatibility checking</div>
-                <div class="feature-item">Asynchronous training processes through threading</div>
-                <div class="feature-item">Real-time status updates through AJAX endpoints</div>
-            </div>
-        </div>
-
-        <div class="view-card api-endpoints">
-            <div class="view-header">
-                <i class="fas fa-plug"></i>
-                <h3>API Endpoints</h3>
-            </div>
-            <p><strong>RESTful API architecture</strong> enabling real-time user interface updates and asynchronous data processing with BCI-specific functionality.</p>
-            
-            <div class="view-features">
-                <div class="feature-item">Real-time prediction APIs for continuous EEG streams</div>
-                <div class="feature-item">Prediction status endpoints with comprehensive monitoring</div>
-                <div class="feature-item">Session and model management APIs with JSON interfaces</div>
-                <div class="feature-item">Atomic operations for model switching and configuration</div>
-                <div class="feature-item">Efficient data serialization with minimal network overhead</div>
+            <div class="paradigm-item">
+                <i class="fas fa-shield-check"></i>
+                <span>Error recovery capabilities</span>
             </div>
         </div>
     </div>
+</div>
+</div>
 
-    <div class="design-philosophy animate-in">
-        <h3>🎯 View Architecture Philosophy</h3>
-        <p><strong>Sophisticated view hierarchy follows inheritance patterns that promote code reuse while maintaining clear separation of concerns.</strong> The architecture implements comprehensive request processing with efficient database operations, real-time updates, and paradigm-specific customizations that enable scalable BCI research workflows while maintaining responsive user experiences and system reliability.</p>
-    </div>
-</div>
-</div>
+</body>
+</html>

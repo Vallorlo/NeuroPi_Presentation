@@ -1,136 +1,371 @@
-<!-- Introduction Slide 4: Presentation Roadmap -->
-<div class="slide-content">
-    <h2 class="section-title animate-in">Today's Journey: Our Technical Deep Dive</h2>
-    
-    <div class="roadmap-container">
-        <div class="roadmap-intro animate-in">
-            <p>Over the next 50 minutes, we'll take you through our complete journey from research conception to deployable system, followed by a live demonstration of real-time neural interface control.</p>
-        </div>
+<!-- project_framework_slide.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Framework Slide</title>
+    <style>
+        .slide-content {
+            padding: 3rem;
+            min-height: 100vh;
+            background: #f8f9fa;
+            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+        }
+
+        .framework-subtitle {
+            text-align: center;
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            font-style: italic;
+            color: #666;
+        }
+
+        .framework-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .framework-intro {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            border: 1px solid #e0e0e0;
+        }
+
+        .spine-concept {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+        }
+
+        .spine-text {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .components-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .component-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            border: 1px solid #e0e0e0;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .component-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+        }
+
+        .component-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .component-number {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-right: 1rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .component-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .component-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .component-details {
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        .framework-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .flow-item {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            min-width: 120px;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .flow-item:hover {
+            transform: scale(1.05);
+        }
+
+        .flow-arrow {
+            font-size: 2rem;
+            color: #667eea;
+            animation: pulse 2s infinite;
+        }
+
+        .achievements-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            margin-top: 3rem;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            border: 1px solid #e0e0e0;
+        }
+
+        .achievements-title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .achievement-item {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .achievement-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .achievement-metric {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .achievement-label {
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            opacity: 0.9;
+        }
+
+        /* Animations */
+        .animate-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideInUp 0.8s ease forwards;
+        }
+
+        .animate-in:nth-child(1) { animation-delay: 0.1s; }
+        .animate-in:nth-child(2) { animation-delay: 0.2s; }
+        .animate-in:nth-child(3) { animation-delay: 0.3s; }
+        .animate-in:nth-child(4) { animation-delay: 0.4s; }
+        .animate-in:nth-child(5) { animation-delay: 0.5s; }
+        .animate-in:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        @media (max-width: 768px) {
+            .components-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .framework-flow {
+                flex-direction: column;
+            }
+            
+            .flow-arrow {
+                transform: rotate(90deg);
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Section 3.3: Project Framework -->
+    <div class="slide-content">
+        <h2 class="section-title animate-in">Project Framework</h2>
+        <div class="framework-subtitle animate-in">Four-Component Architecture</div>
         
-        <div class="roadmap-timeline">
-            <div class="roadmap-item animate-in">
-                <div class="roadmap-number">1</div>
-                <div class="roadmap-content">
-                    <h3>Approaches & Data Collection</h3>
-                    <p>Multi-paradigm BCI implementation, EPOC+ hardware integration, and comprehensive signal processing pipelines</p>
-                    <div class="roadmap-details">
-                        <span class="detail-tag">Hardware Setup</span>
-                        <span class="detail-tag">Trial Protocols</span>
-                        <span class="detail-tag">Signal Processing</span>
+        <div class="framework-container">
+            <div class="framework-intro animate-in">
+                <p>Our project framework provides the structural foundation that supports all research phases. Think of it as <strong>the spine of the entire project</strong>—it maintains consistency across different approaches while providing enough flexibility for paradigm-specific optimizations.</p>
+            </div>
+
+            <div class="spine-concept animate-in">
+                <div class="spine-text">🏗️ Framework as the "Spine"</div>
+                <p>Structural foundation supporting all research phases with consistency and flexibility</p>
+            </div>
+            
+            <div class="components-grid">
+                <div class="component-card animate-in">
+                    <div class="component-header">
+                        <div class="component-number">1</div>
+                        <div class="component-title">Data Collection</div>
                     </div>
-                    <span class="roadmap-time">~7 minutes</span>
+                    <div class="component-description">
+                        High-quality data forms the foundation of any successful machine learning project. BCI data presents unique challenges: neural signals are weak, noisy, and highly variable across individuals and sessions.
+                    </div>
+                    <div class="component-details">
+                        • Careful protocol design<br>
+                        • Real-time quality monitoring<br>
+                        • Comprehensive metadata capture<br>
+                        • EPOC+ hardware integration
+                    </div>
+                </div>
+                
+                <div class="component-card animate-in">
+                    <div class="component-header">
+                        <div class="component-number">2</div>
+                        <div class="component-title">Data Preprocessing</div>
+                    </div>
+                    <div class="component-description">
+                        Advanced signal processing pipeline that transforms raw, noisy EEG data into clean, information-rich datasets suitable for machine learning model training.
+                    </div>
+                    <div class="component-details">
+                        • Bandpass filtering & artifact removal<br>
+                        • ICA-based noise reduction<br>
+                        • 500+ feature extraction per trial<br>
+                        • Paradigm-specific optimization
+                    </div>
+                </div>
+                
+                <div class="component-card animate-in">
+                    <div class="component-header">
+                        <div class="component-number">3</div>
+                        <div class="component-title">Model Architecture</div>
+                    </div>
+                    <div class="component-description">
+                        State-of-the-art deep learning models designed for specific BCI paradigms, achieving clinical-grade performance on consumer hardware.
+                    </div>
+                    <div class="component-details">
+                        • ATCNet for Motor Imagery (75% accuracy)<br>
+                        • CNN-LSTM-Attention for P300 (91.16% accuracy)<br>
+                        • Real-time inference capabilities<br>
+                        • Optimized for consumer EEG
+                    </div>
+                </div>
+                
+                <div class="component-card animate-in">
+                    <div class="component-header">
+                        <div class="component-number">4</div>
+                        <div class="component-title">Web Application</div>
+                    </div>
+                    <div class="component-description">
+                        Django-based platform that integrates all components into a user-friendly interface, supporting researchers and clinicians with intuitive workflows.
+                    </div>
+                    <div class="component-details">
+                        • Real-time visualization systems<br>
+                        • User management & study coordination<br>
+                        • Scalable deployment architecture<br>
+                        • Cross-platform accessibility
+                    </div>
                 </div>
             </div>
             
-            <div class="roadmap-item animate-in">
-                <div class="roadmap-number">2</div>
-                <div class="roadmap-content">
-                    <h3>Model Architecture & Performance</h3>
-                    <p>ATCNet for Motor Imagery, CNN-LSTM-Attention for P300, training methodologies, and benchmark results</p>
-                    <div class="roadmap-details">
-                        <span class="detail-tag">Neural Networks</span>
-                        <span class="detail-tag">Training Pipelines</span>
-                        <span class="detail-tag">Performance Metrics</span>
+            <div class="framework-flow animate-in">
+                <div class="flow-item">Raw EEG<br>Signals</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-item">Signal<br>Processing</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-item">ML Model<br>Training</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-item">Web Platform<br>Integration</div>
+            </div>
+
+            <div class="achievements-section animate-in">
+                <h3 class="achievements-title">🎯 Framework Success Metrics</h3>
+                <div class="achievements-grid">
+                    <div class="achievement-item">
+                        <span class="achievement-metric">91.16%</span>
+                        <div class="achievement-label">P300 Detection Accuracy<br><small>Clinical-grade performance</small></div>
                     </div>
-                    <span class="roadmap-time">~7 minutes</span>
-                </div>
-            </div>
-            
-            <div class="roadmap-item animate-in">
-                <div class="roadmap-number">3</div>
-                <div class="roadmap-content">
-                    <h3>Frontend & User Experience</h3>
-                    <p>Real-time visualization systems, intuitive interfaces, and responsive design for researchers and clinicians</p>
-                    <div class="roadmap-details">
-                        <span class="detail-tag">UI/UX Design</span>
-                        <span class="detail-tag">Real-time Viz</span>
-                        <span class="detail-tag">User Workflows</span>
+                    <div class="achievement-item">
+                        <span class="achievement-metric">75%</span>
+                        <div class="achievement-label">Motor Imagery Classification<br><small>Consumer hardware achievement</small></div>
                     </div>
-                    <span class="roadmap-time">~7 minutes</span>
-                </div>
-            </div>
-            
-            <div class="roadmap-item animate-in">
-                <div class="roadmap-number">4</div>
-                <div class="roadmap-content">
-                    <h3>Backend Systems & Integration</h3>
-                    <p>Django architecture, real-time processing engines, user management, and scalable deployment strategies</p>
-                    <div class="roadmap-details">
-                        <span class="detail-tag">System Architecture</span>
-                        <span class="detail-tag">Real-time Processing</span>
-                        <span class="detail-tag">Scalability</span>
+                    <div class="achievement-item">
+                        <span class="achievement-metric">500+</span>
+                        <div class="achievement-label">Features per Trial<br><small>Comprehensive signal analysis</small></div>
                     </div>
-                    <span class="roadmap-time">~7 minutes</span>
-                </div>
-            </div>
-            
-            <div class="roadmap-item animate-in">
-                <div class="roadmap-number">5</div>
-                <div class="roadmap-content">
-                    <h3>Results & Future Vision</h3>
-                    <p>Scientific contributions, social impact assessment, and roadmap for revolutionary brain sign language integration</p>
-                    <div class="roadmap-details">
-                        <span class="detail-tag">Achievements</span>
-                        <span class="detail-tag">Impact Analysis</span>
-                        <span class="detail-tag">Future Roadmap</span>
+                    <div class="achievement-item">
+                        <span class="achievement-metric">14</span>
+                        <div class="achievement-label">EEG Channels<br><small>EPOC+ consumer headset</small></div>
                     </div>
-                    <span class="roadmap-time">~7 minutes</span>
-                </div>
-            </div>
-            
-            <div class="roadmap-item demo animate-in">
-                <div class="roadmap-number">🎯</div>
-                <div class="roadmap-content">
-                    <h3>Live System Demonstration</h3>
-                    <p>Real-time motor imagery classification and P300 detection using our consumer-grade platform with dual projector setup</p>
-                    <div class="roadmap-details">
-                        <span class="detail-tag highlight">Live EEG</span>
-                        <span class="detail-tag highlight">Real-time ML</span>
-                        <span class="detail-tag highlight">Interactive Control</span>
-                    </div>
-                    <span class="roadmap-time">~15 minutes</span>
-                </div>
-            </div>
-        </div>
-        
-        <div class="technical-focus animate-in">
-            <h3>🔬 Technical Depth & Innovation</h3>
-            <div class="focus-areas">
-                <div class="focus-item">
-                    <h4>Signal Processing Excellence</h4>
-                    <p>Advanced preprocessing, ICA artifact removal, and 500+ feature extraction per trial</p>
-                </div>
-                <div class="focus-item">
-                    <h4>Machine Learning Innovation</h4>
-                    <p>State-of-the-art architectures achieving clinical performance on consumer hardware</p>
-                </div>
-                <div class="focus-item">
-                    <h4>System Integration</h4>
-                    <p>Complete end-to-end platform from signal acquisition to real-time prediction</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="presentation-goals animate-in">
-            <h3>🎯 What You'll Learn Today</h3>
-            <div class="goals-grid">
-                <div class="goal-item">
-                    <span class="goal-icon">✅</span>
-                    <span>How consumer EEG can achieve clinical-grade performance</span>
-                </div>
-                <div class="goal-item">
-                    <span class="goal-icon">✅</span>
-                    <span>Technical implementation of advanced BCI architectures</span>
-                </div>
-                <div class="goal-item">
-                    <span class="goal-icon">✅</span>
-                    <span>Real-world deployment strategies and system design</span>
-                </div>
-                <div class="goal-item">
-                    <span class="goal-icon">✅</span>
-                    <span>Future possibilities for neural communication technology</span>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</body>
+</html>

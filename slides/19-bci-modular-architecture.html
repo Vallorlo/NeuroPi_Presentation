@@ -1,474 +1,390 @@
-<!-- BCI Core Application Slide 2: Modular Architecture Design -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Models and Data Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../styles/common.css" rel="stylesheet">
+</head>
+<body>
+
 <style>
-/* Standalone CSS for BCI Modular Architecture Slide */
-#bci-modular-container .slide-content {
-    /* CSS Variables for Academic Theme */
-    --primary-bg: #ffffff;
-    --secondary-bg: #f8f9fa;
-    --tertiary-bg: #e9ecef;
-    --accent-red: #c41e3a;
-    --accent-blue: #1f4e79;
-    --accent-purple: #5a4fcf;
-    --accent-green: #2d7d32;
-    --accent-orange: #f57c00;
-    --accent-teal: #00695c;
-    --text-primary: #1a1a1a;
-    --text-secondary: #4a4a4a;
-    --text-muted: #6c757d;
-    --border-light: #dee2e6;
-    --border-primary: #ced4da;
-    --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
-    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
-    --shadow-heavy: 0 8px 24px rgba(0, 0, 0, 0.16);
-    
-    /* Typography Scale */
-    --font-size-h1: clamp(2.5rem, 5vw, 4rem);
-    --font-size-h2: clamp(2rem, 4vw, 3rem);
-    --font-size-h3: clamp(1.5rem, 3vw, 2.2rem);
-    --font-size-h4: clamp(1.25rem, 2.5vw, 1.8rem);
-    --font-size-body: clamp(1rem, 2vw, 1.2rem);
-    --font-size-small: clamp(0.875rem, 1.5vw, 1rem);
-    
-    /* Spacing Scale */
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --accent-color: #4f46e5;
+    --text-primary: #1e293b;
+    --text-secondary: #475569;
+    --bg-light: #f8fafc;
+    --border-color: #e2e8f0;
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
     --spacing-xs: 0.5rem;
-    --spacing-sm: 1rem;
-    --spacing-md: 1.5rem;
-    --spacing-lg: 2rem;
-    --spacing-xl: 3rem;
-    --spacing-xxl: 4rem;
-    
-    /* Base slide styling */
-    all: unset;
-    display: block;
-    max-width: 1400px !important;
-    width: 100% !important;
-    text-align: left !important;
-    padding: var(--spacing-lg) !important;
-    margin: 0 auto !important;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-    line-height: 1.6 !important;
-    font-size: var(--font-size-body) !important;
-    color: var(--text-primary) !important;
-    background: var(--primary-bg) !important;
-    height: calc(100vh - 40px) !important;
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-    padding-bottom: calc(var(--spacing-lg) + 40px) !important;
+    --spacing-sm: 0.75rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 2.5rem;
+    --border-radius: 12px;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
-/* Custom scrollbar styling for standalone slides */
-#bci-modular-container .slide-content::-webkit-scrollbar {
-    width: 8px;
+#database-models-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    padding: var(--spacing-xl);
 }
 
-#bci-modular-container .slide-content::-webkit-scrollbar-track {
-    background: transparent;
-    border-radius: 4px;
+.slide-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-lg);
 }
 
-#bci-modular-container .slide-content::-webkit-scrollbar-thumb {
-    background: rgba(31, 78, 121, 0.3);
-    border-radius: 4px;
-    transition: background 0.3s ease;
+.section-title {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
 }
 
-#bci-modular-container .slide-content::-webkit-scrollbar-thumb:hover {
-    background: rgba(31, 78, 121, 0.5);
+.overview-card {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-lg);
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    border: 1px solid var(--border-color);
 }
 
-/* Firefox scrollbar styling */
-#bci-modular-container .slide-content {
-    scrollbar-width: thin;
-    scrollbar-color: transparent transparent;
+.overview-title {
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
 }
 
-#bci-modular-container * {
-    box-sizing: border-box;
+.models-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
 }
 
-#bci-modular-container .slide-content * {
-    font-family: inherit !important;
+.model-card {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: var(--spacing-lg);
+    border-left: 4px solid var(--accent-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Typography */
-#bci-modular-container .slide-content h2 {
-    font-family: 'Orbitron', 'Georgia', serif !important;
-    font-size: var(--font-size-h2) !important;
-    font-weight: 600 !important;
-    line-height: 1.3 !important;
-    margin-bottom: var(--spacing-xl) !important;
-    color: var(--accent-blue) !important;
-    text-align: center !important;
-    letter-spacing: -0.01em !important;
+.model-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
 }
 
-#bci-modular-container .slide-content h3 {
-    font-family: 'Inter', sans-serif !important;
-    font-size: var(--font-size-h3) !important;
-    font-weight: 600 !important;
-    line-height: 1.4 !important;
-    margin-bottom: var(--spacing-md) !important;
-    color: var(--text-primary) !important;
+.model-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
 }
 
-#bci-modular-container .slide-content h4 {
-    font-family: 'Inter', sans-serif !important;
-    font-size: var(--font-size-h4) !important;
-    font-weight: 600 !important;
-    line-height: 1.4 !important;
-    margin-bottom: var(--spacing-sm) !important;
-    color: var(--text-primary) !important;
+.model-header i {
+    color: var(--accent-color);
+    font-size: 1.5rem;
 }
 
-#bci-modular-container .slide-content p {
-    font-size: var(--font-size-body) !important;
-    line-height: 1.7 !important;
-    margin-bottom: var(--spacing-md) !important;
-    color: var(--text-primary) !important;
+.model-header h3 {
+    color: var(--text-primary);
+    font-weight: 600;
+    margin: 0;
 }
 
-#bci-modular-container .slide-content ul {
-    margin-bottom: var(--spacing-md) !important;
-    padding-left: var(--spacing-lg) !important;
+.model-description {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-md);
 }
 
-#bci-modular-container .slide-content li {
-    font-size: var(--font-size-body) !important;
-    line-height: 1.6 !important;
-    margin-bottom: var(--spacing-xs) !important;
-    color: var(--text-primary) !important;
+.code-snippet {
+    background: #1e293b;
+    color: #e2e8f0;
+    border-radius: var(--border-radius);
+    padding: var(--spacing-md);
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin: var(--spacing-md) 0;
+    overflow-x: auto;
 }
 
-/* Modular Overview */
-#bci-modular-container .modular-overview {
-    background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--tertiary-bg) 100%) !important;
-    padding: var(--spacing-xl) !important;
-    border-radius: 20px !important;
-    border: 2px solid var(--accent-green) !important;
-    box-shadow: var(--shadow-medium) !important;
-    text-align: center !important;
-    margin-bottom: var(--spacing-xl) !important;
+.features-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
 }
 
-#bci-modular-container .modular-overview h3 {
-    color: var(--accent-green) !important;
-    font-family: 'Orbitron', serif !important;
-    margin-bottom: var(--spacing-md) !important;
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    background: #f8fafc;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
 }
 
-#bci-modular-container .modular-overview .subtitle {
-    font-size: calc(var(--font-size-body) * 1.1) !important;
-    color: var(--text-secondary) !important;
-    font-weight: 500 !important;
-    margin-bottom: 0 !important;
+.feature-item i {
+    color: var(--success-color);
+    font-size: 0.9rem;
 }
 
-/* Modular Diagram Placeholder */
-#bci-modular-container .modular-diagram {
-    background: var(--secondary-bg) !important;
-    border: 2px dashed var(--accent-green) !important;
-    border-radius: 12px !important;
-    padding: var(--spacing-xl) !important;
-    text-align: center !important;
-    margin: var(--spacing-xl) 0 !important;
-    min-height: 200px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    flex-direction: column !important;
+.feature-text {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
 }
 
-#bci-modular-container .diagram-placeholder {
-    color: var(--accent-green) !important;
-    font-size: var(--font-size-h4) !important;
-    font-weight: 600 !important;
-    margin-bottom: var(--spacing-sm) !important;
+.diagram-section {
+    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-xl);
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    border: 2px dashed var(--accent-color);
 }
 
-#bci-modular-container .diagram-description {
-    color: var(--text-secondary) !important;
-    font-size: var(--font-size-small) !important;
-    font-style: italic !important;
+.diagram-placeholder {
+    font-size: 1.25rem;
+    color: var(--accent-color);
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
 }
 
-/* Applications Grid */
-#bci-modular-container .applications-grid {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
-    gap: var(--spacing-lg) !important;
-    margin-bottom: var(--spacing-xl) !important;
+.diagram-description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
 }
 
-#bci-modular-container .app-card {
-    background: var(--secondary-bg) !important;
-    border-radius: 16px !important;
-    padding: var(--spacing-lg) !important;
-    box-shadow: var(--shadow-light) !important;
-    transition: all 0.3s ease !important;
-    border-left: 4px solid var(--accent-blue) !important;
+.key-features {
+    background: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 100%);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-xl);
+    border: 1px solid #e9d5ff;
 }
 
-#bci-modular-container .app-card.core {
-    border-left-color: var(--accent-blue) !important;
+.key-features h3 {
+    color: var(--accent-color);
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
 }
 
-#bci-modular-container .app-card.data {
-    border-left-color: var(--accent-purple) !important;
+.animate-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideInUp 0.6s ease forwards;
 }
 
-#bci-modular-container .app-card.visualization {
-    border-left-color: var(--accent-orange) !important;
-}
+.animate-in:nth-child(2) { animation-delay: 0.1s; }
+.animate-in:nth-child(3) { animation-delay: 0.2s; }
+.animate-in:nth-child(4) { animation-delay: 0.3s; }
+.animate-in:nth-child(5) { animation-delay: 0.4s; }
 
-#bci-modular-container .app-card.processing {
-    border-left-color: var(--accent-teal) !important;
-}
-
-#bci-modular-container .app-card:hover {
-    transform: translateY(-5px) !important;
-    box-shadow: var(--shadow-medium) !important;
-}
-
-#bci-modular-container .app-header {
-    display: flex !important;
-    align-items: center !important;
-    gap: var(--spacing-sm) !important;
-    margin-bottom: var(--spacing-md) !important;
-    padding-bottom: var(--spacing-sm) !important;
-    border-bottom: 2px solid var(--border-light) !important;
-}
-
-#bci-modular-container .app-header i {
-    font-size: var(--font-size-h3) !important;
-}
-
-#bci-modular-container .app-card.core .app-header i {
-    color: var(--accent-blue) !important;
-}
-
-#bci-modular-container .app-card.data .app-header i {
-    color: var(--accent-purple) !important;
-}
-
-#bci-modular-container .app-card.visualization .app-header i {
-    color: var(--accent-orange) !important;
-}
-
-#bci-modular-container .app-card.processing .app-header i {
-    color: var(--accent-teal) !important;
-}
-
-#bci-modular-container .app-header h4 {
-    margin: 0 !important;
-    font-family: 'Orbitron', serif !important;
-}
-
-#bci-modular-container .app-card.core .app-header h4 {
-    color: var(--accent-blue) !important;
-}
-
-#bci-modular-container .app-card.data .app-header h4 {
-    color: var(--accent-purple) !important;
-}
-
-#bci-modular-container .app-card.visualization .app-header h4 {
-    color: var(--accent-orange) !important;
-}
-
-#bci-modular-container .app-card.processing .app-header h4 {
-    color: var(--accent-teal) !important;
-}
-
-#bci-modular-container .app-list {
-    list-style: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-}
-
-#bci-modular-container .app-list li {
-    background: var(--primary-bg) !important;
-    padding: var(--spacing-sm) !important;
-    border-radius: 8px !important;
-    margin-bottom: var(--spacing-xs) !important;
-    border-left: 3px solid var(--accent-blue) !important;
-    font-size: var(--font-size-small) !important;
-    line-height: 1.5 !important;
-    color: var(--text-secondary) !important;
-}
-
-#bci-modular-container .app-card.core .app-list li {
-    border-left-color: var(--accent-blue) !important;
-}
-
-#bci-modular-container .app-card.data .app-list li {
-    border-left-color: var(--accent-purple) !important;
-}
-
-#bci-modular-container .app-card.visualization .app-list li {
-    border-left-color: var(--accent-orange) !important;
-}
-
-#bci-modular-container .app-card.processing .app-list li {
-    border-left-color: var(--accent-teal) !important;
-}
-
-/* Key Features Section */
-#bci-modular-container .key-features {
-    background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%) !important;
-    padding: var(--spacing-xl) !important;
-    border-radius: 16px !important;
-    border: 2px solid var(--accent-green) !important;
-    box-shadow: var(--shadow-light) !important;
-}
-
-#bci-modular-container .key-features h3 {
-    color: var(--accent-green) !important;
-    font-family: 'Orbitron', serif !important;
-    margin-bottom: var(--spacing-lg) !important;
-    text-align: center !important;
-}
-
-#bci-modular-container .features-list {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
-    gap: var(--spacing-md) !important;
-}
-
-#bci-modular-container .feature-item {
-    background: var(--primary-bg) !important;
-    padding: var(--spacing-md) !important;
-    border-radius: 12px !important;
-    border-left: 4px solid var(--accent-green) !important;
-    box-shadow: var(--shadow-light) !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: var(--spacing-sm) !important;
-}
-
-#bci-modular-container .feature-item i {
-    color: var(--accent-green) !important;
-    font-size: var(--font-size-h4) !important;
-}
-
-#bci-modular-container .feature-text {
-    font-size: var(--font-size-body) !important;
-    color: var(--text-primary) !important;
-    font-weight: 500 !important;
-}
-
-/* Animation */
-#bci-modular-container .animate-in {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-    transition: all 0.6s ease-out !important;
-}
-
-/* Responsive Design */
-@media (max-width: 1200px) {
-    #bci-modular-container .slide-content {
-        padding: var(--spacing-md) !important;
-    }
-    
-    #bci-modular-container .applications-grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
-        gap: var(--spacing-md) !important;
+@keyframes slideInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
 @media (max-width: 768px) {
-    #bci-modular-container .slide-content {
-        padding: var(--spacing-sm) !important;
+    .section-title {
+        font-size: 2rem;
     }
     
-    #bci-modular-container .applications-grid {
-        grid-template-columns: 1fr !important;
+    .features-list {
+        grid-template-columns: 1fr;
     }
     
-    #bci-modular-container .features-list {
-        grid-template-columns: 1fr !important;
-    }
-}
-
-@media (max-width: 480px) {
-    #bci-modular-container .slide-content {
-        padding: var(--spacing-xs) !important;
-    }
-    
-    #bci-modular-container .app-header {
-        flex-direction: column !important;
-        text-align: center !important;
-        gap: var(--spacing-xs) !important;
+    #database-models-container {
+        padding: var(--spacing-sm);
     }
 }
 </style>
 
-<div id="bci-modular-container">
+<div id="database-models-container">
 <div class="slide-content">
-    <h2 class="section-title animate-in">BCI Core Application: Modular Architecture Design</h2>
+    <h2 class="section-title animate-in">Database Models and Data Management</h2>
     
-    <div class="modular-overview animate-in">
-        <h3>🧩 Eight Integrated Django Applications</h3>
-        <p class="subtitle">Clear separation of concerns with standardized interfaces and seamless inter-application communication for scalable BCI research platform development.</p>
+    <div class="overview-card animate-in">
+        <h3 class="overview-title">
+            <i class="fas fa-database"></i>
+            Section 4.5.3.1.2: Sophisticated Data Model Architecture
+        </h3>
+        <p>Complex BCI workflows with data integrity and efficient queries across different experimental paradigms. Supports Motor Imagery and P300 approaches with comprehensive metadata storage and validation.</p>
     </div>
 
-    <div class="modular-diagram animate-in">
-        <div class="diagram-placeholder">🧩 Figure 4.44: Modular Django Applications</div>
-        <div class="diagram-description">Modular building blocks showing how eight applications fit together to form the complete system</div>
-    </div>
-
-    <div class="applications-grid animate-in">
-        <div class="app-card core">
-            <div class="app-header">
-                <i class="fas fa-users"></i>
-                <h4>Core Applications</h4>
+    <div class="models-grid">
+        <div class="model-card animate-in">
+            <div class="model-header">
+                <i class="fas fa-table"></i>
+                <h3>SessionData Model</h3>
             </div>
-            <ul class="app-list">
-                <li><strong>accounts</strong> - User management and authentication</li>
-                <li><strong>user_management</strong> - Research participation coordination</li>
-                <li><strong>bci</strong> - Primary BCI orchestrator and control</li>
-            </ul>
+            <p class="model-description">
+                Foundation for EEG data management with comprehensive metadata storage and file handling capabilities. Implements automatic file processing through Django signals.
+            </p>
+            
+
+            <div class="features-list">
+                <div class="feature-item">
+                    <i class="fas fa-check"></i>
+                    <span class="feature-text">User association with cascade deletion</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-check"></i>
+                    <span class="feature-text">Approach-specific categorization</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-check"></i>
+                    <span class="feature-text">Sampling rate and channel configuration</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-check"></i>
+                    <span class="feature-text">Data quality metrics tracking</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-check"></i>
+                    <span class="feature-text">Automatic metadata extraction</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-check"></i>
+                    <span class="feature-text">CSV format compatibility validation</span>
+                </div>
+            </div>
         </div>
 
-        <div class="app-card data">
-            <div class="app-header">
-                <i class="fas fa-database"></i>
-                <h4>Data Collection</h4>
+        <div class="model-card animate-in">
+            <div class="model-header">
+                <i class="fas fa-brain"></i>
+                <h3>TrainedModel Management</h3>
             </div>
-            <ul class="app-list">
-                <li><strong>trials</strong> - Experimental trial management</li>
-                <li><strong>motor_imagery</strong> - Motor imagery paradigm implementation</li>
-                <li><strong>preprocessor</strong> - Signal processing and filtering</li>
-            </ul>
+            <p class="model-description">
+                Comprehensive model lifecycle management supporting multiple ML approaches with version control and performance tracking. Implements atomic operations for model activation.
+            </p>
+
+            <div class="diagram-section">
+                <div class="diagram-placeholder">📊 Figure 4.50: TrainedModel Architecture and Relationships</div>
+                <img width="100%" src="/images/BackEnd-Sakr/image168.png" alt="Integration Diagram">
+                <div class="diagram-description">Model management with file handling, configuration storage, and performance tracking</div>
+            </div>
+
+            <div class="features-list">
+                <div class="feature-item">
+                    <i class="fas fa-check"></i>
+                    <span class="feature-text">Motor Imagery and P300 support</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-check"></i>
+                    <span class="feature-text">JSON configuration parameters</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-check"></i>
+                    <span class="feature-text">One active model per approach/user</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-check"></i>
+                    <span class="feature-text">Race condition prevention</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-check"></i>
+                    <span class="feature-text">Automatic deactivation handling</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-check"></i>
+                    <span class="feature-text">Deployment readiness validation</span>
+                </div>
+            </div>
         </div>
 
-        <div class="app-card visualization">
-            <div class="app-header">
-                <i class="fas fa-chart-line"></i>
-                <h4>Data Visualization</h4>
+        <div class="model-card animate-in">
+            <div class="model-header">
+                <i class="fas fa-play-circle"></i>
+                <h3>PredictionSession Infrastructure</h3>
             </div>
-            <ul class="app-list">
-                <li><strong>eeg_visualization</strong> - Real-time EEG display</li>
-                <li><strong>plot</strong> - Data analysis and plotting tools</li>
-            </ul>
+            <p class="model-description">
+                Real-time BCI applications through comprehensive session management and state tracking. Includes automatic timeout handling and resource cleanup.
+            </p>
+            
+
+            <div class="features-list">
+                <div class="feature-item">
+                    <i class="fas fa-check"></i>
+                    <span class="feature-text">Session lifecycle management</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-check"></i>
+                    <span class="feature-text">Temporal tracking capabilities</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-check"></i>
+                    <span class="feature-text">Performance metrics analysis</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-check"></i>
+                    <span class="feature-text">Automatic timeout handling</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-check"></i>
+                    <span class="feature-text">Resource cleanup mechanisms</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-check"></i>
+                    <span class="feature-text">System usage pattern tracking</span>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="key-features animate-in">
-        <h3>🔑 Key Features</h3>
+        <h3><i class="fas fa-star"></i> Key Architecture Features</h3>
         <div class="features-list">
             <div class="feature-item">
-                <i class="fas fa-layer-group"></i>
-                <div class="feature-text">Clear separation of concerns</div>
+                <i class="fas fa-shield-alt"></i>
+                <span class="feature-text">Data integrity through foreign key constraints</span>
             </div>
             <div class="feature-item">
-                <i class="fas fa-plug"></i>
-                <div class="feature-text">Standardized interfaces</div>
+                <i class="fas fa-search"></i>
+                <span class="feature-text">Efficient queries across experimental paradigms</span>
             </div>
             <div class="feature-item">
-                <i class="fas fa-network-wired"></i>
-                <div class="feature-text">Seamless inter-application communication</div>
+                <i class="fas fa-cogs"></i>
+                <span class="feature-text">Automatic metadata extraction via Django signals</span>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-check-double"></i>
+                <span class="feature-text">Approach-specific validation systems</span>
             </div>
         </div>
     </div>
 </div>
 </div>
+
+</body>
+</html>
