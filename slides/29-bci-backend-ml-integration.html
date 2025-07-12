@@ -1,0 +1,492 @@
+<!-- BCI Backend Slide 4: Machine Learning Integration Architecture -->
+<style>
+/* Standalone CSS for BCI Backend ML Integration Slide */
+#bci-backend-ml-container .slide-content {
+    /* CSS Variables for Academic Theme */
+    --primary-bg: #ffffff;
+    --secondary-bg: #f8f9fa;
+    --tertiary-bg: #e9ecef;
+    --accent-red: #c41e3a;
+    --accent-blue: #1f4e79;
+    --accent-purple: #5a4fcf;
+    --accent-green: #2d7d32;
+    --accent-orange: #f57c00;
+    --accent-teal: #00695c;
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --text-muted: #6c757d;
+    --border-light: #dee2e6;
+    --border-primary: #ced4da;
+    --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-heavy: 0 8px 24px rgba(0, 0, 0, 0.16);
+    
+    /* Typography Scale */
+    --font-size-h1: clamp(2.5rem, 5vw, 4rem);
+    --font-size-h2: clamp(2rem, 4vw, 3rem);
+    --font-size-h3: clamp(1.5rem, 3vw, 2.2rem);
+    --font-size-h4: clamp(1.25rem, 2.5vw, 1.8rem);
+    --font-size-body: clamp(1rem, 2vw, 1.2rem);
+    --font-size-small: clamp(0.875rem, 1.5vw, 1rem);
+    
+    /* Spacing Scale */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-xxl: 4rem;
+    
+    /* Base slide styling */
+    all: unset;
+    display: block;
+    max-width: 1400px !important;
+    width: 100% !important;
+    text-align: left !important;
+    padding: var(--spacing-lg) !important;
+    margin: 0 auto !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    line-height: 1.6 !important;
+    font-size: var(--font-size-body) !important;
+    color: var(--text-primary) !important;
+    background: var(--primary-bg) !important;
+    height: calc(100vh - 40px) !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    padding-bottom: calc(var(--spacing-lg) + 40px) !important;
+}
+
+/* Custom scrollbar styling for standalone slides */
+#bci-backend-ml-container .slide-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+#bci-backend-ml-container .slide-content::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
+}
+
+#bci-backend-ml-container .slide-content::-webkit-scrollbar-thumb {
+    background: rgba(90, 79, 207, 0.3);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+#bci-backend-ml-container .slide-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(90, 79, 207, 0.5);
+}
+
+/* Firefox scrollbar styling */
+#bci-backend-ml-container .slide-content {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
+
+#bci-backend-ml-container * {
+    box-sizing: border-box;
+}
+
+#bci-backend-ml-container .slide-content * {
+    font-family: inherit !important;
+}
+
+/* Typography */
+#bci-backend-ml-container .slide-content h2 {
+    font-family: 'Orbitron', 'Georgia', serif !important;
+    font-size: var(--font-size-h2) !important;
+    font-weight: 600 !important;
+    line-height: 1.3 !important;
+    margin-bottom: var(--spacing-xl) !important;
+    color: var(--accent-purple) !important;
+    text-align: center !important;
+    letter-spacing: -0.01em !important;
+}
+
+#bci-backend-ml-container .slide-content h3 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h3) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#bci-backend-ml-container .slide-content h4 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h4) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-sm) !important;
+    color: var(--text-primary) !important;
+}
+
+#bci-backend-ml-container .slide-content p {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.7 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#bci-backend-ml-container .slide-content ul {
+    margin-bottom: var(--spacing-md) !important;
+    padding-left: var(--spacing-lg) !important;
+}
+
+#bci-backend-ml-container .slide-content li {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.6 !important;
+    margin-bottom: var(--spacing-xs) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Architecture Overview */
+#bci-backend-ml-container .architecture-overview {
+    background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--tertiary-bg) 100%) !important;
+    padding: var(--spacing-xl) !important;
+    border-radius: 20px !important;
+    border: 2px solid var(--accent-purple) !important;
+    box-shadow: var(--shadow-medium) !important;
+    text-align: center !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#bci-backend-ml-container .architecture-overview h3 {
+    color: var(--accent-purple) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-md) !important;
+}
+
+#bci-backend-ml-container .architecture-overview .subtitle {
+    font-size: calc(var(--font-size-body) * 1.1) !important;
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+    margin-bottom: 0 !important;
+}
+
+/* ML Architecture Diagram Placeholder */
+#bci-backend-ml-container .ml-diagram {
+    background: var(--secondary-bg) !important;
+    border: 2px dashed var(--accent-purple) !important;
+    border-radius: 12px !important;
+    padding: var(--spacing-xl) !important;
+    text-align: center !important;
+    margin: var(--spacing-xl) 0 !important;
+    min-height: 200px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+}
+
+#bci-backend-ml-container .diagram-placeholder {
+    color: var(--accent-purple) !important;
+    font-size: var(--font-size-h4) !important;
+    font-weight: 600 !important;
+    margin-bottom: var(--spacing-sm) !important;
+}
+
+#bci-backend-ml-container .diagram-description {
+    color: var(--text-secondary) !important;
+    font-size: var(--font-size-small) !important;
+    font-style: italic !important;
+}
+
+/* ML Components Grid */
+#bci-backend-ml-container .ml-components-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)) !important;
+    gap: var(--spacing-lg) !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#bci-backend-ml-container .ml-card {
+    background: var(--secondary-bg) !important;
+    border-radius: 16px !important;
+    padding: var(--spacing-lg) !important;
+    box-shadow: var(--shadow-light) !important;
+    transition: all 0.3s ease !important;
+    border-left: 4px solid var(--accent-purple) !important;
+}
+
+#bci-backend-ml-container .ml-card.trainer {
+    border-left-color: var(--accent-green) !important;
+}
+
+#bci-backend-ml-container .ml-card.predictor {
+    border-left-color: var(--accent-blue) !important;
+}
+
+#bci-backend-ml-container .ml-card.lifecycle {
+    border-left-color: var(--accent-orange) !important;
+}
+
+#bci-backend-ml-container .ml-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: var(--shadow-medium) !important;
+}
+
+#bci-backend-ml-container .ml-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--spacing-sm) !important;
+    margin-bottom: var(--spacing-md) !important;
+    padding-bottom: var(--spacing-sm) !important;
+    border-bottom: 2px solid var(--border-light) !important;
+}
+
+#bci-backend-ml-container .ml-header i {
+    font-size: var(--font-size-h3) !important;
+}
+
+#bci-backend-ml-container .ml-card.trainer .ml-header i {
+    color: var(--accent-green) !important;
+}
+
+#bci-backend-ml-container .ml-card.predictor .ml-header i {
+    color: var(--accent-blue) !important;
+}
+
+#bci-backend-ml-container .ml-card.lifecycle .ml-header i {
+    color: var(--accent-orange) !important;
+}
+
+#bci-backend-ml-container .ml-header h3 {
+    margin: 0 !important;
+    font-family: 'Orbitron', serif !important;
+}
+
+#bci-backend-ml-container .ml-card.trainer .ml-header h3 {
+    color: var(--accent-green) !important;
+}
+
+#bci-backend-ml-container .ml-card.predictor .ml-header h3 {
+    color: var(--accent-blue) !important;
+}
+
+#bci-backend-ml-container .ml-card.lifecycle .ml-header h3 {
+    color: var(--accent-orange) !important;
+}
+
+/* ML Features */
+#bci-backend-ml-container .ml-features {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--spacing-sm) !important;
+}
+
+#bci-backend-ml-container .feature-item {
+    background: var(--primary-bg) !important;
+    padding: var(--spacing-sm) !important;
+    border-radius: 8px !important;
+    border-left: 3px solid var(--accent-purple) !important;
+    font-size: var(--font-size-small) !important;
+    line-height: 1.5 !important;
+    color: var(--text-secondary) !important;
+}
+
+#bci-backend-ml-container .ml-card.trainer .feature-item {
+    border-left-color: var(--accent-green) !important;
+}
+
+#bci-backend-ml-container .ml-card.predictor .feature-item {
+    border-left-color: var(--accent-blue) !important;
+}
+
+#bci-backend-ml-container .ml-card.lifecycle .feature-item {
+    border-left-color: var(--accent-orange) !important;
+}
+
+/* Communicator Integration Section */
+#bci-backend-ml-container .communicator-section {
+    background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%) !important;
+    padding: var(--spacing-xl) !important;
+    border-radius: 16px !important;
+    border: 2px solid var(--accent-red) !important;
+    box-shadow: var(--shadow-light) !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#bci-backend-ml-container .communicator-section h3 {
+    color: var(--accent-red) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-md) !important;
+    text-align: center !important;
+}
+
+#bci-backend-ml-container .communicator-features {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+    gap: var(--spacing-md) !important;
+}
+
+#bci-backend-ml-container .communicator-feature {
+    background: var(--primary-bg) !important;
+    padding: var(--spacing-md) !important;
+    border-radius: 8px !important;
+    border-left: 3px solid var(--accent-red) !important;
+    font-size: var(--font-size-small) !important;
+    line-height: 1.5 !important;
+    color: var(--text-secondary) !important;
+}
+
+/* Design Philosophy Section */
+#bci-backend-ml-container .design-philosophy {
+    background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%) !important;
+    padding: var(--spacing-xl) !important;
+    border-radius: 16px !important;
+    border: 2px solid var(--accent-purple) !important;
+    box-shadow: var(--shadow-light) !important;
+}
+
+#bci-backend-ml-container .design-philosophy h3 {
+    color: var(--accent-purple) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-md) !important;
+    text-align: center !important;
+}
+
+#bci-backend-ml-container .design-philosophy p {
+    font-size: calc(var(--font-size-body) * 1.05) !important;
+    line-height: 1.7 !important;
+    color: var(--text-primary) !important;
+    text-align: center !important;
+    margin: 0 !important;
+    max-width: 80ch !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* Animation */
+#bci-backend-ml-container .animate-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: all 0.6s ease-out !important;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    #bci-backend-ml-container .slide-content {
+        padding: var(--spacing-md) !important;
+    }
+    
+    #bci-backend-ml-container .ml-components-grid {
+        grid-template-columns: 1fr !important;
+        gap: var(--spacing-md) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    #bci-backend-ml-container .slide-content {
+        padding: var(--spacing-sm) !important;
+    }
+    
+    #bci-backend-ml-container .architecture-overview,
+    #bci-backend-ml-container .design-philosophy,
+    #bci-backend-ml-container .communicator-section {
+        padding: var(--spacing-lg) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #bci-backend-ml-container .slide-content {
+        padding: var(--spacing-xs) !important;
+    }
+    
+    #bci-backend-ml-container .ml-header {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: var(--spacing-xs) !important;
+    }
+}
+</style>
+
+<div id="bci-backend-ml-container">
+<div class="slide-content">
+    <h2 class="section-title animate-in">BCI Backend: Machine Learning Integration Architecture</h2>
+    
+    <div class="architecture-overview animate-in">
+        <h3>🤖 Trainer and Predictor Abstractions</h3>
+        <p class="subtitle">Sophisticated abstractions for machine learning workflows providing consistent interfaces while enabling paradigm-specific optimizations with factory patterns for dynamic instantiation based on approach selection and model configuration.</p>
+    </div>
+
+    <div class="ml-diagram animate-in">
+        <div class="diagram-placeholder">📊 Machine Learning Architecture and Class Hierarchy (Fig 4.54)</div>
+        <div class="diagram-description">Class hierarchy diagram showing trainer and predictor relationships with factory patterns</div>
+    </div>
+
+    <div class="ml-components-grid animate-in">
+        <div class="ml-card trainer">
+            <div class="ml-header">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>BCITrainer Base Class</h3>
+            </div>
+            <p><strong>Common training functionality</strong> implementing standardized interfaces for training progress reporting and model persistence with approach-specific implementations.</p>
+            
+            <div class="ml-features">
+                <div class="feature-item">Data loading with validation splitting capabilities</div>
+                <div class="feature-item">Performance monitoring and progress reporting</div>
+                <div class="feature-item">Sophisticated configuration management system</div>
+                <div class="feature-item">Automated hyperparameter optimization support</div>
+                <div class="feature-item">Manual parameter specification for researchers</div>
+                <div class="feature-item">Standardized model persistence interfaces</div>
+            </div>
+        </div>
+
+        <div class="ml-card predictor">
+            <div class="ml-header">
+                <i class="fas fa-brain"></i>
+                <h3>Predictor Implementation</h3>
+            </div>
+            <p><strong>Real-time classification capabilities</strong> with sophisticated preprocessing pipelines tailored to each paradigm and optimized inference procedures.</p>
+            
+            <div class="ml-features">
+                <div class="feature-item">Real-time classification with paradigm-specific preprocessing</div>
+                <div class="feature-item">Efficient memory management for extended operations</div>
+                <div class="feature-item">Optimized inference procedures for responsiveness</div>
+                <div class="feature-item">Comprehensive performance monitoring capabilities</div>
+                <div class="feature-item">Automatic quality assessment and confidence metrics</div>
+                <div class="feature-item">Real-time feedback about prediction stability</div>
+            </div>
+        </div>
+
+        <div class="ml-card lifecycle">
+            <div class="ml-header">
+                <i class="fas fa-recycle"></i>
+                <h3>Model Lifecycle Management</h3>
+            </div>
+            <p><strong>Comprehensive lifecycle management</strong> including training initiation, progress monitoring, validation assessment, and deployment preparation with concurrent operations.</p>
+            
+            <div class="ml-features">
+                <div class="feature-item">Training process management with threading support</div>
+                <div class="feature-item">Real-time progress updates and error recovery</div>
+                <div class="feature-item">Comprehensive checkpointing and resume capabilities</div>
+                <div class="feature-item">Atomic operations for model activation and deployment</div>
+                <div class="feature-item">Validation of model readiness and compatibility</div>
+                <div class="feature-item">Training state consistency and optimization preservation</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="communicator-section animate-in">
+        <h3>🔗 BCI Communicator Integration</h3>
+        <p style="text-align: center; margin-bottom: var(--spacing-md); color: var(--text-primary);">Real-time communication architecture enabling practical brain-computer interface applications with hybrid paradigm integration.</p>
+        
+        <div class="communicator-features">
+            <div class="communicator-feature">
+                <strong>Communication Session Management:</strong> Comprehensive session management for hybrid BCI applications supporting simultaneous Motor Imagery and P300 operation
+            </div>
+            <div class="communicator-feature">
+                <strong>Event Tracking and Analytics:</strong> Comprehensive event logging enabling detailed analysis of user interaction patterns and system performance characteristics
+            </div>
+            <div class="communicator-feature">
+                <strong>Hybrid Prediction Integration:</strong> Sophisticated coordination between different prediction modalities with intelligent arbitration and seamless user experiences
+            </div>
+        </div>
+    </div>
+
+    <div class="design-philosophy animate-in">
+        <h3>🎯 ML Integration Philosophy</h3>
+        <p><strong>Sophisticated abstractions provide consistent interfaces while enabling paradigm-specific optimizations through factory patterns and inheritance hierarchies.</strong> The architecture implements comprehensive model lifecycle management with real-time capabilities, performance monitoring, and hybrid paradigm coordination that enables advanced BCI research workflows while maintaining system reliability and responsive user experiences.</p>
+    </div>
+</div>
+</div>

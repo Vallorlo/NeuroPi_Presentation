@@ -1,0 +1,469 @@
+<!-- BCI Backend Slide 2: Database Models and Data Management -->
+<style>
+/* Standalone CSS for BCI Backend Database Models Slide */
+#bci-backend-db-container .slide-content {
+    /* CSS Variables for Academic Theme */
+    --primary-bg: #ffffff;
+    --secondary-bg: #f8f9fa;
+    --tertiary-bg: #e9ecef;
+    --accent-red: #c41e3a;
+    --accent-blue: #1f4e79;
+    --accent-purple: #5a4fcf;
+    --accent-green: #2d7d32;
+    --accent-orange: #f57c00;
+    --accent-teal: #00695c;
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --text-muted: #6c757d;
+    --border-light: #dee2e6;
+    --border-primary: #ced4da;
+    --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-heavy: 0 8px 24px rgba(0, 0, 0, 0.16);
+    
+    /* Typography Scale */
+    --font-size-h1: clamp(2.5rem, 5vw, 4rem);
+    --font-size-h2: clamp(2rem, 4vw, 3rem);
+    --font-size-h3: clamp(1.5rem, 3vw, 2.2rem);
+    --font-size-h4: clamp(1.25rem, 2.5vw, 1.8rem);
+    --font-size-body: clamp(1rem, 2vw, 1.2rem);
+    --font-size-small: clamp(0.875rem, 1.5vw, 1rem);
+    
+    /* Spacing Scale */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-xxl: 4rem;
+    
+    /* Base slide styling */
+    all: unset;
+    display: block;
+    max-width: 1400px !important;
+    width: 100% !important;
+    text-align: left !important;
+    padding: var(--spacing-lg) !important;
+    margin: 0 auto !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    line-height: 1.6 !important;
+    font-size: var(--font-size-body) !important;
+    color: var(--text-primary) !important;
+    background: var(--primary-bg) !important;
+    height: calc(100vh - 40px) !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    padding-bottom: calc(var(--spacing-lg) + 40px) !important;
+}
+
+/* Custom scrollbar styling for standalone slides */
+#bci-backend-db-container .slide-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+#bci-backend-db-container .slide-content::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
+}
+
+#bci-backend-db-container .slide-content::-webkit-scrollbar-thumb {
+    background: rgba(90, 79, 207, 0.3);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+#bci-backend-db-container .slide-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(90, 79, 207, 0.5);
+}
+
+/* Firefox scrollbar styling */
+#bci-backend-db-container .slide-content {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
+
+#bci-backend-db-container * {
+    box-sizing: border-box;
+}
+
+#bci-backend-db-container .slide-content * {
+    font-family: inherit !important;
+}
+
+/* Typography */
+#bci-backend-db-container .slide-content h2 {
+    font-family: 'Orbitron', 'Georgia', serif !important;
+    font-size: var(--font-size-h2) !important;
+    font-weight: 600 !important;
+    line-height: 1.3 !important;
+    margin-bottom: var(--spacing-xl) !important;
+    color: var(--accent-purple) !important;
+    text-align: center !important;
+    letter-spacing: -0.01em !important;
+}
+
+#bci-backend-db-container .slide-content h3 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h3) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#bci-backend-db-container .slide-content h4 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: var(--font-size-h4) !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin-bottom: var(--spacing-sm) !important;
+    color: var(--text-primary) !important;
+}
+
+#bci-backend-db-container .slide-content p {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.7 !important;
+    margin-bottom: var(--spacing-md) !important;
+    color: var(--text-primary) !important;
+}
+
+#bci-backend-db-container .slide-content ul {
+    margin-bottom: var(--spacing-md) !important;
+    padding-left: var(--spacing-lg) !important;
+}
+
+#bci-backend-db-container .slide-content li {
+    font-size: var(--font-size-body) !important;
+    line-height: 1.6 !important;
+    margin-bottom: var(--spacing-xs) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Architecture Overview */
+#bci-backend-db-container .architecture-overview {
+    background: linear-gradient(135deg, var(--secondary-bg) 0%, var(--tertiary-bg) 100%) !important;
+    padding: var(--spacing-xl) !important;
+    border-radius: 20px !important;
+    border: 2px solid var(--accent-purple) !important;
+    box-shadow: var(--shadow-medium) !important;
+    text-align: center !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#bci-backend-db-container .architecture-overview h3 {
+    color: var(--accent-purple) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-md) !important;
+}
+
+#bci-backend-db-container .architecture-overview .subtitle {
+    font-size: calc(var(--font-size-body) * 1.1) !important;
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Model Cards Grid */
+#bci-backend-db-container .models-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)) !important;
+    gap: var(--spacing-lg) !important;
+    margin-bottom: var(--spacing-xl) !important;
+}
+
+#bci-backend-db-container .model-card {
+    background: var(--secondary-bg) !important;
+    border-radius: 16px !important;
+    padding: var(--spacing-lg) !important;
+    box-shadow: var(--shadow-light) !important;
+    transition: all 0.3s ease !important;
+    border-left: 4px solid var(--accent-purple) !important;
+}
+
+#bci-backend-db-container .model-card.session-data {
+    border-left-color: var(--accent-green) !important;
+}
+
+#bci-backend-db-container .model-card.trained-model {
+    border-left-color: var(--accent-blue) !important;
+}
+
+#bci-backend-db-container .model-card.prediction-session {
+    border-left-color: var(--accent-orange) !important;
+}
+
+#bci-backend-db-container .model-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: var(--shadow-medium) !important;
+}
+
+#bci-backend-db-container .model-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--spacing-sm) !important;
+    margin-bottom: var(--spacing-md) !important;
+    padding-bottom: var(--spacing-sm) !important;
+    border-bottom: 2px solid var(--border-light) !important;
+}
+
+#bci-backend-db-container .model-header i {
+    font-size: var(--font-size-h3) !important;
+}
+
+#bci-backend-db-container .model-card.session-data .model-header i {
+    color: var(--accent-green) !important;
+}
+
+#bci-backend-db-container .model-card.trained-model .model-header i {
+    color: var(--accent-blue) !important;
+}
+
+#bci-backend-db-container .model-card.prediction-session .model-header i {
+    color: var(--accent-orange) !important;
+}
+
+#bci-backend-db-container .model-header h3 {
+    margin: 0 !important;
+    font-family: 'Orbitron', serif !important;
+}
+
+#bci-backend-db-container .model-card.session-data .model-header h3 {
+    color: var(--accent-green) !important;
+}
+
+#bci-backend-db-container .model-card.trained-model .model-header h3 {
+    color: var(--accent-blue) !important;
+}
+
+#bci-backend-db-container .model-card.prediction-session .model-header h3 {
+    color: var(--accent-orange) !important;
+}
+
+/* Code Block Styling */
+#bci-backend-db-container .code-block {
+    background: #2d3748 !important;
+    color: #e2e8f0 !important;
+    padding: var(--spacing-md) !important;
+    border-radius: 8px !important;
+    font-family: 'Fira Code', 'Monaco', 'Consolas', monospace !important;
+    font-size: var(--font-size-small) !important;
+    line-height: 1.4 !important;
+    overflow-x: auto !important;
+    margin: var(--spacing-md) 0 !important;
+    border-left: 4px solid var(--accent-purple) !important;
+}
+
+#bci-backend-db-container .model-card.session-data .code-block {
+    border-left-color: var(--accent-green) !important;
+}
+
+#bci-backend-db-container .model-card.trained-model .code-block {
+    border-left-color: var(--accent-blue) !important;
+}
+
+#bci-backend-db-container .model-card.prediction-session .code-block {
+    border-left-color: var(--accent-orange) !important;
+}
+
+/* Model Features */
+#bci-backend-db-container .model-features {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--spacing-sm) !important;
+}
+
+#bci-backend-db-container .feature-item {
+    background: var(--primary-bg) !important;
+    padding: var(--spacing-sm) !important;
+    border-radius: 8px !important;
+    border-left: 3px solid var(--accent-purple) !important;
+    font-size: var(--font-size-small) !important;
+    line-height: 1.5 !important;
+    color: var(--text-secondary) !important;
+}
+
+#bci-backend-db-container .model-card.session-data .feature-item {
+    border-left-color: var(--accent-green) !important;
+}
+
+#bci-backend-db-container .model-card.trained-model .feature-item {
+    border-left-color: var(--accent-blue) !important;
+}
+
+#bci-backend-db-container .model-card.prediction-session .feature-item {
+    border-left-color: var(--accent-orange) !important;
+}
+
+/* Design Philosophy Section */
+#bci-backend-db-container .design-philosophy {
+    background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%) !important;
+    padding: var(--spacing-xl) !important;
+    border-radius: 16px !important;
+    border: 2px solid var(--accent-purple) !important;
+    box-shadow: var(--shadow-light) !important;
+}
+
+#bci-backend-db-container .design-philosophy h3 {
+    color: var(--accent-purple) !important;
+    font-family: 'Orbitron', serif !important;
+    margin-bottom: var(--spacing-md) !important;
+    text-align: center !important;
+}
+
+#bci-backend-db-container .design-philosophy p {
+    font-size: calc(var(--font-size-body) * 1.05) !important;
+    line-height: 1.7 !important;
+    color: var(--text-primary) !important;
+    text-align: center !important;
+    margin: 0 !important;
+    max-width: 80ch !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* Animation */
+#bci-backend-db-container .animate-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: all 0.6s ease-out !important;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    #bci-backend-db-container .slide-content {
+        padding: var(--spacing-md) !important;
+    }
+    
+    #bci-backend-db-container .models-grid {
+        grid-template-columns: 1fr !important;
+        gap: var(--spacing-md) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    #bci-backend-db-container .slide-content {
+        padding: var(--spacing-sm) !important;
+    }
+    
+    #bci-backend-db-container .architecture-overview,
+    #bci-backend-db-container .design-philosophy {
+        padding: var(--spacing-lg) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #bci-backend-db-container .slide-content {
+        padding: var(--spacing-xs) !important;
+    }
+    
+    #bci-backend-db-container .model-header {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: var(--spacing-xs) !important;
+    }
+}
+</style>
+
+<div id="bci-backend-db-container">
+<div class="slide-content">
+    <h2 class="section-title animate-in">BCI Backend: Database Models & Data Management</h2>
+    
+    <div class="architecture-overview animate-in">
+        <h3>🗄️ Sophisticated Data Model Architecture</h3>
+        <p class="subtitle">Advanced database models supporting complex BCI workflows while maintaining data integrity and enabling efficient queries across different experimental paradigms with comprehensive metadata storage and lifecycle management.</p>
+    </div>
+
+    <div class="models-grid animate-in">
+        <div class="model-card session-data">
+            <div class="model-header">
+                <i class="fas fa-file-csv"></i>
+                <h3>SessionData Model</h3>
+            </div>
+            <p><strong>Foundation for EEG data management</strong> with comprehensive metadata storage and file handling capabilities.</p>
+            
+            <div class="code-block">
+class SessionData(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    approach = models.CharField(max_length=50, choices=APPROACH_CHOICES)
+    session_file = models.FileField(upload_to='sessions/')
+    sampling_rate = models.FloatField(default=128.0)
+    channels = models.JSONField(default=list)
+    classes = models.JSONField(default=list)
+    total_samples = models.IntegerField(default=0)
+            </div>
+            
+            <div class="model-features">
+                <div class="feature-item">User association with cascade deletion</div>
+                <div class="feature-item">Approach-specific categorization (Motor Imagery/P300)</div>
+                <div class="feature-item">Automatic metadata extraction via Django signals</div>
+                <div class="feature-item">JSON fields for flexible channel and class configuration</div>
+                <div class="feature-item">Data quality metrics and validation</div>
+            </div>
+        </div>
+
+        <div class="model-card trained-model">
+            <div class="model-header">
+                <i class="fas fa-brain"></i>
+                <h3>TrainedModel Management</h3>
+            </div>
+            <p><strong>Comprehensive model lifecycle management</strong> supporting multiple ML approaches with version control and performance tracking.</p>
+            
+            <div class="code-block">
+class TrainedModel(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    approach = models.CharField(max_length=50, choices=APPROACH_CHOICES)
+    model_file = models.FileField(upload_to='models/')
+    config = models.JSONField(default=dict)
+    performance_metrics = models.JSONField(default=dict)
+    is_active = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+            </div>
+            
+            <div class="model-features">
+                <div class="feature-item">Atomic model activation with race condition prevention</div>
+                <div class="feature-item">Approach-specific configuration storage (JSON)</div>
+                <div class="feature-item">Performance tracking and validation metrics</div>
+                <div class="feature-item">Version control with creation timestamps</div>
+                <div class="feature-item">Automatic deactivation of existing models</div>
+            </div>
+        </div>
+
+        <div class="model-card prediction-session">
+            <div class="model-header">
+                <i class="fas fa-play-circle"></i>
+                <h3>PredictionSession Infrastructure</h3>
+            </div>
+            <p><strong>Real-time BCI applications</strong> through comprehensive session management and state tracking with automatic timeout handling.</p>
+            
+            <div class="code-block">
+class PredictionSession(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    model = models.ForeignKey(TrainedModel, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    prediction_interval = models.FloatField(default=8.0)
+    window_duration = models.FloatField(default=2.0)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES)
+    started_at = models.DateTimeField(null=True, blank=True)
+    stopped_at = models.DateTimeField(null=True, blank=True)
+            </div>
+            
+            <div class="model-features">
+                <div class="feature-item">Sophisticated session lifecycle management</div>
+                <div class="feature-item">Configurable prediction intervals and window durations</div>
+                <div class="feature-item">Status tracking with temporal information</div>
+                <div class="feature-item">Automatic timeout handling and resource cleanup</div>
+                <div class="feature-item">Performance metrics and usage pattern analysis</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="design-philosophy animate-in">
+        <h3>🎯 Data Architecture Philosophy</h3>
+        <p><strong>Sophisticated data model architecture supports complex BCI workflows while maintaining data integrity and enabling efficient queries across different experimental paradigms.</strong> The models implement comprehensive validation, automatic processing, and flexible configuration storage that adapts to evolving research requirements while ensuring consistent data management and reliable system operation.</p>
+    </div>
+</div>
+</div>
